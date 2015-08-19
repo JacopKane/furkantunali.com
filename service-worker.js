@@ -24,7 +24,7 @@
 
 
 
-var PrecacheConfig = [["example-basic.html","b7a395e1f73baf08310c564cc256c1b1"],["example.html","4d5472d5628ba778dcdd63cceba94d86"],["fonts/RobotoCondensed-Bold.woff","b957df7eb343c0e307cc3c4b5e642b0a"],["fonts/RobotoCondensed-BoldItalic.woff","fea624b4c2620b6f5db428e227f2845c"],["fonts/RobotoCondensed-Italic.woff","f6a7296c31954622227519621438298d"],["fonts/RobotoCondensed-Light.woff","febf32a2c55979f8644ba9dfe804ca2b"],["fonts/RobotoCondensed-LightItalic.woff","f09b84ef0af8be7687407830447ec594"],["fonts/RobotoCondensed-Regular.woff","94e480548f3165c92301d1e317593e90"],["index.html","2bc397ee1923313318fe59cb34a96810"],["manifest.json","d83aafba187e449abd4960bcc45b2fe6"],["scripts/main.min.js","089020ce2683e9b5b67d23d12a7e0a30"],["styles/main.css","fbd667af9fe2fd862ce9051964ddebf8"]];
+var PrecacheConfig = [["example-basic.html","b7a395e1f73baf08310c564cc256c1b1"],["example.html","4d5472d5628ba778dcdd63cceba94d86"],["fonts/RobotoCondensed-Bold.woff","b957df7eb343c0e307cc3c4b5e642b0a"],["fonts/RobotoCondensed-BoldItalic.woff","fea624b4c2620b6f5db428e227f2845c"],["fonts/RobotoCondensed-Italic.woff","f6a7296c31954622227519621438298d"],["fonts/RobotoCondensed-Light.woff","febf32a2c55979f8644ba9dfe804ca2b"],["fonts/RobotoCondensed-LightItalic.woff","f09b84ef0af8be7687407830447ec594"],["fonts/RobotoCondensed-Regular.woff","94e480548f3165c92301d1e317593e90"],["index.html","8ef9ecee031d6c67b8d86d12f6622224"],["manifest.json","d83aafba187e449abd4960bcc45b2fe6"],["scripts/main.min.js","089020ce2683e9b5b67d23d12a7e0a30"],["styles/main.css","97912d535f41ad1e01e1b434e6b8e48e"]];
 var CacheNamePrefix = 'sw-precache-v1-web-starter-kit-' + (self.registration ? self.registration.scope : '') + '-';
 
 
