@@ -164,7 +164,8 @@ gulp.task('clean', cb => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}, cb))
 // Watch files for changes & reload
 gulp.task('serve', ['styles'], () => {
   browserSync({
-    notify: false,
+    open: false,
+    notify: true,
     // Customize the BrowserSync console logging prefix
     logPrefix: 'WSK',
     // Run as an https by uncommenting 'https: true'
@@ -190,7 +191,8 @@ gulp.task('serve:dist', ['default'], () =>
     //       will present a certificate warning in the browser.
     // https: true,
     server: 'dist',
-    baseDir: 'dist'
+    baseDir: 'dist',
+    open: false
   })
 );
 
