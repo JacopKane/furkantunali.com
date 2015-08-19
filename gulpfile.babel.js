@@ -78,7 +78,7 @@ gulp.task('fonts', () =>
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
   const AUTOPREFIXER_BROWSERS = [
-    'ie >= 10',
+    'ie >= 8',
     'ie_mob >= 10',
     'ff >= 30',
     'chrome >= 34',
