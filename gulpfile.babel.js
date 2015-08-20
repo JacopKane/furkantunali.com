@@ -36,6 +36,10 @@ import pkg from './package.json';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+// Load custom tasks from the `tasks` directory
+try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
+
+
 // Lint JavaScript
 gulp.task('jshint', () =>
   gulp.src('app/scripts/**/*.js')
@@ -200,7 +204,7 @@ gulp.task('serve:dist', ['default'], () =>
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
-    ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    ['vendor', 'jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
     'generate-service-worker',
     cb
   )
@@ -234,6 +238,8 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
+      `${rootDir}/vendor/**/*.js`,
+      `${rootDir}/vendor/**/*.css`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.
@@ -256,6 +262,3 @@ gulp.task('generate-service-worker', cb => {
     });
   });
 });
-
-// Load custom tasks from the `tasks` directory
-// try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
