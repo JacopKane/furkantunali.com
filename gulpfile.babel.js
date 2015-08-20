@@ -110,7 +110,9 @@ gulp.task('styles', () => {
     .pipe($.if('*.css', $.minifyCss()))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist/styles'))
-    .pipe($.size({title: 'styles'}));
+    .pipe($.size({
+      title: 'styles'
+    }));
 });
 
 // Concatenate and minify JavaScript
@@ -163,7 +165,11 @@ gulp.task('html', () => {
 });
 
 // Clean output directory
-gulp.task('clean', cb => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}, cb));
+gulp.task('clean', cb => del([
+  '.tmp', 'dist/*', '!dist/.git', '.publish', '.sass-cache'
+], {
+  dot : true
+}, cb));
 
 // Watch files for changes & reload
 gulp.task('serve', ['styles'], () => {
@@ -203,8 +209,10 @@ gulp.task('serve:dist', ['default'], () =>
 // Build production files, the default task
 gulp.task('default', ['clean'], cb =>
   runSequence(
+    'vendor',
     'styles',
-    ['vendor', 'jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    'styles',
     'generate-service-worker',
     cb
   )
@@ -213,7 +221,7 @@ gulp.task('default', ['clean'], cb =>
 // Run PageSpeed Insights
 gulp.task('pagespeed', cb =>
   // Update the below URL to the public URL of your site
-  pagespeed('example.com', {
+  pagespeed('furkantunali.com', {
     strategy: 'mobile',
     // By default we use the PageSpeed Insights free (no API key) tier.
     // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
@@ -257,7 +265,6 @@ gulp.task('generate-service-worker', cb => {
         cb(err);
         return;
       }
-
       cb();
     });
   });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
+    <meta name="description" content="I'm a web developer and multidisciplinary designer.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Furkan Tunalı</title>
 
@@ -20,20 +20,48 @@
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/35ec167d-b700-4d30-a461-d3d8ba16e110.css"/>
+    <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/35ec167d-b700-4d30-a461-d3d8ba16e110.css"/>
     <link rel="stylesheet" href="styles/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.7/webcomponents-lite.min.js"></script>
+    <script src="vendor/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="vendor/social-media-icons/social-media-icons.html">
   </head>
   <body>
+    <nav>
+      <a class="link" href="//github.com/JacopKane" target="_blank" title="Github" alt="Github">
+        <social-media-icons class="icon" icon="github" color="#fff" size="30"></social-media-icons>
+      </a>
+
+      <a class="link" href="//linkedin.com/in/furkan" target="_blank" title="Linkedin" alt="Linkedin">
+        <social-media-icons class="icon" icon="linkedin" color="#fff" size="30"></social-media-icons>
+      </a>
+
+      <a class="link" href="//twitter.com/JacopKane" target="_blank" title="Twitter" alt="Twitter">
+        <social-media-icons class="icon" icon="twitter" color="#fff" size="30"></social-media-icons>
+      </a>
+
+      <!-- <a class="link" href="//soundcloud.com/JacopKane" target="_blank" title="SoundCloud" alt="SoundCloud">
+        <social-media-icons class="icon" icon="soundcloud" color="#fff" size="30"></social-media-icons>
+      </a> -->
+
+      <a class="link" href="//facebook.com/JacopKane" target="_blank" title="Facebook" alt="Facebook">
+        <social-media-icons class="icon" icon="facebook" color="#fff" size="30"></social-media-icons>
+      </a>
+
+      <a class="link" href="//pinterest.com/JacopKane" target="_blank" title="Pinterest" alt="Pinterest">
+        <social-media-icons class="icon" icon="pinterest" color="#fff" size="30"></social-media-icons>
+      </a>
+    </nav>
+
+    <section id="about">
+      <p>
+        I'm a <em>web developer</em> and <em>multidisciplinary designer</em>.
+        <br>
+        Also founder of <a target="_blank" href="//nod.st">NOD studios</a> &amp; <a target="_blank" href="//ambientdata.org">AmbientData</a>.
+      </p>
+      <p>You can <a href="mailto:furkan@nod.st">e-mail me</a> or check <a href="http://resume.linkedinlabs.com/i4z9qi4p6" target="_blank">my resume</a> in case if you are interested.</p>
+    </section>
 
     <header>
-      <nav>
-        <a class="link" href="https://github.com/JacopKane" target="_blank" title="Github" alt="Github">
-          <social-media-icons icon="github" color="#fff" size="40"></social-media-icons>
-        </a>
-      </nav>
-
       <hgroup>
         <h1><a href="/" class="logo"
           title="Furkan Tunalı" alt="Furkan Tunalı"><em>ft</em></a>
@@ -47,7 +75,12 @@
 
     </header>
 
-    <script src="scripts/main.js" type="text/javascript"></script>
+    <footer><em>2015 &copy; Furkan Tunalı</em></footer>
+
+    <!-- build:js(app/) ../../scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
