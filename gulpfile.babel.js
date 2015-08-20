@@ -166,7 +166,7 @@ gulp.task('html', () => {
 
 // Clean output directory
 gulp.task('clean', cb => del([
-  '.tmp', 'dist/*', '!dist/.git', '.publish', '.sass-cache'
+  '.tmp', 'dist/*', '!dist/.git'
 ], {
   dot : true
 }, cb));
@@ -212,6 +212,7 @@ gulp.task('default', ['clean'], cb =>
     'vendor',
     'styles',
     ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    'vendor',
     'styles',
     'generate-service-worker',
     cb
@@ -248,6 +249,7 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/styles/**/*.css`,
       `${rootDir}/vendor/**/*.js`,
       `${rootDir}/vendor/**/*.css`,
+      `${rootDir}/vendor/**/*.{html,json}`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.

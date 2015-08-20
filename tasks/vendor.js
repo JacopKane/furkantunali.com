@@ -72,7 +72,6 @@ gulp.task('vendor', ['clean'], (cb) => {
   return runSequence(
     'vendor-update',
     ['vendor-css', 'vendor-js'],
-    'generate-service-worker',
     cb
   )
 });

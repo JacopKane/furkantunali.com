@@ -1,9 +1,8 @@
 bower_components
 node_modules
-dist
-.tmp
 app.yaml
-.sass-cache
 app/vendor
-.publish
 .tmp
+.publish
+.sass-cache
+# dist
