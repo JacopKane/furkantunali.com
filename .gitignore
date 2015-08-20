@@ -5,3 +5,5 @@ dist
 app.yaml
 .sass-cache
 app/vendor
+.publish
+.tmp
