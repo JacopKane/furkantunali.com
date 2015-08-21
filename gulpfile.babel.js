@@ -121,7 +121,8 @@ gulp.task('styles', () => {
 // Concatenate and minify JavaScript
 gulp.task('scripts', () => {
   gulp.src([
-    './app/scripts/**/*.js'
+    'app/vendor/webcomponentsjs/webcomponents-lite.min.js',
+    'app/scripts/**/*.js'
   ])
     .pipe($.sourcemaps.init())
     .pipe($.concat('main.min.js'))
