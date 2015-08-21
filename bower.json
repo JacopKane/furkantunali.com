@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "social-media-icons": "~1.0.1"
+    "social-media-icons": "~1.0.1",
+    "system.js": "~0.18.11"
   }
 }

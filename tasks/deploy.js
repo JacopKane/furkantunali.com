@@ -5,7 +5,7 @@ import runSequence from 'run-sequence';
 const $ = gulpLoadPlugins();
 
 gulp.task('deploy-github', () => {
-  return gulp.src('./dist/**/*')
+  return gulp.src('dist/**/*')
     .pipe($.ghPages({
       force : true
     }));

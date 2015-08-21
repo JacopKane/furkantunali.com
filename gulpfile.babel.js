@@ -25,11 +25,11 @@
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
 import del from 'del';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import swPrecache from 'sw-precache';
-import gulpLoadPlugins from 'gulp-load-plugins';
 import {output as pagespeed} from 'psi';
 import pkg from './package.json';
 
@@ -42,7 +42,10 @@ try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
 
 // Lint JavaScript
 gulp.task('jshint', () =>
-  gulp.src('app/scripts/**/*.js')
+  gulp.src([
+    'app/scripts/**/*.js',
+    '!app/scripts/**/*.min.js'
+  ])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
@@ -116,20 +119,23 @@ gulp.task('styles', () => {
 });
 
 // Concatenate and minify JavaScript
-gulp.task('scripts', () =>
+gulp.task('scripts', () => {
   gulp.src([
-    // Note: Since we are not using useref in the scripts build pipeline,
-    //       you need to explicitly list your scripts here in the right order
-    //       to be correctly concatenated
-    './app/scripts/main.js'
-    // Other scripts
+    './app/scripts/**/*.js'
   ])
+    .pipe($.sourcemaps.init())
     .pipe($.concat('main.min.js'))
-    .pipe($.uglify({preserveComments: 'some'}))
+    .pipe($.babel(Object.assign({
+      modules : 'system'
+    }, JSON.parse(fs.readFileSync('.babelrc', 'utf8')))))
+    .pipe($.uglify())
     // Output files
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist/scripts'))
-    .pipe($.size({title: 'scripts'}))
-);
+    .pipe($.size({
+      title: 'scripts'
+    }));
+});
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
@@ -161,12 +167,14 @@ gulp.task('html', () => {
     .pipe($.if('*.html', $.minifyHtml()))
     // Output files
     .pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'html'}));
+    .pipe($.size({
+      title: 'html'
+    }));
 });
 
 // Clean output directory
 gulp.task('clean', cb => del([
-  '.tmp', 'dist/*', '!dist/.git'
+  '.tmp', '.publish', 'dist/*', '!dist/.git', '!dist/vendor'
 ], {
   dot : true
 }, cb));
@@ -212,8 +220,6 @@ gulp.task('default', ['clean'], cb =>
     'vendor',
     'styles',
     ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
-    'vendor',
-    'styles',
     'generate-service-worker',
     cb
   )
@@ -247,9 +253,9 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
-      `${rootDir}/vendor/**/*.js`,
-      `${rootDir}/vendor/**/*.css`,
-      `${rootDir}/vendor/**/*.{html,json}`,
+      // `${rootDir}/vendor/**/*.js`,
+      // `${rootDir}/vendor/**/*.css`,
+      // `${rootDir}/vendor/**/*.{html,json}`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.

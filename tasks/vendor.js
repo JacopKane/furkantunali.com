@@ -68,7 +68,7 @@ gulp.task('vendor-css', () => {
     }));
 });
 
-gulp.task('vendor', ['clean'], (cb) => {
+gulp.task('vendor', (cb) => {
   return runSequence(
     'vendor-update',
     ['vendor-css', 'vendor-js'],

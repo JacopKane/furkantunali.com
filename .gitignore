@@ -5,4 +5,4 @@ app/vendor
 .tmp
 .publish
 .sass-cache
-# dist
+dist
