@@ -1,0 +1,51 @@
+@import 'common';
+
+
+html,
+body {
+  @include font-family;
+
+  margin: 0 auto;
+  padding: 0;
+  &, a {
+    color : #000;
+  }
+}
+
+body {
+  padding: 6vmin;
+  h1 {
+    text-align: center;
+    font-size: 100vmin;
+    line-height: 100vmin;
+    font-weight: 100;
+    letter-spacing: -2vmin;
+
+    $size: 25vmin;
+    display: block;
+    font-size: $size;
+    line-height: $size;
+    width: $size * 1.2;
+    height: $size * 1.2;
+    margin: 0 auto;
+    display: inline-block;
+    border-radius: $size;
+    background: #000;
+    color: white;
+
+    a {
+      text-decoration: none;
+      color: white;
+      width: $size * 1.2;
+      height: $size * 1.2;
+      display: inline-block;
+      border-radius: $size;
+      margin: 0 auto;
+      transform: background-color color 2s ease;
+      &:hover {
+        background: white;
+        color: #000;
+      }
+    }
+  }
+}

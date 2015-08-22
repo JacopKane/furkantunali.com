@@ -52,6 +52,22 @@ gulp.task('jshint', () =>
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
 );
 
+gulp.task('resume', () => {
+  return gulp
+    .src('app/resume.html')
+    .pipe($.useref())
+    .pipe($.htmlPdf())
+    .pipe(gulp.dest('app/documents/1'));
+});
+
+gulp.task('resume2', () => {
+  return gulp
+    .src('app/resume.html')
+    .pipe($.useref())
+    .pipe($.html2pdf())
+    .pipe(gulp.dest('app/documents/2'));
+});
+
 // Optimize images
 gulp.task('images', () =>
   gulp.src('app/images/**/*')
@@ -82,8 +98,16 @@ gulp.task('fonts', () =>
     .pipe($.size({title: 'fonts'}))
 );
 
+
+gulp.task('scss-lint', () => {
+  return gulp.src('app/styles/**/*.scss')
+    .pipe($.scssLint({
+      customReport : $.scssLintStylish
+    }))
+});
+
 // Compile and automatically prefix stylesheets
-gulp.task('styles', () => {
+gulp.task('styles', ['scss-lint'], () => {
   const AUTOPREFIXER_BROWSERS = [
     'ie >= 8',
     'ie_mob >= 10',
@@ -99,9 +123,11 @@ gulp.task('styles', () => {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
     'app/styles/**/*.scss',
-    'app/styles/**/*.css'
+    'app/styles/**/*.scss'
   ])
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
+    .pipe($.changed('.tmp/styles', {
+      extension: '.css'
+    }))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
@@ -121,8 +147,11 @@ gulp.task('styles', () => {
 // Concatenate and minify JavaScript
 gulp.task('scripts', () => {
   gulp.src([
-    'app/vendor/webcomponentsjs/webcomponents-lite.min.js',
-    'app/scripts/**/*.js'
+    // Note: Since we are not using useref in the scripts build pipeline,
+    //       you need to explicitly list your scripts here in the right order
+    //       to be correctly concatenated
+    './app/scripts/**/*.js'
+    // Other scripts
   ])
     .pipe($.sourcemaps.init())
     .pipe($.concat('main.min.js'))
@@ -195,7 +224,9 @@ gulp.task('serve', ['styles'], () => {
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], [
+    'scss-lint', 'styles', reload
+  ]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
 });
@@ -220,7 +251,7 @@ gulp.task('default', ['clean'], cb =>
   runSequence(
     'vendor',
     'styles',
-    ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    ['scss-lint', 'jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
     'generate-service-worker',
     cb
   )
