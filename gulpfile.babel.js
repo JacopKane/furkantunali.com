@@ -52,21 +52,21 @@ gulp.task('jshint', () =>
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
 );
 
-gulp.task('resume', () => {
+gulp.task('documents', () => {
   return gulp
     .src('app/resume.html')
     .pipe($.useref())
     .pipe($.htmlPdf())
-    .pipe(gulp.dest('app/documents/1'));
+    .pipe(gulp.dest('app/documents'));
 });
 
-gulp.task('resume2', () => {
-  return gulp
-    .src('app/resume.html')
-    .pipe($.useref())
-    .pipe($.html2pdf())
-    .pipe(gulp.dest('app/documents/2'));
-});
+// gulp.task('resume2', () => {
+//   return gulp
+//     .src('app/resume.html')
+//     .pipe($.useref())
+//     .pipe($.html2pdf())
+//     .pipe(gulp.dest('app/documents/2'));
+// });
 
 // Optimize images
 gulp.task('images', () =>
@@ -122,7 +122,6 @@ gulp.task('styles', ['scss-lint'], () => {
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'app/styles/**/*.scss',
     'app/styles/**/*.scss'
   ])
     .pipe($.changed('.tmp/styles', {
@@ -139,6 +138,7 @@ gulp.task('styles', ['scss-lint'], () => {
     .pipe($.if('*.css', $.minifyCss()))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest('app/styles'))
     .pipe($.size({
       title: 'styles'
     }));
@@ -204,7 +204,7 @@ gulp.task('html', () => {
 
 // Clean output directory
 gulp.task('clean', cb => del([
-  '.tmp', '.publish', 'dist/*', '!dist/.git', '!dist/vendor'
+  '.tmp', '.publish', 'dist/*', '!dist/.git'
 ], {
   dot : true
 }, cb));
@@ -228,6 +228,7 @@ gulp.task('serve', ['styles'], () => {
     'scss-lint', 'styles', reload
   ]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/resume.html'], ['resume']);
   gulp.watch(['app/images/**/*'], reload);
 });
 

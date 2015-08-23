@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "social-media-icons": "~1.0.1",
-    "system.js": "~0.18.11"
+    "system.js": "~0.18.11",
+    "font-awesome": "~4.4.0"
   }
 }

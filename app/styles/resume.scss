@@ -1,5 +1,12 @@
 @import 'common';
+@import 'smart-underline';
 
+$color-text: #000;
+$color-link: #000;
+$color-link-hover: lighten($color-link, 60%);
+$color-link-visited: lighten($color-link, 40%);
+$color-background: #fff;
+$color-selection: #ffc;
 
 html,
 body {
@@ -7,45 +14,124 @@ body {
 
   margin: 0 auto;
   padding: 0;
-  &, a {
-    color : #000;
+
+  color: $color-link;
+  a {
+    transition: color .2s ease;
+    color: $color-link;
+    text-decoration: none;
+
+    &:not(.no-decoration) {
+      @include smart-underline(
+        $color-background,
+        $color-link,
+        $color-selection,
+        $position: 94%
+      );
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+    &:visited {
+      color: $color-link-visited;
+    }
+    &:hover {
+      color: $color-link-hover;
+    }
   }
 }
 
-body {
-  padding: 6vmin;
-  h1 {
+@mixin logo($size: 4vmin) {
+  &, &:active, &:visited {
     text-align: center;
-    font-size: 100vmin;
-    line-height: 100vmin;
+    letter-spacing: -($size / 18);
     font-weight: 100;
-    letter-spacing: -2vmin;
-
-    $size: 25vmin;
-    display: block;
-    font-size: $size;
-    line-height: $size;
-    width: $size * 1.2;
-    height: $size * 1.2;
-    margin: 0 auto;
     display: inline-block;
+    font-size: $size;
+    line-height: $size * 1.9;
+    width: $size * 2;
+    height: $size * 2;
+    background: $color-link;
+    color: $color-background;
     border-radius: $size;
-    background: #000;
-    color: white;
+    text-decoration: none;
+    transition:
+      color .2s ease-out,
+      background-color .2s ease-out;
+  }
+  &:hover {
+    color: $color-link;
+    background: $color-link-hover;
+  }
+}
 
+$defMargin: 6vmin;
+
+body {
+  padding: $defMargin;
+  font-size: 3.5vmin;
+
+  .logo {
+    @include logo;
+  }
+
+  a.side-note {
+    text-decoration: none;
+  }
+
+  h1 { font-weight: 100; }
+
+  h2 { font-weight: 300; }
+
+  h3 {
+    font-weight: 500;
+    em { font-weight: 300; }
+  }
+  h4 { font-weight: 600; }
+
+  h5 { font-weight: 700; }
+
+  h6 { font-weight: 800; }
+
+  nav {
+    font-size: 2.66vmin;
     a {
-      text-decoration: none;
-      color: white;
-      width: $size * 1.2;
-      height: $size * 1.2;
-      display: inline-block;
-      border-radius: $size;
-      margin: 0 auto;
-      transform: background-color color 2s ease;
-      &:hover {
-        background: white;
-        color: #000;
+      margin: 0 $defMargin / 10;
+
+      &.logo {
+        margin: 0;
+        margin-right: $defMargin / 10;
       }
     }
+
+    div.right {
+      text-align: right;
+    }
+  }
+
+  header {
+
+    hgroup {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+
+      }
+    }
+    margin-top: $defMargin / 2;
+  }
+
+  #skill {
+    .skill {
+
+    }
+  }
+
+  footer {
+    margin-top: $defMargin / 2;
+    font-size: .5em;
   }
 }
