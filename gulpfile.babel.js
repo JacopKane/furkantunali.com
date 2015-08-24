@@ -56,18 +56,10 @@ gulp.task('jshint', () =>
 gulp.task('documents', () => {
   return gulp
     .src('app/resume.html')
-    .pipe($.useref())
+    .pipe($.removeCode({ documents: true }))
     .pipe($.htmlPdf())
     .pipe(gulp.dest('app/documents'));
 });
-
-// gulp.task('resume2', () => {
-//   return gulp
-//     .src('app/resume.html')
-//     .pipe($.useref())
-//     .pipe($.html2pdf())
-//     .pipe(gulp.dest('app/documents/2'));
-// });
 
 // Optimize images
 gulp.task('images', () =>
@@ -185,10 +177,7 @@ gulp.task('html', () => {
         'app/resume.html'
       ],
       // CSS Selectors for UnCSS to ignore
-      ignore: [
-        /.navdrawer-container.open/,
-        /.app-bar.open/
-      ]
+      ignore: []
     })))
 
     // Concatenate and minify styles
@@ -232,7 +221,7 @@ gulp.task('serve', ['styles'], () => {
     'scss-lint', 'styles', reload
   ]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  gulp.watch(['app/resume.html'], ['resume']);
+  gulp.watch(['app/resume.html'], ['documents']);
   gulp.watch(['app/images/**/*'], reload);
 });
 

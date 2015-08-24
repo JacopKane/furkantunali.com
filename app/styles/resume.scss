@@ -7,20 +7,24 @@ $color-link-hover: lighten($color-link, 60%);
 $color-link-visited: lighten($color-link, 40%);
 $color-background: #fff;
 $color-selection: #ffc;
+$size: "((1vmin + 1vmax) / 2)";
+$size-margin: "((1vmin + 1vmax) / 2) * 2";
 
 @mixin logo($size: 4vmin) {
+  $ratio: 1.6;
   &, &:active, &:visited {
     text-align: center;
-    letter-spacing: calc(0 - (#{$size} / 18));
+    //letter-spacing: calc((0 - (#{$size})) / 18);
     font-weight: 100;
     display: inline-block;
-    font-size: calc(#{$size});
-    line-height: calc((#{$size}) * 1.9);
-    width: calc((#{$size}) * 2);
-    height: calc((#{$size}) * 2);
+    font-size: calc(#{$size} * .5);
+    line-height: calc((#{$size}));
+    width: calc((#{$size}));
+    height: calc((#{$size}));
+    line-height: calc((#{$size}));
     background: $color-link;
     color: $color-background;
-    border-radius: calc(#{$size});
+    border-radius: calc((#{$size}));
     text-decoration: none;
     transition:
       color .2s ease-out,
@@ -32,11 +36,14 @@ $color-selection: #ffc;
   }
 }
 
-$size: "((1vmin + 1vmax) / 2)";
-$size-margin: "((1vmin + 1vmax) / 2) * 2";
-
 html,
 body {
+
+  div.pdf-wrapper {
+    margin: %2;
+    padding: %2;
+  }
+
   @include font-family;
   font-size: calc(#{$size} * 3.6);
   margin: 0 auto;
@@ -71,11 +78,6 @@ body {
 body {
   padding: calc(#{$size-margin});
 
-  .logo {
-    $size-logo: "#{$size-margin} * 2";
-    @include logo($size-logo);
-  }
-
   a.side-note {
     text-decoration: none;
   }
@@ -95,14 +97,15 @@ body {
   h6 { font-weight: 800; }
 
   nav {
-    font-size: calc(#{$size} * 2.4);
+    .logo {
+      @include logo("#{$size-margin} * 4.4");
+      margin: 0;
+    }
 
     a {
-      margin: 0 calc((#{$size-margin}) / 40);
-
-      &.logo {
-        margin: 0;
-        margin-right: calc((#{$size-margin}) / 40);
+      &:not(.logo) {
+        font-size: 1rem;
+        text-align: right;
       }
     }
 
@@ -125,7 +128,6 @@ body {
     }
     margin-top: calc((#{$size-margin}) / 2);
   }
-
 
   footer {
     margin-top: calc((#{$size-margin}) / 2);
