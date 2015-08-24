@@ -282,6 +282,7 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/vendor/**/*.js`,
       `${rootDir}/vendor/**/*.css`,
       `${rootDir}/vendor/**/*.{html,json}`,
+      `${rootDir}/fonts/**/*`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.
