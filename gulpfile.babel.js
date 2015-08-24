@@ -100,7 +100,7 @@ gulp.task('scss-lint', () => {
 gulp.task('gulp-css-lint', () => {
   return gulp.src('app/styles/**/*.css')
     .pipe($.csslint())
-    .pipe(csslint.reporter(reporters('gulp-csslint')));
+    .pipe($.csslint.reporter(reporters('gulp-csslint')));
 });
 
 // Compile and automatically prefix stylesheets
@@ -279,9 +279,9 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
-      // `${rootDir}/vendor/**/*.js`,
-      // `${rootDir}/vendor/**/*.css`,
-      // `${rootDir}/vendor/**/*.{html,json}`,
+      `${rootDir}/vendor/**/*.js`,
+      `${rootDir}/vendor/**/*.css`,
+      `${rootDir}/vendor/**/*.{html,json}`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.
