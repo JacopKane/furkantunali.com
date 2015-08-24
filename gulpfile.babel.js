@@ -31,6 +31,7 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import swPrecache from 'sw-precache';
 import {output as pagespeed} from 'psi';
+import reporters from 'reporters';
 import pkg from './package.json';
 
 const $ = gulpLoadPlugins();
@@ -48,7 +49,7 @@ gulp.task('jshint', () =>
   ])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.jshint.reporter(reporters('gulp-jshint')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
 );
 
@@ -101,9 +102,13 @@ gulp.task('fonts', () =>
 
 gulp.task('scss-lint', () => {
   return gulp.src('app/styles/**/*.scss')
-    .pipe($.scssLint({
-      customReport : $.scssLintStylish
-    }))
+    .pipe($.scssLint());
+});
+
+gulp.task('gulp-css-lint', () => {
+  return gulp.src('app/styles/**/*.css')
+    .pipe($.csslint())
+    .pipe(csslint.reporter(reporters('gulp-csslint')));
 });
 
 // Compile and automatically prefix stylesheets
@@ -121,16 +126,14 @@ gulp.task('styles', ['scss-lint'], () => {
   ];
 
   // For best performance, don't add Sass partials to `gulp.src`
-  return gulp.src([
-    'app/styles/**/*.scss'
-  ])
+  return gulp.src('app/styles/**/*.scss')
     .pipe($.changed('.tmp/styles', {
       extension: '.css'
     }))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
-    }).on('error', $.sass.logError))
+    }).on('error', reporters('gulp-sass')))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
@@ -178,7 +181,8 @@ gulp.task('html', () => {
     //       the next line to only include styles your project uses.
     .pipe($.if('*.css', $.uncss({
       html: [
-        'app/index.html'
+        'app/index.html',
+        'app/resume.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: [

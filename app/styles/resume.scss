@@ -1,5 +1,5 @@
-@import 'common';
-@import 'smart-underline';
+@import './common';
+@import './smart-underline';
 
 $color-text: #000;
 $color-link: #000;
@@ -8,10 +8,37 @@ $color-link-visited: lighten($color-link, 40%);
 $color-background: #fff;
 $color-selection: #ffc;
 
+@mixin logo($size: 4vmin) {
+  &, &:active, &:visited {
+    text-align: center;
+    letter-spacing: calc(0 - (#{$size} / 18));
+    font-weight: 100;
+    display: inline-block;
+    font-size: calc(#{$size});
+    line-height: calc((#{$size}) * 1.9);
+    width: calc((#{$size}) * 2);
+    height: calc((#{$size}) * 2);
+    background: $color-link;
+    color: $color-background;
+    border-radius: calc(#{$size});
+    text-decoration: none;
+    transition:
+      color .2s ease-out,
+      background-color .2s ease-out;
+  }
+  &:hover {
+    color: $color-link;
+    background: $color-link-hover;
+  }
+}
+
+$size: "((1vmin + 1vmax) / 2)";
+$size-margin: "((1vmin + 1vmax) / 2) * 2";
+
 html,
 body {
   @include font-family;
-
+  font-size: calc(#{$size} * 3.6);
   margin: 0 auto;
   padding: 0;
 
@@ -41,38 +68,12 @@ body {
   }
 }
 
-@mixin logo($size: 4vmin) {
-  &, &:active, &:visited {
-    text-align: center;
-    letter-spacing: -($size / 18);
-    font-weight: 100;
-    display: inline-block;
-    font-size: $size;
-    line-height: $size * 1.9;
-    width: $size * 2;
-    height: $size * 2;
-    background: $color-link;
-    color: $color-background;
-    border-radius: $size;
-    text-decoration: none;
-    transition:
-      color .2s ease-out,
-      background-color .2s ease-out;
-  }
-  &:hover {
-    color: $color-link;
-    background: $color-link-hover;
-  }
-}
-
-$defMargin: 6vmin;
-
 body {
-  padding: $defMargin;
-  font-size: 3.5vmin;
+  padding: calc(#{$size-margin});
 
   .logo {
-    @include logo;
+    $size-logo: "#{$size-margin} * 2";
+    @include logo($size-logo);
   }
 
   a.side-note {
@@ -94,13 +95,14 @@ body {
   h6 { font-weight: 800; }
 
   nav {
-    font-size: 2.66vmin;
+    font-size: calc(#{$size} * 2.4);
+
     a {
-      margin: 0 $defMargin / 10;
+      margin: 0 calc((#{$size-margin}) / 40);
 
       &.logo {
         margin: 0;
-        margin-right: $defMargin / 10;
+        margin-right: calc((#{$size-margin}) / 40);
       }
     }
 
@@ -121,17 +123,13 @@ body {
 
       }
     }
-    margin-top: $defMargin / 2;
+    margin-top: calc((#{$size-margin}) / 2);
   }
 
-  #skill {
-    .skill {
-
-    }
-  }
 
   footer {
-    margin-top: $defMargin / 2;
-    font-size: .5em;
+    margin-top: calc((#{$size-margin}) / 2);
+    text-align: center;
+    font-size: .6rem;
   }
 }
