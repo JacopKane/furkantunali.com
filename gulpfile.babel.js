@@ -282,6 +282,7 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/vendor/**/*.js`,
       `${rootDir}/vendor/**/*.css`,
       `${rootDir}/vendor/**/*.{html,json}`,
+      `${rootDir}/documents/**/*`,
       `${rootDir}/fonts/**/*`,
       `${rootDir}/*.{html,json}`
     ],
