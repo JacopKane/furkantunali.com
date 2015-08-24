@@ -1,5 +1,4 @@
 @import './common';
-@import './smart-underline';
 
 $color-text: #000;
 $color-link: #000;
@@ -40,8 +39,8 @@ html,
 body {
 
   div.pdf-wrapper {
-    margin: %2;
-    padding: %2;
+    margin: 200px;
+    padding: 200px;
   }
 
   @include font-family;
