@@ -41,6 +41,13 @@ const reload = browserSync.reload;
 try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
 
 
+gulp.task('resume', () => {
+  return gulp.src('app/resume.html')
+    .pipe($.rename('resume-doc.html'))
+    .pipe($.removeCode({ document: true }))
+    .pipe(gulp.dest('app/'));
+});
+
 // Lint JavaScript
 gulp.task('jshint', () =>
   gulp.src([
@@ -52,14 +59,6 @@ gulp.task('jshint', () =>
     .pipe($.jshint.reporter(reporters('gulp-jshint')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
 );
-
-gulp.task('documents', () => {
-  return gulp
-    .src('app/resume.html')
-    .pipe($.removeCode({ documents: true }))
-    .pipe($.htmlPdf())
-    .pipe(gulp.dest('app/documents'));
-});
 
 // Optimize images
 gulp.task('images', () =>
@@ -220,8 +219,8 @@ gulp.task('serve', ['styles'], () => {
   gulp.watch(['app/styles/**/*.{scss,css}'], [
     'scss-lint', 'styles', reload
   ]);
+  gulp.watch(['app/resume.html'], ['resume']);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  gulp.watch(['app/resume.html'], ['documents']);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -244,7 +243,7 @@ gulp.task('serve:dist', ['default'], () =>
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'vendor',
-    'styles',
+    ['styles', 'resume'],
     ['scss-lint', 'jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
     'generate-service-worker',
     cb
@@ -282,7 +281,6 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/vendor/**/*.js`,
       `${rootDir}/vendor/**/*.css`,
       `${rootDir}/vendor/**/*.{html,json}`,
-      `${rootDir}/documents/**/*`,
       `${rootDir}/fonts/**/*`,
       `${rootDir}/*.{html,json}`
     ],

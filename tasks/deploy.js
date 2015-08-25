@@ -14,7 +14,6 @@ gulp.task('deploy-github', () => {
 gulp.task('deploy', (cb) => {
   return runSequence(
     'default',
-    'documents',
     'deploy-github',
     'pagespeed',
     cb

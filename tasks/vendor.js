@@ -7,7 +7,6 @@ const $ = gulpLoadPlugins();
 gulp.task('vendor-install', () => {
   return $.bower()
     .pipe(gulp.dest('app/vendor'))
-    .pipe(gulp.dest('app/dist'))
     .pipe($.size({
       title : 'vendor-install'
     }))
