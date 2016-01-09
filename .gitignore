@@ -5,4 +5,8 @@ app/vendor
 .tmp
 .publish
 .sass-cache
+.idea
 dist
+npm-debug.log
+app/styles/*.css
+app/styles/*.map

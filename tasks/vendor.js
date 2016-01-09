@@ -1,6 +1,6 @@
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import runSequence from 'run-sequence';
+import gulp  from 'gulp'
+import gulpLoadPlugins  from 'gulp-load-plugins'
+import runSequence  from 'run-sequence'
 
 const $ = gulpLoadPlugins();
 
@@ -60,7 +60,7 @@ gulp.task('vendor-css', () => {
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.minifyCss()))
-    .pipe($.sourcemaps.write('.'))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist/vendor'))
     .pipe($.size({
       title : 'vendor-css'

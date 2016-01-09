@@ -22,17 +22,17 @@
 // You can read more about the new JavaScript features here:
 // https://babeljs.io/docs/learn-es2015/
 
-import fs from 'fs';
-import path from 'path';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import del from 'del';
-import runSequence from 'run-sequence';
-import browserSync from 'browser-sync';
-import swPrecache from 'sw-precache';
-import {output as pagespeed} from 'psi';
-import reporters from 'reporters';
-import pkg from './package.json';
+import browserSync  from 'browser-sync';
+import del  from 'del';
+import fs  from 'fs';
+import gulp  from 'gulp';
+import gulpLoadPlugins  from 'gulp-load-plugins';
+import path  from 'path';
+import { output as pagespeed } from 'psi';
+import reporters  from 'reporters';
+import runSequence  from 'run-sequence';
+import swPrecache  from 'sw-precache';
+import pkg  from './package.json';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -126,11 +126,11 @@ gulp.task('styles', ['scss-lint'], () => {
       precision: 10
     }).on('error', reporters('gulp-sass')))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe($.sourcemaps.write())
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.minifyCss()))
-    .pipe($.sourcemaps.write('.'))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist/styles'))
     .pipe(gulp.dest('app/styles'))
     .pipe($.size({
@@ -150,7 +150,7 @@ gulp.task('scripts', () => {
     .pipe($.sourcemaps.init())
     .pipe($.concat('main.min.js'))
     .pipe($.babel(Object.assign({
-      modules : 'system'
+      'plugins' : ['transform-es2015-modules-systemjs']
     }, JSON.parse(fs.readFileSync('.babelrc', 'utf8')))))
     .pipe($.uglify())
     // Output files
@@ -163,10 +163,10 @@ gulp.task('scripts', () => {
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
-  const assets = $.useref.assets({searchPath: '{.tmp,app}'});
-
   return gulp.src('app/**/*.html')
-    .pipe(assets)
+    .pipe($.useref({
+      searchPath: '{.tmp,app}'
+    }))
     // Remove any unused CSS
     // Note: If not using the Style Guide, you can delete it from
     //       the next line to only include styles your project uses.
@@ -182,8 +182,6 @@ gulp.task('html', () => {
     // Concatenate and minify styles
     // In case you are still using useref build blocks
     .pipe($.if('*.css', $.minifyCss()))
-    .pipe(assets.restore())
-    .pipe($.useref())
 
     // Minify any HTML
     .pipe($.if('*.html', $.minifyHtml()))
@@ -269,9 +267,9 @@ gulp.task('pagespeed', cb =>
 gulp.task('generate-service-worker', cb => {
   const rootDir = 'dist';
 
-  swPrecache({
+  swPrecache.write(path.join(rootDir, 'service-worker.js'), {
     // Used to avoid cache conflicts when serving on localhost.
-    cacheId: pkg.name || 'web-starter-kit',
+    cacheId: pkg.name || 'furkantunali.com',
     staticFileGlobs: [
       // Add/remove glob patterns to match your directory setup.
       `${rootDir}/fonts/**/*.woff`,
@@ -291,15 +289,6 @@ gulp.task('generate-service-worker', cb => {
       cb(err);
       return;
     }
-
-    const filepath = path.join(rootDir, 'service-worker.js');
-
-    fs.writeFile(filepath, swFileContents, err => {
-      if (err) {
-        cb(err);
-        return;
-      }
-      cb();
-    });
+    cb();
   });
 });
