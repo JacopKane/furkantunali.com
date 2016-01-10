@@ -1,0 +1,12 @@
+/*!
+{
+  "name": "Content Editable",
+  "property": "contenteditable",
+  "caniuse": "contenteditable",
+  "notes": [{
+    "name": "WHATWG spec",
+    "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#contenteditable"
+  }]
+}
+!*/
+define(["Modernizr","createElement","docElement"],function(e,t,n){e.addTest("contenteditable",function(){if("contentEditable"in n){var e=t("div");return e.contentEditable=!0,"true"===e.contentEditable}})});
