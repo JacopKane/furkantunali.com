@@ -38,10 +38,8 @@ $size-margin: "((1vmin + 1vmax) / 2) * 2";
 
 html,
 body {
-
-  div.pdf-wrapper {
-    margin: 200px;
-    padding: 200px;
+  div.doc-wrapper {
+    border : 20px solid black;
   }
 
   @include font-family;
@@ -76,6 +74,7 @@ body {
 }
 
 body {
+
   padding: calc(#{$size-margin});
 
   a.side-note {

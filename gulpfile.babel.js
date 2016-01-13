@@ -43,8 +43,15 @@ try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
 
 gulp.task('resume', () => {
   return gulp.src('app/resume.html')
+    .pipe($.rename('resume-dist.html'))
+    .pipe($.removeCode({ resume : true }))
+    .pipe(gulp.dest('app/'));
+});
+
+gulp.task('resume-doc', () => {
+  return gulp.src('app/resume.html')
     .pipe($.rename('resume-doc.html'))
-    .pipe($.removeCode({ document: true }))
+    .pipe($.removeCode({ resumeDoc : true }))
     .pipe(gulp.dest('app/'));
 });
 
@@ -155,10 +162,10 @@ gulp.task('scripts', () => {
     .pipe($.uglify())
     // Output files
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('dist/scripts'))
     .pipe($.size({
       title: 'scripts'
-    }));
+    }))
+    .pipe(gulp.dest('dist/scripts'));
 });
 
 // Scan your HTML for assets & optimize them
@@ -217,7 +224,7 @@ gulp.task('serve', ['styles'], () => {
   gulp.watch(['app/styles/**/*.{scss,css}'], [
     'scss-lint', 'styles', reload
   ]);
-  gulp.watch(['app/resume.html'], ['resume']);
+  gulp.watch(['app/resume.html'], ['resume', 'resume-doc']);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
 });
@@ -241,7 +248,7 @@ gulp.task('serve:dist', ['default'], () =>
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'vendor',
-    ['styles', 'resume'],
+    ['styles', 'resume', 'resume-doc'],
     ['scss-lint', 'jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
     'generate-service-worker',
     cb
@@ -266,11 +273,16 @@ gulp.task('pagespeed', cb =>
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', cb => {
   const rootDir = 'dist';
+  let
+    name = pkg.name || 'furkantunali.com',
+    version = pkg.version || '0';
+
 
   swPrecache.write(path.join(rootDir, 'service-worker.js'), {
     // Used to avoid cache conflicts when serving on localhost.
-    cacheId: pkg.name || 'furkantunali.com',
-    staticFileGlobs: [
+    cacheId : `${name}=v${version}`,
+    log : $.util.log,
+    staticFileGlobs : [
       // Add/remove glob patterns to match your directory setup.
       `${rootDir}/fonts/**/*.woff`,
       `${rootDir}/images/**/*`,
@@ -283,7 +295,7 @@ gulp.task('generate-service-worker', cb => {
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.
-    stripPrefix: path.join(rootDir, path.sep)
+    stripPrefix : path.join(rootDir, path.sep)
   }, (err, swFileContents) => {
     if (err) {
       cb(err);

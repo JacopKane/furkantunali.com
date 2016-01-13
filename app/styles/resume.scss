@@ -36,13 +36,12 @@ $size-margin: "((1vmin + 1vmax) / 2) * 2";
   }
 }
 
+html {
+  border: 1px solid white;
+}
+
 html,
 body {
-
-  div.pdf-wrapper {
-    margin: 200px;
-    padding: 200px;
-  }
 
   @include font-family;
   font-size: calc(#{$size} * 3.6);
@@ -133,5 +132,9 @@ body {
     margin-top: calc((#{$size-margin}) / 2);
     text-align: center;
     font-size: .6rem;
+  }
+
+  div.doc-wrapper {
+    border: 20px solid white;
   }
 }
