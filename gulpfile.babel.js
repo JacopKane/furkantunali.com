@@ -280,7 +280,7 @@ gulp.task('default', ['clean'], cb =>
   runSequence(
     'vendor',
     ['styles', 'resume', 'resume-doc'],
-    ['scss-lint', 'jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
+    ['scss-lint', 'jshint', 'html', 'scripts', 'images', 'icons', 'fonts', 'copy'],
     'generate-service-worker',
     cb
   )
