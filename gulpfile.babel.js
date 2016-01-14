@@ -70,8 +70,19 @@ gulp.task('images', () => gulp.src('app/images/**/*')
       interlaced: true
     })))
     .pipe(gulp.dest('dist/images'))
-    .pipe($.size({title: 'images'}))
+    .pipe($.size({
+      title: 'images'
+    }))
 )
+
+// icons
+gulp.task('icons', () => gulp.src('app/icons/**/*')
+  .pipe(gulp.dest('dist/icons'))
+  .pipe($.size({
+    title: 'icons'
+  }))
+)
+
 
 // Copy all files at the root level (app)
 gulp.task('copy', () => gulp.src([
