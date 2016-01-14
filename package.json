@@ -49,6 +49,7 @@
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
     "opn": "^3.0.3",
+    "pdfcrowd": "^1.1.1",
     "psi": "^2.0.2",
     "reporters": "0.0.4",
     "require-dir": "^0.3.0",

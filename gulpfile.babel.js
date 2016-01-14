@@ -25,6 +25,7 @@
 import browserSync  from 'browser-sync';
 import del  from 'del';
 import fs  from 'fs';
+import pdfcrowd from 'pdfcrowd';
 import gulp  from 'gulp';
 import gulpLoadPlugins  from 'gulp-load-plugins';
 import path  from 'path';
@@ -41,23 +42,18 @@ const reload = browserSync.reload;
 try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
 
 
-gulp.task('resume', () => {
-  return gulp.src('app/resume.html')
+gulp.task('resume', () => gulp.src('app/resume.html')
     .pipe($.rename('resume-dist.html'))
     .pipe($.removeCode({ resume : true }))
-    .pipe(gulp.dest('app/'));
-});
+    .pipe(gulp.dest('app/')))
 
-gulp.task('resume-doc', () => {
-  return gulp.src('app/resume.html')
+gulp.task('resume-doc', () => gulp.src('app/resume.html')
     .pipe($.rename('resume-doc.html'))
     .pipe($.removeCode({ resumeDoc : true }))
-    .pipe(gulp.dest('app/'));
-});
+    .pipe(gulp.dest('app/')))
 
 // Lint JavaScript
-gulp.task('jshint', () =>
-  gulp.src([
+gulp.task('jshint', () => gulp.src([
     'app/scripts/**/*.js',
     '!app/scripts/**/*.min.js'
   ])
@@ -65,22 +61,20 @@ gulp.task('jshint', () =>
     .pipe($.jshint())
     .pipe($.jshint.reporter(reporters('gulp-jshint')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-);
+)
 
 // Optimize images
-gulp.task('images', () =>
-  gulp.src('app/images/**/*')
+gulp.task('images', () => gulp.src('app/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
     .pipe(gulp.dest('dist/images'))
     .pipe($.size({title: 'images'}))
-);
+)
 
 // Copy all files at the root level (app)
-gulp.task('copy', () =>
-  gulp.src([
+gulp.task('copy', () => gulp.src([
     'app/*',
     '!app/*.html',
     'node_modules/apache-server-configs/dist/.htaccess'
@@ -91,23 +85,51 @@ gulp.task('copy', () =>
 );
 
 // Copy web fonts to dist
-gulp.task('fonts', () =>
-  gulp.src(['app/fonts/**'])
+gulp.task('pdf-make', (cb) => {
+  // create an API client instance
+  let
+    client = new pdfcrowd.Pdfcrowd("JacopKane", "9fe78e65f9e50026ef1236f561b48c3b"),
+    saveToFile = pdfcrowd.saveToFile('Furkan_Tunali_Resume.pdf');
+
+  client.convertURI('https://furkantunali.com/resume-doc.html', {
+    end : () => {
+      cb();
+    },
+    pdf : (rstream) => {
+      saveToFile.pdf(rstream);
+    },
+    error : (error) => {
+      cb(error);
+    }
+  });
+});
+
+gulp.task('pdf-move', ['pdf-make'], () => gulp.src(['Furkan_Tunali_Resume.pdf'])
+    .pipe(gulp.dest('app/pdf')))
+
+gulp.task('pdf-del', cb => del([
+  'Furkan_Tunali_Resume.pdf'
+], {}, cb))
+
+gulp.task('pdf', ['pdf-move'], () => gulp.src(['app/pdf/**/*.pdf'])
+    .pipe(gulp.dest('dist/pdf'))
+    .pipe($.size({
+      title : 'pdf'
+    }))
+)
+
+// Copy web fonts to dist
+gulp.task('fonts', () => gulp.src(['app/fonts/**'])
     .pipe(gulp.dest('dist/fonts'))
     .pipe($.size({title: 'fonts'}))
-);
+)
 
+gulp.task('scss-lint', () => gulp.src('app/styles/**/*.scss')
+    .pipe($.scssLint()))
 
-gulp.task('scss-lint', () => {
-  return gulp.src('app/styles/**/*.scss')
-    .pipe($.scssLint());
-});
-
-gulp.task('gulp-css-lint', () => {
-  return gulp.src('app/styles/**/*.css')
+gulp.task('gulp-css-lint', () => gulp.src('app/styles/**/*.css')
     .pipe($.csslint())
-    .pipe($.csslint.reporter(reporters('gulp-csslint')));
-});
+    .pipe($.csslint.reporter(reporters('gulp-csslint'))))
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', ['scss-lint'], () => {
@@ -146,8 +168,7 @@ gulp.task('styles', ['scss-lint'], () => {
 });
 
 // Concatenate and minify JavaScript
-gulp.task('scripts', () => {
-  gulp.src([
+gulp.task('scripts', () => gulp.src([
     // Note: Since we are not using useref in the scripts build pipeline,
     //       you need to explicitly list your scripts here in the right order
     //       to be correctly concatenated
@@ -165,8 +186,7 @@ gulp.task('scripts', () => {
     .pipe($.size({
       title: 'scripts'
     }))
-    .pipe(gulp.dest('dist/scripts'));
-});
+    .pipe(gulp.dest('dist/scripts')))
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
@@ -259,7 +279,7 @@ gulp.task('default', ['clean'], cb =>
 gulp.task('pagespeed', cb =>
   // Update the below URL to the public URL of your site
   pagespeed('furkantunali.com', {
-    strategy: 'mobile',
+    strategy: 'mobile'
     // By default we use the PageSpeed Insights free (no API key) tier.
     // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
     // key: 'YOUR_API_KEY'
@@ -284,7 +304,8 @@ gulp.task('generate-service-worker', cb => {
     log : $.util.log,
     staticFileGlobs : [
       // Add/remove glob patterns to match your directory setup.
-      `${rootDir}/fonts/**/*.woff`,
+      `${rootDir}/fonts/**/*`,
+      `${rootDir}/pdf/**/*.pdf`,
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
@@ -296,7 +317,7 @@ gulp.task('generate-service-worker', cb => {
     ],
     // Translates a static file path to the relative URL that it's served from.
     stripPrefix : path.join(rootDir, path.sep)
-  }, (err, swFileContents) => {
+  }, (err) => {
     if (err) {
       cb(err);
       return;

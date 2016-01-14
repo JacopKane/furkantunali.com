@@ -19,3 +19,13 @@ gulp.task('deploy', (cb) => {
     cb
   );
 });
+
+gulp.task('deploy-pdf', (cb) => {
+  return runSequence(
+    'pdf',
+    'pdf-del',
+    'generate-service-worker',
+    'deploy-github',
+    cb
+  );
+});
