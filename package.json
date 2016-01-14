@@ -1,6 +1,6 @@
 {
   "name": "furkantunali.com",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "devDependencies": {
     "apache-server-configs": "^2.14.0",
     "babel": "^6.3.13",
