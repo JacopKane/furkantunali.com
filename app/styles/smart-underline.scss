@@ -23,3 +23,29 @@
     color: inherit;
   }
 }
+
+@mixin no-smart-underline() {
+  color: inherit;
+  text-decoration: underline;
+  background: inherit;
+  background-size: inherit;
+  background-repeat: inherit;
+  text-shadow: inherit;
+  background-position-y: inherit;
+  background-position-x: inherit;
+
+  &::selection {
+    text-shadow: inherit;
+    background: inherit;
+  }
+  &::-moz-selection {
+    text-shadow: inherit;
+    background: inherit;
+  }
+  &:before, &:after, *, *:before, *:after {
+    text-shadow: inherit;
+  }
+  &:visited{
+    color: inherit;
+  }
+}
