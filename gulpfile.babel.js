@@ -45,12 +45,12 @@ try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
 gulp.task('resume', () => gulp.src('app/resume.html')
     .pipe($.rename('resume-dist.html'))
     .pipe($.removeCode({ resume : true }))
-    .pipe(gulp.dest('app/')))
+    .pipe(gulp.dest('app/')));
 
 gulp.task('resume-doc', () => gulp.src('app/resume.html')
     .pipe($.rename('resume-doc.html'))
     .pipe($.removeCode({ resumeDoc : true }))
-    .pipe(gulp.dest('app/')))
+    .pipe(gulp.dest('app/')));
 
 // Lint JavaScript
 gulp.task('jshint', () => gulp.src([
@@ -61,7 +61,7 @@ gulp.task('jshint', () => gulp.src([
     .pipe($.jshint())
     .pipe($.jshint.reporter(reporters('gulp-jshint')))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-)
+);
 
 // Optimize images
 gulp.task('images', () => gulp.src('app/images/**/*')
@@ -73,7 +73,7 @@ gulp.task('images', () => gulp.src('app/images/**/*')
     .pipe($.size({
       title: 'images'
     }))
-)
+);
 
 // icons
 gulp.task('icons', () => gulp.src('app/icons/**/*')
@@ -81,7 +81,7 @@ gulp.task('icons', () => gulp.src('app/icons/**/*')
   .pipe($.size({
     title: 'icons'
   }))
-)
+);
 
 
 // Copy all files at the root level (app)
@@ -116,31 +116,31 @@ gulp.task('pdf-make', (cb) => {
 });
 
 gulp.task('pdf-move', ['pdf-make'], () => gulp.src(['Furkan_Tunali_Resume.pdf'])
-    .pipe(gulp.dest('app/pdf')))
+    .pipe(gulp.dest('app/pdf')));
 
 gulp.task('pdf-del', cb => del([
   'Furkan_Tunali_Resume.pdf'
-], {}, cb))
+], {}, cb));
 
 gulp.task('pdf', ['pdf-move'], () => gulp.src(['app/pdf/**/*.pdf'])
     .pipe(gulp.dest('dist/pdf'))
     .pipe($.size({
       title : 'pdf'
     }))
-)
+);
 
 // Copy web fonts to dist
 gulp.task('fonts', () => gulp.src(['app/fonts/**'])
     .pipe(gulp.dest('dist/fonts'))
     .pipe($.size({title: 'fonts'}))
-)
+);
 
 gulp.task('scss-lint', () => gulp.src('app/styles/**/*.scss')
-    .pipe($.scssLint()))
+    .pipe($.scssLint()));
 
 gulp.task('gulp-css-lint', () => gulp.src('app/styles/**/*.css')
     .pipe($.csslint())
-    .pipe($.csslint.reporter(reporters('gulp-csslint'))))
+    .pipe($.csslint.reporter(reporters('gulp-csslint'))));
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', ['scss-lint'], () => {
@@ -197,7 +197,7 @@ gulp.task('scripts', () => gulp.src([
     .pipe($.size({
       title: 'scripts'
     }))
-    .pipe(gulp.dest('dist/scripts')))
+    .pipe(gulp.dest('dist/scripts')));
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
@@ -261,8 +261,7 @@ gulp.task('serve', ['styles'], () => {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], () =>
-  browserSync({
+gulp.task('serve:dist', ['default'], () => browserSync({
     notify: false,
     logPrefix: 'WSK',
     // Run as an https by uncommenting 'https: true'
@@ -276,8 +275,7 @@ gulp.task('serve:dist', ['default'], () =>
 );
 
 // Build production files, the default task
-gulp.task('default', ['clean'], cb =>
-  runSequence(
+gulp.task('default', ['clean'], cb => runSequence(
     'vendor',
     ['styles', 'resume', 'resume-doc'],
     ['scss-lint', 'jshint', 'html', 'scripts', 'images', 'icons', 'fonts', 'copy'],
@@ -287,9 +285,7 @@ gulp.task('default', ['clean'], cb =>
 );
 
 // Run PageSpeed Insights
-gulp.task('pagespeed', cb =>
-  // Update the below URL to the public URL of your site
-  pagespeed('furkantunali.com', {
+gulp.task('pagespeed', cb => pagespeed('furkantunali.com', {
     strategy: 'mobile'
     // By default we use the PageSpeed Insights free (no API key) tier.
     // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
