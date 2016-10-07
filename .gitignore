@@ -10,3 +10,4 @@ dist
 npm-debug.log
 app/styles/*.css
 app/styles/*.map
+.DS_Store

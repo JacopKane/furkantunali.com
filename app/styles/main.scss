@@ -76,16 +76,15 @@ html {
       text-align: center;
 
       a {
-        .icon {
-          margin : 0 .5vmin;
-          opacity: .6;
-          transition: opacity .2s ease-out;
-          padding: 1vmin;
-        }
+        margin : 0 .5vmin;
+        opacity: .6;
+        transition: opacity .2s ease-out;
+        padding: 1vmin;
+        text-decoration: none;
+
         &:hover {
-          .icon {
-            opacity: .9;
-          }
+          text-decoration: none;
+          opacity: .9;
         }
       }
     }

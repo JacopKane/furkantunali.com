@@ -4,15 +4,15 @@ My personal coming soon page
 
 ## Serve
 ```bash
-gulp serve
+npm start
 ```
 
 ## Serve Dist
 ```bash
-gulp serve
+npm run start:dist
 ```
 
 ## Deploy
 ```bash
-gulp serve
+npm run deploy
 ```

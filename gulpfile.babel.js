@@ -42,29 +42,33 @@ const reload = browserSync.reload;
 try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
 
 
-gulp.task('resume', () => gulp.src('app/resume.html')
-    .pipe($.rename('resume-dist.html'))
-    .pipe($.removeCode({ resume : true }))
-    .pipe(gulp.dest('app/')));
+gulp.task('resume', () => gulp
+  .src('app/resume.html')
+  .pipe($.rename('resume-dist.html'))
+  .pipe($.removeCode({ resume : true }))
+  .pipe(gulp.dest('app/')));
 
-gulp.task('resume-doc', () => gulp.src('app/resume.html')
-    .pipe($.rename('resume-doc.html'))
-    .pipe($.removeCode({ resumeDoc : true }))
-    .pipe(gulp.dest('app/')));
+gulp.task('resume-doc', () => gulp
+  .src('app/resume.html')
+  .pipe($.rename('resume-doc.html'))
+  .pipe($.removeCode({ resumeDoc : true }))
+  .pipe(gulp.dest('app/')));
 
 // Lint JavaScript
-gulp.task('jshint', () => gulp.src([
+gulp.task('jshint', () => gulp
+  .src([
     'app/scripts/**/*.js',
     '!app/scripts/**/*.min.js'
   ])
-    .pipe(reload({stream: true, once: true}))
-    .pipe($.jshint())
-    .pipe($.jshint.reporter(reporters('gulp-jshint')))
-    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+  .pipe(reload({stream: true, once: true}))
+  .pipe($.jshint())
+  .pipe($.jshint.reporter(reporters('gulp-jshint')))
+  .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
 );
 
 // Optimize images
-gulp.task('images', () => gulp.src('app/images/**/*')
+gulp.task('images', () => gulp
+    .src('app/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
@@ -72,16 +76,15 @@ gulp.task('images', () => gulp.src('app/images/**/*')
     .pipe(gulp.dest('dist/images'))
     .pipe($.size({
       title: 'images'
-    }))
-);
+    })));
 
 // icons
-gulp.task('icons', () => gulp.src('app/icons/**/*')
+gulp.task('icons', () => gulp
+  .src('app/icons/**/*')
   .pipe(gulp.dest('dist/icons'))
   .pipe($.size({
     title: 'icons'
-  }))
-);
+  })));
 
 
 // Copy all files at the root level (app)
@@ -92,8 +95,7 @@ gulp.task('copy', () => gulp.src([
   ], {
     dot: true
   }).pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'copy'}))
-);
+    .pipe($.size({title: 'copy'})));
 
 // Copy web fonts to dist
 gulp.task('pdf-make', (cb) => {
@@ -115,49 +117,39 @@ gulp.task('pdf-make', (cb) => {
   });
 });
 
-gulp.task('pdf-move', ['pdf-make'], () => gulp.src(['Furkan_Tunali_Resume.pdf'])
+gulp.task('pdf-move', ['pdf-make'], () => gulp
+    .src(['Furkan_Tunali_Resume.pdf'])
     .pipe(gulp.dest('app/pdf')));
 
 gulp.task('pdf-del', cb => del([
   'Furkan_Tunali_Resume.pdf'
 ], {}, cb));
 
-gulp.task('pdf', ['pdf-move'], () => gulp.src(['app/pdf/**/*.pdf'])
+gulp.task('pdf', ['pdf-move'], () => gulp
+    .src(['app/pdf/**/*.pdf'])
     .pipe(gulp.dest('dist/pdf'))
     .pipe($.size({
       title : 'pdf'
-    }))
-);
+    })));
 
 // Copy web fonts to dist
-gulp.task('fonts', () => gulp.src(['app/fonts/**'])
+gulp.task('fonts', () => gulp
+    .src(['app/fonts/**'])
     .pipe(gulp.dest('dist/fonts'))
-    .pipe($.size({title: 'fonts'}))
-);
+    .pipe($.size({title: 'fonts'})));
 
-gulp.task('scss-lint', () => gulp.src('app/styles/**/*.scss')
+gulp.task('scss-lint', () => gulp
+    .src('app/styles/**/*.scss')
     .pipe($.scssLint()));
 
-gulp.task('gulp-css-lint', () => gulp.src('app/styles/**/*.css')
+gulp.task('gulp-css-lint', () => gulp
+    .src('app/styles/**/*.css')
     .pipe($.csslint())
     .pipe($.csslint.reporter(reporters('gulp-csslint'))));
 
 // Compile and automatically prefix stylesheets
-gulp.task('styles', ['scss-lint'], () => {
-  const AUTOPREFIXER_BROWSERS = [
-    'ie >= 8',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 4.4',
-    'bb >= 10'
-  ];
-
-  // For best performance, don't add Sass partials to `gulp.src`
-  return gulp.src('app/styles/**/*.scss')
+gulp.task('styles', ['scss-lint'], () => gulp
+    .src('app/styles/**/*.scss')
     .pipe($.changed('.tmp/styles', {
       extension: '.css'
     }))
@@ -165,7 +157,17 @@ gulp.task('styles', ['scss-lint'], () => {
     .pipe($.sass({
       precision: 10
     }).on('error', reporters('gulp-sass')))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.autoprefixer([
+      'ie >= 8',
+      'ie_mob >= 10',
+      'ff >= 30',
+      'chrome >= 34',
+      'safari >= 7',
+      'opera >= 23',
+      'ios >= 7',
+      'android >= 4.4',
+      'bb >= 10'
+    ]))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
@@ -175,33 +177,33 @@ gulp.task('styles', ['scss-lint'], () => {
     .pipe(gulp.dest('app/styles'))
     .pipe($.size({
       title: 'styles'
-    }));
-});
+    })));
 
 // Concatenate and minify JavaScript
-gulp.task('scripts', () => gulp.src([
+gulp.task('scripts', () => gulp
+  .src([
     // Note: Since we are not using useref in the scripts build pipeline,
     //       you need to explicitly list your scripts here in the right order
     //       to be correctly concatenated
     './app/scripts/**/*.js'
     // Other scripts
   ])
-    .pipe($.sourcemaps.init())
-    .pipe($.concat('main.min.js'))
-    .pipe($.babel(Object.assign({
-      'plugins' : ['transform-es2015-modules-systemjs']
-    }, JSON.parse(fs.readFileSync('.babelrc', 'utf8')))))
-    .pipe($.uglify())
-    // Output files
-    .pipe($.sourcemaps.write())
-    .pipe($.size({
-      title: 'scripts'
-    }))
-    .pipe(gulp.dest('dist/scripts')));
+  .pipe($.sourcemaps.init())
+  .pipe($.concat('main.min.js'))
+  .pipe($.babel(Object.assign({
+    'plugins' : ['transform-es2015-modules-systemjs']
+  }, JSON.parse(fs.readFileSync('.babelrc', 'utf8')))))
+  .pipe($.uglify())
+  // Output files
+  .pipe($.sourcemaps.write())
+  .pipe($.size({
+    title: 'scripts'
+  }))
+  .pipe(gulp.dest('dist/scripts')));
 
 // Scan your HTML for assets & optimize them
-gulp.task('html', () => {
-  return gulp.src('app/**/*.html')
+gulp.task('html', () => gulp
+    .src('app/**/*.html')
     .pipe($.useref({
       searchPath: '{.tmp,app}'
     }))
@@ -216,7 +218,6 @@ gulp.task('html', () => {
       // CSS Selectors for UnCSS to ignore
       ignore: []
     })))
-
     // Concatenate and minify styles
     // In case you are still using useref build blocks
     .pipe($.if('*.css', $.minifyCss()))
@@ -227,8 +228,7 @@ gulp.task('html', () => {
     .pipe(gulp.dest('dist'))
     .pipe($.size({
       title: 'html'
-    }));
-});
+    })));
 
 // Clean output directory
 gulp.task('clean', cb => del([
@@ -238,7 +238,7 @@ gulp.task('clean', cb => del([
 }, cb));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles'], () => {
+gulp.task('start', ['styles'], () => {
   browserSync({
     open: false,
     notify: true,
@@ -261,7 +261,7 @@ gulp.task('serve', ['styles'], () => {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], () => browserSync({
+gulp.task('start:dist', ['default'], () => browserSync({
     notify: false,
     logPrefix: 'WSK',
     // Run as an https by uncommenting 'https: true'
@@ -299,11 +299,12 @@ gulp.task('pagespeed', cb => pagespeed('furkantunali.com', {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', cb => {
+
   const rootDir = 'dist';
+
   let
     name = pkg.name || 'furkantunali.com',
     version = pkg.version || '0';
-
 
   swPrecache.write(path.join(rootDir, 'service-worker.js'), {
     // Used to avoid cache conflicts when serving on localhost.
@@ -332,3 +333,5 @@ gulp.task('generate-service-worker', cb => {
     cb();
   });
 });
+
+$.npmScriptSync(gulp);
