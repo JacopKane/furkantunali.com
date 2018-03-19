@@ -25,7 +25,7 @@
 import browserSync  from 'browser-sync';
 import del  from 'del';
 import fs  from 'fs';
-import pdfcrowd from 'pdfcrowd';
+import pdf from 'pdfcrowd';
 import gulp  from 'gulp';
 import gulpLoadPlugins  from 'gulp-load-plugins';
 import path  from 'path';
@@ -100,21 +100,16 @@ gulp.task('copy', () => gulp.src([
 // Copy web fonts to dist
 gulp.task('pdf-make', (cb) => {
   // create an API client instance
-  let
-    client = new pdfcrowd.Pdfcrowd("JacopKane", "9fe78e65f9e50026ef1236f561b48c3b"),
-    saveToFile = pdfcrowd.saveToFile('Furkan_Tunali_Resume.pdf');
+  const client = new pdf.HtmlToPdfClient("JacopKane", "9fe78e65f9e50026ef1236f561b48c3b");
 
-  client.convertURI('https://furkantunali.com/resume-doc.html', {
-    end : () => {
-      cb();
-    },
-    pdf : (rstream) => {
-      saveToFile.pdf(rstream);
-    },
-    error : (error) => {
-      cb(error);
-    }
-  });
+  client.convertUrlToFile(
+    'https://furkantunali.com/resume-doc.html',
+    'Furkan_Tunali_Resume.pdf',
+    function(err, fileName) {
+      if (error) return cb(error)
+      console.info('Success: the file was created '.concat(fileName))
+      cb()
+    })
 });
 
 gulp.task('pdf-move', ['pdf-make'], () => gulp
@@ -299,12 +294,10 @@ gulp.task('pagespeed', cb => pagespeed('furkantunali.com', {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', cb => {
-
   const rootDir = 'dist';
 
-  let
-    name = pkg.name || 'furkantunali.com',
-    version = pkg.version || '0';
+  let name = pkg.name || 'furkantunali.com';
+  let version = pkg.version || '0';
 
   swPrecache.write(path.join(rootDir, 'service-worker.js'), {
     // Used to avoid cache conflicts when serving on localhost.
