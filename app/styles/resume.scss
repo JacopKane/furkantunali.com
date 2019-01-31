@@ -7,52 +7,58 @@ $color-link-hover: lighten($color-link, 60%);
 $color-link-visited: lighten($color-link, 40%);
 $color-background: #fff;
 $color-selection: #ffc;
-$size: "((1vmin + 1vmax) / 2)";
-$size-margin: "((1vmin + 1vmax) / 2) * 2";
+$size: '((1vmin + 1vmax) / 3)';
+$size-margin: '((1vmin + 1vmax) / 3) * 2';
 
 @mixin logo($size: 4vmin) {
   $ratio: 1.6;
-  &, &:active, &:visited {
-    text-align: center;
-    //letter-spacing: calc((0 - (#{$size})) / 18);
-    font-weight: 100;
-    display: inline-block;
-    font-size: calc(#{$size} * .5);
-    line-height: calc((#{$size}));
-    width: calc((#{$size}));
-    height: calc((#{$size}));
-    line-height: calc((#{$size}));
+  &,
+  &:active,
+  &:visited {
     background: $color-link;
-    color: $color-background;
+    //letter-spacing: calc((0 - (#{$size})) / 18);
+
     border-radius: calc((#{$size}));
+    color: $color-background;
+    display: inline-block;
+
+    font-size: calc(#{$size} * 0.5);
+
+    font-weight: 100;
+
+    height: calc((#{$size}));
+
+    line-height: calc((#{$size}));
+
+    line-height: calc((#{$size}));
+    text-align: center;
     text-decoration: none;
-    transition:
-      color .2s ease-out,
-      background-color .2s ease-out;
+    transition: color 0.2s ease-out, background-color 0.2s ease-out;
+    width: calc((#{$size}));
   }
+
   &:hover {
-    color: $color-link;
     background: $color-link-hover;
+    color: $color-link;
   }
 }
 
 html {
-  border: 1px solid white;
+  border: 1px solid #fff;
 }
 
 html,
 body {
-
   @include font-family;
+  color: $color-link;
   font-size: calc(#{$size} * 3.6);
   margin: 0 auto;
-  padding: 0;
 
-  color: $color-link;
+  padding: 0;
   a {
-    transition: color .2s ease;
     color: $color-link;
     text-decoration: none;
+    transition: color 0.2s ease;
 
     &:not(.no-decoration) {
       @include smart-underline(
@@ -65,9 +71,11 @@ body {
         color: $color-link-hover;
       }
     }
+
     &:visited {
       color: $color-link-visited;
     }
+
     &:hover {
       color: $color-link-hover;
     }
@@ -81,23 +89,36 @@ body {
     text-decoration: none;
   }
 
-  h1 { font-weight: 100; }
+  h1 {
+    font-weight: 100;
+  }
 
-  h2 { font-weight: 300; }
+  h2 {
+    font-weight: 300;
+  }
 
   h3 {
     font-weight: 500;
-    em { font-weight: 300; }
+    em {
+      font-weight: 300;
+    }
   }
-  h4 { font-weight: 600; }
 
-  h5 { font-weight: 700; }
+  h4 {
+    font-weight: 600;
+  }
 
-  h6 { font-weight: 800; }
+  h5 {
+    font-weight: 700;
+  }
+
+  h6 {
+    font-weight: 800;
+  }
 
   nav {
     .logo {
-      @include logo("#{$size-margin} * 4.4");
+      @include logo('#{$size-margin} * 4.4');
       margin: 0;
     }
 
@@ -114,7 +135,6 @@ body {
   }
 
   header {
-
     hgroup {
       h1,
       h2,
@@ -122,20 +142,20 @@ body {
       h4,
       h5,
       h6 {
-
       }
     }
+
     margin-top: calc((#{$size-margin}) / 2);
   }
 
   footer {
+    font-size: 0.6rem;
     margin-top: calc((#{$size-margin}) / 2);
     text-align: center;
-    font-size: .6rem;
   }
 
   div.doc-wrapper {
-    border: 20px solid white;
+    border: 20px solid #fff;
 
     a {
       &:not(.no-decoration) {
