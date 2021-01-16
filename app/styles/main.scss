@@ -79,6 +79,7 @@ html {
     @include gradient;
     @include font-family;
     margin: 4vmin;
+    min-height: calc(100vh - 10vmin);
     padding: 2vmin;
 
     a {
