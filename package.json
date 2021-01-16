@@ -13,7 +13,7 @@
     "babel-preset-stage-2": "^6.3.13",
     "babel-preset-stage-3": "^6.3.13",
     "babel-register": "^6.26.0",
-    "bower": "^1.7.0",
+    "bower": "^1.8.9",
     "browser-sync": "^2.10.0",
     "clean-css": "^3.4.20",
     "core-js": "^2.0.3",
