@@ -106,7 +106,8 @@
 		"prettier-sass": "gulp prettier-sass",
 		"prettier-html": "gulp prettier-html",
 		"pdf-dist": "gulp pdf-dist",
-		"deploy-firebase": "gulp deploy-firebase"
+		"deploy-firebase": "gulp deploy-firebase",
+		"workspaces-start": "gulp workspaces-start"
 	},
 	"license": "MIT"
 }

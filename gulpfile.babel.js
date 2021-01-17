@@ -1,7 +1,6 @@
 import browserSync from "browser-sync";
 import del from "del";
 import fs from "fs";
-import pdf from "pdfcrowd";
 import gulp from "gulp";
 import gulpLoadPlugins from "gulp-load-plugins";
 import path from "path";
@@ -104,52 +103,6 @@ gulp.task("copy", () =>
     )
     .pipe(gulp.dest("dist"))
     .pipe($.size({ title: "copy" }))
-);
-
-// Copy web fonts to dist
-gulp.task("pdf-make", cb => {
-  // create an API client instance
-  const client = new pdf.HtmlToPdfClient(
-    "JacopKane",
-    "9fe78e65f9e50026ef1236f561b48c3b"
-  );
-
-  client
-    .setTitle("Furkan Tunali Resume")
-    .setPageSize("A2")
-    .setNoMargins(true)
-    .convertUrlToFile(
-      "https://furkantunali.com/resume-doc.html",
-      "Furkan_Tunali_Resume.pdf",
-      function(error, fileName) {
-        if (error) return cb(error);
-        console.info("Success: the file was created ".concat(fileName));
-        cb();
-      }
-    );
-});
-
-gulp.task("pdf-move", () =>
-  gulp
-    .src(path.join(__dirname, "Furkan_Tunali_Resume.pdf"))
-    .pipe(gulp.dest("app/pdf"))
-);
-
-gulp.task("pdf-del", cb => del(["Furkan_Tunali_Resume.pdf"], {}, cb));
-
-gulp.task("pdf-dist", () =>
-  gulp
-    .src(["app/pdf/**/*.pdf"])
-    .pipe(gulp.dest("dist/pdf"))
-    .pipe(
-      $.size({
-        title: "pdf"
-      })
-    )
-);
-
-gulp.task("pdf", cb =>
-  runSequence("pdf-make", "pdf-move", "pdf-del", "pdf-dist", cb)
 );
 
 // Copy web fonts to dist
@@ -327,8 +280,10 @@ gulp.task("clean", cb =>
   )
 );
 
+gulp.task("workspaces-start", $.shell.task("yarn workspaces run start"));
+
 // Watch files for changes & reload
-gulp.task("start", ["styles"], () => {
+gulp.task("start", ["workspaces-start", "styles"], () => {
   browserSync({
     open: false,
     notify: true,
@@ -380,7 +335,6 @@ gulp.task("generate-service-worker", cb => {
       staticFileGlobs: [
         // Add/remove glob patterns to match your directory setup.
         `${rootDir}/fonts/**/*`,
-        `${rootDir}/pdf/**/*.pdf`,
         `${rootDir}/images/**/*`,
         `${rootDir}/scripts/**/*.js`,
         `${rootDir}/styles/**/*.css`,
@@ -484,9 +438,5 @@ gulp.task("vendor", cb => {
 gulp.task("deploy-firebase", $.shell.task("firebase deploy"));
 
 gulp.task("deploy", cb => runSequence("default", "deploy-firebase", cb));
-
-gulp.task("deploy-pdf", cb =>
-  runSequence("deploy", "pdf", "generate-service-worker", "deploy-firebase", cb)
-);
 
 $.npmScriptSync(gulp);
