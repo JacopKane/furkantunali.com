@@ -17,15 +17,15 @@ const jsSource = [
   "./*.js",
   "./**/*.js",
   "app/scripts/**/*.js",
-  "!app/scripts/**/*.min.js",
+  "!app/scripts/**/*.min.js"
 ];
 
 // Load custom tasks from the `tasks` directory
-try {
-  require("require-dir")("tasks");
-} catch (err) {
-  console.error(err);
-}
+// try {
+//   require("require-dir")("tasks");
+// } catch (err) {
+//   console.error(err);
+// }
 
 gulp.task("resume", () =>
   gulp
@@ -51,7 +51,7 @@ gulp.task("prettier-scripts", () =>
       $.prettier({
         singleQuote: true,
         semi: false,
-        write: true,
+        write: true
       })
     )
     .pipe(gulp.dest(({ base }) => base))
@@ -65,14 +65,14 @@ gulp.task("images", () =>
       $.cache(
         $.imagemin({
           progressive: true,
-          interlaced: true,
+          interlaced: true
         })
       )
     )
     .pipe(gulp.dest("dist/images"))
     .pipe(
       $.size({
-        title: "images",
+        title: "images"
       })
     )
 );
@@ -84,7 +84,7 @@ gulp.task("icons", () =>
     .pipe(gulp.dest("dist/icons"))
     .pipe(
       $.size({
-        title: "icons",
+        title: "icons"
       })
     )
 );
@@ -96,10 +96,10 @@ gulp.task("copy", () =>
       [
         "app/*",
         "!app/*.html",
-        "node_modules/apache-server-configs/dist/.htaccess",
+        "node_modules/apache-server-configs/dist/.htaccess"
       ],
       {
-        dot: true,
+        dot: true
       }
     )
     .pipe(gulp.dest("dist"))
@@ -107,7 +107,7 @@ gulp.task("copy", () =>
 );
 
 // Copy web fonts to dist
-gulp.task("pdf-make", (cb) => {
+gulp.task("pdf-make", cb => {
   // create an API client instance
   const client = new pdf.HtmlToPdfClient(
     "JacopKane",
@@ -121,7 +121,7 @@ gulp.task("pdf-make", (cb) => {
     .convertUrlToFile(
       "https://furkantunali.com/resume-doc.html",
       "Furkan_Tunali_Resume.pdf",
-      function (error, fileName) {
+      function(error, fileName) {
         if (error) return cb(error);
         console.info("Success: the file was created ".concat(fileName));
         cb();
@@ -135,7 +135,7 @@ gulp.task("pdf-move", () =>
     .pipe(gulp.dest("app/pdf"))
 );
 
-gulp.task("pdf-del", (cb) => del(["Furkan_Tunali_Resume.pdf"], {}, cb));
+gulp.task("pdf-del", cb => del(["Furkan_Tunali_Resume.pdf"], {}, cb));
 
 gulp.task("pdf-dist", () =>
   gulp
@@ -143,12 +143,12 @@ gulp.task("pdf-dist", () =>
     .pipe(gulp.dest("dist/pdf"))
     .pipe(
       $.size({
-        title: "pdf",
+        title: "pdf"
       })
     )
 );
 
-gulp.task("pdf", (cb) =>
+gulp.task("pdf", cb =>
   runSequence("pdf-make", "pdf-move", "pdf-del", "pdf-dist", cb)
 );
 
@@ -160,7 +160,7 @@ gulp.task("fonts", () =>
     .pipe($.size({ title: "fonts" }))
 );
 
-gulp.task("scss-lint-fix", (cb) => {
+gulp.task("scss-lint-fix", cb => {
   exec("npm run sass-lint-auto-fix", (error, stdout, stderr) => {
     if (error) {
       return cb(error);
@@ -178,7 +178,7 @@ gulp.task("prettier-sass", () =>
       $.prettier({
         singleQuote: true,
         semi: false,
-        write: true,
+        write: true
       })
     )
     .pipe(gulp.dest(({ base }) => base))
@@ -187,7 +187,7 @@ gulp.task("prettier-sass", () =>
 gulp.task("scss-lint", ["prettier-sass", "scss-lint-fix"], () =>
   gulp.src("app/styles/**/*.scss").pipe(
     $.scssLint({
-      bundleExec: true,
+      bundleExec: true
     })
   )
 );
@@ -205,18 +205,18 @@ gulp.task("styles", ["scss-lint"], () =>
     .src("app/styles/**/*.scss")
     .pipe(
       $.changed(".tmp/styles", {
-        extension: ".css",
+        extension: ".css"
       })
     )
     .pipe($.sourcemaps.init())
     .pipe(
       $.sass({
-        precision: 10,
+        precision: 10
       }).on("error", reporters("gulp-sass"))
     )
     .pipe(
       $.autoprefixer({
-        browsers: ["last 2 versions"],
+        browsers: ["last 2 versions"]
       })
     )
     .pipe($.sourcemaps.write("."))
@@ -228,7 +228,7 @@ gulp.task("styles", ["scss-lint"], () =>
     .pipe(gulp.dest("app/styles"))
     .pipe(
       $.size({
-        title: "styles",
+        title: "styles"
       })
     )
 );
@@ -240,7 +240,7 @@ gulp.task("scripts", () =>
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
-      "./app/scripts/**/*.js",
+      "./app/scripts/**/*.js"
       // Other scripts
     ])
     .pipe($.sourcemaps.init())
@@ -249,7 +249,7 @@ gulp.task("scripts", () =>
       $.babel(
         Object.assign(
           {
-            plugins: ["transform-es2015-modules-systemjs"],
+            plugins: ["transform-es2015-modules-systemjs"]
           },
           JSON.parse(fs.readFileSync(".babelrc", "utf8"))
         )
@@ -260,7 +260,7 @@ gulp.task("scripts", () =>
     .pipe($.sourcemaps.write())
     .pipe(
       $.size({
-        title: "scripts",
+        title: "scripts"
       })
     )
     .pipe(gulp.dest("dist/scripts"))
@@ -273,7 +273,7 @@ gulp.task("prettier-html", () =>
       $.prettier({
         singleQuote: true,
         semi: false,
-        write: true,
+        write: true
       })
     )
     .pipe(gulp.dest(({ base }) => base))
@@ -285,7 +285,7 @@ gulp.task("html", ["prettier-html"], () =>
     .src("app/**/*.html")
     .pipe(
       $.useref({
-        searchPath: "{.tmp,app}",
+        searchPath: "{.tmp,app}"
       })
     )
     // Remove any unused CSS
@@ -297,7 +297,7 @@ gulp.task("html", ["prettier-html"], () =>
         $.uncss({
           html: ["app/index.html", "app/resume.html"],
           // CSS Selectors for UnCSS to ignore
-          ignore: [],
+          ignore: []
         })
       )
     )
@@ -311,17 +311,17 @@ gulp.task("html", ["prettier-html"], () =>
     .pipe(gulp.dest("dist"))
     .pipe(
       $.size({
-        title: "html",
+        title: "html"
       })
     )
 );
 
 // Clean output directory
-gulp.task("clean", (cb) =>
+gulp.task("clean", cb =>
   del(
     [".tmp", ".publish", "dist/*", "!dist/.git"],
     {
-      dot: true,
+      dot: true
     },
     cb
   )
@@ -338,7 +338,7 @@ gulp.task("start", ["styles"], () => {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: [".tmp", "app"],
+    server: [".tmp", "app"]
   });
 
   gulp.watch(["app/*.html", "app/**/*.html"], ["prettier-html"]);
@@ -360,12 +360,12 @@ gulp.task("start:dist", ["default"], () =>
     // https: true,
     server: "dist",
     baseDir: "dist",
-    open: false,
+    open: false
   })
 );
 
 // Build production files, the default task
-gulp.task("default", ["clean"], (cb) =>
+gulp.task("default", ["clean"], cb =>
   runSequence(
     "vendor",
     ["styles", "resume", "resume-doc"],
@@ -380,7 +380,7 @@ gulp.task("default", ["clean"], (cb) =>
 // Generate a service worker file that will provide offline functionality for
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
-gulp.task("generate-service-worker", (cb) => {
+gulp.task("generate-service-worker", cb => {
   const rootDir = "dist";
 
   let name = pkg.name || "furkantunali.com";
@@ -403,12 +403,12 @@ gulp.task("generate-service-worker", (cb) => {
         `${rootDir}/vendor/**/*.css`,
         `${rootDir}/vendor/**/*.{html,json}`,
         `${rootDir}/fonts/**/*`,
-        `${rootDir}/*.{html,json}`,
+        `${rootDir}/*.{html,json}`
       ],
       // Translates a static file path to the relative URL that it's served from.
-      stripPrefix: path.join(rootDir, path.sep),
+      stripPrefix: path.join(rootDir, path.sep)
     },
-    (err) => {
+    err => {
       if (err) {
         cb(err);
         return;
@@ -417,5 +417,91 @@ gulp.task("generate-service-worker", (cb) => {
     }
   );
 });
+
+/* vendor */
+gulp.task("vendor-install", () => {
+  return $.bower()
+    .pipe(gulp.dest("app/vendor"))
+    .pipe(
+      $.size({
+        title: "vendor-install"
+      })
+    );
+});
+
+gulp.task("vendor-update", () => {
+  return $.bower({
+    cmd: "update"
+  })
+    .pipe(gulp.dest("app/vendor"))
+    .pipe(
+      $.size({
+        title: "vendor-update"
+      })
+    );
+});
+
+gulp.task("vendor-js", () => {
+  return gulp
+    .src(["./app/vendor/**/*.js"])
+    .pipe($.uglify({ preserveComments: "some" }))
+    .pipe(gulp.dest("dist/vendor"))
+    .pipe(
+      $.size({
+        title: "vendor-js"
+      })
+    );
+});
+
+gulp.task("vendor-css", () => {
+  const AUTOPREFIXER_BROWSERS = [
+    "ie >= 8",
+    "ie_mob >= 10",
+    "ff >= 30",
+    "chrome >= 34",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 7",
+    "android >= 4.4",
+    "bb >= 10"
+  ];
+
+  return (
+    gulp
+      .src(["app/vendor/**/*.scss", "app/vendor/**/*.css"])
+      .pipe($.changed(".tmp/styles", { extension: ".css" }))
+      .pipe($.sourcemaps.init())
+      .pipe(
+        $.sass({
+          precision: 10
+        }).on("error", $.sass.logError)
+      )
+      .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest(".tmp/styles"))
+      // Concatenate and minify styles
+      .pipe($.if("*.css", $.minifyCss()))
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest("dist/vendor"))
+      .pipe(
+        $.size({
+          title: "vendor-css"
+        })
+      )
+  );
+});
+
+gulp.task("vendor", cb => {
+  return runSequence("vendor-update", ["vendor-css", "vendor-js"], cb);
+});
+
+/* deploy */
+gulp.task("deploy-firebase", $.shell.task("firebase deploy"));
+
+gulp.task("deploy", cb => runSequence("default", "deploy-firebase", cb));
+
+gulp.task("deploy-pdf", cb =>
+  runSequence("deploy", "pdf", "generate-service-worker", "deploy-firebase", cb)
+);
 
 $.npmScriptSync(gulp);
