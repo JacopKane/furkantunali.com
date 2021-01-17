@@ -349,21 +349,6 @@ gulp.task("start", ["styles"], () => {
   gulp.watch(["app/images/**/*"], reload);
 });
 
-// Build and serve the output from the dist build
-gulp.task("start:dist", ["default"], () =>
-  browserSync({
-    notify: false,
-    logPrefix: "WSK",
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    // https: true,
-    server: "dist",
-    baseDir: "dist",
-    open: false
-  })
-);
-
 // Build production files, the default task
 gulp.task("default", ["clean"], cb =>
   runSequence(

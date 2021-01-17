@@ -52,6 +52,10 @@ body {
   @include font-family;
   color: $color-link;
   font-size: calc(#{$size} * 3.6);
+
+  @media print {
+    font-size: calc(#{$size} * 1.8);
+  }
   margin: 0 auto;
 
   padding: 0;
@@ -135,16 +139,6 @@ body {
   }
 
   header {
-    hgroup {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-      }
-    }
-
     margin-top: calc((#{$size-margin}) / 2);
   }
 
