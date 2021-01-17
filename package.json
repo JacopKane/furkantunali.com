@@ -100,7 +100,8 @@
 		"prettier": "gulp prettier",
 		"prettier-scripts": "gulp prettier-scripts",
 		"prettier-sass": "gulp prettier-sass",
-		"prettier-html": "gulp prettier-html"
+		"prettier-html": "gulp prettier-html",
+		"pdf-dist": "gulp pdf-dist"
 	},
 	"license": "MIT"
 }
