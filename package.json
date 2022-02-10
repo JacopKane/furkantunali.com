@@ -54,7 +54,7 @@
 		"gulp-util": "^3.0.7",
 		"jshint": "^2.8.0",
 		"jshint-stylish": "^2.1.0",
-		"node-sass": "^4.9.3",
+		"node-sass": "^7.0.0",
 		"opn": "^4.0.2",
 		"pdfcrowd": "^4.3.0",
 		"prettier": "^1.16.3",
