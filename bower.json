@@ -1,0 +1,22 @@
+{
+  "name": "furkantunali.com",
+  "version": "0.0.0",
+  "homepage": "https://github.com/JacopKane/furkantunali.com",
+  "authors": [
+    "Furkan Tunalı <mail@furkantunali.com>"
+  ],
+  "main": "app/scripts/main.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "social-media-icons": "~1.0.1",
+    "system.js": "~0.18.11",
+    "font-awesome": "~4.4.0"
+  }
+}
