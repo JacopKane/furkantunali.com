@@ -1,10 +1,11 @@
 import * as functions from 'firebase-functions'
-import {launch} from 'puppeteer'
+import {launch} from 'puppeteer-core'
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
-export const downloadAsPDF = functions.region('europe-west1').https.onRequest(async (request, response) => {
+export const downloadAsPDF = functions
+.region('europe-west1').https.onRequest(async (_request, response) => {
 
   const browser = await launch({ headless: true })
 
@@ -27,7 +28,7 @@ export const downloadAsPDF = functions.region('europe-west1').https.onRequest(as
 
 
       response.header('Content-Type', 'application/pdf;charset=utf-8');
-      response.header('Content-Disposition', 'attachment; filename=some_file.pdf');
+      response.header('Content-Disposition', 'attachment; filename=Furkan_Tunali_Resume');
       response.type('application/pdf').send(buffer);
 
     } catch (e) {
