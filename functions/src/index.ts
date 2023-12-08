@@ -7,27 +7,24 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import { onRequest } from "firebase-functions/v2/https";
+import {onRequest} from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 
-// Start writing functions
+// Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
 
 export const helloWorld = onRequest((request, response) => {
-  logger.info("Hello logs!", { structuredData: true });
+  logger.info("Hello logs!", {structuredData: true});
   response.send("Hello from Firebase!");
 });
 
 import * as functions from "firebase-functions";
-import { launch } from "puppeteer";
+import {launch} from "puppeteer";
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
 export const downloadAsPDF = functions
   .region("europe-west1")
   .https.onRequest(async (_request, response) => {
-    const browser = await launch({ headless: "new" });
+    const browser = await launch({headless: "new"});
 
     try {
       const page = await browser.newPage();
@@ -49,7 +46,7 @@ export const downloadAsPDF = functions
       response.header("Content-Type", "application/pdf");
       response.header(
         "Content-Disposition",
-        'attachment; filename="Furkan_Tunali_Resume.pdf"'
+        "attachment; filename=\"Furkan_Tunali_Resume.pdf\""
       );
       response.send(buffer);
     } catch (error: unknown) {

@@ -11,6 +11,7 @@ module.exports = {
     "plugin:import/typescript",
     "google",
     "plugin:@typescript-eslint/recommended",
+    "prettier" // Ensure this is the last extension in the array
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

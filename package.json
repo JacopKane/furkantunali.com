@@ -8,6 +8,7 @@
  "license": "MIT",
  "scripts": {
   "build": "npm run --workspaces build",
+  "lint": "npm run --workspaces lint",
   "build:watch": "npm run --workspaces build:watch",
   "start": "npm run --workspaces serve"
  },
