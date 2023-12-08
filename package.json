@@ -12,11 +12,9 @@
   "start": "npm run --workspaces serve"
  },
  "volta": {
-  "node": "18.19.0",
-  "npm": "10.2.5"
+  "node": "18.19.0"
  },
  "engines": {
-  "node": "18",
-  "npm": "10"
+  "node": "18"
  }
 }
