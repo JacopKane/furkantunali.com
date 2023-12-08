@@ -22,4 +22,9 @@ jobs:
           expires: 30d
           projectId: furkantunali-1043
 
-      - run: npm run deploy
+      - name: Deploy to Firebase
+        uses: joinflux/firebase-tools@v9.16.0
+        with:
+          args: deploy --only functions
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
