@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v4
 
-      - run: npm ci
+      - run: npm install
       - run: npm run build
 
       - name: Deploy to Firebase Hosting with Functions
@@ -22,7 +22,7 @@ jobs:
           expires: 30d
           projectId: furkantunali-1043
 
-      - name: Deploy to Firebase
+      - name: Deploy Functions
         uses: joinflux/firebase-tools@v9.16.0
         with:
           args: deploy --only functions
