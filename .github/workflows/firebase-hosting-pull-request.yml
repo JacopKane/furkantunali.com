@@ -18,3 +18,9 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FURKANTUNALI_1043 }}"
           expires: 30d
           projectId: furkantunali-1043
+
+      - name: Checkout danielmillan/pipelines-firebase-functions
+        uses: actions/checkout@v2
+        with:
+          repository: danielmillan/pipelines-firebase-functions
+          token: ${{ secrets.GITHUB_TOKEN }}
