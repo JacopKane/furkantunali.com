@@ -19,7 +19,7 @@ export const downloadAsPDF = functions
   .https.onRequest(async (_request, response) => {
     logger.info("Begin downloadAsPDF", { structuredData: true });
 
-    const browser = await launch({ headless: "new" });
+    const browser = await launch({ headless: "chrome" });
 
     logger.info("Browser launched", { structuredData: true });
 
@@ -47,7 +47,7 @@ export const downloadAsPDF = functions
       response.header("Content-Type", "application/pdf");
       response.header(
         "Content-Disposition",
-        "attachment; filename=\"Furkan_Tunali_Resume.pdf\"",
+        'attachment; filename="Furkan_Tunali_Resume.pdf"',
       );
 
       logger.info("Response headers set", { structuredData: true });
