@@ -10,13 +10,14 @@
 import * as functions from "firebase-functions";
 import * as logger from "firebase-functions/logger";
 import { launch } from "puppeteer";
+import { RuntimeOptions } from "firebase-functions";
 
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
 
-const runtimeOpts = {
+const runtimeOpts: RuntimeOptions = {
   timeoutSeconds: 300,
-  memory: "1GB",
+  memory: "512MB" as "512MB",
 };
 
 export const downloadAsPDF = functions

@@ -23,9 +23,8 @@ jobs:
           channelId: live
           projectId: furkantunali-1043
 
-      - name: Deploy Functions
-        uses: joinflux/firebase-tools@v9.16.0
+      - uses: pocket-apps/action-setup-firebase@v2
         with:
-          args: deploy --only functions
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+
+      - run: npm run deploy
