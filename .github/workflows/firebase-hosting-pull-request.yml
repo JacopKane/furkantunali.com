@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci && npm run build
+      - uses: volta-cli/action@v4
+
+      - run: npm ci
+      - run: npm run build
 
       - name: Deploy to Firebase Hosting with Functions
         uses: milan-lakhani/action-hosting-deploy-withFuntions@latest
@@ -18,3 +21,5 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FURKANTUNALI_1043 }}"
           expires: 30d
           projectId: furkantunali-1043
+
+      - run: npm run deploy
