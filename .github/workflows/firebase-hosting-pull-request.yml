@@ -22,9 +22,8 @@ jobs:
           expires: 30d
           projectId: furkantunali-1043
 
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+      - uses: pocket-apps/action-setup-firebase@v2
         with:
-          args: deploy --only functions
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+
+      - run: npm run deploy
