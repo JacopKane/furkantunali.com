@@ -22,8 +22,8 @@ jobs:
           expires: 30d
           projectId: furkantunali-1043
 
-      - name: Deploy Functions
-        uses: joinflux/firebase-tools@v9.16.0
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions
         env:
