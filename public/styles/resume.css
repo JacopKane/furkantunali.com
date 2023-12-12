@@ -153,6 +153,39 @@
   src: url("../fonts/064bf6d7-724b-4182-8b66-f2e9125c9c6e.eot?#iefix");
   src: url("../fonts/064bf6d7-724b-4182-8b66-f2e9125c9c6e.eot?#iefix") format("eot"), url("../fonts/24567192-78d1-4fcf-84be-05d88fafb457.woff2") format("woff2"), url("../fonts/d5e38cca-491f-4b1e-9877-876743c50258.woff") format("woff"), url("../fonts/cf541a6e-1ef1-4303-a114-ea9560e7c3dc.ttf") format("truetype"), url("../fonts/952db4c4-b7dd-4a60-bdaf-18ac441fee68.svg#952db4c4-b7dd-4a60-bdaf-18ac441fee68") format("svg"); }
 
+@keyframes grain {
+  0%, 100% {
+    background-position: 0 0; }
+  10% {
+    background-position: -5% -10%; }
+  20% {
+    background-position: -15% 5%; }
+  30% {
+    background-position: 7% -25%; }
+  40% {
+    background-position: -20% 15%; }
+  50% {
+    background-position: 15% 5%; }
+  60% {
+    background-position: 0% 15%; }
+  70% {
+    background-position: -25% 10%; }
+  80% {
+    background-position: 5% 0%; }
+  90% {
+    background-position: -10% -10%; } }
+
+.grain-overlay {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("path-to-your-noise-texture.png");
+  opacity: 0.3;
+  animation: grain 0.2s steps(10) infinite; }
+
 html {
   border: 1px solid #fff; }
 

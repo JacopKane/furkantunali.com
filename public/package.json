@@ -1,12 +1,15 @@
 {
   "name": "@furkantunali/public",
+  "config": {
+    "outputPath": "./"
+  },
   "scripts": {
     "build:watch": "concurrently \"npm run watch-scss\" \"npm run watch-html\"",
     "watch-scss": "node-sass --watch scss/ -o styles/",
     "watch-html": "nodemon",
     "build": "concurrently \"npm run build-scss\" \"npm run build-html\"",
     "build-scss": "node-sass scss/ -o styles/",
-    "build-html": "ejs-cli \"./**/*.ejs\" --out .",
+    "build-html": "echo ${npm_package_config_outputPath:?missing} && ejs-cli \"./**/*.ejs\" --out $npm_package_config_outputPath --base-dir=ejs",
     "serve": "firebase serve",
     "deploy": "firebase deploy --only hosting",
     "logs": "firebase hosting:log"
