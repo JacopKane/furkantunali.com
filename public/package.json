@@ -1,0 +1,23 @@
+{
+  "name": "@furkantunali/public",
+  "scripts": {
+    "build:watch": "concurrently \"npm run watch-scss\" \"npm run watch-html\"",
+    "watch-scss": "node-sass --watch scss/ -o styles/",
+    "watch-html": "nodemon",
+    "build": "concurrently \"npm run build-scss\" \"npm run build-html\"",
+    "build-scss": "node-sass scss/ -o styles/",
+    "build-html": "ejs-cli \"./**/*.ejs\" --out .",
+    "serve": "firebase serve",
+    "deploy": "firebase deploy --only hosting",
+    "logs": "firebase hosting:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "devDependencies": {
+    "ejs-cli": "^2.2.3",
+    "node-sass": "9.0.0",
+    "nodemon": "^3.0.2"
+  },
+  "private": true
+}

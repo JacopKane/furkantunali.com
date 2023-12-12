@@ -3,14 +3,19 @@
  "private": true,
  "version": "2.0.0",
  "workspaces": [
-  "./functions"
+  "./functions",
+  "./public"
  ],
  "license": "MIT",
  "scripts": {
   "build": "npm run --workspaces build",
   "lint": "npm run --workspaces lint",
-  "build:watch": "npm run --workspaces build:watch",
-  "start": "npm run --workspaces serve",
+  "build:watch": "concurrently \"npm run build:watch:functions\" \"npm run build:watch:public\"",
+  "build:watch:public": "npm run --workspace=public build:watch",
+  "build:watch:functions": "npm run --workspace=functions build:watch",
+  "start": "concurrently \"npm run start:functions\" \"npm run start:public\"",
+  "start:public": "npm run --workspace=public serve",
+  "start:functions": "npm run --workspace=functions serve",
   "deploy": "npm run --workspaces deploy"
  },
  "volta": {
@@ -18,5 +23,8 @@
  },
  "engines": {
   "node": "18"
+ },
+ "devDependencies": {
+  "concurrently": "^8.2.2"
  }
 }

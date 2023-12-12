@@ -1,0 +1,5 @@
+{
+  "watch": ["ejs/**/*.ejs"],
+  "ext": "ejs",
+  "exec": "npm run build-html"
+}
