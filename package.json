@@ -1,9 +1,22 @@
 {
-	"name": "furkantunali",
-	"private": true,
-  "version": "2.0.0",
-	"workspaces": [
-		"./functions"
-	],
-	"license": "MIT"
+ "name": "@furkantunali/root",
+ "private": true,
+ "version": "2.0.0",
+ "workspaces": [
+  "./functions"
+ ],
+ "license": "MIT",
+ "scripts": {
+  "build": "npm run --workspaces build",
+  "lint": "npm run --workspaces lint",
+  "build:watch": "npm run --workspaces build:watch",
+  "start": "npm run --workspaces serve",
+  "deploy": "npm run --workspaces deploy"
+ },
+ "volta": {
+  "node": "18.19.0"
+ },
+ "engines": {
+  "node": "18"
+ }
 }
