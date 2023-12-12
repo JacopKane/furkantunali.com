@@ -1,11 +1,11 @@
-<!doctype html>
+<!doctype html><!doctype html>
 <html lang="">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="description"
-      content="I'm a full stack web developer and multidisciplinary designer."
+      content="I'm a full-stack* software engineer with cloud focus and formerly a multidisciplinary designer."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Furkan Tunalı</title>
@@ -18,6 +18,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Furkan Tunalı" />
 
+    <!-- Apple Touch Icons -->
     <link
       rel="apple-touch-icon"
       sizes="57x57"
@@ -63,6 +64,8 @@
       sizes="180x180"
       href="icons/apple-touch-icon-180x180.png"
     />
+
+    <!-- Favicon Icons -->
     <link
       rel="icon"
       type="image/png"
@@ -88,20 +91,32 @@
       sizes="16x16"
     />
     <link rel="manifest" href="icons/manifest.json" />
+
+    <!-- Safari Pinned Tab Icon -->
     <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
+
+    <!-- Windows Tile Icons -->
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="msapplication-TileImage" content="icons/mstile-144x144.png" />
+
+    <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff" />
 
+    <!-- External and internal styles -->
     <link
       rel="import"
       href="vendor/social-media-icons/social-media-icons.html"
     />
     <link rel="stylesheet" href="styles/main.css" />
   </head>
-
   <body>
+    <div id="grain-container">
+      <div id="grain"></div>
+    </div>
+
+    <!-- Navigation Links -->
     <nav>
+      <!-- LinkedIn Link -->
       <a
         class="link"
         href="//linkedin.com/in/furkan"
@@ -117,7 +132,7 @@
           href="//linkedin.com/in/furkan"
         ></social-media-icons>
       </a>
-
+      <!-- GitHub Link -->
       <a
         class="link"
         href="//github.com/JacopKane"
@@ -133,7 +148,7 @@
           href="//github.com/JacopKane"
         ></social-media-icons>
       </a>
-
+      <!-- Twitter Link -->
       <a
         class="link"
         href="//twitter.com/JacopKane"
@@ -149,11 +164,7 @@
           href="//twitter.com/JacopKane"
         ></social-media-icons>
       </a>
-
-      <!-- <a class="link" href="//soundcloud.com/JacopKane" target="_blank" title="SoundCloud" alt="SoundCloud">
-        <social-media-icons class="icon" icon="soundcloud" color="#fff" size="30" href="//soundcloud.com/JacopKane"></social-media-icons>
-      </a> -->
-
+      <!-- Facebook Link -->
       <a
         class="link"
         href="//facebook.com/mFurkanTunali"
@@ -169,7 +180,7 @@
           href="//facebook.com/mFurkanTunali"
         ></social-media-icons>
       </a>
-
+      <!-- Pinterest Link -->
       <a
         class="link"
         href="//pinterest.com/JacopKane"
@@ -187,18 +198,19 @@
       </a>
     </nav>
 
+    <!-- About Section -->
     <section id="about">
       <p>
         I'm a
         <em
-          >full stack software developer<a
+          >full-stack<a
             class="tap"
             href="http://www.sitepoint.com/full-stack-developer/"
             target="_blank"
             >*</a
           ></em
         >
-        and
+        software engineer with cloud focus and formerly a
         <em
           >multidisciplinary designer<a
             href="http://www.howdesign.com/web-design-resources-technology/renaissance-designers/"
@@ -207,31 +219,26 @@
             >*</a
           ></em
         >.
-        <br />
-        Also founder of <a target="_blank" href="//nod.st">NOD studios</a> &amp;
-        <a target="_blank" href="http://ambientdata.org">AmbientData</a>.
       </p>
       <p>
-        My works might be on this page someday soon, but until that you can view
-        my
+        You can view my
         <a
           alt="Furkan Tunalı Résumé / CV"
           title="Furkan Tunalı Résumé / CV"
-          href="http://bit.ly/furkan-resume"
+          href="/resume-dist.html"
           >résumé</a
         >
-        send an
+        or send an
         <a
           alt="Furkan Tunalı E-mail"
           title="Furkan Tunalı E-mail"
           href="mailto:mail@furkantunali.com"
           >e-mail</a
-        >
-        or <a href="http://eepurl.com/bwUAgP" target="_blank">subscribe</a> in
-        case if you are interested.
+        >.
       </p>
     </section>
 
+    <!-- Header -->
     <header>
       <hgroup id="hgroup">
         <h1>
@@ -245,10 +252,8 @@
     <footer>
       <p>
         <em
-          >2015 -
-          <script type="text/javascript">
-            new Date().getFullYear() >
-              document.write("-" + new Date().getFullYear())
+          ><script type="text/javascript">
+            document.write(new Date().getFullYear())
           </script>
           &copy; Furkan Tunalı</em
         >
@@ -285,6 +290,21 @@
       )
       ga("create", "UA-60053491-1", "auto")
       ga("send", "pageview")
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/grained@0.0.2/grained.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var options = {
+          animate: true,
+          patternWidth: window.outerWidth,
+          patternHeight: window.outerHeight,
+          grainOpacity: 0.085,
+          grainDensity: 1,
+          grainWidth: 1.112,
+          grainHeight: 1.112,
+        }
+        grained("#grain", options)
+      })
     </script>
   </body>
 </html>

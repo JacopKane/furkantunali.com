@@ -6,6 +6,9 @@
   "./functions",
   "./public"
  ],
+  "config": {
+    "outputPath": "./public"
+  },
  "license": "MIT",
  "scripts": {
   "build": "npm run --workspaces build",
