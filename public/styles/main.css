@@ -83,7 +83,7 @@ html {
     animation: gradient 50s ease infinite;
     background: white linear-gradient(270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
     background-size: 1000% 1000%;
-    font-family: 'Proba Pro W01', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal;
     line-height: normal;
     margin: 4vmin;

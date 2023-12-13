@@ -6,7 +6,7 @@
     <meta name="description" content="I'm a software architect, full-stack JavaScript developer and formerly a designer." />
     <title>Furkan Tunalı Résumé</title>
 
-    
+    <% if (!GLOBEL.resumeDoc) { %>
     <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png" />
@@ -25,19 +25,21 @@
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="msapplication-TileImage" content="icons/mstile-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
-    
+    <% } %>
     <link rel="stylesheet" href="styles/resume.css" />
 </head>
 
 <body>
-    
+    <% if (!GLOBEL.resume) { %>
+    <div class="doc-wrapper">
+    <% } %>
 
-        
+        <% if (!GLOBEL.resumeDoc) { %>
         <nav>
             <a href="https://furkantunali.com/" class="logo no-decoration" title="Furkan Tunalı" alt="Furkan Tunalı"><em>ft</em></a>
             <a title="Furkan Tunalı Resume PDF" target="_blank" href="https://bit.ly/furkan-resume-pdf" download="Furkan Tunalı Résumé.pdf">Download as PDF</a>
         </nav>
-        
+        <% } %>
 
         <header>
             <hgroup>
@@ -1288,9 +1290,11 @@
         </ul>
       </section>
 
-    
+    <% if (!GLOBEL.resume) { %>
+    </div>
+    <% } %>
 
-    
+    <% if (!GLOBEL.resumeDoc) { %>
     <footer>
         <em>
             <script>
@@ -1322,6 +1326,6 @@
         ga("create", "UA-60053491-1", "auto")
         ga("send", "pageview")
     </script>
-    
+    <% } %>
 </body>
 </html>

@@ -9,7 +9,9 @@
     "watch-html": "nodemon",
     "build": "concurrently \"npm run build-scss\" \"npm run build-html\"",
     "build-scss": "node-sass scss/ -o styles/",
-    "build-html": "echo ${npm_package_config_outputPath:?missing} && ejs-cli \"./**/*.ejs\" --out $npm_package_config_outputPath --base-dir=ejs",
+    "build-html-resume": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume.json",
+    "build-html-resume-doc": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume-doc.json",
+    "build-html": "concurrently \"npm run build-html-resume\" \"npm run build-html-resume-doc\"",
     "serve": "firebase serve",
     "deploy": "firebase deploy --only hosting",
     "logs": "firebase hosting:log"
@@ -18,7 +20,7 @@
     "node": "18"
   },
   "devDependencies": {
-    "ejs-cli": "^2.2.3",
+    "@wcj/ejs-cli": "^1.1.6",
     "node-sass": "9.0.0",
     "nodemon": "^3.0.2"
   },
