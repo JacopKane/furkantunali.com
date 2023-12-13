@@ -7,7 +7,8 @@
 }
 
 @keyframes grain {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0 0;
   }
   10% {
@@ -46,7 +47,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url('path-to-your-noise-texture.png');
+  background-image: url("path-to-your-noise-texture.png");
   opacity: 0.3; // Adjust as needed
   animation: grain 0.2s steps(10) infinite;
 }
