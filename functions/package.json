@@ -16,7 +16,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "firebase-admin": "^11.8.0",
-    "firebase-functions": "^4.3.1",
+    "firebase-functions": "^4.7.0",
     "puppeteer": "^16.2.0"
   },
   "devDependencies": {
