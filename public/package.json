@@ -11,9 +11,11 @@
     "build-scss": "node-sass scss/ -o styles/",
     "build-html-resume": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume.json",
     "build-html-resume-doc": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume-doc.json",
-    "build-html": "concurrently \"npm run build-html-resume\" \"npm run build-html-resume-doc\"",
+    "mv-resume-doc": "mv ./resume.html ./resume-doc.html && echo 'resume.html moved to resume-doc.html'",
+    "build-html": "npm run build-html-resume-doc && npm run mv-resume-doc && npm run build-html-resume",
     "serve": "firebase serve",
     "deploy": "firebase deploy --only hosting",
+    "predeploy": "npm run build",
     "logs": "firebase hosting:log"
   },
   "engines": {
