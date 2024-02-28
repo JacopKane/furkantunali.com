@@ -49,7 +49,7 @@ export const downloadAsPDF = functions
       await page.setViewport({
         width: 2480,
         height: 3508,
-        deviceScaleFactor: 0.9,
+        deviceScaleFactor: 0.7,
         isMobile: false,
       });
 
