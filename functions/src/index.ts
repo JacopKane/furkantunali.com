@@ -46,7 +46,12 @@ export const downloadAsPDF = functions
 
     try {
       const page = await browser.newPage();
-      await page.setViewport({ width: 2480, height: 3508 });
+      await page.setViewport({
+        width: 2480,
+        height: 3508,
+        deviceScaleFactor: 1,
+        isMobile: false,
+      });
 
       await page.goto("https://furkantunali-1043.web.app/resume-doc.html", {
         waitUntil: "networkidle2",
@@ -70,7 +75,7 @@ export const downloadAsPDF = functions
       response.header("Content-Type", "application/pdf");
       response.header(
         "Content-Disposition",
-        "attachment; filename=\"Furkan_Tunali_Resume.pdf\"",
+        'attachment; filename="Furkan_Tunali_Resume.pdf"',
       );
 
       logger.info("Response headers set", { structuredData: true });
