@@ -32,8 +32,19 @@
   opacity: 0.3;
   animation: grain 0.2s steps(10) infinite; }
 
+:root {
+  /* Define base font size and scaling factor */
+  --base-font-size: 16px;
+  /* Base font size */
+  --scaling-factor: 0.5vmin;
+  /* Adjust this value to control the scaling with viewport size */ }
+
+body {
+  /* Calculate font size based on viewport size */
+  font-size: calc(var(--base-font-size) + var(--scaling-factor)); }
+
 #grain-container {
-  position: absolute;
+  position: fixed;
   pointer-events: none;
   top: 0;
   right: 0;
@@ -58,7 +69,8 @@
     background-position: 0% 50%; } }
 
 section#about {
-  font-size: 4vmin;
+  font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 1));
+  padding: calc(var(--base-font-size) + (var(--scaling-factor) * 2)) calc(var(--base-font-size) + (var(--scaling-factor) * 16));
   text-align: center; }
   section#about p {
     margin-top: 0; }
@@ -69,6 +81,8 @@ section#about {
       section#about p a:hover,
       section#about p a:visited:hover {
         color: rgba(0, 0, 0, 0.6); }
+    section#about p.cta {
+      font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 6)); }
 
 html,
 body {
