@@ -1,5 +1,5 @@
-@import 'fonts.scss';
-@import 'common.scss';
+@import "fonts.scss";
+@import "common.scss";
 
 $color-text: #000;
 $color-link: #000;
@@ -7,8 +7,8 @@ $color-link-hover: lighten($color-link, 60%);
 $color-link-visited: lighten($color-link, 40%);
 $color-background: #fff;
 $color-selection: #ffc;
-$size: '((1vmin + 1vmax) / 3)';
-$size-margin: '((1vmin + 1vmax) / 3) * 2';
+$size: "((1vmin + 1vmax) / 3)";
+$size-margin: "((1vmin + 1vmax) / 3) * 2";
 
 @mixin logo($size: 4vmin) {
   $ratio: 1.6;
@@ -33,7 +33,9 @@ $size-margin: '((1vmin + 1vmax) / 3) * 2';
     line-height: calc((#{$size}));
     text-align: center;
     text-decoration: none;
-    transition: color 0.2s ease-out, background-color 0.2s ease-out;
+    transition:
+      color 0.2s ease-out,
+      background-color 0.2s ease-out;
     width: calc((#{$size}));
   }
 
@@ -51,10 +53,14 @@ html,
 body {
   @include font-family;
   color: $color-link;
+
   font-size: calc(#{$size} * 3.6);
+  font-size: clamp(14px, 1vw, 18px); // Smaller base size, limits scaling
+  line-height: 1.5; // Adjust for compactness
 
   @media print {
     font-size: calc(#{$size} * 1.8);
+    max-width: 190mm;
   }
   margin: 0 auto;
 
@@ -120,9 +126,30 @@ body {
     font-weight: 800;
   }
 
+  // Compact headers
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 10px; // Reduce top margin
+    margin-bottom: 10px; // Reduce bottom margin
+  }
+
+  // Adjust section padding and margin
+  section {
+    padding: 5px 0; // Reduce padding
+    margin: 10px 0; // Reduce margin
+  }
+
   nav {
+    @media print {
+      display: none;
+    }
+
     .logo {
-      @include logo('#{$size-margin} * 4.4');
+      @include logo("#{$size-margin} * 4.4");
       margin: 0;
     }
 
@@ -155,6 +182,38 @@ body {
       &:not(.no-decoration) {
         @include no-smart-underline();
       }
+    }
+  }
+
+  // Optimizing bullet list spacing
+  ul.experiences,
+  ul.educations,
+  ul#skills {
+    list-style-type: none;
+    margin-left: 20px; // Reduce according to your design
+    li {
+      margin-bottom: 2.5px; // Reduces space between list items
+    }
+  }
+
+  ul#skills {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+
+    p {
+      margin: 0;
+    }
+
+    ul ul li {
+      display: inline-block; /* Display list items horizontally */
+      margin-right: 5px; /* Add spacing between skills */
+    }
+
+    ul ul li::before {
+      content: "\2022"; /* Use bullet character */
+      display: inline-block;
+      margin-right: 5px;
     }
   }
 }

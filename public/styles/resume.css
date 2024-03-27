@@ -197,12 +197,15 @@ body {
   line-height: normal;
   color: #000;
   font-size: calc(((1vmin + 1vmax) / 3) * 3.6);
+  font-size: clamp(14px, 1vw, 18px);
+  line-height: 1.5;
   margin: 0 auto;
   padding: 0; }
   @media print {
     html,
     body {
-      font-size: calc(((1vmin + 1vmax) / 3) * 1.8); } }
+      font-size: calc(((1vmin + 1vmax) / 3) * 1.8);
+      max-width: 190mm; } }
   html a,
   body a {
     color: #000;
@@ -267,6 +270,20 @@ body {
     font-weight: 700; }
   body h6 {
     font-weight: 800; }
+  body h1,
+  body h2,
+  body h3,
+  body h4,
+  body h5,
+  body h6 {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  body section {
+    padding: 5px 0;
+    margin: 10px 0; }
+  @media print {
+    body nav {
+      display: none; } }
   body nav .logo {
     margin: 0; }
     body nav .logo, body nav .logo:active, body nav .logo:visited {
@@ -321,3 +338,29 @@ body {
         text-shadow: inherit; }
       body div.doc-wrapper a:not(.no-decoration):visited {
         color: inherit; }
+  body ul.experiences,
+  body ul.educations,
+  body ul#skills {
+    list-style-type: none;
+    margin-left: 20px; }
+    body ul.experiences li,
+    body ul.educations li,
+    body ul#skills li {
+      margin-bottom: 2.5px; }
+  body ul#skills {
+    list-style: none;
+    /* Remove default bullet points */
+    padding: 0;
+    margin: 0; }
+    body ul#skills p {
+      margin: 0; }
+    body ul#skills ul ul li {
+      display: inline-block;
+      /* Display list items horizontally */
+      margin-right: 5px;
+      /* Add spacing between skills */ }
+    body ul#skills ul ul li::before {
+      content: "\2022";
+      /* Use bullet character */
+      display: inline-block;
+      margin-right: 5px; }
