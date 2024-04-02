@@ -93,7 +93,22 @@ body {
 }
 
 body {
-  padding: calc(#{$size-margin});
+  padding: calc(#{$size-margin} / 2);
+
+  .intro {
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* Adjust ratio between left and right columns as needed */
+    column-gap: 20px; /* Space between columns */
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; /* Stack columns vertically on smaller screens */
+    }
+  }
+
+  .left-column,
+  .right-column {
+    display: flex;
+    flex-direction: column;
+  }
 
   a.side-note {
     text-decoration: none;
@@ -126,21 +141,17 @@ body {
     font-weight: 800;
   }
 
-  // Compact headers
+  ul,
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
-    margin-top: 10px; // Reduce top margin
-    margin-bottom: 10px; // Reduce bottom margin
-  }
-
-  // Adjust section padding and margin
-  section {
-    padding: 5px 0; // Reduce padding
-    margin: 10px 0; // Reduce margin
+  h6,
+  section,
+  p {
+    padding: 0;
+    margin: 0;
   }
 
   nav {
@@ -185,35 +196,29 @@ body {
     }
   }
 
-  // Optimizing bullet list spacing
-  ul.experiences,
+  ul.info,
+  ul.contact,
   ul.educations,
-  ul#skills {
-    list-style-type: none;
-    margin-left: 20px; // Reduce according to your design
+  ul.skills,
+  ul.contact {
+    line-height: calc(#{$size-margin} * 1.4);
     li {
-      margin-bottom: 2.5px; // Reduces space between list items
+      display: inline;
+      margin: 0;
+      &:not(:first-child)::before {
+        content: "\00a0\2022\00a0\00a0";
+      }
     }
   }
 
-  ul#skills {
-    list-style: none; /* Remove default bullet points */
-    padding: 0;
-    margin: 0;
-
-    p {
-      margin: 0;
-    }
-
-    ul ul li {
-      display: inline-block; /* Display list items horizontally */
-      margin-right: 5px; /* Add spacing between skills */
-    }
-
-    ul ul li::before {
-      content: "\2022"; /* Use bullet character */
-      display: inline-block;
-      margin-right: 5px;
+  ul.experiences {
+    line-height: calc(#{$size-margin} * 1.4);
+    li {
+      margin: 0 0 0 20px;
+      padding: 0;
+      p {
+        margin: 0;
+      }
     }
   }
 }
