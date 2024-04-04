@@ -261,7 +261,7 @@ body {
     li.experience {
       // background: #f5f5f5;
       padding: calc(#{$size-margin} * 1.4);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional shadow for depth
+      // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional shadow for depth
       break-inside: avoid; /* Prevents breaking items across columns */
       margin-bottom: 20px; /* Spacing between items */
     }
