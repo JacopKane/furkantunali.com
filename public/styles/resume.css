@@ -255,19 +255,27 @@ body {
 body {
   padding: calc(((1vmin + 1vmax) / 3) * 2 / 2); }
   body .intro {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    /* Adjust ratio between left and right columns as needed */
-    column-gap: 20px;
-    /* Space between columns */ }
-    @media (max-width: 768px) {
-      body .intro {
-        grid-template-columns: 1fr;
-        /* Stack columns vertically on smaller screens */ } }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
   body .left-column,
   body .right-column {
+    flex: 1;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    justify-content: center; }
+  body .right-column {
+    align-items: flex-end;
+    text-align: right; }
+  @media (max-width: 768px) {
+    body .intro {
+      flex-direction: column;
+      align-items: flex-start; }
+    body .left-column,
+    body .right-column {
+      width: 100%;
+      align-items: flex-start;
+      text-align: left; } }
   body a.side-note {
     text-decoration: none; }
   body h1 {
@@ -352,29 +360,55 @@ body {
         text-shadow: inherit; }
       body div.doc-wrapper a:not(.no-decoration):visited {
         color: inherit; }
-  body ul.info,
-  body ul.contact,
-  body ul.educations,
-  body ul.skills,
-  body ul.contact {
-    line-height: calc(((1vmin + 1vmax) / 3) * 2 * 1.4); }
-    body ul.info li,
-    body ul.contact li,
-    body ul.educations li,
-    body ul.skills li,
-    body ul.contact li {
-      display: inline;
+  body ul.info li,
+  body ul.contact li,
+  body ul.educations li,
+  body ul.skills li,
+  body ul.contact li {
+    display: inline;
+    margin: 0; }
+    body ul.info li:not(:first-child)::before,
+    body ul.contact li:not(:first-child)::before,
+    body ul.educations li:not(:first-child)::before,
+    body ul.skills li:not(:first-child)::before,
+    body ul.contact li:not(:first-child)::before {
+      content: "\00a0\2022\00a0\00a0"; }
+  body ul.skills {
+    line-height: calc(((1vmin + 1vmax) / 3) * 3); }
+  body ul.experiences li {
+    margin: 0 0 0 0;
+    padding: 0; }
+    body ul.experiences li p {
       margin: 0; }
-      body ul.info li:not(:first-child)::before,
-      body ul.contact li:not(:first-child)::before,
-      body ul.educations li:not(:first-child)::before,
-      body ul.skills li:not(:first-child)::before,
-      body ul.contact li:not(:first-child)::before {
-        content: "\00a0\2022\00a0\00a0"; }
   body ul.experiences {
-    line-height: calc(((1vmin + 1vmax) / 3) * 2 * 1.4); }
-    body ul.experiences li {
-      margin: 0 0 0 20px;
-      padding: 0; }
-      body ul.experiences li p {
-        margin: 0; }
+    -webkit-column-count: 2;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
+    /* Firefox */
+    column-count: 2;
+    /* Standard syntax */
+    -webkit-column-gap: 20px;
+    /* Chrome, Safari, Opera */
+    -moz-column-gap: 20px;
+    /* Firefox */
+    column-gap: 20px;
+    /* Standard syntax */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; }
+    body ul.experiences li.experience {
+      padding: calc(((1vmin + 1vmax) / 3) * 2 * 1.4);
+      box-shadow: 0 2px 4px rgba(0, 0, 5, 0.1);
+      break-inside: avoid;
+      /* Prevents breaking items across columns */
+      margin-bottom: 20px;
+      /* Spacing between items */ }
+    @media (max-width: 768px) {
+      body ul.experiences {
+        -webkit-column-count: 1;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 1;
+        /* Firefox */
+        column-count: 1;
+        /* Single column layout on smaller screens */ } }

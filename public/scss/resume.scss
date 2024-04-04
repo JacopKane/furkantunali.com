@@ -96,18 +96,37 @@ body {
   padding: calc(#{$size-margin} / 2);
 
   .intro {
-    display: grid;
-    grid-template-columns: 3fr 2fr; /* Adjust ratio between left and right columns as needed */
-    column-gap: 20px; /* Space between columns */
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr; /* Stack columns vertically on smaller screens */
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .left-column,
   .right-column {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+  }
+
+  // Align content to the right in the right column
+  .right-column {
+    align-items: flex-end; // Aligns flex items (children) to the end (right side) of the container.
+    text-align: right; // Ensures the text within aligns to the right as well.
+  }
+
+  @media (max-width: 768px) {
+    .intro {
+      flex-direction: column;
+      align-items: flex-start; // Resets alignment for stacked layout on smaller screens
+    }
+
+    .left-column,
+    .right-column {
+      width: 100%;
+      align-items: flex-start; // Resets alignment for the right column in a stacked layout
+      text-align: left; // Resets text alignment for smaller screens
+    }
   }
 
   a.side-note {
@@ -201,7 +220,6 @@ body {
   ul.educations,
   ul.skills,
   ul.contact {
-    line-height: calc(#{$size-margin} * 1.4);
     li {
       display: inline;
       margin: 0;
@@ -211,14 +229,49 @@ body {
     }
   }
 
+  ul.skills {
+    line-height: calc(#{$size} * 3);
+  }
+
   ul.experiences {
-    line-height: calc(#{$size-margin} * 1.4);
     li {
-      margin: 0 0 0 20px;
+      margin: 0 0 0 0;
       padding: 0;
       p {
         margin: 0;
       }
     }
   }
+
+  ul.experiences {
+    // Remove display: grid; and related grid properties
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2; /* Standard syntax */
+
+    -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 20px; /* Firefox */
+    column-gap: 20px; /* Standard syntax */
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    li.experience {
+      // background: #f5f5f5;
+      padding: calc(#{$size-margin} * 1.4);
+      box-shadow: 0 2px 4px rgba(0, 0, 5, 0.1);
+      break-inside: avoid; /* Prevents breaking items across columns */
+      margin-bottom: 20px; /* Spacing between items */
+    }
+
+    @media (max-width: 768px) {
+      -webkit-column-count: 1; /* Chrome, Safari, Opera */
+      -moz-column-count: 1; /* Firefox */
+      column-count: 1; /* Single column layout on smaller screens */
+    }
+  }
+
+  // Ensure global or specific styles are adjusted to complement this layout
 }
