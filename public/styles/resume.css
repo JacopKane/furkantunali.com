@@ -399,7 +399,7 @@ body {
     width: 100%; }
     body ul.experiences li.experience {
       padding: calc(((1vmin + 1vmax) / 3) * 2 * 1.4);
-      box-shadow: 0 2px 4px rgba(0, 0, 5, 0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       break-inside: avoid;
       /* Prevents breaking items across columns */
       margin-bottom: 20px;
