@@ -20,6 +20,16 @@ const runtimeOpts: RuntimeOptions = {
   memory: "512MB" as const,
 };
 
+function getUrl(path = "", localURL = "http://localhost:5002") {
+  const config = functions.config().firebase;
+
+  const hostingUrl =
+    config && config.hosting && config.hosting.public
+      ? `https://${config.hosting.public}`
+      : false || localURL;
+  return `${hostingUrl}${path}`;
+}
+
 export const downloadAsPDF = functions
   .runWith(runtimeOpts)
   .region("europe-west1")
@@ -49,24 +59,42 @@ export const downloadAsPDF = functions
       await page.setViewport({
         width: 2480,
         height: 3508,
-        deviceScaleFactor: 0.7,
+        deviceScaleFactor: 0.2,
         isMobile: false,
       });
 
-      await page.goto("https://furkantunali-1043.web.app/resume-doc.html", {
+      const url = getUrl("/resume-doc.html");
+
+      await page.goto(url, {
         waitUntil: "networkidle2",
       });
 
       logger.info("Page loaded", { structuredData: true });
 
+      const fs = require("fs");
+      const path = require("path");
+
+      // For debugging: Take a screenshot
+      await page.screenshot({
+        path: path.join(__dirname, "layout_before_pdf.png"),
+      });
+
+      // For debugging: Dump HTML
+      const pageContent = await page.content();
+      fs.writeFileSync(path.join(__dirname, "pageContent.html"), pageContent);
+
+      await page.setUserAgent(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+      );
+
       const buffer = await page.pdf({
         format: "A4",
         printBackground: true,
         margin: {
-          left: "10px",
-          top: "20px",
-          right: "10px",
-          bottom: "20px",
+          left: "0",
+          top: "0",
+          right: "0",
+          bottom: "0",
         },
       });
 
@@ -75,7 +103,7 @@ export const downloadAsPDF = functions
       response.header("Content-Type", "application/pdf");
       response.header(
         "Content-Disposition",
-        "attachment; filename=\"Furkan_Tunali_Resume.pdf\"",
+        'attachment; filename="Furkan_Tunali_Resume.pdf"',
       );
 
       logger.info("Response headers set", { structuredData: true });

@@ -1,5 +1,11 @@
 {
+  "extends": "./tsconfig.json", // Extends the base configuration
+  "compilerOptions": {
+    "sourceMap": true, // Enable source maps for debugging
+    "noUnusedLocals": false // More lenient on unused locals in development
+  },
   "include": [
-    ".eslintrc.js"
+    "src", // Include your source files
+    "lib" // Include tests in development
   ]
 }
