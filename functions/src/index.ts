@@ -71,21 +71,21 @@ export const downloadAsPDF = functions
 
       logger.info("Page loaded", { structuredData: true });
 
-      const fs = require("fs");
-      const path = require("path");
-
-      // For debugging: Take a screenshot
-      await page.screenshot({
-        path: path.join(__dirname, "layout_before_pdf.png"),
-      });
-
-      // For debugging: Dump HTML
-      const pageContent = await page.content();
-      fs.writeFileSync(path.join(__dirname, "pageContent.html"), pageContent);
-
       await page.setUserAgent(
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
       );
+
+      // const fs = require("fs");
+      // const path = require("path");
+
+      // // For debugging: Take a screenshot
+      // await page.screenshot({
+      //   path: path.join(__dirname, "layout_before_pdf.png"),
+      // });
+
+      // For debugging: Dump HTML
+      // const pageContent = await page.content();
+      // fs.writeFileSync(path.join(__dirname, "pageContent.html"), pageContent);
 
       const buffer = await page.pdf({
         format: "A4",
