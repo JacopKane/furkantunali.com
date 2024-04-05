@@ -28,6 +28,5 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url("path-to-your-noise-texture.png");
   opacity: 0.3;
   animation: grain 0.2s steps(10) infinite; }

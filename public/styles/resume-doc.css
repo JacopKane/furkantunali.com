@@ -186,140 +186,23 @@
   opacity: 0.3;
   animation: grain 0.2s steps(10) infinite; }
 
-html {
-  border: 1px solid #fff; }
-
 html,
 body {
-  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
-  font-weight: normal;
-  line-height: normal;
-  color: #000;
-  font-size: calc(((1vmin + 1vmax) / 3) * 3.6);
-  font-size: clamp(14px, 1vw, 18px);
-  line-height: 1.5;
+  border: 0;
   margin: 0 auto;
-  padding: 0; }
-  @media print {
-    html,
-    body {
-      font-size: calc(((1vmin + 1vmax) / 3) * 1.8);
-      max-width: 190mm; } }
-  html a,
-  body a {
-    color: #000;
-    transition: color 0.2s ease; }
-    html a:not(.no-decoration):hover,
-    body a:not(.no-decoration):hover {
-      color: #999999; }
-    html a:visited,
-    body a:visited {
-      color: #666666; }
-    html a:hover,
-    body a:hover {
-      color: #999999; }
-
-body {
-  padding: calc(((1vmin + 1vmax) / 3) * 2 / 2); }
-  body .intro {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; }
-  body .left-column,
-  body .right-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-  body .left-column {
-    align-items: flex-start;
-    text-align: left; }
-  body .right-column {
-    align-items: flex-end;
-    text-align: right; }
-  body a.side-note {
-    text-decoration: none; }
-  body h1 {
-    font-weight: 100; }
-  body h2 {
-    font-weight: 300; }
-  body h3 {
-    font-weight: 500; }
-    body h3 em {
-      font-weight: 300; }
-  body h4 {
-    font-weight: 600; }
-  body h5 {
-    font-weight: 700; }
-  body h6 {
-    font-weight: 800; }
-  body ul,
-  body h1,
-  body h2,
-  body h3,
-  body h4,
-  body h5,
-  body h6,
-  body section,
-  body p {
-    padding: 0;
-    margin: 0; }
-  @media print {
-    body nav {
-      display: none; } }
-  body nav .logo {
-    margin: 0; }
-    body nav .logo, body nav .logo:active, body nav .logo:visited {
-      background: #000;
-      border-radius: calc((((1vmin + 1vmax) / 3) * 2 * 3));
-      color: #fff;
-      display: inline-block;
-      font-size: calc(((1vmin + 1vmax) / 3) * 2 * 3 * 0.5);
-      font-weight: 100;
-      height: calc((((1vmin + 1vmax) / 3) * 2 * 3));
-      line-height: calc((((1vmin + 1vmax) / 3) * 2 * 3));
-      text-align: center;
-      transition: color 0.2s ease-out, background-color 0.2s ease-out;
-      width: calc((((1vmin + 1vmax) / 3) * 2 * 3)); }
-    body nav .logo:hover {
-      background: #999999;
-      color: #000; }
-  body nav a:not(.logo) {
-    font-size: 1rem;
-    text-align: right; }
-  body nav div.right {
-    text-align: right; }
-  body header {
-    margin-top: calc((((1vmin + 1vmax) / 3) * 2) / 2); }
-  body footer {
-    font-size: 0.6rem;
-    margin-top: calc((((1vmin + 1vmax) / 3) * 2) / 2);
-    text-align: center; }
-  body ul.info li,
-  body ul.contact li,
-  body ul.educations li,
-  body ul.skills li,
-  body ul.contact li {
-    display: inline;
-    margin: 0; }
-    body ul.info li:not(:first-child)::before,
-    body ul.contact li:not(:first-child)::before,
-    body ul.educations li:not(:first-child)::before,
-    body ul.skills li:not(:first-child)::before,
-    body ul.contact li:not(:first-child)::before {
-      content: "\00a0\2022\00a0\00a0"; }
-  body ul.experiences li {
-    margin: 0 0 0 0;
-    padding: 0; }
-    body ul.experiences li p {
-      margin: 0; }
-  body ul.experiences {
-    column-count: 2;
-    column-gap: 20px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0; }
-    body ul.experiences li.experience {
-      break-inside: avoid;
-      margin-bottom: 20px;
-      padding: calc(((1vmin + 1vmax) / 3) * 2 * 1.4); }
+  padding: 0;
+  font-size: calc((((1vmin + 1vmax) / 3)) * 1.44); }
+  html a:not(.no-decoration),
+  body a:not(.no-decoration) {
+    text-decoration: underline; }
+  @media (max-width: 944px) {
+    html .intro,
+    body .intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+    html .right-column,
+    body .right-column {
+      align-items: flex-end;
+      text-align: right;
+      width: auto; } }

@@ -1,5 +1,3 @@
-@import "./smart-underline.scss";
-
 @mixin font-family() {
   font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: normal;
@@ -47,7 +45,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url("path-to-your-noise-texture.png");
   opacity: 0.3; // Adjust as needed
   animation: grain 0.2s steps(10) infinite;
 }
+
+$color-text: #000;
+$color-link: #000;
+$color-link-hover: lighten($color-link, 60%);
+$color-link-visited: lighten($color-link, 40%);
+$color-background: #fff;
+$color-selection: #ffc;
+$size: "((1vmin + 1vmax) / 3)";
+$size-margin: "((1vmin + 1vmax) / 3) * 2";

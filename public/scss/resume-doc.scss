@@ -1,0 +1,32 @@
+@import "fonts.scss";
+@import "common.scss";
+
+html,
+body {
+  border: 0;
+  margin: 0 auto;
+  padding: 0;
+
+  font-size: calc((#{$size}) * 1.44);
+
+  a {
+    &:not(.no-decoration) {
+      // @include no-smart-underline();
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 944px) {
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .right-column {
+      align-items: flex-end; // Resets alignment for both columns when stacked.
+      text-align: right; // Text in both columns aligns to the left on smaller screens.
+      width: auto; // Each column takes full width of the container on smaller screens.
+    }
+  }
+}

@@ -30,9 +30,8 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
     line-height: calc((#{$size}));
 
-    line-height: calc((#{$size}));
     text-align: center;
-    text-decoration: none;
+
     transition:
       color 0.2s ease-out,
       background-color 0.2s ease-out;
@@ -67,16 +66,10 @@ body {
   padding: 0;
   a {
     color: $color-link;
-    text-decoration: none;
+
     transition: color 0.2s ease;
 
     &:not(.no-decoration) {
-      @include smart-underline(
-        $color-background,
-        $color-link,
-        $color-selection,
-        $position: 94%
-      );
       &:hover {
         color: $color-link-hover;
       }
@@ -103,30 +96,20 @@ body {
 
   .left-column,
   .right-column {
-    flex: 1;
+    flex: 1; // Both columns will take equal width in the flex container.
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; // Vertically centers the content in the column.
   }
 
-  // Align content to the right in the right column
+  .left-column {
+    align-items: flex-start; // Aligns items to the start of the flex container (left side).
+    text-align: left; // Text within the left column will align to the left.
+  }
+
   .right-column {
-    align-items: flex-end; // Aligns flex items (children) to the end (right side) of the container.
-    text-align: right; // Ensures the text within aligns to the right as well.
-  }
-
-  @media (max-width: 768px) {
-    .intro {
-      flex-direction: column;
-      align-items: flex-start; // Resets alignment for stacked layout on smaller screens
-    }
-
-    .left-column,
-    .right-column {
-      width: 100%;
-      align-items: flex-start; // Resets alignment for the right column in a stacked layout
-      text-align: left; // Resets text alignment for smaller screens
-    }
+    align-items: flex-end; // Aligns items to the end of the flex container (right side).
+    text-align: right; // Text within the right column will align to the right.
   }
 
   a.side-note {
@@ -179,7 +162,7 @@ body {
     }
 
     .logo {
-      @include logo("#{$size-margin} * 4.4");
+      @include logo("#{$size-margin} * 3");
       margin: 0;
     }
 
@@ -205,16 +188,6 @@ body {
     text-align: center;
   }
 
-  div.doc-wrapper {
-    border: 20px solid #fff;
-
-    a {
-      &:not(.no-decoration) {
-        @include no-smart-underline();
-      }
-    }
-  }
-
   ul.info,
   ul.contact,
   ul.educations,
@@ -229,10 +202,6 @@ body {
     }
   }
 
-  ul.skills {
-    line-height: calc(#{$size} * 3);
-  }
-
   ul.experiences {
     li {
       margin: 0 0 0 0;
@@ -243,35 +212,19 @@ body {
     }
   }
 
+  // Masonry layout for the rest
   ul.experiences {
-    // Remove display: grid; and related grid properties
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2; /* Standard syntax */
-
-    -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 20px; /* Firefox */
-    column-gap: 20px; /* Standard syntax */
-
+    column-count: 2;
+    column-gap: 20px;
     list-style-type: none;
     padding: 0;
     margin: 0;
-    width: 100%;
 
     li.experience {
-      // background: #f5f5f5;
+      break-inside: avoid;
+      margin-bottom: 20px;
       padding: calc(#{$size-margin} * 1.4);
-      // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional shadow for depth
-      break-inside: avoid; /* Prevents breaking items across columns */
-      margin-bottom: 20px; /* Spacing between items */
-    }
-
-    @media (max-width: 768px) {
-      -webkit-column-count: 1; /* Chrome, Safari, Opera */
-      -moz-column-count: 1; /* Firefox */
-      column-count: 1; /* Single column layout on smaller screens */
+      // Resets or specific styles for the rest of the experiences
     }
   }
-
-  // Ensure global or specific styles are adjusted to complement this layout
 }

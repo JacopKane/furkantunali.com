@@ -1,0 +1,35 @@
+@import "./smart-underline.scss";
+@import "fonts.scss";
+@import "common.scss";
+
+html,
+body {
+  a {
+    @include smart-underline(
+      $color-background,
+      $color-link,
+      $color-selection,
+      $position: 94%
+    );
+  }
+
+  @media (max-width: 944px) {
+    .intro {
+      flex-direction: column; // Stacks the columns vertically on smaller screens.
+      align-items: flex-start; // Aligns items to the start (left side) in the stacked layout.
+    }
+
+    .left-column,
+    .right-column {
+      align-items: flex-start; // Resets alignment for both columns when stacked.
+      text-align: left; // Text in both columns aligns to the left on smaller screens.
+      width: 100%; // Each column takes full width of the container on smaller screens.
+    }
+  }
+
+  @media (max-width: 768px) {
+    ul.experiences {
+      column-count: 1;
+    }
+  }
+}
