@@ -1,353 +1,487 @@
-<!DOCTYPE html><html lang=""><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="I'm a software architect, full-stack JavaScript developer and formerly a designer.">
-  <title>Furkan Tunalı Résumé</title>
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="I'm a software architect, full-stack JavaScript developer and formerly a designer."
+    />
+    <title>Furkan Tunalı Résumé</title>
+  </head>
+  <body>
+    <% if (!GLOBEL.resumeDoc) { %>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="icons/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="icons/apple-touch-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="icons/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="icons/apple-touch-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="icons/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="icons/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="icons/apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="icons/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="icons/apple-touch-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="icons/favicon-32x32.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="icons/android-chrome-192x192.png"
+      sizes="192x192"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="icons/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="icons/favicon-16x16.png"
+      sizes="16x16"
+    />
+    <link rel="manifest" href="icons/manifest.json" />
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-TileImage" content="icons/mstile-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <% } %>
+    <link rel="stylesheet" href="styles/resume.css" />
+    <% if (GLOBEL.resume) { %>
+    <link rel="stylesheet" href="styles/resume-web.css" />
+    <% } %>
+    <% if (GLOBEL.resumeDoc) { %>
+    <link rel="stylesheet" href="styles/resume-doc.css" />
+    <% } %>
 
-  </head><body><% if (!GLOBEL.resumeDoc) { %>
-  <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
-  <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="icons/android-chrome-192x192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
-  <link rel="manifest" href="icons/manifest.json">
-  <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-  <% } %>
-  <link rel="stylesheet" href="styles/resume.css">
+    <% if (!GLOBEL.resumeDoc) { %>
+    <!-- <nav id="download">
+      <a
+        href="https://furkantunali.com"
+        class="logo no-decoration"
+        title="Furkan Tunalı"
+        alt="Furkan Tunalı"
+        ><em>ft</em></a
+      >
+      <a
+        title="Furkan Tunalı Resume PDF"
+        target="_blank"
+        href="//bit.ly/download-cv-as-pdf"
+        download="Furkan Tunalı Résumé.pdf"
+        >Download as PDF</a
+      >
+    </nav> -->
+    <nav id="download">
+      <a
+        href="https://furkantunali.com"
+        class="logo no-decoration"
+        title="Furkan Tunalı"
+        alt="Furkan Tunalı"
+        ><em>ft</em></a
+      >
+      <a
+        title="Furkan Tunalı Resume PDF"
+        target="_blank"
+        href="//127.0.0.1:5555/furkantunali-1043/europe-west1/downloadAsPDF"
+        download="Furkan Tunalı Résumé.pdf"
+        >Download as PDF</a
+      >
+    </nav>
+    <% } %>
 
+    <header>
+      <hgroup>
+        <h1>Furkan Tunalı Résumé</h1>
+      </hgroup>
+    </header>
 
+    <div class="container">
+      <!-- <hr /> -->
 
-  <% if (!GLOBEL.resume) { %>
-  <div class="doc-wrapper">
-  <% } %>
-
-      <% if (!GLOBEL.resumeDoc) { %>
-      <nav id="download">
-          <a href="https://furkantunali.com" class="logo no-decoration" title="Furkan Tunalı" alt="Furkan Tunalı"><em>ft</em></a>
-          <a title="Furkan Tunalı Resume PDF" target="_blank" href="//bit.ly/download-cv-as-pdf" download="Furkan Tunalı Résumé.pdf">Download as PDF</a>
-      </nav>
-      <!-- <nav id="download">
-          <a href="https://furkantunali.com" class="logo no-decoration" title="Furkan Tunalı" alt="Furkan Tunalı"><em>ft</em></a>
-          <a title="Furkan Tunalı Resume PDF" target="_blank" href="//127.0.0.1:5555/furkantunali-1043/europe-west1/downloadAsPDF" download="Furkan Tunalı Résumé.pdf">Download as PDF</a>
-      </nav> -->
-      <% } %>
-
-      <header>
-          <hgroup>
-              <h1>Furkan Tunalı Résumé</h1>
-          </hgroup>
-      </header>
-
-      <div class="container">
-
-        <section id="summary">
-          <h2>Summary</h2>
-          <p>Experienced software engineer architecting scalable, innovative solutions for multi-cloud environments, optimizing developer experience across web development, full-stack.  Currently exploring AI to reimagine software functionality and create intelligent solutions. Background in leadership, founding, and design.</p>
-        </section>
-
-        <div class="intro">
-          <div class="left-column">
-
-            <section id="info">
-              <h2>Info</h2>
-              <ul class="info">
-                <li><strong>Name:</strong>
-                  M. Furkan TUNALI
-                </li>
-                <li><strong>Current residency:</strong>
-                  Berlin
-                </li>
-            </section>
-
-          </div>
-          <div class="right-column">
-            <section id="contact">
-              <h2>Contact</h2>
-              <ul class="contact">
-                  <li>
-                      <strong>E-mail:</strong>
-                      <a href="mailto:mail@furkantunali.com" target="_blank">mail@furkantunali.com</a>
-                  </li>
-                  <li>
-                      <strong><a href="https://linkedin.com/in/furkan" target="_blank">LinkedIn</a></strong>
-                  </li>
-                  <li>
-                      <strong><a href="https://github.com/JacopKane" target="_blank">GitHub</a></strong>
-                  </li>
-                  <li>
-                    <strong>Web:</strong>
-                    <a href="https://furkantunali.com" target="_blank">FurkanTunali.com</a>
-                </li>
-              </ul>
-            </section>
-          </div>
+      <div class="intro">
+        <div class="left-column">
+          <section id="info">
+            <h2>Info</h2>
+            <ul class="info">
+              <li>
+                <strong>Name:</strong>
+                M. Furkan TUNALI
+              </li>
+              <li>
+                <strong>Current residency:</strong>
+                Berlin
+              </li>
+            </ul>
+          </section>
         </div>
+        <div class="right-column">
+          <section id="contact">
+            <h2>Contact</h2>
+            <ul class="contact">
+              <li>
+                <strong>E-mail:</strong>
+                <a href="mailto:mail@furkantunali.com" target="_blank"
+                  >mail@furkantunali.com</a
+                >
+              </li>
+              <li>
+                <strong
+                  ><a href="https://linkedin.com/in/furkan" target="_blank"
+                    >LinkedIn</a
+                  ></strong
+                >
+              </li>
+              <li>
+                <strong
+                  ><a href="https://github.com/JacopKane" target="_blank"
+                    >GitHub</a
+                  ></strong
+                >
+              </li>
+              <li>
+                <strong>Web:</strong>
+                <a href="https://furkantunali.com" target="_blank"
+                  >FurkanTunali.com</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <hr />
+
+      <section id="summary">
+        <h2>Summary</h2>
+        <p>
+          Experienced software engineer architecting scalable, innovative
+          solutions for multi-cloud environments, optimizing developer
+          experience across web development, full-stack. Currently exploring AI
+          to reimagine software functionality and create intelligent solutions.
+          Background in leadership, founding, and design.
+        </p>
+      </section>
+
+      <hr />
+
       <section id="skills">
         <h2>Skills</h2>
         <ul class="skills">
-          <li><strong>Cloud</strong>
-              Amazon Web Services
-              (EKS,
-              ECS,
-              CloudFormation,
-              Lambda,
-              Fargate,
-              ECR,
-              RDS,
-              Cloud Map,
-              EC2,
-              Route53,
-              IAM),
-              Microsoft Azure
-              (Azure Active Directory,
-              Azure Functions,
-              Cosmos DB),
-              Google Cloud Service
-              (Vertex AI,
-              Cloud Vision API,
-              Cloud Run,
-              Cloud Storage),
-              Firebase,
-              Azure DevOps Services,
-              Heroku
+          <li>
+            <strong>Cloud</strong>
+            Amazon Web Services (EKS, ECS, CloudFormation, Lambda, Fargate, ECR,
+            RDS, Cloud Map, EC2, Route53, IAM), Microsoft Azure (Azure Active
+            Directory, Azure Functions, Cosmos DB), Google Cloud Service (Vertex
+            AI, Cloud Vision API, Cloud Run, Cloud Storage), Firebase, Azure
+            DevOps Services, Heroku
           </li>
-          <li><strong>Containerization and Orchestration</strong>
-              Docker,
-              Kubernetes,
-              Docker Compose
+          <li>
+            <strong>Containerization and Orchestration</strong>
+            Docker, Kubernetes, Docker Compose
           </li>
-          <li><strong>IaC</strong>
-              Terraform
+          <li>
+            <strong>IaC</strong>
+            Terraform
           </li>
-          <li><strong>CI & CD</strong>
-              GitHub Actions,
-              Travis,
-              Jenkins,
-              TeamCity
+          <li>
+            <strong>CI & CD</strong>
+            GitHub Actions, Travis, Jenkins, TeamCity
           </li>
-          <li><strong>Software Languages</strong>
-              Node.js / JavaScript / ECMAScript,
-              TypeScript,
-              Python,
-              Ruby,
-              PHP,
-              SQL,
-              C, C++,
-              Bash,
-              ASP,
-              .NET,
-              PIC
+          <li>
+            <strong>Software Languages</strong>
+            Node.js / JavaScript / ECMAScript, TypeScript, Python, Ruby, PHP,
+            SQL, C, C++, Bash, ASP, .NET, PIC
           </li>
-          <li><strong>Frameworks & Libraries</strong>
+          <li>
+            <strong>Frameworks & Libraries</strong>
 
-              NestJS,
-              React / Redux / Flux,
-              NextJS,
-              Vue.js,
-              Angular,
-              Backbone,
-              Express,
-              Koa,
-              LoopBack,
-              CakePHP,
-              Lithium,
-              CodeIgniter,
-              RxJS,
-              Serverless for Lambda,
-              CanJS,
-              Polymer,
-              Aurelia
-
+            NestJS, React / Redux / Flux, NextJS, Vue.js, Angular, Backbone,
+            Express, Koa, LoopBack, CakePHP, Lithium, CodeIgniter, RxJS,
+            Serverless for Lambda, CanJS, Polymer, Aurelia
           </li>
-          <li><strong>Testing:</strong>
+          <li>
+            <strong>Testing:</strong>
 
-              Jest,
-              Mocha,
-              Chai,
-              Yadda,
-              Webdriver.io,
-              Selenium
-
+            Jest, Mocha, Chai, Yadda, Webdriver.io, Selenium
           </li>
-          <li><strong>AI</strong>
+          <li>
+            <strong>AI</strong>
 
-              OpenAI API,
-              Jupyter Notebooks,
-              AI Agents,
-              AI Workflows,
-              Google AI Studio
-
+            OpenAI API, Jupyter Notebooks, AI Agents, AI Workflows, Google AI
+            Studio
           </li>
-          <li><strong>DB</strong>
+          <li>
+            <strong>DB</strong>
 
-              MongoDB,
-              MySQL,
-              SQLite,
-              PostgreSQL,
-              Cosmos DB,
-              RethinkDB
-
+            MongoDB, MySQL, SQLite, PostgreSQL, Cosmos DB, RethinkDB
           </li>
-          <li><strong>Front-end</strong>
+          <li>
+            <strong>Front-end</strong>
 
-              HTML,
-              CSS,
-              LESS,
-              SASS,
-              SCSS,
-              PostCSS
-
+            HTML, CSS, LESS, SASS, SCSS, PostCSS
           </li>
-          <li><strong>Design</strong>
+          <li>
+            <strong>Design</strong>
 
-              Adobe Photoshop,
-              Sketch,
-              Adobe Illustrator,
-              Adobe Fireworks,
-              UI Design,
-              Wireframing / Mockup Design,
-              Responsive Design,
-              Web UX,
-              Branding / Identity,
-              Print Design
-
+            Adobe Photoshop, Sketch, Adobe Illustrator, Adobe Fireworks, UI
+            Design, Wireframing / Mockup Design, Responsive Design, Web UX,
+            Branding / Identity, Print Design
           </li>
-          <li><strong>Version Control</strong>
+          <li>
+            <strong>Version Control</strong>
 
-              Git,
-              SVN
-
+            Git, SVN
           </li>
           <li>
             <strong>Other</strong>
-              NGINX,
-              Apache HTTP Server,
-              Webpack,
-              Babel,
-              Flow Type,
-              Magento,
-              HighlandJS,
-              WebStorm,
-              Protractor,
-              jQuery,
-              RequireJS,
-              Underscore.js / lodash,
-              PM2,
-              WordPress,
-              IBM API Connect,
-              Bower,
-              SystemJS,
-              jspm,
-              Homebrew,
-              composer,
-              pip,
-              gem,
-              PhoneGap,
-              Appcelerator,
-              fish Shell
+            NGINX, Apache HTTP Server, Webpack, Babel, Flow Type, Magento,
+            HighlandJS, WebStorm, Protractor, jQuery, RequireJS, Underscore.js /
+            lodash, PM2, WordPress, IBM API Connect, Bower, SystemJS, jspm,
+            Homebrew, composer, pip, gem, PhoneGap, Appcelerator, fish Shell
           </li>
 
-          <li><strong>OS</strong>
-            macOS / OS X,
-            Linux,
-            Windows
+          <li>
+            <strong>OS</strong>
+            macOS / OS X, Linux, Windows
           </li>
 
-          <li><strong>Design and Creative Tools</strong>
+          <li>
+            <strong>Design and Creative Tools</strong>
 
-              Web Design on the browser,
-              UI Design,
-              Wireframing / Mockup Design,
-              Responsive Design,
-              Web UX,
-              Branding / Identity,
-              Print Design,
-              Adobe Photoshop,
-              Sketch,
-              Adobe Illustrator,
-              Adobe Fireworks
-
+            Web Design on the browser, UI Design, Wireframing / Mockup Design,
+            Responsive Design, Web UX, Branding / Identity, Print Design, Adobe
+            Photoshop, Sketch, Adobe Illustrator, Adobe Fireworks
           </li>
-          <li><strong>Methodologies and Development Practices</strong>
+          <li>
+            <strong>Methodologies and Development Practices</strong>
 
-              Functional Programming,
-              Isomorphic / Universal Javascript,
-              TDD (Test-Driven Development),
-              BDD (Behavior-Driven Development),
-              MVC (Model-View-Controller),
-              MVVM (Model-View-ViewModel),
-              OOP (Object-Oriented Programming),
-              Prototypal OOP,
-              OLOO (Objects Linking to Other Objects),
-              AOP (Aspect-Oriented Programming),
-              ES6 Modules,
-              AMD (Asynchronous Module Definition),
-              CommonJS,
-              Mobile optimization
-
+            Functional Programming, Isomorphic / Universal Javascript, TDD
+            (Test-Driven Development), BDD (Behavior-Driven Development), MVC
+            (Model-View-Controller), MVVM (Model-View-ViewModel), OOP
+            (Object-Oriented Programming), Prototypal OOP, OLOO (Objects Linking
+            to Other Objects), AOP (Aspect-Oriented Programming), ES6 Modules,
+            AMD (Asynchronous Module Definition), CommonJS, Mobile optimization
           </li>
-          <li><strong>APIs and Integration</strong>
+          <li>
+            <strong>APIs and Integration</strong>
 
-              OpenAI,
-              SalesForce,
-              Stripe,
-              Mixpanel,
-              Facebook,
-              Twitter,
-              Shopify,
-              Flickr,
-              Tumblr,
-              WP REST,
-              SoundCloud,
-              Pinterest
-
+            OpenAI, SalesForce, Stripe, Mixpanel, Facebook, Twitter, Shopify,
+            Flickr, Tumblr, WP REST, SoundCloud, Pinterest
           </li>
-          <li><strong>Languages</strong>
+          <li>
+            <strong>Languages</strong>
 
-              Turkish - Native,
-              English - Advanced,
-              German - A1
-
+            Turkish - Native, English - Advanced, German - A1
           </li>
         </ul>
       </section>
+
+      <hr />
 
       <section id="experiences">
         <h2>Experiences</h2>
 
         <ul class="experiences">
-
           <!-- heyData Experience -->
           <li class="experience">
             <h3>
-              <em><strong>Senior Infrastructure and Software Engineer</strong></em> at
-              <a target="_blank" href="https://heydata.eu/">heyData GmbH, Berlin</a>
+              <em
+                ><strong
+                  >Senior Infrastructure and Software Engineer</strong
+                ></em
+              >
+              at
+              <a target="_blank" href="https://heydata.eu/"
+                >heyData GmbH, Berlin</a
+              >
             </h3>
             <h4>01/2022 - Present</h4>
             <h5>My contributions include:</h5>
             <ul>
-              <li><p>Designing and deploying <em>cloud infrastructure</em> with <em>Kubernetes</em> and <em>Terraform</em>, aiming for scalability and reliability.</p></li>
-              <li><p>Optimizing developer workflows through <em>CI/CD pipelines</em> using <em>GitHub Actions</em> alongside creating useful <em>DevOps tools</em>.</p></li>
-              <li><p>Maintaining <em>Docker</em> environments and crafting automation scripts with <em>Makefile</em> and <em>Bash</em>.</p></li>
-              <li><p>Providing guidance and support in resolving complex technical challenges.</p></li>
+              <li>
+                <p>
+                  Designing and deploying <em>cloud infrastructure</em> with
+                  <em>Kubernetes</em> and <em>Terraform</em>, aiming for
+                  scalability and reliability.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Optimizing developer workflows through
+                  <em>CI/CD pipelines</em> using
+                  <em>GitHub Actions</em> alongside creating useful
+                  <em>DevOps tools</em>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Maintaining <em>Docker</em> environments and crafting
+                  automation scripts with <em>Makefile</em> and <em>Bash</em>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Providing guidance and support in resolving complex technical
+                  challenges.
+                </p>
+              </li>
             </ul>
             <h5>Technologies and tools I work with:</h5>
             <ul>
-              <li><p>A range of AWS services (<em>Fargate</em>, <em>ECS</em>, <em>CloudFormation</em>, <em>ECR</em>, <em>RDS</em>, <em>Cloud Map</em>, <em>EC2</em>, <em>Route53</em>, <em>Lambda</em>) to facilitate effective deployment and service management.</p></li>
-              <li><p>Employing current web technologies like <em>JavaScript</em>, <em>TypeScript</em>, <em>NestJS</em>, <em>NextJS</em>, and database management with <em>PostgreSQL</em>.</p></li>
-              <li><p>Building and managing microservices architecture using <em>Docker Compose</em>, coordinated with <em>Kubernetes</em>.</p></li>
-              <li><p>Developing solutions with modern frameworks such as <em>Rails</em> and <em>VUE</em> for comprehensive full-stack capabilities.</p></li>
+              <li>
+                <p>
+                  A range of AWS services (<em>Fargate</em>, <em>ECS</em>,
+                  <em>CloudFormation</em>, <em>ECR</em>, <em>RDS</em>,
+                  <em>Cloud Map</em>, <em>EC2</em>, <em>Route53</em>,
+                  <em>Lambda</em>) to facilitate effective deployment and
+                  service management.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Employing current web technologies like <em>JavaScript</em>,
+                  <em>TypeScript</em>, <em>NestJS</em>, <em>NextJS</em>, and
+                  database management with <em>PostgreSQL</em>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Building and managing microservices architecture using
+                  <em>Docker Compose</em>, coordinated with <em>Kubernetes</em>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Developing solutions with modern frameworks such as
+                  <em>Rails</em> and <em>VUE</em> for comprehensive full-stack
+                  capabilities.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <!--  ./experience -->
+
+          <li class="experience">
+            <h3>
+              <em>Senior Software Architect</em> at
+              <a target="_blank" href="https://www.sgef-digital-factory.com/">
+                Société Générale Digital Factory, Berlin</a
+              >
+            </h3>
+            <h4>09/2019 - 05/2020</h4>
+            <h5>My contributions include:</h5>
+            <ul>
+              <li><p>Building the technical vision</p></li>
+              <li><p>Driving the adoption of the technical concept</p></li>
+              <li><p>Trying to create a good DX (developer experience)</p></li>
+              <li>
+                <p>
+                  Linking and ensuring compatibility of in-house services with
+                  parent company related services through communication and
+                  research
+                </p>
+              </li>
+              <li>
+                <p>
+                  Being sure of delivering stable and secure products on time
+                </p>
+              </li>
+              <li>
+                <p>
+                  Researching and building cloud integrations and maintaining
+                  engineered artefacts
+                </p>
+              </li>
+              <li>
+                <p>
+                  Contributing to building initial full-stack boilerplates of
+                  MVP
+                </p>
+              </li>
+              <li>
+                <p>
+                  Migrations of existing data structures into upcoming services
+                </p>
+              </li>
+              <li>
+                <p>
+                  Integrating fully automated continuous delivery, deployment
+                  and development
+                </p>
+              </li>
+              <li><p>Implementing testing strategies</p></li>
+              <li>
+                <p>
+                  Participating in planning and hiring of a new development team
+                  from scratch
+                </p>
+              </li>
+              <li><p>Pair programming</p></li>
+              <li><p>Mentoring or onboarding new members of the team</p></li>
+              <li>
+                <p>
+                  Code reviews and gradually implementing linting strategies for
+                  code quality and consistency
+                </p>
+              </li>
+              <li>
+                <p>Automating semantic code versioning and conventions</p>
+              </li>
+              <li>
+                <p>Working on containerisation and deployment strategies</p>
+              </li>
+              <li><p>Researching and applying data storage</p></li>
+            </ul>
+            <h5>Technologies and tools I work with:</h5>
+            <ul>
+              <li>
+                <p>
+                  Microsoft Azure, Github Actions, Node, Vue.js, TypeScript,
+                  Docker, WebPack, GraphQL, Apollo, Express, Cosmos DB,
+                  PostgreSQL, Azure Active Directory, Azure Functions, OpenID
+                  Authentication, Jest, Web Components, Stencil.js
+                </p>
+              </li>
             </ul>
           </li>
           <!--  ./experience -->
@@ -356,7 +490,8 @@
             <h3>
               <em>Senior Back-end Architect</em> at
               <a target="_blank" href="https://gamebook.io">
-                GameBook AG (Formerly Experimental Game GmBH), Berlin</a>
+                GameBook AG (Formerly Experimental Game GmBH), Berlin</a
+              >
             </h3>
             <h4>09/2018 - 02/2019</h4>
             <h5>Some of my tasks were:</h5>
@@ -396,7 +531,9 @@
           <li class="experience">
             <h3>
               <em>Lead JavaScript/Front-End Developer</em> at
-              <a target="_blank" href="https://chantellelingerie.com/?lang=en">Groupe Chantelle, Digital Lab, Berlin</a>
+              <a target="_blank" href="https://chantellelingerie.com/?lang=en"
+                >Groupe Chantelle, Digital Lab, Berlin</a
+              >
             </h3>
             <h4>08/2017 - 12/2018</h4>
             <h5>Some of my tasks were:</h5>
@@ -558,46 +695,62 @@
               <li>
                 <p>
                   Web development and design for
-                  <a target="_blank" href="http://gymandtonic.com.tr">Gym &amp; Tonic</a>
+                  <a target="_blank" href="http://gymandtonic.com.tr"
+                    >Gym &amp; Tonic</a
+                  >
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Design,
-                    JavaScript, PHP, HTML, LESS, CSS, CanJS, Mustache.</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> Design,
+                    JavaScript, PHP, HTML, LESS, CSS, CanJS, Mustache.</small
+                  >
                 </p>
               </li>
 
               <li>
                 <p>
                   Web development for
-                  <a target="_blank" href="http://silentblessed.com.tr">Silent + Blessed</a>
+                  <a target="_blank" href="http://silentblessed.com.tr"
+                    >Silent + Blessed</a
+                  >
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Design,
-                    JavaScript, HTML, LESS, CSS, CanJS, Mustache.</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> Design,
+                    JavaScript, HTML, LESS, CSS, CanJS, Mustache.</small
+                  >
                 </p>
               </li>
 
               <li>
                 <p>
                   Web development and design for
-                  <a target="_blank" href="http://mirjamschmitt.de">Mirjam Schmitt</a>
+                  <a target="_blank" href="http://mirjamschmitt.de"
+                    >Mirjam Schmitt</a
+                  >
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Design,
+                  <small
+                    ><strong>Some of the project skills:</strong> Design,
                     JavaScript, HTML, LESS, CSS, CanJS, Mustache, WordPress,
-                    WordPress JSON API.</small>
+                    WordPress JSON API.</small
+                  >
                 </p>
               </li>
 
               <li>
                 <p>
                   Web development and design and UX consultancy for
-                  <a target="_blank" href="http://lesbenjamins.com">Les Benjamins</a>
+                  <a target="_blank" href="http://lesbenjamins.com"
+                    >Les Benjamins</a
+                  >
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Wireframing,
+                  <small
+                    ><strong>Some of the project skills:</strong> Wireframing,
                     Mockup, Design, JavaScript, HTML, LESS, CSS, CanJS,
-                    Mustache, CakePHP.</small>
+                    Mustache, CakePHP.</small
+                  >
                 </p>
               </li>
 
@@ -605,11 +758,17 @@
                 <p>
                   Web development, design, mobile app design, UX design and
                   refactoring legacy code for
-                  <a target="_blank" href="https://www.crunchbase.com/organization/etiqadd">etiqadd</a>
+                  <a
+                    target="_blank"
+                    href="https://www.crunchbase.com/organization/etiqadd"
+                    >etiqadd</a
+                  >
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Wireframing,
-                    Design, JavaScript, AMD, PHP, CodeIgniter</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> Wireframing,
+                    Design, JavaScript, AMD, PHP, CodeIgniter</small
+                  >
                 </p>
               </li>
 
@@ -619,8 +778,10 @@
                   <a target="_blank" href="https://www.gripati.com">Gripati</a>
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Wireframing,
-                    Design, JavaScript, AMD, PHP, CodeIgniter</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> Wireframing,
+                    Design, JavaScript, AMD, PHP, CodeIgniter</small
+                  >
                 </p>
               </li>
 
@@ -630,8 +791,10 @@
                   <a target="_blank" href="http://wap.ligtv.com.tr/">LigTV</a>
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Mobile
-                    optimisation, HTML, CSS, JavaScript</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> Mobile
+                    optimisation, HTML, CSS, JavaScript</small
+                  >
                 </p>
               </li>
 
@@ -641,8 +804,10 @@
                   <a target="_blank" href="http://www.ulker.com.tr/">Ülker</a>
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> PHP, CakePHP,
-                    HTML, CSS, JavaScript</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> PHP, CakePHP,
+                    HTML, CSS, JavaScript</small
+                  >
                 </p>
               </li>
 
@@ -650,30 +815,40 @@
                 <p>
                   Server-side web RSS aggregator API development for a mobile
                   app of
-                  <a target="_blank" href="https://www.facebook.com/mbapps/">MB Apps</a>
+                  <a target="_blank" href="https://www.facebook.com/mbapps/"
+                    >MB Apps</a
+                  >
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> CakePHP,
-                    PHP</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> CakePHP,
+                    PHP</small
+                  >
                 </p>
               </li>
 
               <li>
                 <p>
                   Full-stack web development for
-                  <a target="_blank" href="http://www.imdb.com/title/tt2869768/">Umut Üzümleri</a>
+                  <a target="_blank" href="http://www.imdb.com/title/tt2869768/"
+                    >Umut Üzümleri</a
+                  >
                   movie
                 </p>
                 <p>
-                  <small><strong>Some of the project skills:</strong> Design, HTML,
-                    CSS, JavaScript</small>
+                  <small
+                    ><strong>Some of the project skills:</strong> Design, HTML,
+                    CSS, JavaScript</small
+                  >
                 </p>
               </li>
 
               <li>
                 <p>
                   Open source projects and libraries at
-                  <a target="_blank" href="http://github.com/NOD-studios">Github</a>
+                  <a target="_blank" href="http://github.com/NOD-studios"
+                    >Github</a
+                  >
                 </p>
               </li>
             </ul>
@@ -683,31 +858,47 @@
           <li class="experience">
             <h3>
               <em>Full-stack web developer</em> at
-              <a target="_blank" href="http://ficturkey.com/">FOX International Channels, Istanbul</a>
+              <a target="_blank" href="http://ficturkey.com/"
+                >FOX International Channels, Istanbul</a
+              >
             </h3>
             <h4>01/2012 - 12/2012</h4>
             <h5>
               Development of some social app and microsite web development for
               some clients including:
             </h5>
-            <a href="http://www.samsung.com/tr/" target="_blank">Samsung Turkey</a>,
-            <a href="http://www.nationalgeographic.com.tr/" target="_blank">National Geographic Turkey</a>,
-            <a href="http://www.nationalgeographic.com.tr/" target="_blank">Nokia Turkey</a>,
-            <a href="http://www.hbo.com/true-blood" target="_blank">True Blood TV show</a>,
+            <a href="http://www.samsung.com/tr/" target="_blank"
+              >Samsung Turkey</a
+            >,
+            <a href="http://www.nationalgeographic.com.tr/" target="_blank"
+              >National Geographic Turkey</a
+            >,
+            <a href="http://www.nationalgeographic.com.tr/" target="_blank"
+              >Nokia Turkey</a
+            >,
+            <a href="http://www.hbo.com/true-blood" target="_blank"
+              >True Blood TV show</a
+            >,
             <a href="http://www.fox.com/glee" target="_blank">Glee TV Show</a>,
-            <a href="http://www.imdb.com/title/tt1641349/" target="_blank">TerraNova TV show</a>
+            <a href="http://www.imdb.com/title/tt1641349/" target="_blank"
+              >TerraNova TV show</a
+            >
           </li>
           <!--  ./experience -->
 
           <li class="experience">
             <h3>
               <em>Front-end developer and designer</em> at
-              <a target="_blank" href="http://projectz.com/">projectz, Istanbul</a>
+              <a target="_blank" href="http://projectz.com/"
+                >projectz, Istanbul</a
+              >
             </h3>
             <h4>06/2011 - 12/2011</h4>
             <p>
               Front-end coding, refactoring and web design for startup project
-              <a href="http://yardimlazim.com" target="_blank">yardimlazim.com</a>
+              <a href="http://yardimlazim.com" target="_blank"
+                >yardimlazim.com</a
+              >
             </p>
           </li>
           <!-- / .experience -->
@@ -715,7 +906,9 @@
           <li class="experience">
             <h3>
               <em>Full-stack developer</em> at
-              <a target="_blank" href="http://manajans-jwt.com/">Manajans / JWT, Istanbul</a>
+              <a target="_blank" href="http://manajans-jwt.com/"
+                >Manajans / JWT, Istanbul</a
+              >
             </h3>
             <h4>05/2009 - 06/2011</h4>
             <h5>
@@ -723,23 +916,31 @@
               social apps and microsites for some clients including:
             </h5>
             <a href="http://www.anadoluefes.com/" target="_blank">Miller</a>,
-            <a href="http://gnctrkcll.turkcell.com.tr/" target="_blank">GncTurkcell / Turkcell</a>, <a href="http://www.eston.com/" target="_blank">Eston</a>,
+            <a href="http://gnctrkcll.turkcell.com.tr/" target="_blank"
+              >GncTurkcell / Turkcell</a
+            >, <a href="http://www.eston.com/" target="_blank">Eston</a>,
             <a href="http://www.first.com.tr/" target="_blank">First</a>,
             <a href="http://www.anadoluefes.com/" target="_blank">Bomonti</a>,
             <a href="http://www.anadoluefes.com/" target="_blank">Efes</a>,
-            <a href="http://www.teramenkul.com/" target="_blank">TeraBrokers (Formerly TeraMenkul)</a>
+            <a href="http://www.teramenkul.com/" target="_blank"
+              >TeraBrokers (Formerly TeraMenkul)</a
+            >
           </li>
           <!-- / .experience -->
 
           <li class="experience">
             <h3>
               <em>Front-end developer</em> at
-              <a target="_blank" href="http://projectz.com/">Tribal DDB Worldwide Istanbul<em>
-                  (formerly Manadigital)</em></a>
+              <a target="_blank" href="http://projectz.com/"
+                >Tribal DDB Worldwide Istanbul<em>
+                  (formerly Manadigital)</em
+                ></a
+              >
             </h3>
             <h4>03/2009 - 05/2009</h4>
             <h5>Front-end development for some clients including:</h5>
-            <a href="http://www.avea.com.tr/" target="_blank">patlican / avea</a>,
+            <a href="http://www.avea.com.tr/" target="_blank">patlican / avea</a
+            >,
             <a href="http://www.ttnet.com.tr/" target="_blank">TTNET</a>
           </li>
           <!-- / .experience -->
@@ -747,7 +948,9 @@
           <li class="experience">
             <h3>
               <em>Full-stack developer</em> at
-              <a target="_blank" href="http://ping.com.tr">Ping Digital Agency Istanbul<em> (formerly OnKaplan)</em></a>
+              <a target="_blank" href="http://ping.com.tr"
+                >Ping Digital Agency Istanbul<em> (formerly OnKaplan)</em></a
+              >
             </h3>
             <h4>05/2008 - 03/2009</h4>
             <a href="http://www.garanti.com.tr" target="_blank">Garanti</a>,
@@ -758,7 +961,9 @@
           <li class="experience">
             <h3>
               <em>Designer, front-end and Flash developer</em> at
-              <a target="_blank" href="http://ping.com.tr">Koçak Dizayn, Istanbul</a>
+              <a target="_blank" href="http://ping.com.tr"
+                >Koçak Dizayn, Istanbul</a
+              >
             </h3>
             <h4>05/2008 - 03/2009</h4>
             <p>
@@ -771,14 +976,18 @@
           <li class="experience">
             <h3>
               <em>Designer and front-end developer</em> at
-              <a target="_blank" href="http://www.medyanova.com/">MedyaNova, Istanbul</a>
+              <a target="_blank" href="http://www.medyanova.com/"
+                >MedyaNova, Istanbul</a
+              >
             </h3>
             <h4>05/2005 - 02/2007</h4>
             <p>
               Design and front-end web development for various web projects
               mostly regarding travelling, hotel and hotel franchise clients
               like
-              <a href="http://www.bestwestern.com.tr/" target="_blank">Best Western Hotels</a>.
+              <a href="http://www.bestwestern.com.tr/" target="_blank"
+                >Best Western Hotels</a
+              >.
             </p>
           </li>
           <!-- / .experience -->
@@ -786,12 +995,17 @@
           <li class="experience">
             <h3>
               <em>Internship</em> at
-              <a target="_blank" href="http://www.medyanova.com/">MedyaNova, Istanbul</a>
+              <a target="_blank" href="http://www.medyanova.com/"
+                >MedyaNova, Istanbul</a
+              >
             </h3>
             <h4>04/2005 - 05/2005</h4>
           </li>
           <!-- / .experience -->
+        </ul>
       </section>
+
+      <hr />
 
       <section id="education">
         <h2>Education</h2>
@@ -800,54 +1014,70 @@
           <li class="education">
             <h3>
               <em>Computer Programming and Technology</em> at
-              <a target="_blank" href="http://www.khas.edu.tr/">Kadir Has University</a>
+              <a target="_blank" href="http://www.khas.edu.tr/"
+                >Kadir Has University</a
+              >
             </h3>
           </li>
         </ul>
       </section>
 
+      <hr />
+
       <section id="interests">
         <h2>Interests</h2>
-        <a href="http://soundcloud.com/JacopKane" target="_blank">Semi-retired DJ</a> at my label <a target="_blank" href="http://ambientdata.org">AmbientData</a>, Contributing back to an <a href="http://github.com/JacopKane/" target="_blank">Open source</a>, Experimenting with side-projects, Sci-Fi books, movies etc., Exploring <a href="http://en.wikipedia.org/wiki/Typography" target="_blank">Typography</a>, Photo manipulation, Travelling, Exploring Craft Beer and Coffee, Video games, Any kind of nerd activity
+        Swimming &bull; Photography &bull; AI generated design and art &bull;
+        Video games &bull;
+        <a href="http://soundcloud.com/JacopKane" target="_blank">DJing</a> and
+        formerly founding the music label
+        <a target="_blank" href="http://soundcloud.com/AmbientData"
+          >AmbientData</a
+        >
+        &bull; Contributing back to
+        <a href="http://github.com/JacopKane/" target="_blank">Open source</a>
+        projects &bull; Experimenting with product ideas &bull; Travelling
+        &bull; Ping-pong &bull; Sci-Fi &bull; 80s Exploring print, product,
+        interior and typography design &bull; Staycations &bull; Exploring craft
+        beers &bull; Exploring architecture.
       </section>
 
-  <% if (!GLOBEL.resume) { %>
-  </div>
-  <% } %>
+      <% if (!GLOBEL.resume) { %>
+    </div>
+    <% } %>
 
-  <% if (!GLOBEL.resumeDoc) { %>
-  <footer>
+    <% if (!GLOBEL.resumeDoc) { %>
+    <footer>
       <em>
-          <script>
-              document.write(new Date().getFullYear())
-          </script>
-          © Furkan Tunalı</em>
-  </footer>
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        © Furkan Tunalı</em
+      >
+    </footer>
 
-  <script type="text/javascript">
-      ;(function (i, s, o, g, r, a, m) {
-          i["GoogleAnalyticsObject"] = r
-          ;(i[r] =
+    <script type="text/javascript">
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
           i[r] ||
           function () {
-              ;(i[r].q = i[r].q || []).push(arguments)
+            (i[r].q = i[r].q || []).push(arguments);
           }),
-          (i[r].l = 1 * new Date())
-          ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
-          a.async = 1
-          a.src = g
-          m.parentNode.insertBefore(a, m)
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
       })(
-          window,
-          document,
-          "script",
-          "//www.google-analytics.com/analytics.js",
-          "ga",
-      )
-      ga("create", "UA-60053491-1", "auto")
-      ga("send", "pageview")
-  </script>
-  <% } %>
-
-
-</body></html>
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga",
+      );
+      ga("create", "UA-60053491-1", "auto");
+      ga("send", "pageview");
+    </script>
+    <% } %>
+  </body>
+</html>
