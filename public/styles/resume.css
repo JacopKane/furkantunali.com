@@ -295,6 +295,8 @@ body {
     font-size: 0.6rem;
     margin-top: calc((((1vmin + 1vmax) / 3) * 2) / 2);
     text-align: center; }
+  body section#skills {
+    margin: 4px 0 0 0; }
   body ul.info li,
   body ul.contact li,
   body ul.educations li,
@@ -308,18 +310,10 @@ body {
     body ul.skills li:not(:first-child)::before,
     body ul.contact li:not(:first-child)::before {
       content: "\00a0\2022\00a0\00a0"; }
-  body ul.experiences li {
-    margin: 0 0 0 0;
-    padding: 0; }
-    body ul.experiences li p {
-      margin: 0; }
   body ul.experiences {
     column-count: 2;
-    column-gap: 20px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0; }
+    column-gap: 2px; }
     body ul.experiences li.experience {
-      break-inside: avoid;
-      margin-bottom: 20px;
-      padding: calc(((1vmin + 1vmax) / 3) * 2 * 1.4); }
+      margin: 0 0 0 16px;
+      padding: 0;
+      break-inside: avoid; }
