@@ -55,11 +55,12 @@ body {
 
   font-size: calc(#{$size} * 3.6);
   font-size: clamp(14px, 1vw, 18px); // Smaller base size, limits scaling
-  line-height: 1.5; // Adjust for compactness
+  line-height: calc(#{$size} * 4);
 
   @media print {
-    font-size: calc(#{$size} * 1.8);
+    font-size: calc(#{$size} * 2.8);
     max-width: 190mm;
+    line-height: calc(#{$size} * 2.4);
   }
   margin: 0 auto;
 
@@ -215,15 +216,15 @@ body {
   // Masonry layout for the rest
   ul.experiences {
     column-count: 2;
-    column-gap: 20px;
+    column-gap: 0;
     list-style-type: none;
     padding: 0;
     margin: 0;
 
     li.experience {
       break-inside: avoid;
-      margin-bottom: 20px;
-      padding: calc(#{$size-margin} * 1.4);
+      margin-bottom: 0;
+      padding: calc(#{$size-margin} * 0.4);
       // Resets or specific styles for the rest of the experiences
     }
   }

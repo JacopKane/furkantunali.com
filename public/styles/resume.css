@@ -197,14 +197,15 @@ body {
   color: #000;
   font-size: calc(((1vmin + 1vmax) / 3) * 3.6);
   font-size: clamp(14px, 1vw, 18px);
-  line-height: 1.5;
+  line-height: calc(((1vmin + 1vmax) / 3) * 4);
   margin: 0 auto;
   padding: 0; }
   @media print {
     html,
     body {
-      font-size: calc(((1vmin + 1vmax) / 3) * 1.8);
-      max-width: 190mm; } }
+      font-size: calc(((1vmin + 1vmax) / 3) * 2.8);
+      max-width: 190mm;
+      line-height: calc(((1vmin + 1vmax) / 3) * 2.4); } }
   html a,
   body a {
     color: #000;
@@ -315,11 +316,11 @@ body {
       margin: 0; }
   body ul.experiences {
     column-count: 2;
-    column-gap: 20px;
+    column-gap: 0;
     list-style-type: none;
     padding: 0;
     margin: 0; }
     body ul.experiences li.experience {
       break-inside: avoid;
-      margin-bottom: 20px;
-      padding: calc(((1vmin + 1vmax) / 3) * 2 * 1.4); }
+      margin-bottom: 0;
+      padding: calc(((1vmin + 1vmax) / 3) * 2 * 0.4); }
