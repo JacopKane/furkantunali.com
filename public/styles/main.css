@@ -1,26 +1,35 @@
 @keyframes grain {
-  0%,
-  100% {
-    background-position: 0 0; }
+  0%, 100% {
+    background-position: 0 0;
+  }
   10% {
-    background-position: -5% -10%; }
+    background-position: -5% -10%;
+  }
   20% {
-    background-position: -15% 5%; }
+    background-position: -15% 5%;
+  }
   30% {
-    background-position: 7% -25%; }
+    background-position: 7% -25%;
+  }
   40% {
-    background-position: -20% 15%; }
+    background-position: -20% 15%;
+  }
   50% {
-    background-position: 15% 5%; }
+    background-position: 15% 5%;
+  }
   60% {
-    background-position: 0% 15%; }
+    background-position: 0% 15%;
+  }
   70% {
-    background-position: -25% 10%; }
+    background-position: -25% 10%;
+  }
   80% {
-    background-position: 5% 0%; }
+    background-position: 5% 0%;
+  }
   90% {
-    background-position: -10% -10%; } }
-
+    background-position: -10% -10%;
+  }
+}
 .grain-overlay {
   position: fixed;
   pointer-events: none;
@@ -29,18 +38,19 @@
   bottom: 0;
   left: 0;
   opacity: 0.3;
-  animation: grain 0.2s steps(10) infinite; }
+  animation: grain 0.2s steps(10) infinite;
+}
 
 :root {
   /* Define base font size and scaling factor */
-  --base-font-size: 16px;
-  /* Base font size */
-  --scaling-factor: 0.5vmin;
-  /* Adjust this value to control the scaling with viewport size */ }
+  --base-font-size: 16px; /* Base font size */
+  --scaling-factor: 0.5vmin; /* Adjust this value to control the scaling with viewport size */
+}
 
 body {
   /* Calculate font size based on viewport size */
-  font-size: calc(var(--base-font-size) + var(--scaling-factor)); }
+  font-size: calc(var(--base-font-size) + var(--scaling-factor));
+}
 
 #grain-container {
   position: fixed;
@@ -48,195 +58,228 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0; }
-  #grain-container #grain {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1; }
+  left: 0;
+}
+#grain-container #grain {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
 
 @keyframes gradient {
   0% {
-    background-position: 0% 50%; }
+    background-position: 0% 50%;
+  }
   50% {
-    background-position: 100% 50%; }
+    background-position: 100% 50%;
+  }
   100% {
-    background-position: 0% 50%; } }
-
+    background-position: 0% 50%;
+  }
+}
 section#about {
-  font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 1));
-  padding: calc(var(--base-font-size) + (var(--scaling-factor) * 2)) calc(var(--base-font-size) + (var(--scaling-factor) * 16));
-  text-align: center; }
-  section#about p {
-    margin-top: 0; }
-    section#about p a,
-    section#about p a:visited {
-      color: rgba(0, 0, 0, 0.4);
-      transition: color 0.2s ease-out; }
-      section#about p a:hover,
-      section#about p a:visited:hover {
-        color: rgba(0, 0, 0, 0.6); }
-    section#about p.cta {
-      font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 6)); }
+  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 1);
+  padding: calc(var(--base-font-size) + var(--scaling-factor) * 2) calc(var(--base-font-size) + var(--scaling-factor) * 16);
+  text-align: center;
+}
+section#about p {
+  margin-top: 0;
+}
+section#about p a,
+section#about p a:visited {
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.2s ease-out;
+}
+section#about p a:hover,
+section#about p a:visited:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+section#about p.cta {
+  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
+}
 
 html,
 body {
   color: rgba(255, 255, 255, 0.9);
   margin: 0 auto;
-  padding: 0; }
+  padding: 0;
+}
 
 html {
   animation: gradient 50s ease infinite;
-  background: white linear-gradient(-270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
-  background-size: 1000% 1000%; }
-  html body {
-    animation: gradient 50s ease infinite;
-    background: white linear-gradient(270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
-    background-size: 1000% 1000%;
-    font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
-    font-weight: normal;
-    line-height: normal;
-    margin: 4vmin;
-    min-height: calc(100vh - 10vmin);
-    padding: 1vmin; }
-    html body a.tap {
-      padding: 0 0.4vmin;
-      text-decoration: none; }
-    html body nav {
-      padding: 2vmin;
-      text-align: center; }
-      html body nav a {
-        margin: 0 0.5vmin;
-        opacity: 0.6;
-        padding: 1vmin;
-        text-decoration: none;
-        transition: opacity 0.2s ease-out; }
-        html body nav a:hover {
-          opacity: 0.9;
-          text-decoration: none; }
-    html body header {
-      font-weight: lighter; }
-      html body header hgroup {
-        font-weight: lighter;
-        text-align: center; }
-        html body header hgroup h1,
-        html body header hgroup h2,
-        html body header hgroup h3,
-        html body header hgroup h4,
-        html body header hgroup h5,
-        html body header hgroup h6 {
-          color: #fff;
-          color: #fff;
-          margin: 0;
-          padding: 0;
-          text-align: center; }
-        html body header hgroup h1 {
-          border-radius: 45vmin;
-          display: block;
-          display: inline-block;
-          font-size: 100vmin;
-          font-size: 35vmin;
-          font-weight: 100;
-          height: 45vmin;
-          letter-spacing: -2vmin;
-          line-height: 100vmin;
-          line-height: 45vmin;
-          margin: 5vmin auto;
-          margin: 0 auto;
-          width: 45vmin;
-          animation: gradient 50s ease infinite;
-          background: rgba(0, 0, 0, 0.2) linear-gradient(-270deg, #94fef7, #fea6f7, #aafea3, #fea6f7, #f9fbb1, #fea6f7);
-          background-size: 1000% 1000%; }
-          html body header hgroup h1 a {
-            border-radius: 45vmin;
-            display: inline-block;
-            height: 45vmin;
-            margin: 0 auto;
-            text-decoration: none;
-            animation: gradient 50s ease infinite;
-            background: white linear-gradient(270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
-            background-size: 1000% 1000%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            width: 45vmin; }
-            html body header hgroup h1 a:hover {
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              text-fill-color: transparent; }
-        html body header hgroup h2 {
-          font-size: 25vmin;
-          font-weight: 500;
-          line-height: 22vmin;
-          animation: gradient 50s ease infinite;
-          background: white linear-gradient(-270deg, rgba(148, 254, 247, 0.6), rgba(254, 166, 247, 0.6), rgba(170, 254, 163, 0.6), rgba(254, 166, 247, 0.6), rgba(249, 251, 177, 0.6), rgba(254, 166, 247, 0.6));
-          background-size: 1000% 1000%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent; }
-        html body header hgroup h3 {
-          font-size: 20vmin;
-          font-weight: 400;
-          line-height: 16vmin;
-          animation: gradient 50s ease infinite;
-          background: white linear-gradient(-270deg, rgba(148, 254, 247, 0.5), rgba(254, 166, 247, 0.5), rgba(170, 254, 163, 0.5), rgba(254, 166, 247, 0.5), rgba(249, 251, 177, 0.5), rgba(254, 166, 247, 0.5));
-          background-size: 1000% 1000%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent; }
-        html body header hgroup h4 {
-          font-size: 15vmin;
-          font-weight: 300;
-          line-height: 14vmin;
-          animation: gradient 50s ease infinite;
-          background: white linear-gradient(-270deg, rgba(148, 254, 247, 0.4), rgba(254, 166, 247, 0.4), rgba(170, 254, 163, 0.4), rgba(254, 166, 247, 0.4), rgba(249, 251, 177, 0.4), rgba(254, 166, 247, 0.4));
-          background-size: 1000% 1000%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent; }
-        html body header hgroup h5 {
-          font-size: 10vmin;
-          font-weight: 200;
-          line-height: 8vmin;
-          animation: gradient 50s ease infinite;
-          background: white linear-gradient(-270deg, rgba(148, 254, 247, 0.3), rgba(254, 166, 247, 0.3), rgba(170, 254, 163, 0.3), rgba(254, 166, 247, 0.3), rgba(249, 251, 177, 0.3), rgba(254, 166, 247, 0.3));
-          background-size: 1000% 1000%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent; }
-        html body header hgroup h6 {
-          font-size: 5vmin;
-          font-weight: 100;
-          line-height: 6vmin;
-          animation: gradient 50s ease infinite;
-          background: white linear-gradient(-270deg, rgba(148, 254, 247, 0.2), rgba(254, 166, 247, 0.2), rgba(170, 254, 163, 0.2), rgba(254, 166, 247, 0.2), rgba(249, 251, 177, 0.2), rgba(254, 166, 247, 0.2));
-          background-size: 1000% 1000%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent; }
-    html body footer {
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 2.5vmin;
-      text-align: center; }
-  html.no-backgroundcliptext body header hgroup h1 a {
-    background: transparent;
-    opacity: 0.66;
-    color: rgba(255, 255, 255, 0.9); }
-  html.no-backgroundcliptext body header hgroup h2,
-  html.no-backgroundcliptext body header hgroup h3,
-  html.no-backgroundcliptext body header hgroup h4,
-  html.no-backgroundcliptext body header hgroup h5,
-  html.no-backgroundcliptext body header hgroup h6 {
-    background: transparent;
-    opacity: 0.66; }
+  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
+  background-size: 1000% 1000%;
+}
+html body {
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
+  background-size: 1000% 1000%;
+  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 4vmin;
+  min-height: calc(100vh - 10vmin);
+  padding: 1vmin;
+}
+html body a.tap {
+  padding: 0 0.4vmin;
+  text-decoration: none;
+}
+html body nav {
+  padding: 2vmin;
+  text-align: center;
+}
+html body nav a {
+  margin: 0 0.5vmin;
+  opacity: 0.6;
+  padding: 1vmin;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+}
+html body nav a:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+html body header {
+  font-weight: lighter;
+}
+html body header hgroup {
+  font-weight: lighter;
+  text-align: center;
+}
+html body header hgroup h1,
+html body header hgroup h2,
+html body header hgroup h3,
+html body header hgroup h4,
+html body header hgroup h5,
+html body header hgroup h6 {
+  color: #fff;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+html body header hgroup h1 {
+  border-radius: 45vmin;
+  display: block;
+  display: inline-block;
+  font-size: 100vmin;
+  font-size: 35vmin;
+  font-weight: 100;
+  height: 45vmin;
+  letter-spacing: -2vmin;
+  line-height: 100vmin;
+  line-height: 45vmin;
+  margin: 5vmin auto;
+  margin: 0 auto;
+  width: 45vmin;
+  animation: gradient 50s ease infinite;
+  background: rgba(0, 0, 0, 0.2) linear-gradient(-270deg, rgb(148, 254, 247), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247));
+  background-size: 1000% 1000%;
+}
+html body header hgroup h1 a {
+  border-radius: 45vmin;
+  display: inline-block;
+  height: 45vmin;
+  margin: 0 auto;
+  text-decoration: none;
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  width: 45vmin;
+}
+html body header hgroup h1 a:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+html body header hgroup h2 {
+  font-size: 25vmin;
+  font-weight: 500;
+  line-height: 22vmin;
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.6), rgba(254, 166, 247, 0.6), rgba(170, 254, 163, 0.6), rgba(254, 166, 247, 0.6), rgba(249, 251, 177, 0.6), rgba(254, 166, 247, 0.6));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+html body header hgroup h3 {
+  font-size: 20vmin;
+  font-weight: 400;
+  line-height: 16vmin;
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.5), rgba(254, 166, 247, 0.5), rgba(170, 254, 163, 0.5), rgba(254, 166, 247, 0.5), rgba(249, 251, 177, 0.5), rgba(254, 166, 247, 0.5));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+html body header hgroup h4 {
+  font-size: 15vmin;
+  font-weight: 300;
+  line-height: 14vmin;
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.4), rgba(254, 166, 247, 0.4), rgba(170, 254, 163, 0.4), rgba(254, 166, 247, 0.4), rgba(249, 251, 177, 0.4), rgba(254, 166, 247, 0.4));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+html body header hgroup h5 {
+  font-size: 10vmin;
+  font-weight: 200;
+  line-height: 8vmin;
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.3), rgba(254, 166, 247, 0.3), rgba(170, 254, 163, 0.3), rgba(254, 166, 247, 0.3), rgba(249, 251, 177, 0.3), rgba(254, 166, 247, 0.3));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+html body header hgroup h6 {
+  font-size: 5vmin;
+  font-weight: 100;
+  line-height: 6vmin;
+  animation: gradient 50s ease infinite;
+  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.2), rgba(254, 166, 247, 0.2), rgba(170, 254, 163, 0.2), rgba(254, 166, 247, 0.2), rgba(249, 251, 177, 0.2), rgba(254, 166, 247, 0.2));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+html body footer {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 2.5vmin;
+  text-align: center;
+}
+html.no-backgroundcliptext body header hgroup h1 a {
+  background: transparent;
+  opacity: 0.66;
+  color: rgba(255, 255, 255, 0.9);
+}
+html.no-backgroundcliptext body header hgroup h2,
+html.no-backgroundcliptext body header hgroup h3,
+html.no-backgroundcliptext body header hgroup h4,
+html.no-backgroundcliptext body header hgroup h5,
+html.no-backgroundcliptext body header hgroup h6 {
+  background: transparent;
+  opacity: 0.66;
+}
+
+/*# sourceMappingURL=main.css.map */
