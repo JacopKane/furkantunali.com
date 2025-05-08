@@ -17,11 +17,7 @@
   ],
   "hosting": {
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
@@ -33,12 +29,8 @@
     "rules": "storage.rules"
   },
   "emulators": {
-    "functions": {
-      "port": 5555
-    },
-    "hosting": {
-      "port": 5000
-    },
+    "functions": {},
+    "hosting": {},
     "storage": {
       "port": 9199
     },

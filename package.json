@@ -1,38 +1,38 @@
 {
- "name": "@furkantunali/root",
- "private": true,
- "version": "2.0.0",
- "workspaces": [
-  "./functions",
-  "./public"
- ],
- "config": {
-  "outputPath": "./public"
- },
- "license": "MIT",
- "scripts": {
-  "build": "npm run --workspaces build",
-  "lint": "npm run --workspaces lint",
-  "build:watch": "concurrently \"npm run build:watch:functions\" \"npm run build:watch:public\"",
-  "build:watch:public": "npm run --workspace=public build:watch",
-  "build:watch:functions": "npm run --workspace=functions build:watch",
-  "start": "concurrently \"npm run start:functions\" \"npm run start:public\"",
-  "start:public": "npm run --workspace=public serve",
-  "start:functions": "npm run --workspace=functions serve",
-  "deploy": "npm run --workspaces deploy"
- },
- "volta": {
-  "node": "18.19.0"
- },
- "engines": {
-  "node": "18"
- },
- "devDependencies": {
-  "concurrently": "^8.2.2",
-  "firebase-tools": "^12.9.1",
-  "prettier-plugin-ejs": "^1.0.3"
- },
- "dependencies": {
-  "cheerio": "^1.0.0-rc.12"
- }
+  "name": "@furkantunali/root",
+  "private": true,
+  "version": "2.0.0",
+  "workspaces": [
+    "./functions",
+    "./public"
+  ],
+  "config": {
+    "outputPath": "./public"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run --workspaces build",
+    "lint": "npm run --workspaces lint",
+    "build:watch": "concurrently \"npm run build:watch:functions\" \"npm run build:watch:public\"",
+    "build:watch:public": "npm run --workspace=public build:watch",
+    "build:watch:functions": "npm run --workspace=functions build:watch",
+    "start": "concurrently \"npm run start:functions\" \"npm run start:public\"",
+    "start:public": "npm run --workspace=public serve",
+    "start:functions": "npm run --workspace=functions serve",
+    "deploy": "npm run --workspaces deploy"
+  },
+  "volta": {
+    "node": "20.19.1"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "firebase-tools": "^14.3.0",
+    "prettier-plugin-ejs": "^1.0.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
 }

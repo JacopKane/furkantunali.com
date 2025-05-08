@@ -13,13 +13,13 @@
     "build-html-resume-doc": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume-doc.json",
     "mv-resume-doc": "mv ./resume.html ./resume-doc.html && echo 'resume.html moved to resume-doc.html'",
     "build-html": "npm run build-html-resume-doc && npm run mv-resume-doc && npm run build-html-resume",
-    "serve": "npx firebase serve",
-    "deploy": "npx firebase deploy --only hosting",
+    "serve": "firebase serve",
+    "deploy": "firebase deploy --only hosting",
     "predeploy": "npm run build",
-    "logs": "npx firebase hosting:log"
+    "logs": "firebase hosting:log"
   },
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "devDependencies": {
     "@wcj/ejs-cli": "^1.1.6",
