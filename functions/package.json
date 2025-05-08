@@ -4,12 +4,12 @@
     "lint": "eslint --fix --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "shell": "npm run build && firebase functions:shell",
+    "serve": "npm run build && npx firebase emulators:start --only functions",
+    "shell": "npm run build && npx firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "npx firebase deploy --only functions",
     "predeploy": "npm run build",
-    "logs": "firebase functions:log"
+    "logs": "npx firebase functions:log"
   },
   "engines": {
     "node": "18"

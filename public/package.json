@@ -5,25 +5,25 @@
   },
   "scripts": {
     "build:watch": "concurrently \"npm run watch-scss\" \"npm run watch-html\"",
-    "watch-scss": "node-sass --watch scss/ -o styles/",
+    "watch-scss": "sass --watch scss/:styles/",
     "watch-html": "nodemon",
     "build": "concurrently \"npm run build-scss\" \"npm run build-html\"",
-    "build-scss": "node-sass scss/ -o styles/",
+    "build-scss": "sass scss/:styles/",
     "build-html-resume": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume.json",
     "build-html-resume-doc": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume-doc.json",
     "mv-resume-doc": "mv ./resume.html ./resume-doc.html && echo 'resume.html moved to resume-doc.html'",
     "build-html": "npm run build-html-resume-doc && npm run mv-resume-doc && npm run build-html-resume",
-    "serve": "firebase serve",
-    "deploy": "firebase deploy --only hosting",
+    "serve": "npx firebase serve",
+    "deploy": "npx firebase deploy --only hosting",
     "predeploy": "npm run build",
-    "logs": "firebase hosting:log"
+    "logs": "npx firebase hosting:log"
   },
   "engines": {
     "node": "18"
   },
   "devDependencies": {
     "@wcj/ejs-cli": "^1.1.6",
-    "node-sass": "9.0.0",
+    "sass": "^1.71.0",
     "nodemon": "^3.0.2"
   },
   "private": true
