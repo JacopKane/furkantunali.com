@@ -16,6 +16,7 @@
     }
   ],
   "hosting": {
+    "target": "furkantunali",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [

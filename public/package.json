@@ -14,7 +14,7 @@
     "mv-resume-doc": "mv ./resume.html ./resume-doc.html && echo 'resume.html moved to resume-doc.html'",
     "build-html": "npm run build-html-resume-doc && npm run mv-resume-doc && npm run build-html-resume",
     "serve": "firebase serve",
-    "deploy": "firebase deploy --only hosting --project furkantunali-1043",
+    "deploy": "firebase deploy --only hosting:furkantunali --project furkantunali-1043",
     "predeploy": "npm run build",
     "logs": "firebase hosting:log"
   },
