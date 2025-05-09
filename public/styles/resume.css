@@ -368,8 +368,8 @@ body ul.contact li:not(:first-child)::before {
   content: "";
 }
 body .experience {
-  break-inside: auto; /* Changed from avoid-page to auto to avoid excessive white space */
-  page-break-inside: auto; /* Changed from avoid to auto to improve space usage */
+  break-inside: auto; /* Allow content to flow across pages naturally */
+  page-break-inside: auto; /* Allow content to flow across pages naturally */
   margin-bottom: 1.5em;
   padding: 0.5em;
   border-radius: 4px;
@@ -378,22 +378,17 @@ body .experience {
 body .experience h3, body .experience h4, body .experience h5 {
   margin-bottom: 0.25em;
 }
-body #experiences table {
+body #experiences ul {
   width: 100%;
+  max-width: 100%;
 }
-body #experiences table td {
-  vertical-align: top;
-  width: 49.6%;
-  padding: 0.2%;
+body #experiences ul li.experience {
+  page-break-inside: auto;
+  break-inside: auto;
+  max-width: 100%;
 }
-body #experiences table td ul {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-body #experiences table td ul li.experience {
-  page-break-inside: avoid;
-  break-inside: avoid;
+body #experiences ul li.experience:not(:last-child) {
+  margin-bottom: 1.5em;
 }
 
 @media print {
@@ -521,8 +516,8 @@ body #experiences table td ul li.experience {
   #education {
     page-break-before: auto;
   }
-  /* Optimize table layout for printing */
-  #experiences table td {
+  /* Optimize experiences layout for printing */
+  #experiences ul {
     padding: 0 0.5% !important;
   }
   /* Hide unnecessary elements */

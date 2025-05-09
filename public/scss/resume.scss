@@ -216,8 +216,8 @@ body {
   }
 
   .experience {
-    break-inside: auto; /* Changed from avoid-page to auto to avoid excessive white space */
-    page-break-inside: auto; /* Changed from avoid to auto to improve space usage */
+    break-inside: auto; /* Allow content to flow across pages naturally */
+    page-break-inside: auto; /* Allow content to flow across pages naturally */
     margin-bottom: 1.5em;
     padding: 0.5em;
     border-radius: 4px;
@@ -228,27 +228,21 @@ body {
     }
   }
   
-  // Styling for the experience table layout
+  // Styling for the experiences section with a single column layout
   #experiences {
-    table {
+    ul {
       width: 100%;
+      max-width: 100%;
       
-      td {
-        vertical-align: top;
-        width: 49.6%;
-        padding: 0.2%;
+      li.experience {
+        // Allow content to flow naturally
+        page-break-inside: auto;
+        break-inside: auto;
+        max-width: 100%;
         
-        // These styles help ensure proper content distribution
-        ul {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          
-          li.experience {
-            // Allow content to flow naturally but maintain balance
-            page-break-inside: avoid;
-            break-inside: avoid;
-          }
+        // Add a subtle separation between experiences
+        &:not(:last-child) {
+          margin-bottom: 1.5em;
         }
       }
     }
@@ -391,8 +385,8 @@ body {
     page-break-before: auto;
   }
   
-  /* Optimize table layout for printing */
-  #experiences table td {
+  /* Optimize experiences layout for printing */
+  #experiences ul {
     padding: 0 0.5% !important;
   }
   
