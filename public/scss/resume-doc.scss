@@ -155,4 +155,28 @@ body {
       }
     }
   }
+
+  /* Ensure paragraphs don't break in the middle */
+  p {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Prevent line breaks in the middle of sentences */
+  .experience p, li p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Ensure proper spacing between elements */
+  section {
+    margin-bottom: 1em;
+  }
+
+  /* Improve text rendering in PDF */
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    text-rendering: optimizeLegibility;
+  }
 }
