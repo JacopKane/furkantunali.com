@@ -216,8 +216,8 @@ body {
   }
 
   .experience {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
+    break-inside: auto; /* Changed from avoid-page to auto to avoid excessive white space */
+    page-break-inside: auto; /* Changed from avoid to auto to improve space usage */
     margin-bottom: 1.5em;
     padding: 0.5em;
     border-radius: 4px;
@@ -235,8 +235,8 @@ body {
       
       td {
         vertical-align: top;
-        width: 48%;
-        padding: 0 1%;
+        width: 49.6%;
+        padding: 0.2%;
         
         // These styles help ensure proper content distribution
         ul {
@@ -280,15 +280,16 @@ body {
   }
   
   .experience {
-    break-inside: auto !important;
-    page-break-inside: auto !important;
-    margin-bottom: 0.5em !important;
+    break-inside: auto !important; /* Changed to auto to allow content to flow across pages */
+    page-break-inside: auto !important; /* Changed to auto to allow better space utilization */
+    margin-bottom: 1em !important; /* Reduced from 1.5em to minimize excessive space */
     padding: 0 !important;
     
     h3, h4, h5 {
       margin-bottom: 0.15em !important; // Increased from 0.1em
       margin-top: 0 !important;
       line-height: 1.2 !important; // Increased from 1.1
+      page-break-after: avoid !important; /* Keep headings with their content */
     }
     
     ul {
@@ -301,6 +302,16 @@ body {
         break-inside: auto !important;
         page-break-inside: auto !important;
       }
+    }
+    
+    /* Keep the end of one job experience from separating from its header */
+    &:last-child {
+      page-break-after: auto !important;
+    }
+    
+    /* Keep title with at least some content */
+    h3, h4 {
+      page-break-after: avoid !important;
     }
     
     li, p {
@@ -341,8 +352,8 @@ body {
   
   /* Make sure section headings are clearly visible */
   section h2 {
-    margin-top: 0.4em;
-    margin-bottom: 0.2em;
+    margin-top: 0.3em; /* Reduced from 0.4em */
+    margin-bottom: 0.15em; /* Reduced from 0.2em */
     font-weight: bold;
     page-break-after: avoid;
     break-after: avoid;
@@ -352,6 +363,16 @@ body {
   section h2 + * {
     page-break-before: avoid;
     break-before: avoid;
+  }
+  
+  /* Ensure job headings stay with their content */
+  .experience h3, .experience h4 {
+    page-break-after: avoid !important;
+  }
+  
+  /* Fix for heyData to Société Générale transition */
+  .experience + .experience {
+    page-break-before: auto;
   }
   
   /* Reduce spacing in skills section */
@@ -380,6 +401,19 @@ body {
     display: none !important;
   }
   
+  /* Hide social and web links in print as they're not relevant on paper */
+  #contact li:nth-child(2),
+  #contact li:nth-child(3),
+  #contact li:nth-child(4) {
+    display: none !important;
+  }
+  
+  /* Fix text truncation issues with client links */
+  .experience > a {
+    display: inline-block;
+    margin-right: 0.25em;
+  }
+  
   /* Ensure links print in black without underlines */
   a, a:visited {
     text-decoration: none !important;
@@ -391,5 +425,10 @@ body {
     border: none;
     border-top: 1px solid #ccc;
     margin: 0.3em 0;
+  }
+  
+  /* Fix for experience items at bottom of page/column */
+  li.experience:last-child {
+    margin-bottom: 0 !important;
   }
 }
