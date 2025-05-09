@@ -1,3 +1,7 @@
+.no-decoration {
+  text-decoration: none;
+}
+
 @keyframes grain {
   0%, 100% {
     background-position: 0 0;

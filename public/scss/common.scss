@@ -1,7 +1,11 @@
 @mixin font-family() {
   font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: normal;
-  line-height: normal;
+  line-height: 1.5; // Standardized line height
+}
+
+.no-decoration {
+  text-decoration: none;
 }
 
 @keyframes grain {
@@ -57,3 +61,6 @@ $color-background: #fff;
 $color-selection: #ffc;
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
+
+// Add a standardized line height variable to use across all files
+$standard-line-height: 1.5;

@@ -153,6 +153,10 @@
   src: url("../fonts/064bf6d7-724b-4182-8b66-f2e9125c9c6e.eot?#iefix");
   src: url("../fonts/064bf6d7-724b-4182-8b66-f2e9125c9c6e.eot?#iefix") format("eot"), url("../fonts/24567192-78d1-4fcf-84be-05d88fafb457.woff2") format("woff2"), url("../fonts/d5e38cca-491f-4b1e-9877-876743c50258.woff") format("woff"), url("../fonts/cf541a6e-1ef1-4303-a114-ea9560e7c3dc.ttf") format("truetype"), url("../fonts/952db4c4-b7dd-4a60-bdaf-18ac441fee68.svg#952db4c4-b7dd-4a60-bdaf-18ac441fee68") format("svg");
 }
+.no-decoration {
+  text-decoration: none;
+}
+
 @keyframes grain {
   0%, 100% {
     background-position: 0 0;
@@ -202,23 +206,164 @@ body {
   margin: 0 auto;
   padding: 0;
   font-size: calc((((1vmin + 1vmax) / 3)) * 1.44);
+  line-height: 1.5;
 }
 html a:not(.no-decoration),
 body a:not(.no-decoration) {
   text-decoration: underline;
 }
-@media (max-width: 944px) {
-  html .intro,
-  body .intro {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+html .intro,
+body .intro {
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+html .left-column,
+body .left-column {
+  float: left;
+  width: 48%;
+  text-align: left;
+}
+html .right-column,
+body .right-column {
+  float: right;
+  width: 48%;
+  text-align: right;
+}
+html .experience-columns,
+body .experience-columns {
+  width: 100%;
+  overflow: visible;
+}
+html .experience-columns .experiences-left,
+html .experience-columns .experiences-right,
+body .experience-columns .experiences-left,
+body .experience-columns .experiences-right {
+  width: 48%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+html .experience-columns .experiences-left .experience,
+html .experience-columns .experiences-right .experience,
+body .experience-columns .experiences-left .experience,
+body .experience-columns .experiences-right .experience {
+  break-inside: auto;
+  page-break-inside: auto;
+  margin-bottom: 0.5em;
+  padding: 0;
+  box-sizing: border-box;
+}
+html .experience-columns .experiences-left .experience h3, html .experience-columns .experiences-left .experience h4, html .experience-columns .experiences-left .experience h5,
+html .experience-columns .experiences-right .experience h3,
+html .experience-columns .experiences-right .experience h4,
+html .experience-columns .experiences-right .experience h5,
+body .experience-columns .experiences-left .experience h3,
+body .experience-columns .experiences-left .experience h4,
+body .experience-columns .experiences-left .experience h5,
+body .experience-columns .experiences-right .experience h3,
+body .experience-columns .experiences-right .experience h4,
+body .experience-columns .experiences-right .experience h5 {
+  margin-bottom: 0.1em;
+  margin-top: 0;
+}
+html .experience-columns .experiences-left .experience ul,
+html .experience-columns .experiences-right .experience ul,
+body .experience-columns .experiences-left .experience ul,
+body .experience-columns .experiences-right .experience ul {
+  margin-top: 0;
+  margin-bottom: 0.1em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+html .experience-columns .experiences-left .experience ul li,
+html .experience-columns .experiences-right .experience ul li,
+body .experience-columns .experiences-left .experience ul li,
+body .experience-columns .experiences-right .experience ul li {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+html .experience-columns .experiences-left .experience li, html .experience-columns .experiences-left .experience p,
+html .experience-columns .experiences-right .experience li,
+html .experience-columns .experiences-right .experience p,
+body .experience-columns .experiences-left .experience li,
+body .experience-columns .experiences-left .experience p,
+body .experience-columns .experiences-right .experience li,
+body .experience-columns .experiences-right .experience p {
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1.3;
+}
+html .experience-columns .experiences-left,
+body .experience-columns .experiences-left {
+  float: left;
+  overflow: visible;
+}
+html .experience-columns .experiences-right,
+body .experience-columns .experiences-right {
+  float: right;
+  overflow: visible;
+}
+
+@media print {
+  html,
+  body {
+    padding: 0.2cm !important;
+    margin: 0 !important;
+    max-width: 100% !important;
   }
-  html .right-column,
-  body .right-column {
-    align-items: flex-end;
-    text-align: right;
-    width: auto;
+  html .experience-columns,
+  body .experience-columns {
+    width: 100% !important;
+    overflow: visible !important;
+  }
+  html .experience-columns .experiences-left,
+  body .experience-columns .experiences-left {
+    float: left !important;
+    width: 48% !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  html .experience-columns .experiences-right,
+  body .experience-columns .experiences-right {
+    float: right !important;
+    width: 48% !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  html .experience-columns .experience,
+  body .experience-columns .experience {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin-bottom: 0.3em !important;
+    padding: 0 !important;
+  }
+  html .experience-columns .experience h3, html .experience-columns .experience h4, html .experience-columns .experience h5,
+  body .experience-columns .experience h3,
+  body .experience-columns .experience h4,
+  body .experience-columns .experience h5 {
+    margin-bottom: 0.05em !important;
+    margin-top: 0 !important;
+    line-height: 1.2 !important;
+  }
+  html .experience-columns .experience ul,
+  body .experience-columns .experience ul {
+    margin-top: 0 !important;
+    margin-bottom: 0.05em !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  html .experience-columns .experience ul li,
+  body .experience-columns .experience ul li {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  html .experience-columns .experience li, html .experience-columns .experience p,
+  body .experience-columns .experience li,
+  body .experience-columns .experience p {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    line-height: 1.2 !important;
   }
 }
 
