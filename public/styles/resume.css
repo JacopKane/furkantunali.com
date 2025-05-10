@@ -400,69 +400,12 @@ body #experiences ul {
   margin: 0;
   list-style-type: none;
 }
-body #experiences ul.experience-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  width: 100%;
-}
-body #experiences ul.experience-grid li.experience {
-  flex: 1 1 calc(50% - 1em);
-  min-width: 280px;
-  page-break-inside: auto;
-  break-inside: auto;
-  margin-bottom: 1.5em;
-}
-@media (max-width: 600px) {
-  body #experiences ul.experience-grid li.experience {
-    flex: 1 1 100%;
-  }
-}
-@media (min-width: 1200px) {
-  body #experiences ul.experience-grid li.experience {
-    flex: 1 1 calc(33.333% - 1em);
-  }
-}
-body #experiences ul.experience-grid-first-part {
-  width: 100%;
-  max-width: 100%;
-}
-body #experiences ul.experience-grid-first-part li.experience {
-  page-break-inside: auto;
-  break-inside: auto;
-  max-width: 100%;
+body #experiences li.experience {
   display: block;
-}
-body #experiences ul.experience-grid-first-part li.experience:not(:last-child) {
-  margin-bottom: 1.5em;
-}
-body #experiences ul.experience-grid-second-part {
-  column-count: 2;
-  column-gap: 1em;
-}
-@media (max-width: 600px) {
-  body #experiences ul.experience-grid-second-part {
-    column-count: 1;
-  }
-}
-@media (min-width: 1200px) {
-  body #experiences ul.experience-grid-second-part {
-    column-count: 3;
-  }
-}
-body #experiences ul.experience-grid-second-part li.experience {
-  display: inline-block;
   width: 100%;
-  break-inside: avoid;
-  page-break-inside: avoid;
-  margin-bottom: 1em;
-  -webkit-column-break-inside: avoid;
-  backface-visibility: hidden;
-}
-body #experiences ul.experience-grid-second-part li.experience::after {
-  content: "";
-  display: table;
-  clear: both;
+  page-break-inside: auto;
+  break-inside: auto;
+  margin-bottom: 1.5em;
 }
 
 @media print {
@@ -475,34 +418,15 @@ body #experiences ul.experience-grid-second-part li.experience::after {
     color: #000 !important;
     background: #fff !important;
   }
-  #experiences .experience-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 0.5em !important;
-  }
-  #experiences .experience-grid li.experience {
-    flex: 1 1 calc(50% - 0.5em) !important;
-    min-width: 0 !important;
-    margin-bottom: 0.5em !important;
-  }
-  #experiences .experience-grid-second-part {
-    column-count: 2 !important;
-    column-gap: 0.5em !important;
+  #experiences ul {
     width: 100% !important;
   }
-  #experiences .experience-grid-second-part li.experience {
-    display: inline-block !important;
-    width: 100% !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    margin-bottom: 0.5em !important;
-  }
-  #experiences .experience-grid-first-part {
-    width: 100% !important;
-  }
-  #experiences .experience-grid-first-part li.experience {
+  #experiences ul li.experience {
     display: block !important;
     width: 100% !important;
+    margin-bottom: 0.7em !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
   }
   h1 {
     font-size: 19px !important;

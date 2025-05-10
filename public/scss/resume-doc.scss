@@ -17,59 +17,22 @@ body {
     }
   }
 
-  // Responsive grid for experiences
+  // Vertical layout for experiences
   #experiences {
-    .experience-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1em;
+    ul {
       width: 100%;
       list-style-type: none;
       padding: 0;
       margin: 0;
-
-      li.experience {
-        // Default to 2 columns
-        flex: 1 1 calc(50% - 1em);
-        min-width: 280px; // Minimum width before wrapping
-
-        // Allow content to flow naturally
-        page-break-inside: auto;
-        break-inside: auto;
-
-        // Add a subtle separation between experiences
-        margin-bottom: 1em;
-      }
     }
-
-    // Second part - true masonry layout with CSS columns
-    .experience-grid-second-part {
-      // Multi-column layout for masonry effect
-      column-count: 2; // Default to 2 columns
-      column-gap: 1em;
+    
+    li.experience {
+      // Simple vertical layout
+      display: block;
       width: 100%;
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      
-      li.experience {
-        // Each experience must stay in one column (not break across columns)
-        display: inline-block; // Important for column layout
-        width: 100%;
-        break-inside: avoid; // Prevent item from breaking across columns
-        page-break-inside: avoid;
-        margin-bottom: 1em; // Space between items
-        
-        // Fix for Safari
-        -webkit-column-break-inside: avoid;
-        
-        // If any experience item has floated content, ensure proper clearing
-        &::after {
-          content: "";
-          display: table;
-          clear: both;
-        }
-      }
+      page-break-inside: auto;
+      break-inside: auto;
+      margin-bottom: 1.2em;
     }
   }
 
@@ -91,25 +54,22 @@ body {
     text-align: right;
   }
 
-  // Grid-based positioning for experience columns
-  .experience-grid {
+  // Vertical layout for experiences
+  ul {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
     padding: 0;
     margin: 0;
     list-style-type: none;
     
     .experience {
-      // Default to 2 columns
-      flex: 1 1 calc(50% - 1em);
-      min-width: 280px;
+      // Full-width vertical layout
+      display: block;
+      width: 100%;
       
       // Allow breaks for better flow
       break-inside: auto;
       page-break-inside: auto;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.8em;
       padding: 0;
       box-sizing: border-box;
       
@@ -148,15 +108,13 @@ body {
     margin: 0 !important;
     max-width: 100% !important;
     
-    .experience-grid {
+    ul.experiences {
       width: 100% !important;
-      display: flex !important;
-      flex-wrap: wrap !important;
-      gap: 0.5em !important;
       
       .experience {
-        // Two-column layout for print
-        flex: 1 1 calc(50% - 0.5em) !important;
+        // Single-column vertical layout for print
+        display: block !important;
+        width: 100% !important;
         
         // Allow page breaks inside experience items
         break-inside: auto !important;
@@ -191,21 +149,7 @@ body {
       }
     }
 
-    .experience-grid-second-part {
-      width: 100% !important;
-      column-count: 2 !important; // Two columns for print
-      column-gap: 0.5em !important;
-      
-      .experience {
-        // Each item stays in one column
-        display: inline-block !important;
-        width: 100% !important;
-        break-inside: avoid !important; // Better layout in print
-        page-break-inside: avoid !important;
-        margin-bottom: 0.3em !important;
-        padding: 0 !important;
-      }
-    }
+    /* Removed experience-grid-second-part styles for vertical layout */
   }
 
   /* Ensure paragraphs don't break in the middle */
@@ -232,12 +176,5 @@ body {
     text-rendering: optimizeLegibility;
   }
   
-  /* Safari-specific fixes for column-based masonry */
-  @media not all and (min-resolution:.001dpcm) {
-    @supports (-webkit-appearance:none) {
-      #experiences .experience-grid-second-part {
-        -webkit-column-break-inside: avoid;
-      }
-    }
-  }
+  /* Removed Safari-specific fixes for column layouts */
 }
