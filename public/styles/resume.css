@@ -376,7 +376,6 @@ body ul.contact li:not(:first-child)::before {
 }
 body .experience {
   break-inside: auto; /* Allow content to flow across pages naturally */
-  page-break-inside: auto; /* Allow content to flow across pages naturally */
   margin-bottom: 1.5em;
   padding: 0.5em;
   border-radius: 4px;
@@ -393,7 +392,14 @@ body .experience {
 body .experience h3, body .experience h4, body .experience h5 {
   margin-bottom: 0.25em;
 }
-body #experiences ul {
+body .experience ul {
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+body .experience ul li {
+  display: list-item;
+}
+body #experiences > ul.experiences {
   width: 100%;
   max-width: 100%;
   padding: 0;
@@ -403,9 +409,15 @@ body #experiences ul {
 body #experiences li.experience {
   display: block;
   width: 100%;
-  page-break-inside: auto;
   break-inside: auto;
   margin-bottom: 1.5em;
+}
+body #experiences li.experience > ul {
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+body #experiences li.experience > ul li {
+  display: list-item;
 }
 
 @media print {
@@ -418,15 +430,21 @@ body #experiences li.experience {
     color: #000 !important;
     background: #fff !important;
   }
-  #experiences ul {
+  #experiences > ul.experiences {
     width: 100% !important;
   }
-  #experiences ul li.experience {
+  #experiences > ul.experiences li.experience {
     display: block !important;
     width: 100% !important;
     margin-bottom: 0.7em !important;
-    page-break-inside: auto !important;
     break-inside: auto !important;
+  }
+  #experiences > ul.experiences li.experience > ul {
+    padding-left: 1.5em !important;
+    list-style-type: disc !important;
+  }
+  #experiences > ul.experiences li.experience > ul li {
+    display: list-item !important;
   }
   h1 {
     font-size: 19px !important;
@@ -450,8 +468,7 @@ body #experiences li.experience {
     line-height: 1.25 !important;
   }
   .experience {
-    break-inside: auto !important; /* Changed to auto to allow content to flow across pages */
-    page-break-inside: auto !important; /* Changed to auto to allow better space utilization */
+    break-inside: auto !important; /* Allow content to flow across pages */
     margin-bottom: 1em !important; /* Reduced from 1.5em to minimize excessive space */
     padding: 0 !important;
     /* Keep the end of one job experience from separating from its header */
@@ -461,23 +478,25 @@ body #experiences li.experience {
     margin-bottom: 0.15em !important;
     margin-top: 0 !important;
     line-height: 1.2 !important;
-    page-break-after: avoid !important; /* Keep headings with their content */
+    break-after: avoid !important; /* Keep headings with their content */
   }
   .experience ul {
     margin-top: 0 !important;
     margin-bottom: 0.1em !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    padding-left: 1.5em !important;
+    list-style-type: disc !important;
   }
   .experience ul li {
     break-inside: auto !important;
-    page-break-inside: auto !important;
+    display: list-item !important;
   }
   .experience:last-child {
-    page-break-after: auto !important;
+    break-after: auto !important;
   }
   .experience h3, .experience h4 {
-    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
   .experience li, .experience p {
     margin-bottom: 0 !important;
@@ -514,21 +533,19 @@ body #experiences li.experience {
     margin-top: 0.3em; /* Reduced from 0.4em */
     margin-bottom: 0.15em; /* Reduced from 0.2em */
     font-weight: bold;
-    page-break-after: avoid;
     break-after: avoid;
   }
   /* Make sure content stays with its heading */
   section h2 + * {
-    page-break-before: avoid;
     break-before: avoid;
   }
   /* Ensure job headings stay with their content */
   .experience h3, .experience h4 {
-    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
   /* Fix for heyData to Société Générale transition */
   .experience + .experience {
-    page-break-before: auto;
+    break-before: auto;
   }
   /* Reduce spacing in skills section */
   .skills li {

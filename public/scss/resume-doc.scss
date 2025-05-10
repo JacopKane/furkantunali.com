@@ -30,9 +30,18 @@ body {
       // Simple vertical layout
       display: block;
       width: 100%;
-      page-break-inside: auto;
-      break-inside: auto;
+      break-inside: auto; // Modern property - no need for page-break-inside
       margin-bottom: 1.2em;
+      
+      // Add bullet styling for nested lists
+      & > ul {
+        padding-left: 1.5em;
+        list-style-type: disc;
+        
+        li {
+          display: list-item;
+        }
+      }
     }
   }
 
@@ -54,7 +63,7 @@ body {
     text-align: right;
   }
 
-  // Vertical layout for experiences
+  // General list styling
   ul {
     width: 100%;
     padding: 0;
@@ -65,10 +74,7 @@ body {
       // Full-width vertical layout
       display: block;
       width: 100%;
-      
-      // Allow breaks for better flow
-      break-inside: auto;
-      page-break-inside: auto;
+      break-inside: auto; // Modern property covers page-break-inside
       margin-bottom: 0.8em;
       padding: 0;
       box-sizing: border-box;
@@ -83,11 +89,13 @@ body {
         margin-bottom: 0.1em;
         padding-top: 0;
         padding-bottom: 0;
+        padding-left: 1.5em;
+        list-style-type: disc;
         
-        // Allow breaks inside list items
+        // Ensure list items display with bullets
         li {
           break-inside: auto;
-          page-break-inside: auto;
+          display: list-item;
         }
       }
       
@@ -118,7 +126,6 @@ body {
         
         // Allow page breaks inside experience items
         break-inside: auto !important;
-        page-break-inside: auto !important;
         margin-bottom: 0.3em !important;
         padding: 0 !important;
         
@@ -133,11 +140,13 @@ body {
           margin-bottom: 0.05em !important;
           padding-top: 0 !important;
           padding-bottom: 0 !important;
+          padding-left: 1.5em !important;
+          list-style-type: disc !important;
           
-          // Allow page breaks inside list items
+          // Styling for list items
           li {
             break-inside: auto !important;
-            page-break-inside: auto !important;
+            display: list-item !important;
           }
         }
         

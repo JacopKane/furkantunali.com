@@ -1,10 +1,12 @@
+@use "sass:color";
 @import "fonts.scss";
 @import "common.scss";
 
 $color-text: #000;
 $color-link: #000;
-$color-link-hover: lighten($color-link, 60%);
-$color-link-visited: lighten($color-link, 40%);
+// Use color.adjust instead of lighten() to avoid deprecation warnings
+$color-link-hover: color.adjust($color-link, $lightness: 60%);
+$color-link-visited: color.adjust($color-link, $lightness: 40%);
 $color-background: #fff;
 $color-selection: #ffc;
 $size: "((1vmin + 1vmax) / 3)";
@@ -225,7 +227,6 @@ body {
 
   .experience {
     break-inside: auto; /* Allow content to flow across pages naturally */
-    page-break-inside: auto; /* Allow content to flow across pages naturally */
     margin-bottom: 1.5em;
     padding: 0.5em;
     border-radius: 4px;
@@ -247,12 +248,22 @@ body {
     h3, h4, h5 {
       margin-bottom: 0.25em;
     }
+    
+    // Add bullet styles for nested lists within experiences
+    ul {
+      padding-left: 1.5em;
+      list-style-type: disc;
+      
+      li {
+        display: list-item;
+      }
+    }
   }
   
   // Styling for the experiences section
   #experiences {
     // General styles for all experience lists
-    ul {
+    > ul.experiences {
       width: 100%;
       max-width: 100%;
       padding: 0;
@@ -266,11 +277,20 @@ body {
       width: 100%;
       
       // Allow content to flow naturally
-      page-break-inside: auto;
       break-inside: auto;
       
       // Add a subtle separation between experiences
       margin-bottom: 1.5em;
+      
+      // Target nested lists properly
+      > ul {
+        padding-left: 1.5em;
+        list-style-type: disc;
+        
+        li {
+          display: list-item;
+        }
+      }
     }
   }
 }
@@ -289,15 +309,23 @@ body {
   }
   
   // Print-specific styles for experiences
-  #experiences ul {
+  #experiences > ul.experiences {
     width: 100% !important;
     
     li.experience {
       display: block !important;
       width: 100% !important;
       margin-bottom: 0.7em !important;
-      page-break-inside: auto !important; // Allow page breaks within experiences for better space utilization
-      break-inside: auto !important;
+      break-inside: auto !important; // Allow page breaks within experiences for better space utilization
+      
+      > ul {
+        padding-left: 1.5em !important;
+        list-style-type: disc !important;
+        
+        li {
+          display: list-item !important;
+        }
+      }
     }
   }
 
@@ -313,8 +341,7 @@ body {
   }
   
   .experience {
-    break-inside: auto !important; /* Changed to auto to allow content to flow across pages */
-    page-break-inside: auto !important; /* Changed to auto to allow better space utilization */
+    break-inside: auto !important; /* Allow content to flow across pages */
     margin-bottom: 1em !important; /* Reduced from 1.5em to minimize excessive space */
     padding: 0 !important;
     
@@ -322,7 +349,7 @@ body {
       margin-bottom: 0.15em !important; // Increased from 0.1em
       margin-top: 0 !important;
       line-height: 1.2 !important; // Increased from 1.1
-      page-break-after: avoid !important; /* Keep headings with their content */
+      break-after: avoid !important; /* Keep headings with their content */
     }
     
     ul {
@@ -330,21 +357,23 @@ body {
       margin-bottom: 0.1em !important; // Increased from 0.05em
       padding-top: 0 !important;
       padding-bottom: 0 !important;
+      padding-left: 1.5em !important;
+      list-style-type: disc !important;
       
       li {
         break-inside: auto !important;
-        page-break-inside: auto !important;
+        display: list-item !important;
       }
     }
     
     /* Keep the end of one job experience from separating from its header */
     &:last-child {
-      page-break-after: auto !important;
+      break-after: auto !important;
     }
     
     /* Keep title with at least some content */
     h3, h4 {
-      page-break-after: avoid !important;
+      break-after: avoid !important;
     }
     
     li, p {
@@ -388,24 +417,22 @@ body {
     margin-top: 0.3em; /* Reduced from 0.4em */
     margin-bottom: 0.15em; /* Reduced from 0.2em */
     font-weight: bold;
-    page-break-after: avoid;
     break-after: avoid;
   }
   
   /* Make sure content stays with its heading */
   section h2 + * {
-    page-break-before: avoid;
     break-before: avoid;
   }
   
   /* Ensure job headings stay with their content */
   .experience h3, .experience h4 {
-    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
   
   /* Fix for heyData to Société Générale transition */
   .experience + .experience {
-    page-break-before: auto;
+    break-before: auto;
   }
   
   /* Reduce spacing in skills section */

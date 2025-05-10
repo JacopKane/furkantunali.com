@@ -223,9 +223,17 @@ html #experiences li.experience,
 body #experiences li.experience {
   display: block;
   width: 100%;
-  page-break-inside: auto;
   break-inside: auto;
   margin-bottom: 1.2em;
+}
+html #experiences li.experience > ul,
+body #experiences li.experience > ul {
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+html #experiences li.experience > ul li,
+body #experiences li.experience > ul li {
+  display: list-item;
 }
 html .intro,
 body .intro {
@@ -256,7 +264,6 @@ body ul .experience {
   display: block;
   width: 100%;
   break-inside: auto;
-  page-break-inside: auto;
   margin-bottom: 0.8em;
   padding: 0;
   box-sizing: border-box;
@@ -274,11 +281,13 @@ body ul .experience ul {
   margin-bottom: 0.1em;
   padding-top: 0;
   padding-bottom: 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
 }
 html ul .experience ul li,
 body ul .experience ul li {
   break-inside: auto;
-  page-break-inside: auto;
+  display: list-item;
 }
 html ul .experience li, html ul .experience p,
 body ul .experience li,
@@ -305,7 +314,6 @@ body ul .experience p {
     display: block !important;
     width: 100% !important;
     break-inside: auto !important;
-    page-break-inside: auto !important;
     margin-bottom: 0.3em !important;
     padding: 0 !important;
   }
@@ -323,11 +331,13 @@ body ul .experience p {
     margin-bottom: 0.05em !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    padding-left: 1.5em !important;
+    list-style-type: disc !important;
   }
   html ul.experiences .experience ul li,
   body ul.experiences .experience ul li {
     break-inside: auto !important;
-    page-break-inside: auto !important;
+    display: list-item !important;
   }
   html ul.experiences .experience li, html ul.experiences .experience p,
   body ul.experiences .experience li,
