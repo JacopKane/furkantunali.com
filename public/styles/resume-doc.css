@@ -212,6 +212,48 @@ html a:not(.no-decoration),
 body a:not(.no-decoration) {
   text-decoration: underline;
 }
+html #experiences .experience-grid,
+body #experiences .experience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+html #experiences .experience-grid li.experience,
+body #experiences .experience-grid li.experience {
+  flex: 1 1 calc(50% - 1em);
+  min-width: 280px;
+  page-break-inside: auto;
+  break-inside: auto;
+  margin-bottom: 1em;
+}
+html #experiences .experience-grid-second-part,
+body #experiences .experience-grid-second-part {
+  column-count: 2;
+  column-gap: 1em;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+html #experiences .experience-grid-second-part li.experience,
+body #experiences .experience-grid-second-part li.experience {
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1em;
+  -webkit-column-break-inside: avoid;
+}
+html #experiences .experience-grid-second-part li.experience::after,
+body #experiences .experience-grid-second-part li.experience::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 html .intro,
 body .intro {
   overflow: hidden;
@@ -229,80 +271,51 @@ body .right-column {
   width: 48%;
   text-align: right;
 }
-html .experience-columns,
-body .experience-columns {
+html .experience-grid,
+body .experience-grid {
   width: 100%;
-  overflow: visible;
-}
-html .experience-columns .experiences-left,
-html .experience-columns .experiences-right,
-body .experience-columns .experiences-left,
-body .experience-columns .experiences-right {
-  width: 48%;
-  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
   padding: 0;
   margin: 0;
-  position: relative;
+  list-style-type: none;
 }
-html .experience-columns .experiences-left .experience,
-html .experience-columns .experiences-right .experience,
-body .experience-columns .experiences-left .experience,
-body .experience-columns .experiences-right .experience {
+html .experience-grid .experience,
+body .experience-grid .experience {
+  flex: 1 1 calc(50% - 1em);
+  min-width: 280px;
   break-inside: auto;
   page-break-inside: auto;
   margin-bottom: 0.5em;
   padding: 0;
   box-sizing: border-box;
 }
-html .experience-columns .experiences-left .experience h3, html .experience-columns .experiences-left .experience h4, html .experience-columns .experiences-left .experience h5,
-html .experience-columns .experiences-right .experience h3,
-html .experience-columns .experiences-right .experience h4,
-html .experience-columns .experiences-right .experience h5,
-body .experience-columns .experiences-left .experience h3,
-body .experience-columns .experiences-left .experience h4,
-body .experience-columns .experiences-left .experience h5,
-body .experience-columns .experiences-right .experience h3,
-body .experience-columns .experiences-right .experience h4,
-body .experience-columns .experiences-right .experience h5 {
+html .experience-grid .experience h3, html .experience-grid .experience h4, html .experience-grid .experience h5,
+body .experience-grid .experience h3,
+body .experience-grid .experience h4,
+body .experience-grid .experience h5 {
   margin-bottom: 0.1em;
   margin-top: 0;
 }
-html .experience-columns .experiences-left .experience ul,
-html .experience-columns .experiences-right .experience ul,
-body .experience-columns .experiences-left .experience ul,
-body .experience-columns .experiences-right .experience ul {
+html .experience-grid .experience ul,
+body .experience-grid .experience ul {
   margin-top: 0;
   margin-bottom: 0.1em;
   padding-top: 0;
   padding-bottom: 0;
 }
-html .experience-columns .experiences-left .experience ul li,
-html .experience-columns .experiences-right .experience ul li,
-body .experience-columns .experiences-left .experience ul li,
-body .experience-columns .experiences-right .experience ul li {
+html .experience-grid .experience ul li,
+body .experience-grid .experience ul li {
   break-inside: auto;
   page-break-inside: auto;
 }
-html .experience-columns .experiences-left .experience li, html .experience-columns .experiences-left .experience p,
-html .experience-columns .experiences-right .experience li,
-html .experience-columns .experiences-right .experience p,
-body .experience-columns .experiences-left .experience li,
-body .experience-columns .experiences-left .experience p,
-body .experience-columns .experiences-right .experience li,
-body .experience-columns .experiences-right .experience p {
+html .experience-grid .experience li, html .experience-grid .experience p,
+body .experience-grid .experience li,
+body .experience-grid .experience p {
   margin-bottom: 0;
   margin-top: 0;
   line-height: 1.3;
-}
-html .experience-columns .experiences-left,
-body .experience-columns .experiences-left {
-  float: left;
-  overflow: visible;
-}
-html .experience-columns .experiences-right,
-body .experience-columns .experiences-right {
-  float: right;
-  overflow: visible;
 }
 
 @media print {
@@ -312,58 +325,62 @@ body .experience-columns .experiences-right {
     margin: 0 !important;
     max-width: 100% !important;
   }
-  html .experience-columns,
-  body .experience-columns {
+  html .experience-grid,
+  body .experience-grid {
     width: 100% !important;
-    overflow: visible !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5em !important;
   }
-  html .experience-columns .experiences-left,
-  body .experience-columns .experiences-left {
-    float: left !important;
-    width: 48% !important;
-    position: relative !important;
-    overflow: visible !important;
-  }
-  html .experience-columns .experiences-right,
-  body .experience-columns .experiences-right {
-    float: right !important;
-    width: 48% !important;
-    position: relative !important;
-    overflow: visible !important;
-  }
-  html .experience-columns .experience,
-  body .experience-columns .experience {
+  html .experience-grid .experience,
+  body .experience-grid .experience {
+    flex: 1 1 calc(50% - 0.5em) !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
     margin-bottom: 0.3em !important;
     padding: 0 !important;
   }
-  html .experience-columns .experience h3, html .experience-columns .experience h4, html .experience-columns .experience h5,
-  body .experience-columns .experience h3,
-  body .experience-columns .experience h4,
-  body .experience-columns .experience h5 {
+  html .experience-grid .experience h3, html .experience-grid .experience h4, html .experience-grid .experience h5,
+  body .experience-grid .experience h3,
+  body .experience-grid .experience h4,
+  body .experience-grid .experience h5 {
     margin-bottom: 0.05em !important;
     margin-top: 0 !important;
     line-height: 1.2 !important;
   }
-  html .experience-columns .experience ul,
-  body .experience-columns .experience ul {
+  html .experience-grid .experience ul,
+  body .experience-grid .experience ul {
     margin-top: 0 !important;
     margin-bottom: 0.05em !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
-  html .experience-columns .experience ul li,
-  body .experience-columns .experience ul li {
+  html .experience-grid .experience ul li,
+  body .experience-grid .experience ul li {
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
-  html .experience-columns .experience li, html .experience-columns .experience p,
-  body .experience-columns .experience li,
-  body .experience-columns .experience p {
+  html .experience-grid .experience li, html .experience-grid .experience p,
+  body .experience-grid .experience li,
+  body .experience-grid .experience p {
     margin-bottom: 0 !important;
     margin-top: 0 !important;
     line-height: 1.2 !important;
+  }
+  html .experience-grid-second-part,
+  body .experience-grid-second-part {
+    width: 100% !important;
+    column-count: 2 !important;
+    column-gap: 0.5em !important;
+  }
+  html .experience-grid-second-part .experience,
+  body .experience-grid-second-part .experience {
+    display: inline-block !important;
+    width: 100% !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 0.3em !important;
+    padding: 0 !important;
   }
   /* Ensure paragraphs don't break in the middle */
   p {
@@ -384,6 +401,14 @@ body .experience-columns .experiences-right {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     text-rendering: optimizeLegibility;
+  }
+  /* Safari-specific fixes for column-based masonry */
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      #experiences .experience-grid-second-part {
+        -webkit-column-break-inside: avoid;
+      }
+    }
   }
 }
 

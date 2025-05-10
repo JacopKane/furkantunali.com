@@ -126,6 +126,14 @@ body {
     em {
       font-weight: 300;
     }
+    
+    .dates {
+      font-weight: 400;
+      font-size: 0.85em;
+      opacity: 0.85;
+      margin-left: 0.5em;
+      white-space: nowrap;
+    }
   }
 
   h4 {
@@ -222,15 +230,69 @@ body {
     padding: 0.5em;
     border-radius: 4px;
     box-sizing: border-box;
-    
+
+    // Ensure consistent height behavior
+    display: flex;
+    flex-direction: column;
+
+    // Add a subtle hover effect for web version
+    transition: background-color 0.2s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+      }
+    }
+
     h3, h4, h5 {
       margin-bottom: 0.25em;
     }
   }
   
-  // Styling for the experiences section with a single column layout
+  // Styling for the experiences section
   #experiences {
+    // General styles for all experience lists
     ul {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+    
+    // Legacy experience grid - keeping for backwards compatibility
+    ul.experience-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      width: 100%;
+      
+      li.experience {
+        // Responsive width - default two columns
+        flex: 1 1 calc(50% - 1em);
+        min-width: 280px; // Minimum width before wrapping
+        
+        // Allow content to flow naturally
+        page-break-inside: auto;
+        break-inside: auto;
+        
+        // Add a subtle separation between experiences
+        margin-bottom: 1.5em;
+        
+        // For very small screens, use full width
+        @media (max-width: 600px) {
+          flex: 1 1 100%;
+        }
+        
+        // For larger screens, allow three columns if enough space
+        @media (min-width: 1200px) {
+          flex: 1 1 calc(33.333% - 1em);
+        }
+      }
+    }
+    
+    // First part - single column layout
+    ul.experience-grid-first-part {
       width: 100%;
       max-width: 100%;
       
@@ -239,10 +301,49 @@ body {
         page-break-inside: auto;
         break-inside: auto;
         max-width: 100%;
+        display: block;
         
         // Add a subtle separation between experiences
         &:not(:last-child) {
           margin-bottom: 1.5em;
+        }
+      }
+    }
+    
+    // Second part - true masonry layout with CSS columns
+    ul.experience-grid-second-part {
+      // Multi-column layout for masonry effect
+      column-count: 2; // Default to 2 columns
+      column-gap: 1em;
+      
+      // Responsive adjustments
+      @media (max-width: 600px) {
+        column-count: 1; // Single column on mobile
+      }
+      
+      @media (min-width: 1200px) {
+        column-count: 3; // Three columns on larger screens
+      }
+      
+      li.experience {
+        // Each experience must stay in one column (not break across columns)
+        display: inline-block; // Important for column layout
+        width: 100%;
+        break-inside: avoid; // Prevent item from breaking across columns
+        page-break-inside: avoid;
+        margin-bottom: 1em; // Space between items
+        
+        // Fix for Safari
+        -webkit-column-break-inside: avoid;
+        
+        // Ensure proper rendering in all browsers
+        backface-visibility: hidden; // Helps with rendering glitches
+        
+        // If any experience item has floated content, ensure proper clearing
+        &::after {
+          content: "";
+          display: table;
+          clear: both;
         }
       }
     }
@@ -260,6 +361,44 @@ body {
     padding: 0.2cm !important;
     color: #000 !important; // Ensure text is black for better printing
     background: #fff !important; // Ensure background is white
+  }
+  
+  // Print-specific styles for the experience grid
+  #experiences .experience-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5em !important;
+    
+    li.experience {
+      flex: 1 1 calc(50% - 0.5em) !important; // Two columns in print
+      min-width: 0 !important; // Override the min-width to ensure proper fitting
+      margin-bottom: 0.5em !important;
+    }
+  }
+
+  // Print-specific styles for the second experience grid (masonry)
+  #experiences .experience-grid-second-part {
+    column-count: 2 !important; // Two columns for print
+    column-gap: 0.5em !important;
+    width: 100% !important;
+    
+    li.experience {
+      display: inline-block !important;
+      width: 100% !important;
+      break-inside: avoid !important; // Critical for print
+      page-break-inside: avoid !important;
+      margin-bottom: 0.5em !important;
+    }
+  }
+
+  // Print-specific styles for the first experience part
+  #experiences .experience-grid-first-part {
+    width: 100% !important;
+    
+    li.experience {
+      display: block !important;
+      width: 100% !important;
+    }
   }
 
   h1 { font-size: 19px !important; line-height: 1.2 !important; } // Increased from 18px/1.1
