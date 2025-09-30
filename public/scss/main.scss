@@ -116,7 +116,7 @@ body {
 }
 
 section#about {
-  font-family: 'Space Mono', 'IBM Plex Mono', 'Courier Prime', 'Anonymous Pro', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', 'Courier New', monospace;
   font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 0.9));
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -182,7 +182,7 @@ section#about {
 }
 
 .terminal-cursor {
-  font-family: 'Space Mono', 'IBM Plex Mono', 'Courier Prime', 'Anonymous Pro', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', 'Courier New', monospace;
   color: #94FEF7 !important;
   background-color: #94FEF7 !important;
   font-weight: 700 !important;
