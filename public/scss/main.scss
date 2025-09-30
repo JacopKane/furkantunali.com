@@ -116,12 +116,19 @@ body {
 }
 
 section#about {
-  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', 'Courier New', monospace;
-  font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 0.9));
-  font-weight: 300;
+  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 3.2));
+  font-weight: 400;
   letter-spacing: 0.02em;
+  line-height: 1.05;
   padding: 0 calc(var(--base-font-size) + (var(--scaling-factor) * 8));
   text-align: center;
+
+  strong {
+    color: #00FF41 !important;
+    font-weight: 700;
+    text-shadow: 0 0 5px #00FF41;
+  }
   animation: gradient-reverse 50s ease infinite;
   background: rgb(0, 0, 0)
     linear-gradient(
@@ -147,7 +154,7 @@ section#about {
     
     a,
     a:visited {
-      animation: gradient-reverse 50s ease infinite;
+      animation: gradient-reverse 73s ease infinite;
       background: rgb(0, 0, 0)
         linear-gradient(
           90deg,
@@ -182,20 +189,20 @@ section#about {
 }
 
 .terminal-cursor {
-  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', 'Courier New', monospace;
+  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
   color: #94FEF7 !important;
   background-color: #94FEF7 !important;
   font-weight: 700 !important;
   font-size: 1em !important;
   width: 0.6em;
-  height: 1.2em;
+  height: 1.05em;
   animation: blink-caret 1s ease-in-out infinite;
-  margin-left: 3px;
+  margin-left: 2px;
   display: inline-block !important;
-  line-height: 1 !important;
-  vertical-align: text-bottom;
+  line-height: 1.05 !important;
+  vertical-align: baseline;
   position: relative;
-  top: -0.1em;
+  top: 0;
 }
 
 @mixin gradient-text {
@@ -265,7 +272,7 @@ html {
         text-decoration: underline;
         text-decoration-color: rgba(148, 254, 247, 0.6);
         text-underline-offset: 0.1em;
-        animation: gradient-reverse 50s ease infinite;
+        animation: gradient-reverse 73s ease infinite;
         background: rgb(0, 0, 0)
           linear-gradient(
             90deg,
