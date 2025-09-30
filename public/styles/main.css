@@ -219,7 +219,7 @@ body {
 
 section#about {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 1);
-  padding: calc(var(--base-font-size) + var(--scaling-factor) * 2) calc(var(--base-font-size) + var(--scaling-factor) * 16);
+  padding: 0 calc(var(--base-font-size) + var(--scaling-factor) * 8);
   text-align: center;
   animation: gradient-reverse 50s ease infinite;
   background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(148, 254, 247, 0.8));
@@ -228,6 +228,8 @@ section#about {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+  max-width: 80vw;
+  margin: 0 auto;
 }
 section#about p {
   margin-top: 0;
@@ -260,8 +262,9 @@ section#about p.cta {
 html,
 body {
   color: rgba(255, 255, 255, 0.9);
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -277,30 +280,48 @@ html body {
   font-weight: normal;
   line-height: 1.5;
   margin: 4vmin;
-  min-height: calc(100vh - 10vmin);
+  height: calc(100vh - 8vmin);
   padding: 1vmin;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
 }
 html body a.tap {
   padding: 0 0.4vmin;
   text-decoration: none;
 }
 html body nav {
-  padding: 2vmin;
+  padding: 0;
   text-align: center;
+  flex-shrink: 0;
 }
-html body nav a {
-  margin: 0 0.5vmin;
-  opacity: 0.6;
-  padding: 1vmin;
-  text-decoration: none;
+html body nav a.nav-link {
+  margin: 0 1.5vmin;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+  text-underline-offset: 0.1em;
+  animation: gradient-reverse 50s ease infinite;
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 1.0), rgba(249, 251, 177, 1.0), rgba(254, 166, 247, 1.0), rgba(170, 254, 163, 1.0), rgba(254, 166, 247, 1.0), rgba(148, 254, 247, 1.0));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   transition: opacity 0.2s ease-out;
+  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 2);
 }
-html body nav a:hover {
-  opacity: 0.9;
-  text-decoration: none;
+html body nav a.nav-link:hover {
+  opacity: 0.8;
+  text-decoration-color: rgba(148, 254, 247, 0.8);
 }
 html body header {
   font-weight: lighter;
+  flex-shrink: 0;
 }
 html body header hgroup {
   font-weight: lighter;
@@ -320,26 +341,24 @@ html body header hgroup h6 {
   line-height: 1.5;
 }
 html body header hgroup h1 {
-  border-radius: 45vmin;
+  border-radius: 15vmin;
   display: block;
   display: inline-block;
-  font-size: 100vmin;
-  font-size: 35vmin;
+  font-size: 12vmin;
   font-weight: 100;
-  height: 45vmin;
-  letter-spacing: -2vmin;
-  line-height: 45vmin;
-  margin: 5vmin auto;
+  height: 15vmin;
+  letter-spacing: -0.7vmin;
+  line-height: 15vmin;
   margin: 0 auto;
-  width: 45vmin;
+  width: 15vmin;
   animation: gradient 50s ease infinite;
   background: rgba(0, 0, 0, 0.2) linear-gradient(-270deg, rgb(148, 254, 247), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247));
   background-size: 1000% 1000%;
 }
 html body header hgroup h1 a {
-  border-radius: 45vmin;
+  border-radius: 15vmin;
   display: inline-block;
-  height: 45vmin;
+  height: 15vmin;
   margin: 0 auto;
   text-decoration: none;
   animation: gradient 50s ease infinite;
@@ -349,7 +368,7 @@ html body header hgroup h1 a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  width: 45vmin;
+  width: 15vmin;
 }
 html body header hgroup h1 a:hover {
   -webkit-background-clip: text;
@@ -422,6 +441,7 @@ html body footer {
   font-size: 2.5vmin;
   text-align: center;
   line-height: 1.5;
+  flex-shrink: 0;
 }
 html.no-backgroundcliptext body header hgroup h1 a {
   background: transparent;
@@ -456,6 +476,19 @@ html.no-backgroundcliptext section#about p a:visited {
 }
 html.no-backgroundcliptext section#about p a:hover,
 html.no-backgroundcliptext section#about p a:visited:hover {
+  color: rgba(255, 255, 255, 1.0);
+  text-decoration-color: rgba(255, 255, 255, 0.8);
+}
+html.no-backgroundcliptext nav a.nav-link {
+  background: transparent;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration-color: rgba(255, 255, 255, 0.6);
+}
+html.no-backgroundcliptext nav a.nav-link:hover {
   color: rgba(255, 255, 255, 1.0);
   text-decoration-color: rgba(255, 255, 255, 0.8);
 }
