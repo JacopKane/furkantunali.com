@@ -204,7 +204,6 @@ body {
     background-position: 0% 50%;
   }
 }
-
 @keyframes gradient-reverse {
   0% {
     background-position: 100% 50%;
@@ -216,7 +215,6 @@ body {
     background-position: 100% 50%;
   }
 }
-
 section#about {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 1);
   padding: 0 calc(var(--base-font-size) + var(--scaling-factor) * 8);
@@ -238,7 +236,7 @@ section#about p {
 section#about p a,
 section#about p a:visited {
   animation: gradient-reverse 50s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 1.0), rgba(249, 251, 177, 1.0), rgba(254, 166, 247, 1.0), rgba(170, 254, 163, 1.0), rgba(254, 166, 247, 1.0), rgba(148, 254, 247, 1.0));
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(148, 254, 247));
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -262,9 +260,8 @@ section#about p.cta {
 html,
 body {
   color: rgba(255, 255, 255, 0.9);
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -290,6 +287,20 @@ html body {
   gap: 0;
   overflow: hidden;
 }
+@media (max-width: 480px) {
+  html body {
+    margin: 2vmin;
+    height: calc(100vh - 4vmin);
+    padding: 0.5vmin;
+  }
+}
+@media (max-width: 320px) {
+  html body {
+    margin: 1vmin;
+    height: calc(100vh - 2vmin);
+    padding: 0.25vmin;
+  }
+}
 html body a.tap {
   padding: 0 0.4vmin;
   text-decoration: none;
@@ -306,7 +317,7 @@ html body nav a.nav-link {
   text-decoration-color: rgba(148, 254, 247, 0.6);
   text-underline-offset: 0.1em;
   animation: gradient-reverse 50s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 1.0), rgba(249, 251, 177, 1.0), rgba(254, 166, 247, 1.0), rgba(170, 254, 163, 1.0), rgba(254, 166, 247, 1.0), rgba(148, 254, 247, 1.0));
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(148, 254, 247));
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -355,6 +366,26 @@ html body header hgroup h1 {
   background: rgba(0, 0, 0, 0.2) linear-gradient(-270deg, rgb(148, 254, 247), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247));
   background-size: 1000% 1000%;
 }
+@media (max-width: 480px) {
+  html body header hgroup h1 {
+    border-radius: 12vmin;
+    font-size: 10vmin;
+    height: 12vmin;
+    letter-spacing: -0.5vmin;
+    line-height: 12vmin;
+    width: 12vmin;
+  }
+}
+@media (max-width: 320px) {
+  html body header hgroup h1 {
+    border-radius: 10vmin;
+    font-size: 8vmin;
+    height: 10vmin;
+    letter-spacing: -0.4vmin;
+    line-height: 10vmin;
+    width: 10vmin;
+  }
+}
 html body header hgroup h1 a {
   border-radius: 15vmin;
   display: inline-block;
@@ -369,6 +400,20 @@ html body header hgroup h1 a {
   background-clip: text;
   text-fill-color: transparent;
   width: 15vmin;
+}
+@media (max-width: 480px) {
+  html body header hgroup h1 a {
+    border-radius: 12vmin;
+    height: 12vmin;
+    width: 12vmin;
+  }
+}
+@media (max-width: 320px) {
+  html body header hgroup h1 a {
+    border-radius: 10vmin;
+    height: 10vmin;
+    width: 10vmin;
+  }
 }
 html body header hgroup h1 a:hover {
   -webkit-background-clip: text;
@@ -476,7 +521,7 @@ html.no-backgroundcliptext section#about p a:visited {
 }
 html.no-backgroundcliptext section#about p a:hover,
 html.no-backgroundcliptext section#about p a:visited:hover {
-  color: rgba(255, 255, 255, 1.0);
+  color: rgb(255, 255, 255);
   text-decoration-color: rgba(255, 255, 255, 0.8);
 }
 html.no-backgroundcliptext nav a.nav-link {
@@ -489,7 +534,7 @@ html.no-backgroundcliptext nav a.nav-link {
   text-decoration-color: rgba(255, 255, 255, 0.6);
 }
 html.no-backgroundcliptext nav a.nav-link:hover {
-  color: rgba(255, 255, 255, 1.0);
+  color: rgb(255, 255, 255);
   text-decoration-color: rgba(255, 255, 255, 0.8);
 }
 
