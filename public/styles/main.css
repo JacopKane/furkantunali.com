@@ -235,12 +235,22 @@ section#about p {
 }
 section#about p a,
 section#about p a:visited {
-  color: rgba(0, 0, 0, 0.4);
-  transition: color 0.2s ease-out;
+  animation: gradient-reverse 50s ease infinite;
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 1.0), rgba(249, 251, 177, 1.0), rgba(254, 166, 247, 1.0), rgba(170, 254, 163, 1.0), rgba(254, 166, 247, 1.0), rgba(148, 254, 247, 1.0));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  transition: opacity 0.2s ease-out;
+  text-decoration: underline;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+  text-underline-offset: 0.1em;
 }
 section#about p a:hover,
 section#about p a:visited:hover {
-  color: rgba(0, 0, 0, 0.6);
+  opacity: 0.8;
+  text-decoration-color: rgba(148, 254, 247, 0.8);
 }
 section#about p.cta {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
@@ -432,7 +442,22 @@ html.no-backgroundcliptext section#about {
   -webkit-text-fill-color: initial;
   background-clip: initial;
   text-fill-color: initial;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+html.no-backgroundcliptext section#about p a,
+html.no-backgroundcliptext section#about p a:visited {
+  background: transparent;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration-color: rgba(255, 255, 255, 0.6);
+}
+html.no-backgroundcliptext section#about p a:hover,
+html.no-backgroundcliptext section#about p a:visited:hover {
+  color: rgba(255, 255, 255, 1.0);
+  text-decoration-color: rgba(255, 255, 255, 0.8);
 }
 
 /*# sourceMappingURL=main.css.map */
