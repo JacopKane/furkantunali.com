@@ -283,21 +283,19 @@
       </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/grained@0.0.2/grained.min.js"></script>
+    <script src="grained.js"></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var options = {
-          animate: true,
-          patternWidth: window.outerWidth,
-          patternHeight: window.outerHeight,
-          grainOpacity: 0.085,
-          grainDensity: 1,
-          grainWidth: 1.112,
-          grainHeight: 1.112,
-        };
-        grained("#grain", options);
-      });
+      var options = {
+        animate: true,
+        patternWidth: window.outerWidth,
+        patternHeight: window.outerHeight,
+        grainOpacity: 0.085,
+        grainDensity: 1,
+        grainWidth: 1.112,
+        grainHeight: 1.112,
+      };
+      grained("#grain", options);
     </script>
 
     <!-- Google tag (gtag.js) -->
