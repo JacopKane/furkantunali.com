@@ -225,12 +225,9 @@ body {
   }
 }
 section#about {
-  font-family: 'JetBrains Mono', 'Courier New', 'Lucida Console', monospace;
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 0.8);
-  font-weight: 400;
-  letter-spacing: 0.025em;
+  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 1);
   padding: 0 calc(var(--base-font-size) + var(--scaling-factor) * 8);
-  text-align: left;
+  text-align: center;
   animation: gradient-reverse 50s ease infinite;
   background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(148, 254, 247, 0.8));
   background-size: 1000% 1000%;
@@ -240,41 +237,10 @@ section#about {
   text-fill-color: transparent;
   max-width: 80vw;
   margin: 0 auto;
-  /* CRT monitor text shadow for visibility and contrast */
-  text-shadow: 
-    0 0 3px rgba(148, 254, 247, 0.4),
-    0 0 6px rgba(148, 254, 247, 0.2),
-    0 0 12px rgba(148, 254, 247, 0.1),
-    1px 1px 0 rgba(0, 0, 0, 0.8),
-    2px 2px 0 rgba(0, 0, 0, 0.6),
-    3px 3px 0 rgba(0, 0, 0, 0.4);
-  position: relative;
 }
 section#about p {
   margin-top: 0;
-  margin-bottom: 1em;
-  line-height: 1.6;
-  /* Terminal-style formatting */
-  position: relative;
-}
-
-/* Add blinking cursor effect after the last paragraph */
-section#about p:last-of-type:after {
-  content: '_';
-  animation: blink 1s infinite;
-  font-weight: bold;
-  margin-left: 2px;
-  color: rgba(148, 254, 247, 0.9);
-  text-shadow: 
-    0 0 3px rgba(148, 254, 247, 0.6),
-    0 0 6px rgba(148, 254, 247, 0.4),
-    1px 1px 0 rgba(0, 0, 0, 0.9),
-    2px 2px 0 rgba(0, 0, 0, 0.7);
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  line-height: 1.5;
 }
 section#about p a,
 section#about p a:visited {
@@ -285,49 +251,19 @@ section#about p a:visited {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  transition: opacity 0.2s ease-out, text-shadow 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
   text-decoration: underline;
   text-decoration-color: rgba(148, 254, 247, 0.6);
   text-underline-offset: 0.1em;
-  /* Enhanced CRT text shadow for links */
-  text-shadow: 
-    0 0 2px rgba(148, 254, 247, 0.5),
-    0 0 4px rgba(148, 254, 247, 0.3),
-    0 0 8px rgba(148, 254, 247, 0.15),
-    1px 1px 0 rgba(0, 0, 0, 0.9),
-    2px 2px 0 rgba(0, 0, 0, 0.7);
-  position: relative;
 }
 section#about p a:hover,
 section#about p a:visited:hover {
   opacity: 0.8;
   text-decoration-color: rgba(148, 254, 247, 0.8);
-  text-shadow: 
-    0 0 4px rgba(148, 254, 247, 0.8),
-    0 0 8px rgba(148, 254, 247, 0.5),
-    0 0 16px rgba(148, 254, 247, 0.3),
-    1px 1px 0 rgba(0, 0, 0, 1),
-    2px 2px 0 rgba(0, 0, 0, 0.8),
-    3px 3px 0 rgba(0, 0, 0, 0.6);
 }
 section#about p.cta {
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 4);
-  line-height: 1.6;
-  font-weight: 500;
-  margin-top: 2em;
-  /* Add terminal prompt styling */
-  position: relative;
-}
-
-section#about p.cta:before {
-  content: '> ';
-  color: rgba(148, 254, 247, 0.8);
-  font-weight: bold;
-  text-shadow: 
-    0 0 3px rgba(148, 254, 247, 0.6),
-    0 0 6px rgba(148, 254, 247, 0.4),
-    1px 1px 0 rgba(0, 0, 0, 0.9),
-    2px 2px 0 rgba(0, 0, 0, 0.7);
+  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
+  line-height: 1.5;
 }
 
 html,
