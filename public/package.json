@@ -4,6 +4,7 @@
     "outputPath": "./"
   },
   "scripts": {
+    "dev": "npm run build && concurrently \"npm run watch-scss\" \"npm run watch-html\" \"npm run serve\"",
     "build:watch": "concurrently \"npm run watch-scss\" \"npm run watch-html\"",
     "watch-scss": "sass --watch scss/:styles/",
     "watch-html": "nodemon",
@@ -24,7 +25,8 @@
   "devDependencies": {
     "@wcj/ejs-cli": "^1.1.6",
     "sass": "^1.71.0",
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "concurrently": "^8.2.2"
   },
   "private": true
 }

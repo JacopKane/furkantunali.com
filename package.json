@@ -13,6 +13,9 @@
   "scripts": {
     "build": "npm run --workspaces build",
     "lint": "npm run --workspaces lint",
+    "dev": "concurrently \"npm run dev:functions\" \"npm run dev:public\"",
+    "dev:public": "npm run --workspace=public dev",
+    "dev:functions": "npm run --workspace=functions build:watch",
     "build:watch": "concurrently \"npm run build:watch:functions\" \"npm run build:watch:public\"",
     "build:watch:public": "npm run --workspace=public build:watch",
     "build:watch:functions": "npm run --workspace=functions build:watch",

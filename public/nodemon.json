@@ -1,5 +1,6 @@
 {
-  "watch": ["ejs/**/*.ejs"],
-  "ext": "ejs",
-  "exec": "npm run build-html"
+  "watch": ["ejs/**/*.ejs", "ejs/**/*.json"],
+  "ext": "ejs,json",
+  "exec": "npm run build-html && echo 'HTML rebuilt successfully'",
+  "ignore": ["*.html", "node_modules", "styles/**", "scripts/**"]
 }
