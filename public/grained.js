@@ -58,10 +58,18 @@
         var generateNoise = function () {
             var canvas = doc.createElement('canvas');
             var ctx = canvas.getContext('2d');
-            canvas.width = options.patternWidth;
-            canvas.height = options.patternHeight;
-            for (var w = 0; w < options.patternWidth; w += options.grainDensity) {
-                for (var h = 0; h < options.patternHeight; h += options.grainDensity) {
+            
+            // Use full screen dimensions instead of small pattern
+            var screenWidth = window.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth;
+            var screenHeight = window.innerHeight || doc.documentElement.clientHeight || doc.body.clientHeight;
+            
+            // Make it slightly larger to account for animation movement
+            canvas.width = Math.max(screenWidth * 1.5, options.patternWidth);
+            canvas.height = Math.max(screenHeight * 1.5, options.patternHeight);
+            
+            // Generate noise across the entire canvas
+            for (var w = 0; w < canvas.width; w += options.grainDensity) {
+                for (var h = 0; h < canvas.height; h += options.grainDensity) {
                     var rgb = Math.random() * 256 | 0;
                     ctx.fillStyle = 'rgba(' + [rgb, rgb, rgb, options.grainOpacity].join() + ')';
                     ctx.fillRect(w, h, options.grainWidth, options.grainHeight);
@@ -126,6 +134,8 @@
         doc.body.appendChild(style);
 
         var rule = 'background-image: url(' + noise + ');';
+        rule += 'background-repeat: no-repeat;';
+        rule += 'background-size: cover;';
         rule += 'position: absolute;content: "";height: 300%;width: 300%;left: -100%;top: -100%;';
         pre = prefixes.length;
         if (options.animate) {
@@ -140,9 +150,40 @@
         //selecter element to add grains
         selectorElement = '#' + elementId + '::before';
 
-
         addCSSRule(style.sheet, selectorElement, rule);
 
+        // Regenerate noise on window resize to maintain full-screen coverage
+        var resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                var newNoise = generateNoise();
+                var newRule = 'background-image: url(' + newNoise + ');';
+                newRule += 'background-repeat: no-repeat;';
+                newRule += 'background-size: cover;';
+                newRule += 'position: absolute;content: "";height: 300%;width: 300%;left: -100%;top: -100%;';
+                
+                if (options.animate) {
+                    var pre = prefixes.length;
+                    while (pre--) {
+                        newRule += prefixes[pre] + 'animation-name:grained;';
+                        newRule += prefixes[pre] + 'animation-iteration-count: infinite;';
+                        newRule += prefixes[pre] + 'animation-duration: ' + options.grainChaos + 's;';
+                        newRule += prefixes[pre] + 'animation-timing-function: steps(' + options.grainSpeed + ', end);';
+                    }
+                }
+                
+                // Remove old rule and add new one
+                var currentStyle = doc.getElementById('grained-animation-' + elementId);
+                if (currentStyle && currentStyle.sheet) {
+                    // Clear existing rules
+                    while(currentStyle.sheet.cssRules.length > 0) {
+                        currentStyle.sheet.deleteRule(0);
+                    }
+                    addCSSRule(currentStyle.sheet, selectorElement, newRule);
+                }
+            }, 250); // Debounce resize events
+        });
 
     }
 
