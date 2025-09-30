@@ -84,6 +84,17 @@
     transform: translate(0px, -2px) rotate(-0.3deg);
   }
 }
+.grain-overlay {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3;
+  animation: grain 0.2s steps(10) infinite;
+}
+
 /* CRT monitor scanlines animation */
 @keyframes scanlines {
   0% {
@@ -137,17 +148,6 @@
   opacity: 0.8;
   animation: flicker 0.12s infinite linear alternate;
   pointer-events: none;
-}
-
-.grain-overlay {
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.3;
-  animation: grain 0.2s steps(10) infinite;
 }
 
 :root {
