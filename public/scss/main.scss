@@ -258,6 +258,7 @@ html {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 4vmin 0;
       
       hgroup {
         font-weight: lighter;
@@ -294,7 +295,7 @@ html {
           height: $logo-size;
           letter-spacing: calc(#{$logo-size} * -0.05);
           line-height: $logo-size;
-          margin: 0 auto;
+          margin: 2vmin auto;
           width: $logo-size;
           max-width: calc(100% - 2vmin); // Ensure it fits within container
           box-sizing: border-box;

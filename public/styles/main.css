@@ -336,6 +336,7 @@ html body header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 4vmin 0;
 }
 html body header hgroup {
   font-weight: lighter;
@@ -368,7 +369,7 @@ html body header hgroup h1 {
   height: clamp(3rem, 8vw, 6rem);
   letter-spacing: calc(clamp(3rem, 8vw, 6rem) * -0.05);
   line-height: clamp(3rem, 8vw, 6rem);
-  margin: 0 auto;
+  margin: 2vmin auto;
   width: clamp(3rem, 8vw, 6rem);
   max-width: calc(100% - 2vmin);
   box-sizing: border-box;
