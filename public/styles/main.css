@@ -204,10 +204,30 @@ body {
     background-position: 0% 50%;
   }
 }
+
+@keyframes gradient-reverse {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 section#about {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 1);
   padding: calc(var(--base-font-size) + var(--scaling-factor) * 2) calc(var(--base-font-size) + var(--scaling-factor) * 16);
   text-align: center;
+  animation: gradient-reverse 50s ease infinite;
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(148, 254, 247, 0.8));
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 section#about p {
   margin-top: 0;
@@ -405,6 +425,14 @@ html.no-backgroundcliptext body header hgroup h5,
 html.no-backgroundcliptext body header hgroup h6 {
   background: transparent;
   opacity: 0.66;
+}
+html.no-backgroundcliptext section#about {
+  background: transparent;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /*# sourceMappingURL=main.css.map */
