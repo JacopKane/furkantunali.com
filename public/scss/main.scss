@@ -47,29 +47,41 @@ body {
 
 @keyframes gradient {
   0% {
+    background-position: 25% 50%;
+  }
+
+  25% {
     background-position: 0% 50%;
   }
 
-  50% {
+  75% {
     background-position: 100% 50%;
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position: 25% 50%;
   }
 }
 
 @keyframes gradient-reverse {
   0% {
-    background-position: 100% 50%;
+    background-position: 50% 50%;
+  }
+
+  25% {
+    background-position: 75% 50%;
   }
 
   50% {
-    background-position: 0% 50%;
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 25% 50%;
   }
 
   100% {
-    background-position: 100% 50%;
+    background-position: 0% 50%;
   }
 }
 
