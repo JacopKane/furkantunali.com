@@ -1,14 +1,5 @@
 {
   "projects": {
     "default": "furkantunali-1043"
-  },
-  "targets": {
-    "furkantunali-1043": {
-      "hosting": {
-        "furkantunali": [
-          "furkantunali-1043"
-        ]
-      }
-    }
   }
 }
