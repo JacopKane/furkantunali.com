@@ -224,8 +224,25 @@ body {
     background-position: 0% 50%;
   }
 }
+@keyframes blink-caret {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 section#about {
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 1);
+  font-family: "Space Mono", "IBM Plex Mono", "Courier Prime", "Anonymous Pro", "Monaco", "Consolas", "Courier New", monospace;
+  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 0.9);
+  font-weight: 300;
+  letter-spacing: 0.02em;
   padding: 0 calc(var(--base-font-size) + var(--scaling-factor) * 8);
   text-align: center;
   animation: gradient-reverse 50s ease infinite;
@@ -264,6 +281,23 @@ section#about p a:visited:hover {
 section#about p.cta {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
   line-height: 1.5;
+}
+
+.terminal-cursor {
+  font-family: "Space Mono", "IBM Plex Mono", "Courier Prime", "Anonymous Pro", "Monaco", "Consolas", "Courier New", monospace;
+  color: #94FEF7 !important;
+  background-color: #94FEF7 !important;
+  font-weight: 700 !important;
+  font-size: 1em !important;
+  width: 0.6em;
+  height: 1.2em;
+  animation: blink-caret 1s ease-in-out infinite;
+  margin-left: 3px;
+  display: inline-block !important;
+  line-height: 1 !important;
+  vertical-align: text-bottom;
+  position: relative;
+  top: -0.1em;
 }
 
 html,
