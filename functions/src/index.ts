@@ -9,6 +9,12 @@ import { launch } from "puppeteer";
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
 
+/**
+ * Constructs a URL for the hosting environment
+ * @param {string} path - The path to append to the base URL
+ * @param {string} localURL - The local URL to use in development
+ * @return {string} The complete URL
+ */
 function getUrl(path = "", localURL = "http://localhost:5002") {
   // Use hard-coded localhost URL for emulator environment
   const hostingUrl = process.env.HOSTING_URL || localURL;
