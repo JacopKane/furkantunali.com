@@ -312,7 +312,7 @@ body.colorful-mode section#about p a:visited {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
+  text-decoration-color: rgba(148, 254, 247, 0.6) !important;
 }
 
 .terminal-cursor {
@@ -370,15 +370,7 @@ body.colorful-mode section#about p {
   margin-top: 0;
   line-height: 1.5;
 }
-body.colorful-mode section#about p a,
-body.colorful-mode section#about p a:visited {
-  text-decoration: underline;
-  text-decoration-color: rgba(0, 0, 0, 0.6);
-  text-underline-offset: 0.1em;
-  /* Default monochrome - black links */
-  color: #000000;
-  transition: all 0.3s ease;
-}
+
 body.colorful-mode section#about p.cta {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
   line-height: 1.5;
@@ -621,6 +613,8 @@ body.colorful-mode header hgroup h1 {
   animation: gradient 50s ease infinite;
   background: rgba(0, 0, 0, 0.2) linear-gradient(-270deg, rgb(148, 254, 247), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247));
   background-size: 1000% 1000%;
+  border-color: #94FEF7 !important;
+  box-shadow: 0 0 10px rgba(148, 254, 247, 0.3);
 }
 body.colorful-mode header hgroup h1 a {
   animation: gradient 50s ease infinite;
