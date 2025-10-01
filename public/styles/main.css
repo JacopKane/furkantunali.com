@@ -312,7 +312,7 @@ body.colorful-mode section#about p a:visited {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  text-decoration-color: rgba(148, 254, 247, 0.6) !important;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
 }
 
 .terminal-cursor {
@@ -341,15 +341,15 @@ body.colorful-mode .terminal-cursor {
 }
 
 /* Apply gradient backgrounds in colorful mode */
-body.colorful-mode html {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
+html.colorful-mode {
+  animation: gradient-reverse 50s ease infinite;
+  background: rgba(0, 0, 0, 0.4) linear-gradient(-270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
   background-size: 1000% 1000%;
 }
 
-body.colorful-mode body {
+body.colorful-mode {
   animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(90deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
+  background: rgba(0, 0, 0, 0.3) linear-gradient(90deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
   background-size: 1000% 1000%;
 }
 
@@ -370,7 +370,15 @@ body.colorful-mode section#about p {
   margin-top: 0;
   line-height: 1.5;
 }
-
+body.colorful-mode section#about p a,
+body.colorful-mode section#about p a:visited {
+  text-decoration: underline;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+  text-underline-offset: 0.1em;
+  /* Default monochrome - black links */
+  color: #000000;
+  transition: all 0.3s ease;
+}
 body.colorful-mode section#about p.cta {
   font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
   line-height: 1.5;
@@ -586,13 +594,13 @@ html.no-backgroundcliptext section#about p a:visited {
   -webkit-text-fill-color: initial;
   background-clip: initial;
   text-fill-color: initial;
-  color: #000000;
-  text-decoration-color: #000000;
+  color: #94FEF7;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
 }
 html.no-backgroundcliptext section#about p a:hover,
 html.no-backgroundcliptext section#about p a:visited:hover {
-  color: #000000;
-  text-decoration-color: #000000;
+  color: #94FEF7;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
 }
 html.no-backgroundcliptext nav a.nav-link {
   background: transparent;
@@ -600,12 +608,12 @@ html.no-backgroundcliptext nav a.nav-link {
   -webkit-text-fill-color: initial;
   background-clip: initial;
   text-fill-color: initial;
-  color: #000000;
-  text-decoration-color: #000000;
+  color: #94FEF7;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
 }
 html.no-backgroundcliptext nav a.nav-link:hover {
-  color: #000000;
-  text-decoration-color: #000000;
+  color: #94FEF7;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
 }
 
 /* Apply gradient colors to logo/headers in colorful mode */

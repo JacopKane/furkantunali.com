@@ -236,30 +236,36 @@
         const body = document.body;
         const links = document.querySelectorAll('a');
         
-        // Function to temporarily disable transitions
-        function disableTransitions() {
+        // Function to temporarily disable only color/background transitions (not animations)
+        function disableColorTransitions() {
           const style = document.createElement('style');
           style.type = 'text/css';
-          style.innerHTML = '*, *::before, *::after { transition: none !important; }';
+          style.innerHTML = `
+            *, *::before, *::after { 
+              transition-property: none !important;
+            }
+          `;
           document.head.appendChild(style);
           
-          // Re-enable transitions after a brief moment
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              document.head.removeChild(style);
-            });
-          });
+          // Re-enable transitions after animations start
+          setTimeout(() => {
+            document.head.removeChild(style);
+          }, 50);
         }
         
         // Add hover listeners to all links
         links.forEach(link => {
           link.addEventListener('mouseenter', function() {
-            disableTransitions();
+            console.log('Link hovered - adding colorful-mode class to html and body');
+            disableColorTransitions();
+            document.documentElement.classList.add('colorful-mode');
             body.classList.add('colorful-mode');
           });
           
           link.addEventListener('mouseleave', function() {
-            disableTransitions();
+            console.log('Link unhovered - removing colorful-mode class from html and body');
+            disableColorTransitions();
+            document.documentElement.classList.remove('colorful-mode');
             body.classList.remove('colorful-mode');
           });
         });

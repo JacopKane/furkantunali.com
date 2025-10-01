@@ -242,12 +242,12 @@ body.colorful-mode .terminal-cursor {
 }
 
 /* Apply gradient backgrounds in colorful mode */
-body.colorful-mode html {
-  @include gradient($degree: -270deg);
+html.colorful-mode {
+  @include gradient($degree: -270deg, $animation: gradient-reverse, $color: rgba(0, 0, 0, 0.4));
 }
 
-body.colorful-mode body {
-  @include gradient($degree: 90deg);
+body.colorful-mode {
+  @include gradient($degree: 90deg, $animation: gradient, $color: rgba(0, 0, 0, 0.3));
 }
 
 /* Colorful gradient for entire section in colorful mode */
@@ -280,7 +280,7 @@ body.colorful-mode section#about {
     a,
     a:visited {
       text-decoration: underline;
-      text-decoration-color: rgba(0, 0, 0, 0.6);
+      text-decoration-color: rgba(148, 254, 247, 0.6);
       text-underline-offset: 0.1em;
       /* Default monochrome - black links */
       color: #000000;
@@ -546,12 +546,12 @@ html {
           -webkit-text-fill-color: initial;
           background-clip: initial;
           text-fill-color: initial;
-          color: #000000;
-          text-decoration-color: #000000;
+          color: #94FEF7;
+          text-decoration-color: rgba(148, 254, 247, 0.6);
 
           &:hover {
-            color: #000000;
-            text-decoration-color: #000000;
+            color: #94FEF7;
+            text-decoration-color: rgba(148, 254, 247, 0.6);
           }
         }
       }
@@ -564,12 +564,12 @@ html {
         -webkit-text-fill-color: initial;
         background-clip: initial;
         text-fill-color: initial;
-        color: #000000;
-        text-decoration-color: #000000;
+        color: #94FEF7;
+        text-decoration-color: rgba(148, 254, 247, 0.6);
 
         &:hover {
-          color: #000000;
-          text-decoration-color: #000000;
+          color: #94FEF7;
+          text-decoration-color: rgba(148, 254, 247, 0.6);
         }
       }
     }
@@ -583,6 +583,8 @@ body.colorful-mode header hgroup h1 {
     $color: rgba(0, 0, 0, 0.2),
     $opacity: 1
   );
+  border-color: #94FEF7 !important;
+  box-shadow: 0 0 10px rgba(148, 254, 247, 0.3);
   
   a {
     @include gradient;
