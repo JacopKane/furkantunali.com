@@ -200,7 +200,7 @@
           <em>I've also formerly founded my own company</em>, focusing on design
           (wireframe, UI, branding, web, responsive), and building
           <em>client relations</em>. My professional path officially started in
-          <strong>2005</strong>, alongside my ongoing education in software.
+          <strong>2005</strong>, alongside my ongoing <strong>education in software</strong>.
         </p>
     </section>
 
@@ -228,6 +228,42 @@
         grainHeight: 1.112,
       };
       grained("#grain", options);
+    </script>
+
+    <!-- Link Hover Colorful Mode Controller -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const body = document.body;
+        const links = document.querySelectorAll('a');
+        
+        // Function to temporarily disable transitions
+        function disableTransitions() {
+          const style = document.createElement('style');
+          style.type = 'text/css';
+          style.innerHTML = '*, *::before, *::after { transition: none !important; }';
+          document.head.appendChild(style);
+          
+          // Re-enable transitions after a brief moment
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              document.head.removeChild(style);
+            });
+          });
+        }
+        
+        // Add hover listeners to all links
+        links.forEach(link => {
+          link.addEventListener('mouseenter', function() {
+            disableTransitions();
+            body.classList.add('colorful-mode');
+          });
+          
+          link.addEventListener('mouseleave', function() {
+            disableTransitions();
+            body.classList.remove('colorful-mode');
+          });
+        });
+      });
     </script>
 
     <!-- Google tag (gtag.js) -->

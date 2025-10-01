@@ -5,13 +5,30 @@
 :root {
   /* Define base font size and scaling factor */
   --base-font-size: 16px; /* Base font size */
-  --scaling-factor: 0.5vmin; /* Adjust this value to control the scaling with viewport size */
-}
-
-body {
-  /* Calculate font size based on viewport size */
+  --scaling-factor: 0.5vmin; /* Adjust this value to control the scaling with viewport size/* Remove global hover effects - colors only appear on individual link hover */  /* Calculate font size based on viewport size */
   font-size: calc(var(--base-font-size) + var(--scaling-factor));
   line-height: $standard-line-height;
+  
+  /* Default monochrome state */
+  --text-color: #888888;
+  --accent-color: #000000;
+  --link-color: #000000;
+  --background-color: #ffffff;
+  --border-color: #000000;
+  
+  /* Apply monochrome defaults */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  /* Exclude custom properties from transitions to prevent fade effects */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Global colorful state - activated only when hovering actual links via JavaScript */
+body.colorful-mode {
+  --text-color: transparent;
+  --accent-color: #00FF41;
+  --link-color: transparent;
 }
 
 #grain-container {
@@ -123,12 +140,118 @@ section#about {
   line-height: 1.05;
   padding: 0 calc(var(--base-font-size) + (var(--scaling-factor) * 8));
   text-align: center;
+  max-width: 80vw;
+  margin: 0 auto;
+  /* Default monochrome - gray text on white background */
+  color: #888888;
+  transition: all 0.3s ease;
 
   strong {
-    color: #00FF41 !important;
+    color: #000000 !important;
     font-weight: 700;
-    text-shadow: 0 0 5px #00FF41;
+    transition: all 0.3s ease;
   }
+  
+  p {
+    margin-top: 0;
+    line-height: $standard-line-height;
+    
+    a,
+    a:visited {
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 0, 0, 0.6);
+      text-underline-offset: 0.1em;
+      /* Default monochrome - black links */
+      color: #000000;
+      transition: all 0.3s ease;
+    }
+
+    &.cta {
+      font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 6));
+      line-height: $standard-line-height;
+    }
+  }
+}
+
+/* Colorful gradient for nav links in colorful mode */
+body.colorful-mode nav a.nav-link {
+  animation: gradient-reverse 73s ease infinite;
+  background: rgb(0, 0, 0)
+    linear-gradient(
+      90deg,
+      rgba(255, 140, 0, 1.0),
+      rgba(128, 0, 128, 1.0),
+      rgba(255, 255, 255, 1.0),
+      rgba(0, 0, 0, 1.0),
+      rgba(178, 34, 34, 1.0),
+      rgba(255, 140, 0, 1.0)
+    );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+}
+
+/* Colorful gradient for section#about paragraph links in colorful mode */
+body.colorful-mode section#about p a,
+body.colorful-mode section#about p a:visited {
+  animation: gradient-reverse 73s ease infinite;
+  background: rgb(0, 0, 0)
+    linear-gradient(
+      90deg,
+      rgba(254, 166, 247, 1.0),
+      rgba(249, 251, 177, 1.0),
+      rgba(254, 166, 247, 1.0),
+      rgba(170, 254, 163, 1.0),
+      rgba(254, 166, 247, 1.0),
+      rgba(148, 254, 247, 1.0)
+    );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+}
+
+.terminal-cursor {
+  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
+  /* Default monochrome - black cursor */
+  color: #000000 !important;
+  background-color: #000000 !important;
+  font-weight: 700 !important;
+  font-size: 1em !important;
+  width: 0.6em;
+  height: 1.05em;
+  animation: blink-caret 1s ease-in-out infinite;
+  margin-left: 2px;
+  display: inline-block !important;
+  line-height: 1.05 !important;
+  vertical-align: baseline;
+  position: relative;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+/* Colorful effects in colorful mode */
+body.colorful-mode .terminal-cursor {
+  color: #94FEF7 !important;
+  background-color: #94FEF7 !important;
+}
+
+/* Apply gradient backgrounds in colorful mode */
+body.colorful-mode html {
+  @include gradient($degree: -270deg);
+}
+
+body.colorful-mode body {
+  @include gradient($degree: 90deg);
+}
+
+/* Colorful gradient for entire section in colorful mode */
+body.colorful-mode section#about {
   animation: gradient-reverse 50s ease infinite;
   background: rgb(0, 0, 0)
     linear-gradient(
@@ -144,41 +267,24 @@ section#about {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
-  max-width: 80vw;
-  margin: 0 auto;
-  
+
+  strong {
+    color: #00FF41 !important;
+    text-shadow: 0 0 5px #00FF41;
+  }
+
   p {
     margin-top: 0;
     line-height: $standard-line-height;
     
     a,
     a:visited {
-      animation: gradient-reverse 73s ease infinite;
-      background: rgb(0, 0, 0)
-        linear-gradient(
-          90deg,
-          rgba(254, 166, 247, 1.0),
-          rgba(249, 251, 177, 1.0),
-          rgba(254, 166, 247, 1.0),
-          rgba(170, 254, 163, 1.0),
-          rgba(254, 166, 247, 1.0),
-          rgba(148, 254, 247, 1.0)
-        );
-      background-size: 1000% 1000%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      transition: opacity 0.2s ease-out;
       text-decoration: underline;
-      text-decoration-color: rgba(148, 254, 247, 0.6);
+      text-decoration-color: rgba(0, 0, 0, 0.6);
       text-underline-offset: 0.1em;
-      
-      &:hover {
-        opacity: 0.8;
-        text-decoration-color: rgba(148, 254, 247, 0.8);
-      }
+      /* Default monochrome - black links */
+      color: #000000;
+      transition: all 0.3s ease;
     }
 
     &.cta {
@@ -186,23 +292,6 @@ section#about {
       line-height: $standard-line-height;
     }
   }
-}
-
-.terminal-cursor {
-  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
-  color: #94FEF7 !important;
-  background-color: #94FEF7 !important;
-  font-weight: 700 !important;
-  font-size: 1em !important;
-  width: 0.6em;
-  height: 1.05em;
-  animation: blink-caret 1s ease-in-out infinite;
-  margin-left: 2px;
-  display: inline-block !important;
-  line-height: 1.05 !important;
-  vertical-align: baseline;
-  position: relative;
-  top: 0;
 }
 
 @mixin gradient-text {
@@ -219,17 +308,21 @@ section#about {
 
 html,
 body {
-  color: rgba(255, 255, 255, 0.9);
+  /* Default monochrome overrides */
+  background-color: #ffffff !important;
+  color: #888888;
   margin: 0 auto;
   padding: 0;
 }
 
 html {
-  @include gradient($degree: -270deg);
+  /* Remove gradient background for monochrome default */
+  background: #ffffff !important;
 
   body {
-    @include gradient;
     @include font-family;
+    /* Remove gradient background for monochrome default */
+    background: #ffffff !important;
     margin: 4vmin;
     min-height: calc(100vh - 8vmin);
     padding: 1vmin;
@@ -270,32 +363,13 @@ html {
         margin: 0 1.5vmin;
         padding: 0;
         text-decoration: underline;
-        text-decoration-color: rgba(148, 254, 247, 0.6);
+        text-decoration-color: rgba(0, 0, 0, 0.6);
         text-underline-offset: 0.1em;
         text-transform: uppercase;
-        animation: gradient-reverse 73s ease infinite;
-        background: rgb(0, 0, 0)
-          linear-gradient(
-            90deg,
-            rgba(255, 140, 0, 1.0),
-            rgba(128, 0, 128, 1.0),
-            rgba(255, 255, 255, 1.0),
-            rgba(0, 0, 0, 1.0),
-            rgba(178, 34, 34, 1.0),
-            rgba(255, 140, 0, 1.0)
-          );
-        background-size: 1000% 1000%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-        transition: opacity 0.2s ease-out;
         font-size: calc(var(--base-font-size) + var(--scaling-factor) * 3.5);
-
-        &:hover {
-          opacity: 0.8;
-          text-decoration-color: rgba(148, 254, 247, 0.8);
-        }
+        /* Default monochrome - black links */
+        color: #000000;
+        transition: all 0.3s ease;
       }
 
 
@@ -324,12 +398,13 @@ html {
         h4,
         h5,
         h6 {
-          color: #fff;
-          color: #fff;
+          /* Default monochrome */
+          color: #000000;
           margin: 0;
           padding: 0;
           text-align: center;
           line-height: $standard-line-height;
+          transition: all 0.3s ease;
         }
 
         h1 {
@@ -349,11 +424,10 @@ html {
           width: $logo-size;
           max-width: calc(100% - 2vmin); // Ensure it fits within container
           box-sizing: border-box;
-          @include gradient(
-            $degree: -270deg,
-            $color: rgba(0, 0, 0, 0.2),
-            $opacity: 1
-          );
+          /* Default monochrome - no gradients */
+          background: #ffffff;
+          border: 2px solid #000000;
+          transition: all 0.3s ease;
 
           a {
             border-radius: inherit;
@@ -364,12 +438,10 @@ html {
             width: 100%;
             margin: 0;
             text-decoration: none;
-            @include gradient;
-            @include gradient-text;
-            
-            &:hover {
-              @include gradient-text;
-            }
+            /* Default monochrome - black text */
+            color: #000000;
+            background: transparent;
+            transition: all 0.3s ease;
           }
         }
 
@@ -377,50 +449,62 @@ html {
           font-size: 25vmin;
           font-weight: 500;
           line-height: calc($standard-line-height * 1.2);
-          @include gradient($degree: -270deg, $opacity: 0.6);
-          @include gradient-text;
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
         }
 
         h3 {
           font-size: 20vmin;
           font-weight: 400;
           line-height: calc($standard-line-height * 1.1);
-          @include gradient($degree: -270deg, $opacity: 0.5);
-          @include gradient-text;
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
         }
 
         h4 {
           font-size: 15vmin;
           font-weight: 300;
           line-height: calc($standard-line-height * 1);
-          @include gradient($degree: -270deg, $opacity: 0.4);
-          @include gradient-text;
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
         }
 
         h5 {
           font-size: 10vmin;
           font-weight: 200;
           line-height: calc($standard-line-height * 0.9);
-          @include gradient($degree: -270deg, $opacity: 0.3);
-          @include gradient-text;
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
         }
 
         h6 {
           font-size: 5vmin;
           font-weight: 100;
           line-height: calc($standard-line-height * 0.8);
-          @include gradient($degree: -270deg, $opacity: 0.2);
-          @include gradient-text;
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
         }
       }
     }
 
     footer {
-      color: rgba(255, 255, 255, 0.4);
+      /* Default monochrome */
+      color: #888888;
       font-size: 2.5vmin;
       text-align: center;
       line-height: $standard-line-height;
       flex-shrink: 0;
+      transition: all 0.3s ease;
     }
   }
 
@@ -431,7 +515,7 @@ html {
           h1 {
             a {
               @include no-gradient-text;
-              color: rgba(255, 255, 255, 0.9);
+              color: #000000;
             }
           }
 
@@ -452,7 +536,7 @@ html {
       -webkit-text-fill-color: initial;
       background-clip: initial;
       text-fill-color: initial;
-      color: rgba(255, 255, 255, 0.8);
+      color: #888888;
 
       p {
         a,
@@ -462,12 +546,12 @@ html {
           -webkit-text-fill-color: initial;
           background-clip: initial;
           text-fill-color: initial;
-          color: rgba(255, 255, 255, 0.9);
-          text-decoration-color: rgba(255, 255, 255, 0.6);
+          color: #000000;
+          text-decoration-color: #000000;
 
           &:hover {
-            color: rgba(255, 255, 255, 1.0);
-            text-decoration-color: rgba(255, 255, 255, 0.8);
+            color: #000000;
+            text-decoration-color: #000000;
           }
         }
       }
@@ -480,14 +564,58 @@ html {
         -webkit-text-fill-color: initial;
         background-clip: initial;
         text-fill-color: initial;
-        color: rgba(255, 255, 255, 0.9);
-        text-decoration-color: rgba(255, 255, 255, 0.6);
+        color: #000000;
+        text-decoration-color: #000000;
 
         &:hover {
-          color: rgba(255, 255, 255, 1.0);
-          text-decoration-color: rgba(255, 255, 255, 0.8);
+          color: #000000;
+          text-decoration-color: #000000;
         }
       }
     }
   }
+}
+
+/* Apply gradient colors to logo/headers in colorful mode */
+body.colorful-mode header hgroup h1 {
+  @include gradient(
+    $degree: -270deg,
+    $color: rgba(0, 0, 0, 0.2),
+    $opacity: 1
+  );
+  
+  a {
+    @include gradient;
+    @include gradient-text;
+  }
+}
+
+body.colorful-mode header hgroup h2 {
+  @include gradient($degree: -270deg, $opacity: 0.6);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h3 {
+  @include gradient($degree: -270deg, $opacity: 0.5);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h4 {
+  @include gradient($degree: -270deg, $opacity: 0.4);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h5 {
+  @include gradient($degree: -270deg, $opacity: 0.3);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h6 {
+  @include gradient($degree: -270deg, $opacity: 0.2);
+  @include gradient-text;
+}
+
+/* Apply colorful styles to footer in colorful mode */
+body.colorful-mode footer {
+  color: rgba(255, 255, 255, 0.4);
 }
