@@ -29,8 +29,12 @@
     "rules": "storage.rules"
   },
   "emulators": {
-    "functions": {},
-    "hosting": {},
+    "functions": {
+      "port": 5555
+    },
+    "hosting": {
+      "port": 5556
+    },
     "storage": {
       "port": 9199
     },

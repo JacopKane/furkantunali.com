@@ -12,13 +12,22 @@ import { launch } from "puppeteer";
 /**
  * Constructs a URL for the hosting environment
  * @param {string} path - The path to append to the base URL
- * @param {string} localURL - The local URL to use in development
  * @return {string} The complete URL
  */
-function getUrl(path = "", localURL = "http://localhost:5002") {
-  // Use hard-coded localhost URL for emulator environment
-  const hostingUrl = process.env.HOSTING_URL || localURL;
-  return `${hostingUrl}${path}`;
+function getUrl(path = "") {
+  // Check if we're running in the Firebase emulator
+  const isEmulator = process.env.FUNCTIONS_EMULATOR === "true" || 
+                    process.env.FIREBASE_CONFIG?.includes("localhost") ||
+                    !process.env.GCLOUD_PROJECT;
+  
+  if (isEmulator) {
+    // Use Firebase hosting emulator URL (configured port 5556)
+    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "5556";
+    return `http://localhost:${hostingPort}${path}`;
+  }
+  
+  // Production environment - use the actual hosting URL
+  return `https://furkantunali.com${path}`;
 }
 
 export const downloadAsPDF = onRequest(

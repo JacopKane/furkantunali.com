@@ -114,9 +114,10 @@
         ><em>ft</em></a
       >
       <a
+        id="download-pdf-link"
         title="Furkan Tunalı Resume PDF"
         target="_blank"
-        href="//bit.ly/download-cv-as-pdf"
+        href="http://europe-west1-furkantunali-1043.cloudfunctions.net/downloadAsPDF"
         download="Furkan Tunalı Résumé.pdf"
         >Download as PDF</a
       >
@@ -826,6 +827,38 @@
       <% if (!GLOBEL.resume) { %>
     </div>
     <% } %>
+
+    <!-- Environment detection for PDF download URL -->
+    <script>
+      (function() {
+        // Check if we're running locally (development)
+        const isLocal = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1' ||
+                       window.location.hostname.includes('localhost');
+        
+        const downloadLink = document.getElementById('download-pdf-link');
+        
+        // Debug: Log the detection results
+        console.log('Hostname:', window.location.hostname);
+        console.log('Is Local:', isLocal);
+        console.log('Download Link:', downloadLink);
+        
+        if (downloadLink && isLocal) {
+          // Use Firebase emulator URL for local development
+          // Firebase Functions emulator port is 5555, hosting emulator port is 5556
+          const localUrl = `http://localhost:5555/furkantunali-1043/europe-west1/downloadAsPDF`;
+          console.log('Setting local URL:', localUrl);
+          downloadLink.href = localUrl;
+        } else {
+          console.log('Using production URL:', downloadLink ? downloadLink.href : 'No link found');
+        }
+        
+        // Also log the final URL after any changes
+        if (downloadLink) {
+          console.log('Final URL:', downloadLink.href);
+        }
+      })();
+    </script>
 
     <% if (!GLOBEL.resumeDoc) { %>
     <footer>
