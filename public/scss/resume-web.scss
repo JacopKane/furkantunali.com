@@ -3,13 +3,12 @@
 // while resume-doc.html remains full-width for PDF generation
 
 body {
-  // Constrain the content width for better readability
-  max-width: 900px;
-  margin: 0 auto;
+  // Full width layout
+  max-width: none;
+  margin: 0;
   
   // Add some padding on smaller screens
   @media (max-width: 960px) {
-    max-width: calc(100% - 2rem);
     margin: 0 1rem;
   }
   

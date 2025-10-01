@@ -1,10 +1,9 @@
 body {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 @media (max-width: 960px) {
   body {
-    max-width: calc(100% - 2rem);
     margin: 0 1rem;
   }
 }
