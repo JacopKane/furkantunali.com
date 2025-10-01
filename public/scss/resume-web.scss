@@ -1,0 +1,171 @@
+// Web-specific styles for resume.html to improve readability
+// These styles make the content more readable by constraining width
+// while resume-doc.html remains full-width for PDF generation
+
+body {
+  // Constrain the content width for better readability
+  max-width: 900px;
+  margin: 0 auto;
+  
+  // Add some padding on smaller screens
+  @media (max-width: 960px) {
+    max-width: calc(100% - 2rem);
+    margin: 0 1rem;
+  }
+  
+  // Ensure proper spacing for the web version
+  .container {
+    padding: 1rem 0;
+  }
+  
+  // Make the navigation more prominent for web
+  nav#download {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    a:not(.logo) {
+      padding: 0.75rem 1.5rem;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: #333;
+        transform: translateY(-1px);
+      }
+    }
+  }
+  
+  // Reset section styling for info and contact sections
+  section {
+    // Remove extra margin and styling for info/contact sections
+    margin-bottom: 0;
+    
+    h2 {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  
+  // Only apply enhanced styling to experiences section
+  #experiences section {
+    margin-bottom: 2rem;
+    
+    h2 {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #eee;
+    }
+  }
+  
+  // Enhance the experience items for web viewing
+  .experience {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    h3 {
+      color: #000;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    h4 {
+      color: #555;
+      font-weight: 400;
+      font-size: 0.95em;
+      margin-bottom: 0.75rem;
+    }
+    
+    ul {
+      margin-top: 0.75rem;
+      
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+    }
+  }
+  
+  // Reset the intro section to proper left/right alignment without extra spacing
+  .intro {
+    // Remove extra padding and margin to match original layout
+    padding: 0;
+    margin-bottom: 1em;
+    
+    .left-column,
+    .right-column {
+      @media (max-width: 768px) {
+        float: none;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    .right-column {
+      @media (max-width: 768px) {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  // Improve footer for web
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    text-align: center;
+    color: #666;
+  }
+  
+  // Ensure print version is full width and removes web constraints
+  @media print {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    .container {
+      padding: 0 !important;
+    }
+    
+    .intro {
+      padding: 0 !important;
+      margin-bottom: 1em !important;
+    }
+    
+    .experience {
+      padding: 0 !important;
+      margin-bottom: 1em !important;
+      transform: none !important;
+    }
+    
+    nav#download {
+      display: none !important;
+    }
+    
+    section {
+      margin-bottom: 1em !important;
+      
+      h2 {
+        margin-bottom: 0.5em !important;
+        border-bottom: none !important;
+      }
+    }
+    
+    footer {
+      margin-top: 1em !important;
+      padding-top: 1em !important;
+      border-top: none !important;
+    }
+  }
+}

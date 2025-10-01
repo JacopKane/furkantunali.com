@@ -79,7 +79,7 @@ export const downloadAsPDF = onRequest(
       response.header("Content-Type", "application/pdf");
       response.header(
         "Content-Disposition",
-        'attachment; filename="Furkan_Tunali_Resume.pdf"',
+        "attachment; filename=\"Furkan_Tunali_Resume.pdf\"",
       );
 
       logger.info("Response headers set", { structuredData: true });
