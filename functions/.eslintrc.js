@@ -11,7 +11,7 @@ module.exports = {
     "plugin:import/typescript",
     "google",
     "plugin:@typescript-eslint/recommended",
-    "prettier" // Ensure this is the last extension in the array
+    "prettier", // Ensure this is the last extension in the array
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -21,13 +21,10 @@ module.exports = {
   ignorePatterns: [
     "/lib/**/*", // Ignore built files.
   ],
-  plugins: [
-    "@typescript-eslint",
-    "import",
-  ],
+  plugins: ["@typescript-eslint", "import"],
   rules: {
-    "quotes": ["error", "double"],
+    quotes: ["error", "double"],
     "import/no-unresolved": 0,
-    "indent": ["error", 2],
+    indent: ["error", 2],
   },
 };
