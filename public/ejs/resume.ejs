@@ -133,7 +133,7 @@
       <a
         title="Furkan Tunalı CV PDF"
         target="_blank"
-        href="//127.0.0.1:5555/furkantunali-1043/europe-west1/downloadAsPDF"
+        href="//127.0.0.1:5001/furkantunali-1043/europe-west1/downloadAsPDF"
         download="Furkan Tunalı CV.pdf"
         >Download as PDF</a
       >
@@ -845,8 +845,8 @@
         
         if (downloadLink && isLocal) {
           // Use Firebase emulator URL for local development
-          // Firebase Functions emulator port is 5555, hosting emulator port is 5556
-          const localUrl = `http://localhost:5555/furkantunali-1043/europe-west1/downloadAsPDF`;
+          // Firebase Functions emulator port is 5001, hosting emulator port is 5002
+          const localUrl = `http://localhost:5001/furkantunali-1043/europe-west1/downloadAsPDF`;
           console.log('Setting local URL:', localUrl);
           downloadLink.href = localUrl;
         } else {

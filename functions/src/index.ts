@@ -22,8 +22,8 @@ function getUrl(path = "") {
     !process.env.GCLOUD_PROJECT;
 
   if (isEmulator) {
-    // Use Firebase hosting emulator URL (configured port 5556)
-    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "5556";
+    // Use Firebase hosting emulator URL (configured port 5002)
+    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "5002";
     return `http://localhost:${hostingPort}${path}`;
   }
 

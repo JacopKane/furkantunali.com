@@ -30,10 +30,10 @@
   },
   "emulators": {
     "functions": {
-      "port": 5555
+      "port": 5001
     },
     "hosting": {
-      "port": 5556
+      "port": 5002
     },
     "storage": {
       "port": 9199
