@@ -247,7 +247,7 @@ section#about {
   padding: 0 calc(var(--base-font-size) + var(--scaling-factor) * 8);
   text-align: center;
   animation: gradient-reverse 50s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(255, 20, 147), rgb(255, 255, 0), rgb(0, 255, 127), rgb(255, 69, 0), rgb(0, 191, 255), rgb(255, 20, 147));
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(255, 255, 255), rgb(139, 69, 19), rgb(75, 0, 130), rgb(220, 20, 60), rgb(25, 25, 112), rgb(255, 255, 255));
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -366,7 +366,7 @@ html body nav a.nav-link {
   text-underline-offset: 0.1em;
   text-transform: uppercase;
   animation: gradient-reverse 73s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(0, 255, 255), rgb(255, 255, 255), rgb(255, 0, 255), rgb(255, 255, 0), rgb(0, 255, 0), rgb(0, 255, 255));
+  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(255, 140, 0), rgb(128, 0, 128), rgb(255, 255, 255), rgb(0, 0, 0), rgb(178, 34, 34), rgb(255, 140, 0));
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
