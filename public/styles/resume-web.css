@@ -17,6 +17,27 @@ body nav#download {
   justify-content: space-between;
   align-items: center;
 }
+body nav#download .logo {
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 100;
+  height: 3rem;
+  letter-spacing: -0.06rem;
+  line-height: 3rem;
+  width: 3rem;
+  background: #ffffff;
+  border: 1px solid #000000;
+  transition: all 0.3s ease-in-out;
+  color: #000000;
+  text-decoration: none;
+}
+body nav#download .logo:hover {
+  border-color: #000000;
+  transform: translateY(-1px);
+}
 body nav#download a:not(.logo) {
   padding: 0.75rem 1.5rem;
   background: #000;
@@ -26,8 +47,8 @@ body nav#download a:not(.logo) {
   transition: all 0.2s ease;
 }
 body nav#download a:not(.logo):hover {
-  background: #333;
   transform: translateY(-1px);
+  opacity: 0.8;
 }
 body section {
   margin-bottom: 0;
@@ -42,42 +63,46 @@ body #experiences section {
 }
 body #experiences section h2 {
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #eee;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 body .experience {
   padding: 1.5rem;
   margin-bottom: 2rem;
-  transition: all 0.2s ease;
+  transition: none !important;
 }
 body .experience:hover {
-  transform: translateY(-2px);
+  transform: none !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  opacity: 1 !important;
 }
-body .experience h3 {
+body h3 {
   color: #000;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
-body .experience h4 {
+body h4 {
   color: #555;
   font-weight: 400;
   font-size: 0.95em;
   margin-bottom: 0.75rem;
 }
-body .experience ul {
+body ul {
   margin-top: 0.75rem;
 }
-body .experience ul li {
+body ul li {
   margin-bottom: 0.5rem;
   line-height: 1.6;
 }
-body .intro {
+
+.intro {
   padding: 0;
   margin-bottom: 1em;
 }
 @media (max-width: 768px) {
-  body .intro .left-column,
-  body .intro .right-column {
+  .intro .left-column,
+  .intro .right-column {
     float: none;
     width: 100%;
     text-align: left;
@@ -85,17 +110,19 @@ body .intro {
   }
 }
 @media (max-width: 768px) {
-  body .intro .right-column {
+  .intro .right-column {
     margin-bottom: 0;
   }
 }
-body footer {
+
+footer {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid #eee;
+  border-top: none;
   text-align: center;
   color: #666;
 }
+
 @media print {
   body {
     max-width: none !important;

@@ -173,8 +173,17 @@ html {
           max-width: calc(100% - 2rem);
           box-sizing: border-box;
           background: #ffffff;
-          border: 2px solid #000000;
+          border: 1px solid #000000;
           transition: all 0.3s ease-in-out;
+          
+          // Increase border thickness on larger screens only
+          @media (min-width: 768px) {
+            border-width: 1.5px;
+          }
+          
+          @media (min-width: 1200px) {
+            border-width: 2px;
+          }
           
           &:hover {
             background-color: #000000;

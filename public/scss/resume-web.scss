@@ -25,6 +25,30 @@ body {
     justify-content: space-between;
     align-items: center;
     
+    // Style the logo like the main page
+    .logo {
+      border-radius: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 100;
+      height: 3rem;
+      letter-spacing: -0.06rem;
+      line-height: 3rem;
+      width: 3rem;
+      background: #ffffff;
+      border: 1px solid #000000;
+      transition: all 0.3s ease-in-out;
+      color: #000000;
+      text-decoration: none;
+      
+      &:hover {
+        border-color: #000000;
+        transform: translateY(-1px);
+      }
+    }
+    
     a:not(.logo) {
       padding: 0.75rem 1.5rem;
       background: #000;
@@ -34,8 +58,8 @@ body {
       transition: all 0.2s ease;
       
       &:hover {
-        background: #333;
         transform: translateY(-1px);
+        opacity: 0.8;
       }
     }
   }
@@ -58,20 +82,25 @@ body {
     
     h2 {
       margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #eee;
+      padding-bottom: 0;
+      border-bottom: none;
     }
   }
   
-  // Enhance the experience items for web viewing
+  // Experience items with NO hover effects whatsoever
   .experience {
     padding: 1.5rem;
     margin-bottom: 2rem;
-    transition: all 0.2s ease;
+    transition: none !important; // Disable all transitions
     
+    // Completely disable all hover effects
     &:hover {
-      transform: translateY(-2px);
+      transform: none !important;
+      background-color: transparent !important;
+      background: transparent !important;
+      opacity: 1 !important;
     }
+  }
     
     h3 {
       color: #000;
@@ -123,16 +152,17 @@ body {
   footer {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #eee;
+    border-top: none;
     text-align: center;
     color: #666;
   }
   
   // Ensure print version is full width and removes web constraints
   @media print {
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    body {
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
     
     .container {
       padding: 0 !important;
@@ -162,10 +192,10 @@ body {
       }
     }
     
-    footer {
-      margin-top: 1em !important;
-      padding-top: 1em !important;
-      border-top: none !important;
+      footer {
+        margin-top: 1em !important;
+        padding-top: 1em !important;
+        border-top: none !important;
+      }
     }
   }
-}
