@@ -15,9 +15,9 @@ app/styles/*.map
 .DS_Store
 *.log
 
-# Compiled CSS and HTML files
+# Generated CSS and HTML files
 public/styles/*.css
-public/styles/*.map
+public/styles/*.css.map
 public/index.html
 public/resume.html
 public/resume-doc.html
