@@ -133,12 +133,12 @@ section#about {
   background: rgb(0, 0, 0)
     linear-gradient(
       90deg,
-      rgba(254, 166, 247, 0.8),
-      rgba(249, 251, 177, 0.8),
-      rgba(254, 166, 247, 0.8),
-      rgba(170, 254, 163, 0.8),
-      rgba(254, 166, 247, 0.8),
-      rgba(148, 254, 247, 0.8)
+      rgba(255, 20, 147, 1.0),
+      rgba(255, 255, 0, 1.0),
+      rgba(0, 255, 127, 1.0),
+      rgba(255, 69, 0, 1.0),
+      rgba(0, 191, 255, 1.0),
+      rgba(255, 20, 147, 1.0)
     );
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
@@ -272,16 +272,17 @@ html {
         text-decoration: underline;
         text-decoration-color: rgba(148, 254, 247, 0.6);
         text-underline-offset: 0.1em;
+        text-transform: uppercase;
         animation: gradient-reverse 73s ease infinite;
         background: rgb(0, 0, 0)
           linear-gradient(
             90deg,
-            rgba(254, 166, 247, 1.0),
-            rgba(249, 251, 177, 1.0),
-            rgba(254, 166, 247, 1.0),
-            rgba(170, 254, 163, 1.0),
-            rgba(254, 166, 247, 1.0),
-            rgba(148, 254, 247, 1.0)
+            rgba(0, 255, 255, 1.0),
+            rgba(255, 255, 255, 1.0),
+            rgba(255, 0, 255, 1.0),
+            rgba(255, 255, 0, 1.0),
+            rgba(0, 255, 0, 1.0),
+            rgba(0, 255, 255, 1.0)
           );
         background-size: 1000% 1000%;
         -webkit-background-clip: text;
@@ -289,7 +290,7 @@ html {
         background-clip: text;
         text-fill-color: transparent;
         transition: opacity 0.2s ease-out;
-        font-size: calc(var(--base-font-size) + var(--scaling-factor) * 2);
+        font-size: calc(var(--base-font-size) + var(--scaling-factor) * 3.5);
 
         &:hover {
           opacity: 0.8;
