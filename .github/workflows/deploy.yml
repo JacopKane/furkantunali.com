@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Deploy to Firebase
 
 on:
     push:
@@ -7,11 +7,11 @@ on:
         branches: [master]
 
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout
+            - name: Checkout code
               uses: actions/checkout@v4
 
             - name: Setup Node.js
@@ -20,16 +20,24 @@ jobs:
                   node-version: "20"
                   cache: "npm"
 
-            - name: Install dependencies
+            - name: Install root dependencies
               run: npm ci
 
-            - name: Build all workspaces
-              run: npm run build
-
-            - name: Verify generated files exist
+            - name: Install workspace dependencies
               run: |
-                  test -f public/index.html || (echo "index.html not generated" && exit 1)
-                  test -f public/resume.html || (echo "resume.html not generated" && exit 1)
-                  test -f public/resume-doc.html || (echo "resume-doc.html not generated" && exit 1)
-                  test -d public/styles || (echo "styles directory not generated" && exit 1)
-                  echo "✅ All required files generated successfully"
+                  npm run --workspace=functions install
+                  npm run --workspace=public install
+
+            - name: Build functions
+              run: npm run --workspace=functions build
+
+            - name: Build public assets (SCSS + HTML)
+              run: npm run --workspace=public build
+
+            - name: Deploy to Firebase
+              if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+              env:
+                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+              run: |
+                  npm install -g firebase-tools
+                  firebase deploy --project furkantunali-1043 --token "$FIREBASE_TOKEN"
