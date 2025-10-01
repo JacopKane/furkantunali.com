@@ -289,13 +289,15 @@ html {
         background-clip: text;
         text-fill-color: transparent;
         transition: opacity 0.2s ease-out;
-        font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 2));
+        font-size: calc(var(--base-font-size) + var(--scaling-factor) * 2);
 
         &:hover {
           opacity: 0.8;
           text-decoration-color: rgba(148, 254, 247, 0.8);
         }
       }
+
+
     }
 
     header {
