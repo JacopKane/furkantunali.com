@@ -2,429 +2,94 @@
   text-decoration: none;
 }
 
-@keyframes grain {
-  0%, 100% {
-    background-position: 0 0;
-  }
-  10% {
-    background-position: -5% -10%;
-  }
-  20% {
-    background-position: -15% 5%;
-  }
-  30% {
-    background-position: 7% -25%;
-  }
-  40% {
-    background-position: -20% 15%;
-  }
-  50% {
-    background-position: 15% 5%;
-  }
-  60% {
-    background-position: 0% 15%;
-  }
-  70% {
-    background-position: -25% 10%;
-  }
-  80% {
-    background-position: 5% 0%;
-  }
-  90% {
-    background-position: -10% -10%;
-  }
-}
-@keyframes grain-shift {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -1px) rotate(0.5deg);
-  }
-  20% {
-    transform: translate(1px, -1px) rotate(-0.5deg);
-  }
-  30% {
-    transform: translate(-1px, 1px) rotate(0.5deg);
-  }
-  40% {
-    transform: translate(1px, 1px) rotate(-0.5deg);
-  }
-  50% {
-    transform: translate(-1px, 0px) rotate(0.5deg);
-  }
-  60% {
-    transform: translate(1px, 0px) rotate(-0.5deg);
-  }
-  70% {
-    transform: translate(0px, -1px) rotate(0.5deg);
-  }
-  80% {
-    transform: translate(0px, 1px) rotate(-0.5deg);
-  }
-  90% {
-    transform: translate(-1px, -1px) rotate(0.5deg);
-  }
-}
-/* Film grain animation with realistic movement */
-@keyframes film-grain {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(-2px, 1px) rotate(0.5deg);
-  }
-  50% {
-    transform: translate(1px, -1px) rotate(-0.5deg);
-  }
-  75% {
-    transform: translate(-1px, 2px) rotate(0.3deg);
-  }
-  100% {
-    transform: translate(0px, -2px) rotate(-0.3deg);
-  }
-}
-.grain-overlay {
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.3;
-  animation: grain 0.2s steps(10) infinite;
-}
-
-/* CRT monitor scanlines animation */
-@keyframes scanlines {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(4px);
-  }
-}
-@keyframes flicker {
-  0% {
-    opacity: 0.8;
-    filter: brightness(1.2) contrast(1.1);
-  }
-  25% {
-    opacity: 0.85;
-    filter: brightness(1.15) contrast(1.05);
-  }
-  50% {
-    opacity: 0.9;
-    filter: brightness(1.1) contrast(1);
-  }
-  75% {
-    opacity: 0.85;
-    filter: brightness(1.05) contrast(1.02);
-  }
-  100% {
-    opacity: 0.8;
-    filter: brightness(1) contrast(1);
-  }
-}
-/* CRT scanlines effect class */
-.crt-scanlines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.4) 2px, rgba(0, 0, 0, 0.4) 4px);
-  animation: scanlines 0.08s linear infinite;
-  pointer-events: none;
-}
-
-.crt-flicker {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  opacity: 0.8;
-  animation: flicker 0.12s infinite linear alternate;
-  pointer-events: none;
-}
-
 :root {
-  /* Define base font size and scaling factor */
-  --base-font-size: 16px; /* Base font size */
-  --scaling-factor: 0.5vmin; /* Adjust this value to control the scaling with viewport size/* Remove global hover effects - colors only appear on individual link hover */ /* Calculate font size based on viewport size */
-  font-size: calc(var(--base-font-size) + var(--scaling-factor));
+  --base-font-size: 16px;
+  font-size: var(--base-font-size);
   line-height: 1.5;
-  /* Default monochrome state */
   --text-color: #888888;
   --accent-color: #000000;
   --link-color: #000000;
   --background-color: #ffffff;
   --border-color: #000000;
-  /* Apply monochrome defaults */
   background-color: var(--background-color);
   color: var(--text-color);
   border-color: var(--border-color);
-  /* Exclude custom properties from transitions to prevent fade effects */
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Global colorful state - activated only when hovering actual links via JavaScript */
-body.colorful-mode {
-  --text-color: transparent;
-  --accent-color: #00FF41;
-  --link-color: transparent;
-}
-
-#grain-container {
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 999;
-}
-#grain-container #grain {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* CRT Monitor Effects */
-#crt-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1001;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 25% 50%;
-  }
-  25% {
-    background-position: 0% 50%;
-  }
-  75% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 25% 50%;
-  }
-}
-@keyframes gradient-reverse {
-  0% {
-    background-position: 50% 50%;
-  }
-  25% {
-    background-position: 75% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  75% {
-    background-position: 25% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@keyframes blink-caret {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  51% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 section#about {
-  font-family: "VT323", "Courier Prime", "Andale Mono", "Lucida Console", "Monaco", "Consolas", "Courier New", monospace;
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 3.2);
+  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 400;
   letter-spacing: 0.02em;
-  line-height: 1.05;
-  padding: 0 calc(var(--base-font-size) + var(--scaling-factor) * 8);
+  line-height: 1.6;
+  padding: 0 clamp(1rem, 4vw, 2rem);
   text-align: center;
-  max-width: 80vw;
+  max-width: min(1200px, 95vw);
   margin: 0 auto;
-  /* Default monochrome - gray text on white background */
   color: #888888;
-  transition: all 0.3s ease;
 }
 section#about strong {
-  color: #000000 !important;
+  color: #000000;
   font-weight: 700;
-  transition: all 0.3s ease;
 }
 section#about p {
-  margin-top: 0;
-  line-height: 1.5;
+  margin: 1.5rem 0 0 0;
+  line-height: 1.6;
 }
 section#about p a,
 section#about p a:visited {
   text-decoration: underline;
   text-decoration-color: rgba(0, 0, 0, 0.6);
   text-underline-offset: 0.1em;
-  /* Default monochrome - black links */
   color: #000000;
-  transition: all 0.3s ease;
 }
 section#about p.cta {
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
-  line-height: 1.5;
-}
-
-/* Colorful gradient for nav links in colorful mode */
-body.colorful-mode nav a.nav-link {
-  animation: gradient-reverse 73s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(255, 140, 0), rgb(128, 0, 128), rgb(255, 255, 255), rgb(0, 0, 0), rgb(178, 34, 34), rgb(255, 140, 0));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
-}
-
-/* Colorful gradient for section#about paragraph links in colorful mode */
-body.colorful-mode section#about p a,
-body.colorful-mode section#about p a:visited {
-  animation: gradient-reverse 73s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(148, 254, 247));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
-}
-
-.terminal-cursor {
-  font-family: "VT323", "Courier Prime", "Andale Mono", "Lucida Console", "Monaco", "Consolas", "Courier New", monospace;
-  /* Default monochrome - black cursor */
-  color: #000000 !important;
-  background-color: #000000 !important;
-  font-weight: 700 !important;
-  font-size: 1em !important;
-  width: 0.6em;
-  height: 1.05em;
-  animation: blink-caret 1s ease-in-out infinite;
-  margin-left: 2px;
-  display: inline-block !important;
-  line-height: 1.05 !important;
-  vertical-align: baseline;
-  position: relative;
-  top: 0;
-  transition: all 0.3s ease;
-}
-
-/* Colorful effects in colorful mode */
-body.colorful-mode .terminal-cursor {
-  color: #94FEF7 !important;
-  background-color: #94FEF7 !important;
-}
-
-/* Apply gradient backgrounds in colorful mode */
-html.colorful-mode {
-  animation: gradient-reverse 50s ease infinite;
-  background: rgba(0, 0, 0, 0.4) linear-gradient(-270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
-  background-size: 1000% 1000%;
-}
-
-body.colorful-mode {
-  animation: gradient 50s ease infinite;
-  background: rgba(0, 0, 0, 0.3) linear-gradient(90deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
-  background-size: 1000% 1000%;
-}
-
-/* Colorful gradient for entire section in colorful mode */
-body.colorful-mode section#about {
-  animation: gradient-reverse 50s ease infinite;
-  background: rgb(0, 0, 0) linear-gradient(90deg, rgb(255, 255, 255), rgb(139, 69, 19), rgb(75, 0, 130), rgb(220, 20, 60), rgb(25, 25, 112), rgb(255, 255, 255));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-body.colorful-mode section#about strong {
-  color: #00FF41 !important;
-  text-shadow: 0 0 5px #00FF41;
-}
-body.colorful-mode section#about p {
-  margin-top: 0;
-  line-height: 1.5;
-}
-body.colorful-mode section#about p a,
-body.colorful-mode section#about p a:visited {
-  text-decoration: underline;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
-  text-underline-offset: 0.1em;
-  /* Default monochrome - black links */
-  color: #000000;
-  transition: all 0.3s ease;
-}
-body.colorful-mode section#about p.cta {
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 6);
-  line-height: 1.5;
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  line-height: 1.6;
 }
 
 html,
 body {
-  /* Default monochrome overrides */
-  background-color: #ffffff !important;
+  background-color: #ffffff;
   color: #888888;
   margin: 0 auto;
   padding: 0;
 }
 
 html {
-  /* Remove gradient background for monochrome default */
-  background: #ffffff !important;
+  background: #ffffff;
 }
 html body {
   font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: normal;
   line-height: 1.5;
-  /* Remove gradient background for monochrome default */
-  background: #ffffff !important;
-  margin: 4vmin;
-  min-height: calc(100vh - 8vmin);
-  padding: 1vmin;
+  background: #ffffff;
+  margin: clamp(1rem, 4vw, 3rem);
+  min-height: calc(100vh - clamp(2rem, 8vw, 6rem));
+  padding: clamp(0.5rem, 2vw, 1.5rem);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
 }
 @media (max-width: 480px) {
   html body {
-    margin: 2vmin;
-    min-height: calc(100vh - 4vmin);
-    padding: 0.5vmin;
+    margin: 1rem;
+    min-height: calc(100vh - 2rem);
+    padding: 0.75rem;
+    gap: 1rem;
   }
 }
 @media (max-width: 320px) {
   html body {
-    margin: 1vmin;
-    min-height: calc(100vh - 2vmin);
-    padding: 0.25vmin;
+    margin: 0.5rem;
+    min-height: calc(100vh - 1rem);
+    padding: 0.5rem;
+    gap: 0.75rem;
   }
 }
 html body a.tap {
@@ -437,16 +102,14 @@ html body nav {
   flex-shrink: 0;
 }
 html body nav a.nav-link {
-  margin: 0 1.5vmin;
+  margin: 0 clamp(0.5rem, 2vw, 1.5rem);
   padding: 0;
   text-decoration: underline;
   text-decoration-color: rgba(0, 0, 0, 0.6);
   text-underline-offset: 0.1em;
   text-transform: uppercase;
-  font-size: calc(var(--base-font-size) + var(--scaling-factor) * 3.5);
-  /* Default monochrome - black links */
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
   color: #000000;
-  transition: all 0.3s ease;
 }
 html body header {
   font-weight: lighter;
@@ -455,7 +118,7 @@ html body header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4vmin 0;
+  margin: 0;
 }
 html body header hgroup {
   font-weight: lighter;
@@ -471,32 +134,28 @@ html body header hgroup h3,
 html body header hgroup h4,
 html body header hgroup h5,
 html body header hgroup h6 {
-  /* Default monochrome */
   color: #000000;
   margin: 0;
   padding: 0;
   text-align: center;
   line-height: 1.5;
-  transition: all 0.3s ease;
 }
 html body header hgroup h1 {
-  border-radius: clamp(3rem, 8vw, 6rem);
+  border-radius: clamp(4rem, 12vw, 8rem);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(clamp(3rem, 8vw, 6rem) * 0.8);
+  font-size: calc(clamp(4rem, 12vw, 8rem) * 0.6);
   font-weight: 100;
-  height: clamp(3rem, 8vw, 6rem);
-  letter-spacing: calc(clamp(3rem, 8vw, 6rem) * -0.05);
-  line-height: clamp(3rem, 8vw, 6rem);
-  margin: 2vmin auto;
-  width: clamp(3rem, 8vw, 6rem);
-  max-width: calc(100% - 2vmin);
+  height: clamp(4rem, 12vw, 8rem);
+  letter-spacing: calc(clamp(4rem, 12vw, 8rem) * -0.02);
+  line-height: clamp(4rem, 12vw, 8rem);
+  margin: 0 auto;
+  width: clamp(4rem, 12vw, 8rem);
+  max-width: calc(100% - 2rem);
   box-sizing: border-box;
-  /* Default monochrome - no gradients */
   background: #ffffff;
   border: 2px solid #000000;
-  transition: all 0.3s ease;
 }
 html body header hgroup h1 a {
   border-radius: inherit;
@@ -507,184 +166,50 @@ html body header hgroup h1 a {
   width: 100%;
   margin: 0;
   text-decoration: none;
-  /* Default monochrome - black text */
   color: #000000;
   background: transparent;
-  transition: all 0.3s ease;
 }
 html body header hgroup h2 {
-  font-size: 25vmin;
+  font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 500;
-  line-height: 1.8;
-  /* Default monochrome */
+  line-height: 1.2;
   color: #000000;
   background: transparent;
-  transition: all 0.3s ease;
 }
 html body header hgroup h3 {
-  font-size: 20vmin;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   font-weight: 400;
-  line-height: 1.65;
-  /* Default monochrome */
+  line-height: 1.3;
   color: #000000;
   background: transparent;
-  transition: all 0.3s ease;
 }
 html body header hgroup h4 {
-  font-size: 15vmin;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 300;
-  line-height: 1.5;
-  /* Default monochrome */
+  line-height: 1.4;
   color: #000000;
   background: transparent;
-  transition: all 0.3s ease;
 }
 html body header hgroup h5 {
-  font-size: 10vmin;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: 200;
-  line-height: 1.35;
-  /* Default monochrome */
+  line-height: 1.5;
   color: #000000;
   background: transparent;
-  transition: all 0.3s ease;
 }
 html body header hgroup h6 {
-  font-size: 5vmin;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 100;
-  line-height: 1.2;
-  /* Default monochrome */
+  line-height: 1.5;
   color: #000000;
   background: transparent;
-  transition: all 0.3s ease;
 }
 html body footer {
-  /* Default monochrome */
   color: #888888;
-  font-size: 2.5vmin;
+  font-size: clamp(0.875rem, 2vw, 1rem);
   text-align: center;
   line-height: 1.5;
   flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-html.no-backgroundcliptext body header hgroup h1 a {
-  background: transparent;
-  opacity: 0.66;
-  color: #000000;
-}
-html.no-backgroundcliptext body header hgroup h2,
-html.no-backgroundcliptext body header hgroup h3,
-html.no-backgroundcliptext body header hgroup h4,
-html.no-backgroundcliptext body header hgroup h5,
-html.no-backgroundcliptext body header hgroup h6 {
-  background: transparent;
-  opacity: 0.66;
-}
-html.no-backgroundcliptext section#about {
-  background: transparent;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  background-clip: initial;
-  text-fill-color: initial;
-  color: #888888;
-}
-html.no-backgroundcliptext section#about p a,
-html.no-backgroundcliptext section#about p a:visited {
-  background: transparent;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  background-clip: initial;
-  text-fill-color: initial;
-  color: #94FEF7;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
-}
-html.no-backgroundcliptext section#about p a:hover,
-html.no-backgroundcliptext section#about p a:visited:hover {
-  color: #94FEF7;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
-}
-html.no-backgroundcliptext nav a.nav-link {
-  background: transparent;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  background-clip: initial;
-  text-fill-color: initial;
-  color: #94FEF7;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
-}
-html.no-backgroundcliptext nav a.nav-link:hover {
-  color: #94FEF7;
-  text-decoration-color: rgba(148, 254, 247, 0.6);
 }
 
-/* Apply gradient colors to logo/headers in colorful mode */
-body.colorful-mode header hgroup h1 {
-  animation: gradient 50s ease infinite;
-  background: rgba(0, 0, 0, 0.2) linear-gradient(-270deg, rgb(148, 254, 247), rgb(254, 166, 247), rgb(170, 254, 163), rgb(254, 166, 247), rgb(249, 251, 177), rgb(254, 166, 247));
-  background-size: 1000% 1000%;
-  border-color: #94FEF7 !important;
-  box-shadow: 0 0 10px rgba(148, 254, 247, 0.3);
-}
-body.colorful-mode header hgroup h1 a {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(270deg, rgba(148, 254, 247, 0.8), rgba(254, 166, 247, 0.8), rgba(170, 254, 163, 0.8), rgba(254, 166, 247, 0.8), rgba(249, 251, 177, 0.8), rgba(254, 166, 247, 0.8));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-body.colorful-mode header hgroup h2 {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.6), rgba(254, 166, 247, 0.6), rgba(170, 254, 163, 0.6), rgba(254, 166, 247, 0.6), rgba(249, 251, 177, 0.6), rgba(254, 166, 247, 0.6));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-body.colorful-mode header hgroup h3 {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.5), rgba(254, 166, 247, 0.5), rgba(170, 254, 163, 0.5), rgba(254, 166, 247, 0.5), rgba(249, 251, 177, 0.5), rgba(254, 166, 247, 0.5));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-body.colorful-mode header hgroup h4 {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.4), rgba(254, 166, 247, 0.4), rgba(170, 254, 163, 0.4), rgba(254, 166, 247, 0.4), rgba(249, 251, 177, 0.4), rgba(254, 166, 247, 0.4));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-body.colorful-mode header hgroup h5 {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.3), rgba(254, 166, 247, 0.3), rgba(170, 254, 163, 0.3), rgba(254, 166, 247, 0.3), rgba(249, 251, 177, 0.3), rgba(254, 166, 247, 0.3));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-body.colorful-mode header hgroup h6 {
-  animation: gradient 50s ease infinite;
-  background: rgb(255, 255, 255) linear-gradient(-270deg, rgba(148, 254, 247, 0.2), rgba(254, 166, 247, 0.2), rgba(170, 254, 163, 0.2), rgba(254, 166, 247, 0.2), rgba(249, 251, 177, 0.2), rgba(254, 166, 247, 0.2));
-  background-size: 1000% 1000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-/* Apply colorful styles to footer in colorful mode */
-body.colorful-mode footer {
-  color: rgba(255, 255, 255, 0.4);
-}
+/*# sourceMappingURL=main.css.map */

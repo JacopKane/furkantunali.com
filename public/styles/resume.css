@@ -158,99 +158,6 @@
   text-decoration: none;
 }
 
-@keyframes grain {
-  0%, 100% {
-    background-position: 0 0;
-  }
-  10% {
-    background-position: -5% -10%;
-  }
-  20% {
-    background-position: -15% 5%;
-  }
-  30% {
-    background-position: 7% -25%;
-  }
-  40% {
-    background-position: -20% 15%;
-  }
-  50% {
-    background-position: 15% 5%;
-  }
-  60% {
-    background-position: 0% 15%;
-  }
-  70% {
-    background-position: -25% 10%;
-  }
-  80% {
-    background-position: 5% 0%;
-  }
-  90% {
-    background-position: -10% -10%;
-  }
-}
-@keyframes grain-shift {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -1px) rotate(0.5deg);
-  }
-  20% {
-    transform: translate(1px, -1px) rotate(-0.5deg);
-  }
-  30% {
-    transform: translate(-1px, 1px) rotate(0.5deg);
-  }
-  40% {
-    transform: translate(1px, 1px) rotate(-0.5deg);
-  }
-  50% {
-    transform: translate(-1px, 0px) rotate(0.5deg);
-  }
-  60% {
-    transform: translate(1px, 0px) rotate(-0.5deg);
-  }
-  70% {
-    transform: translate(0px, -1px) rotate(0.5deg);
-  }
-  80% {
-    transform: translate(0px, 1px) rotate(-0.5deg);
-  }
-  90% {
-    transform: translate(-1px, -1px) rotate(0.5deg);
-  }
-}
-/* Film grain animation with realistic movement */
-@keyframes film-grain {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(-2px, 1px) rotate(0.5deg);
-  }
-  50% {
-    transform: translate(1px, -1px) rotate(-0.5deg);
-  }
-  75% {
-    transform: translate(-1px, 2px) rotate(0.3deg);
-  }
-  100% {
-    transform: translate(0px, -2px) rotate(-0.3deg);
-  }
-}
-.grain-overlay {
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.3;
-  animation: grain 0.2s steps(10) infinite;
-}
-
 html {
   border: 1px solid #fff;
 }
@@ -645,3 +552,5 @@ body #experiences li.experience > ul li {
     margin-bottom: 0 !important;
   }
 }
+
+/*# sourceMappingURL=resume.css.map */

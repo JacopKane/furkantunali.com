@@ -107,10 +107,7 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- Google Fonts - Retro 80s CRT Terminal Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
 
     <!-- External and internal styles -->
     <link rel="stylesheet" href="styles/main.css" />
@@ -124,15 +121,6 @@
     <!-- endbuild -->
   </head>
   <body>
-    <div id="grain-container">
-      <div id="grain"></div>
-    </div>
-    
-    <!-- CRT Scanlines Effect -->
-    <div id="crt-overlay">
-      <div class="crt-scanlines"></div>
-      <div class="crt-flicker"></div>
-    </div>
 
     <!-- Header -->
     <header>
@@ -155,22 +143,6 @@
 
     <!-- About Section -->
         <section id="about">
-        <p class="cta">
-          You can view my
-          <a
-            alt="Furkan Tunalı Résumé / CV"
-            title="Furkan Tunalı Résumé / CV"
-            href="/resume.html"
-            >résumé</a
-          >
-          or send an
-          <a
-            alt="Furkan Tunalı E-mail"
-            title="Furkan Tunalı E-mail"
-            href="mailto:mail@furkantunali.com"
-            >e-mail</a
-          >.<span class="terminal-cursor">█</span>
-        </p>
         <p>
           Hi, I am <strong>Furkan</strong>,
           <em>I'm a software engineer from Berlin</em>. Currently,
@@ -202,6 +174,22 @@
           <em>client relations</em>. My professional path officially started in
           <strong>2005</strong>, alongside my ongoing <strong>education in software</strong>.
         </p>
+        <p class="cta">
+          You can view my
+          <a
+            alt="Furkan Tunalı CV"
+            title="Furkan Tunalı CV"
+            href="/resume.html"
+            >CV</a
+          >
+          or send an
+          <a
+            alt="Furkan Tunalı E-mail"
+            title="Furkan Tunalı E-mail"
+            href="mailto:mail@furkantunali.com"
+            >e-mail</a
+          >.
+        </p>
     </section>
 
     <footer>
@@ -215,62 +203,9 @@
       </p>
     </footer>
 
-    <script src="grained.js"></script>
 
-    <script>
-      var options = {
-        animate: true,
-        patternWidth: window.outerWidth,
-        patternHeight: window.outerHeight,
-        grainOpacity: 0.050,
-        grainDensity: 1,
-        grainWidth: 1.112,
-        grainHeight: 1.112,
-      };
-      grained("#grain", options);
-    </script>
 
-    <!-- Link Hover Colorful Mode Controller -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const body = document.body;
-        const links = document.querySelectorAll('a');
-        
-        // Function to temporarily disable only color/background transitions (not animations)
-        function disableColorTransitions() {
-          const style = document.createElement('style');
-          style.type = 'text/css';
-          style.innerHTML = `
-            *, *::before, *::after { 
-              transition-property: none !important;
-            }
-          `;
-          document.head.appendChild(style);
-          
-          // Re-enable transitions after animations start
-          setTimeout(() => {
-            document.head.removeChild(style);
-          }, 50);
-        }
-        
-        // Add hover listeners to all links
-        links.forEach(link => {
-          link.addEventListener('mouseenter', function() {
-            console.log('Link hovered - adding colorful-mode class to html and body');
-            disableColorTransitions();
-            document.documentElement.classList.add('colorful-mode');
-            body.classList.add('colorful-mode');
-          });
-          
-          link.addEventListener('mouseleave', function() {
-            console.log('Link unhovered - removing colorful-mode class from html and body');
-            disableColorTransitions();
-            document.documentElement.classList.remove('colorful-mode');
-            body.classList.remove('colorful-mode');
-          });
-        });
-      });
-    </script>
+
 
     <!-- Google tag (gtag.js) -->
     <script

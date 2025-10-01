@@ -1,0 +1,616 @@
+@import "common.scss";
+
+:root {
+  --base-font-size: 16px;
+  --scaling-factor: 0.5vmin;
+  font-size: calc(var(--base-font-size) + var(--scaling-factor));
+  line-height: $standard-line-height;
+  
+  --text-color: #888888;
+  --accent-color: #000000;
+  --link-color: #000000;
+  --background-color: #ffffff;
+  --border-color: #000000;
+  
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+/* Global colorful state - activated only when hovering actual links via JavaScript */
+body.colorful-mode {
+  --text-color: transparent;
+  --accent-color: #00FF41;
+  --link-color: transparent;
+}
+
+#grain-container {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+
+  #grain {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* CRT Monitor Effects */
+#crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 25% 50%;
+  }
+
+  25% {
+    background-position: 0% 50%;
+  }
+
+  75% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 25% 50%;
+  }
+}
+
+@keyframes gradient-reverse {
+  0% {
+    background-position: 50% 50%;
+  }
+
+  25% {
+    background-position: 75% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 25% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes blink-caret {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  51% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@mixin gradient(
+  $degree: 270deg,
+  $size: 1000%,
+  $duration: 50s,
+  $animation: gradient,
+  $color: rgba(255, 255, 255, 1),
+  $opacity: 0.8
+) {
+  animation: $animation $duration ease infinite;
+  background: $color
+    linear-gradient(
+      $degree,
+      rgba(148, 254, 247, $opacity),
+      rgba(254, 166, 247, $opacity),
+      rgba(170, 254, 163, $opacity),
+      rgba(254, 166, 247, $opacity),
+      rgba(249, 251, 177, $opacity),
+      rgba(254, 166, 247, $opacity)
+    );
+  background-size: $size $size;
+}
+
+section#about {
+  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 3.2));
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  padding: 0 calc(var(--base-font-size) + (var(--scaling-factor) * 8));
+  text-align: center;
+  max-width: 80vw;
+  margin: 0 auto;
+  /* Default monochrome - gray text on white background */
+  color: #888888;
+  transition: all 0.3s ease;
+
+  strong {
+    color: #000000 !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+  
+  p {
+    margin-top: 0;
+    line-height: $standard-line-height;
+    
+    a,
+    a:visited {
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 0, 0, 0.6);
+      text-underline-offset: 0.1em;
+      /* Default monochrome - black links */
+      color: #000000;
+      transition: all 0.3s ease;
+    }
+
+    &.cta {
+      font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 6));
+      line-height: $standard-line-height;
+    }
+  }
+}
+
+/* Colorful gradient for nav links in colorful mode */
+body.colorful-mode nav a.nav-link {
+  animation: gradient-reverse 73s ease infinite;
+  background: rgb(0, 0, 0)
+    linear-gradient(
+      90deg,
+      rgba(255, 140, 0, 1.0),
+      rgba(128, 0, 128, 1.0),
+      rgba(255, 255, 255, 1.0),
+      rgba(0, 0, 0, 1.0),
+      rgba(178, 34, 34, 1.0),
+      rgba(255, 140, 0, 1.0)
+    );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+}
+
+/* Colorful gradient for section#about paragraph links in colorful mode */
+body.colorful-mode section#about p a,
+body.colorful-mode section#about p a:visited {
+  animation: gradient-reverse 73s ease infinite;
+  background: rgb(0, 0, 0)
+    linear-gradient(
+      90deg,
+      rgba(254, 166, 247, 1.0),
+      rgba(249, 251, 177, 1.0),
+      rgba(254, 166, 247, 1.0),
+      rgba(170, 254, 163, 1.0),
+      rgba(254, 166, 247, 1.0),
+      rgba(148, 254, 247, 1.0)
+    );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-decoration-color: rgba(148, 254, 247, 0.6);
+}
+
+.terminal-cursor {
+  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
+  /* Default monochrome - black cursor */
+  color: #000000 !important;
+  background-color: #000000 !important;
+  font-weight: 700 !important;
+  font-size: 1em !important;
+  width: 0.6em;
+  height: 1.05em;
+  animation: blink-caret 1s ease-in-out infinite;
+  margin-left: 2px;
+  display: inline-block !important;
+  line-height: 1.05 !important;
+  vertical-align: baseline;
+  position: relative;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+/* Colorful effects in colorful mode */
+body.colorful-mode .terminal-cursor {
+  color: #94FEF7 !important;
+  background-color: #94FEF7 !important;
+}
+
+/* Apply gradient backgrounds in colorful mode */
+html.colorful-mode {
+  @include gradient($degree: -270deg, $animation: gradient-reverse, $color: rgba(0, 0, 0, 0.4));
+}
+
+body.colorful-mode {
+  @include gradient($degree: 90deg, $animation: gradient, $color: rgba(0, 0, 0, 0.3));
+}
+
+/* Colorful gradient for entire section in colorful mode */
+body.colorful-mode section#about {
+  animation: gradient-reverse 50s ease infinite;
+  background: rgb(0, 0, 0)
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1.0),
+      rgba(139, 69, 19, 1.0),
+      rgba(75, 0, 130, 1.0),
+      rgba(220, 20, 60, 1.0),
+      rgba(25, 25, 112, 1.0),
+      rgba(255, 255, 255, 1.0)
+    );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  strong {
+    color: #00FF41 !important;
+    text-shadow: 0 0 5px #00FF41;
+  }
+
+  p {
+    margin-top: 0;
+    line-height: $standard-line-height;
+    
+    a,
+    a:visited {
+      text-decoration: underline;
+      text-decoration-color: rgba(148, 254, 247, 0.6);
+      text-underline-offset: 0.1em;
+      /* Default monochrome - black links */
+      color: #000000;
+      transition: all 0.3s ease;
+    }
+
+    &.cta {
+      font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 6));
+      line-height: $standard-line-height;
+    }
+  }
+}
+
+@mixin gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+@mixin no-gradient-text {
+  background: transparent;
+  opacity: 0.66;
+}
+
+html,
+body {
+  /* Default monochrome overrides */
+  background-color: #ffffff !important;
+  color: #888888;
+  margin: 0 auto;
+  padding: 0;
+}
+
+html {
+  /* Remove gradient background for monochrome default */
+  background: #ffffff !important;
+
+  body {
+    @include font-family;
+    /* Remove gradient background for monochrome default */
+    background: #ffffff !important;
+    margin: 4vmin;
+    min-height: calc(100vh - 8vmin);
+    padding: 1vmin;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+
+    // Reduce margins on narrow screens to prevent overflow
+    @media (max-width: 480px) {
+      margin: 2vmin;
+      min-height: calc(100vh - 4vmin);
+      padding: 0.5vmin;
+    }
+
+    // Further reduce on very narrow screens
+    @media (max-width: 320px) {
+      margin: 1vmin;
+      min-height: calc(100vh - 2vmin);
+      padding: 0.25vmin;
+    }
+
+    a {
+      &.tap {
+        padding: 0 0.4vmin;
+        text-decoration: none;
+      }
+    }
+
+    nav {
+      padding: 0;
+      text-align: center;
+      flex-shrink: 0;
+
+      a.nav-link {
+        margin: 0 1.5vmin;
+        padding: 0;
+        text-decoration: underline;
+        text-decoration-color: rgba(0, 0, 0, 0.6);
+        text-underline-offset: 0.1em;
+        text-transform: uppercase;
+        font-size: calc(var(--base-font-size) + var(--scaling-factor) * 3.5);
+        /* Default monochrome - black links */
+        color: #000000;
+        transition: all 0.3s ease;
+      }
+
+
+    }
+
+    header {
+      font-weight: lighter;
+      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 4vmin 0;
+      
+      hgroup {
+        font-weight: lighter;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          /* Default monochrome */
+          color: #000000;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          line-height: $standard-line-height;
+          transition: all 0.3s ease;
+        }
+
+        h1 {
+          // Use container-relative sizing instead of viewport units
+          $logo-size: clamp(3rem, 8vw, 6rem);
+          
+          border-radius: $logo-size;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: calc(#{$logo-size} * 0.8);
+          font-weight: 100;
+          height: $logo-size;
+          letter-spacing: calc(#{$logo-size} * -0.05);
+          line-height: $logo-size;
+          margin: 2vmin auto;
+          width: $logo-size;
+          max-width: calc(100% - 2vmin); // Ensure it fits within container
+          box-sizing: border-box;
+          /* Default monochrome - no gradients */
+          background: #ffffff;
+          border: 2px solid #000000;
+          transition: all 0.3s ease;
+
+          a {
+            border-radius: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            text-decoration: none;
+            /* Default monochrome - black text */
+            color: #000000;
+            background: transparent;
+            transition: all 0.3s ease;
+          }
+        }
+
+        h2 {
+          font-size: 25vmin;
+          font-weight: 500;
+          line-height: calc($standard-line-height * 1.2);
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
+        }
+
+        h3 {
+          font-size: 20vmin;
+          font-weight: 400;
+          line-height: calc($standard-line-height * 1.1);
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
+        }
+
+        h4 {
+          font-size: 15vmin;
+          font-weight: 300;
+          line-height: calc($standard-line-height * 1);
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
+        }
+
+        h5 {
+          font-size: 10vmin;
+          font-weight: 200;
+          line-height: calc($standard-line-height * 0.9);
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
+        }
+
+        h6 {
+          font-size: 5vmin;
+          font-weight: 100;
+          line-height: calc($standard-line-height * 0.8);
+          /* Default monochrome */
+          color: #000000;
+          background: transparent;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+
+    footer {
+      /* Default monochrome */
+      color: #888888;
+      font-size: 2.5vmin;
+      text-align: center;
+      line-height: $standard-line-height;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &.no-backgroundcliptext {
+    body {
+      header {
+        hgroup {
+          h1 {
+            a {
+              @include no-gradient-text;
+              color: #000000;
+            }
+          }
+
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            @include no-gradient-text;
+          }
+        }
+      }
+    }
+
+    section#about {
+      background: transparent;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
+      text-fill-color: initial;
+      color: #888888;
+
+      p {
+        a,
+        a:visited {
+          background: transparent;
+          -webkit-background-clip: initial;
+          -webkit-text-fill-color: initial;
+          background-clip: initial;
+          text-fill-color: initial;
+          color: #94FEF7;
+          text-decoration-color: rgba(148, 254, 247, 0.6);
+
+          &:hover {
+            color: #94FEF7;
+            text-decoration-color: rgba(148, 254, 247, 0.6);
+          }
+        }
+      }
+    }
+
+    nav {
+      a.nav-link {
+        background: transparent;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background-clip: initial;
+        text-fill-color: initial;
+        color: #94FEF7;
+        text-decoration-color: rgba(148, 254, 247, 0.6);
+
+        &:hover {
+          color: #94FEF7;
+          text-decoration-color: rgba(148, 254, 247, 0.6);
+        }
+      }
+    }
+  }
+}
+
+/* Apply gradient colors to logo/headers in colorful mode */
+body.colorful-mode header hgroup h1 {
+  @include gradient(
+    $degree: -270deg,
+    $color: rgba(0, 0, 0, 0.2),
+    $opacity: 1
+  );
+  border-color: #94FEF7 !important;
+  box-shadow: 0 0 10px rgba(148, 254, 247, 0.3);
+  
+  a {
+    @include gradient;
+    @include gradient-text;
+  }
+}
+
+body.colorful-mode header hgroup h2 {
+  @include gradient($degree: -270deg, $opacity: 0.6);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h3 {
+  @include gradient($degree: -270deg, $opacity: 0.5);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h4 {
+  @include gradient($degree: -270deg, $opacity: 0.4);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h5 {
+  @include gradient($degree: -270deg, $opacity: 0.3);
+  @include gradient-text;
+}
+
+body.colorful-mode header hgroup h6 {
+  @include gradient($degree: -270deg, $opacity: 0.2);
+  @include gradient-text;
+}
+
+/* Apply colorful styles to footer in colorful mode */
+body.colorful-mode footer {
+  color: rgba(255, 255, 255, 0.4);
+}
