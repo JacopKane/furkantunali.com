@@ -78,6 +78,12 @@ section#about {
     transition: color 0.3s ease-in-out;
   }
   
+  em {
+    color: var(--accent-color);
+    font-style: italic;
+    transition: color 0.3s ease-in-out;
+  }
+  
   p {
     margin: 1.5rem 0 0 0;
     line-height: 1.6;
