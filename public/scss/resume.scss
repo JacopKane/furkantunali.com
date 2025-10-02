@@ -9,7 +9,6 @@ $color-link: #000;
 $color-link-hover: color.adjust($color-link, $lightness: 60%);
 $color-link-visited: color.adjust($color-link, $lightness: 40%);
 $color-background: #fff;
-$color-selection: #ffc;
 
 // Dark mode colors
 $color-text-dark: #ffffff;
@@ -17,7 +16,6 @@ $color-link-dark: #ffffff;
 $color-link-hover-dark: color.adjust($color-link-dark, $lightness: -30%);
 $color-link-visited-dark: color.adjust($color-link-dark, $lightness: -20%);
 $color-background-dark: #000000;
-$color-selection-dark: #333;
 
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
@@ -189,14 +187,12 @@ body {
     .logo {
       @include logo(3rem, 0.55, true); // Hover always enabled, small logo
       margin: 0;
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
     }
 
     a {
       &:not(.logo) {
         font-size: 1rem;
         text-align: right;
-        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
       }
     }
 
@@ -239,10 +235,8 @@ body {
   }
 
   ul.info,
-  ul.contact,
   ul.educations,
-  ul.skills,
-  ul.contact {
+  ul.skills {
     li {
       display: inline;
       margin: 0;
@@ -274,15 +268,6 @@ body {
     // Ensure consistent height behavior
     display: flex;
     flex-direction: column;
-
-    // Add a subtle hover effect for web version
-    transition: background-color 0.2s ease;
-
-    @media (hover: hover) {
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.02);
-      }
-    }
 
     h3, h4, h5 {
       margin-bottom: 0.25em;

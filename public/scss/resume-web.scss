@@ -112,25 +112,23 @@ body {
   .experience {
     padding: 1.5rem;
     margin-bottom: 2rem;
-    transition: none !important; // Disable all transitions
+    transition: none;
     
     // Completely disable all hover effects
     &:hover {
-      transform: none !important;
-      background-color: transparent !important;
-      background: transparent !important;
-      opacity: 1 !important;
+      transform: none;
+      background-color: transparent;
+      background: transparent;
+      opacity: 1;
     }
-  }
     
     h3 {
-      color: #000;
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
     
     h4 {
-      color: #555;
+      opacity: 0.8;
       font-weight: 400;
       font-size: 0.95em;
       margin-bottom: 0.75rem;
@@ -190,6 +188,7 @@ body {
       max-width: none !important;
       margin: 0 !important;
       padding: 0 !important;
+    }
     
     .container {
       padding: 0 !important;
@@ -219,10 +218,10 @@ body {
       }
     }
     
-      footer {
-        margin-top: 1em !important;
-        padding-top: 1em !important;
-        border-top: none !important;
-      }
+    footer {
+      margin-top: 1em !important;
+      padding-top: 1em !important;
+      border-top: none !important;
     }
   }
+}
