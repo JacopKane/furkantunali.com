@@ -1,342 +1,149 @@
-// BULLETPROOF LOGO SYSTEM - COMPLETELY ISOLATED AND SELF-CONTAINED
-// This file contains everything logo-related and cannot be overridden by any external styles
-
-// BULLETPROOF LOGO MIXIN - MAXIMUM PRIORITY ISOLATED COMPONENT
+// Clean logo system with nested class definitions
 @mixin logo($size: 4rem, $font-ratio: 0.6, $is-small: false) {
-  // CORE STRUCTURAL PROPERTIES - BULLETPROOF WITH MAXIMUM !important
-  border-radius: $size !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: calc(#{$size} * #{$font-ratio}) !important;
-  font-weight: 100 !important;
-  height: $size !important;
-  letter-spacing: calc(#{$size} * -0.05) !important;
-  line-height: 1 !important;
-  width: $size !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease-in-out !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  position: relative !important;
-  z-index: 9999 !important; // Highest possible z-index
+  // Core structural properties
+  border-radius: $size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(#{$size} * #{$font-ratio});
+  font-weight: 100;
+  height: $size;
+  letter-spacing: calc(#{$size} * -0.05);
+  line-height: 1;
+  width: $size;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
   
-  // BULLETPROOF FONT - Cannot be overridden by any theme
-  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif !important;
+  // Light mode colors (default) - CORRECTED
+  background: #000000;  // black background
+  color: #ffffff;       // white text
   
-  // BULLETPROOF BASE COLORS - Light mode defaults
-  background: #000000 !important;
-  color: #ffffff !important;
-  
-  // BULLETPROOF BORDER - Responsive based on logo size
+  // Responsive border based on logo size
   @if $is-small {
-    border: 1px solid #000000 !important;
+    border: 1px solid #000000;  // black border
   } @else {
-    border: 1px solid #000000 !important;
+    border: 1px solid #000000;  // black border
     
     @media (min-width: 768px) {
-      border-width: 2px !important;
+      border-width: 2px;
     }
     
     @media (min-width: 1200px) {
-      border-width: 2px !important;
+      border-width: 2px;
     }
   }
   
-  // BULLETPROOF LINK ELEMENTS - Perfect positioning and inheritance
-  a, a:visited, a:hover, a:active, a:focus {
-    color: inherit !important;
-    text-decoration: none !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: inherit !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: none !important;
-    background: transparent !important;
-    border: none !important;
-    z-index: 1 !important;
-  }
-  
-  // BULLETPROOF TEXT ELEMENTS - Perfect centering and styling
-  em, span, strong, i, b {
-    display: block !important;
-    line-height: 1 !important;
-    font-weight: inherit !important;
-    color: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    text-align: center !important;
-    width: 100% !important;
-    transform: translate(-0.08em, -0.05em) !important;
-    font-family: inherit !important;
-    position: relative !important;
-    z-index: 2 !important;
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-  }
-  
-  // BULLETPROOF LIGHT MODE HOVER STATES - Always enabled
+  // Light mode hover - CORRECTED
   &:hover,
   &:active,
   &:focus {
-    background: transparent !important;
-    color: #000000 !important;
-    border-color: #000000 !important;
-    outline: none !important;
+    background: #ffffff;  // white background
+    color: #000000;       // black text
+    border-color: #000000; // black border
+    outline: none;
     
-    // Force all child elements to black in light mode hover
     a, a:hover, a:active, a:focus, a:visited,
     em, span, strong, i, b {
-      color: #000000 !important;
-      background: transparent !important;
+      color: #000000;
+      background: transparent;
     }
   }
   
-
-}
-
-// BULLETPROOF GLOBAL DARK MODE OVERRIDES - MAXIMUM SPECIFICITY
-// These selectors are outside the mixin for ultimate priority
-@media (prefers-color-scheme: dark) {
-  html body header hgroup h1 .logo,
-  html body header hgroup h1 .logo-main,
-  html body header hgroup h1 .logo-small,
-  html body nav .logo,
-  html body nav .logo-main,
-  html body nav .logo-small,
-  :root html body header hgroup h1 .logo,
-  :root html body header hgroup h1 .logo-main,
-  :root html body header hgroup h1 .logo-small,
-  :root html body nav .logo,
-  :root html body nav .logo-main,
-  :root html body nav .logo-small {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-color: #ffffff !important;
-    z-index: 9999 !important;
+  // Dark mode overrides - CORRECTED
+  .dark-theme & {
+    background: #ffffff;  // white background (correct)
+    color: #000000;       // black text (correct) 
+    border-color: #ffffff; // white border (correct)
     
-    // Dark mode text elements
+    &:hover,
+    &:active,
+    &:focus {
+      background: #000000;  // black background (correct)
+      color: #ffffff;       // white text (correct)
+      border-color: #ffffff; // white border (correct)
+      outline: none;
+      
+      a, a:hover, a:active, a:focus, a:visited,
+      em, span, strong, i, b {
+        color: #ffffff;
+        background: transparent;
+      }
+    }
+    
     a, a:visited, a:hover, a:active, a:focus,
     em, span, strong, i, b {
-      color: #000000 !important;
-      background: transparent !important;
-    }
-    
-
-  }
-  
-  // Dark mode hover states (separate selectors for proper specificity)
-  html body header hgroup h1 .logo:hover,
-  html body header hgroup h1 .logo:active,
-  html body header hgroup h1 .logo:focus,
-  html body header hgroup h1 .logo-main:hover,
-  html body header hgroup h1 .logo-main:active,
-  html body header hgroup h1 .logo-main:focus,
-  html body header hgroup h1 .logo-small:hover,
-  html body header hgroup h1 .logo-small:active,
-  html body header hgroup h1 .logo-small:focus,
-  html body nav .logo:hover,
-  html body nav .logo:active,
-  html body nav .logo:focus,
-  html body nav .logo-main:hover,
-  html body nav .logo-main:active,
-  html body nav .logo-main:focus,
-  html body nav .logo-small:hover,
-  html body nav .logo-small:active,
-  html body nav .logo-small:focus,
-  :root html body header hgroup h1 .logo:hover,
-  :root html body header hgroup h1 .logo:active,
-  :root html body header hgroup h1 .logo:focus,
-  :root html body header hgroup h1 .logo-main:hover,
-  :root html body header hgroup h1 .logo-main:active,
-  :root html body header hgroup h1 .logo-main:focus,
-  :root html body header hgroup h1 .logo-small:hover,
-  :root html body header hgroup h1 .logo-small:active,
-  :root html body header hgroup h1 .logo-small:focus,
-  :root html body nav .logo:hover,
-  :root html body nav .logo:active,
-  :root html body nav .logo:focus,
-  :root html body nav .logo-main:hover,
-  :root html body nav .logo-main:active,
-  :root html body nav .logo-main:focus,
-  :root html body nav .logo-small:hover,
-  :root html body nav .logo-small:active,
-  :root html body nav .logo-small:focus {
-    background: transparent !important;
-    color: #ffffff !important;
-    border-color: #ffffff !important;
-    outline: none !important;
-    
-    // Force all child elements to white in dark mode hover
-    a, a:hover, a:active, a:focus, a:visited,
-    em, span, strong, i, b {
-      color: #ffffff !important;
-      background: transparent !important;
+      color: #000000;
+      background: transparent;
     }
   }
-}
-
-// BULLETPROOF MANUAL DARK THEME CLASS OVERRIDE - MAXIMUM GLOBAL SPECIFICITY
-:root.dark-theme html body header hgroup h1 .logo,
-:root.dark-theme html body header hgroup h1 .logo-main,
-:root.dark-theme html body header hgroup h1 .logo-small,
-:root.dark-theme html body nav .logo,
-:root.dark-theme html body nav .logo-main,
-:root.dark-theme html body nav .logo-small,
-html.dark-theme body header hgroup h1 .logo,
-html.dark-theme body header hgroup h1 .logo-main,
-html.dark-theme body header hgroup h1 .logo-small,
-html.dark-theme body nav .logo,
-html.dark-theme body nav .logo-main,
-html.dark-theme body nav .logo-small,
-body.dark-theme header hgroup h1 .logo,
-body.dark-theme header hgroup h1 .logo-main,
-body.dark-theme header hgroup h1 .logo-small,
-body.dark-theme nav .logo,
-body.dark-theme nav .logo-main,
-body.dark-theme nav .logo-small,
-.dark-theme html body header hgroup h1 .logo,
-.dark-theme html body header hgroup h1 .logo-main,
-.dark-theme html body header hgroup h1 .logo-small,
-.dark-theme html body nav .logo,
-.dark-theme html body nav .logo-main,
-.dark-theme html body nav .logo-small {
-  background: #ffffff !important;
-  color: #000000 !important;
-  border-color: #ffffff !important;
-  z-index: 9999 !important;
   
-  // Dark theme text elements
-  a, a:visited, a:hover, a:active, a:focus,
-  em, span, strong, i, b {
-    color: #000000 !important;
-    background: transparent !important;
+  // System dark mode preference should not override manual theme selection
+  // Removed to prevent conflicts with manual theme toggle
+  
+  // Child element styles
+  a, a:visited, a:hover, a:active, a:focus {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    background: transparent;
+    border: none;
+    z-index: 1;
   }
   
-
-}
-
-// Manual dark theme hover states (separate selectors for proper compilation)
-:root.dark-theme html body header hgroup h1 .logo:hover,
-:root.dark-theme html body header hgroup h1 .logo:active,
-:root.dark-theme html body header hgroup h1 .logo:focus,
-:root.dark-theme html body header hgroup h1 .logo-main:hover,
-:root.dark-theme html body header hgroup h1 .logo-main:active,
-:root.dark-theme html body header hgroup h1 .logo-main:focus,
-:root.dark-theme html body header hgroup h1 .logo-small:hover,
-:root.dark-theme html body header hgroup h1 .logo-small:active,
-:root.dark-theme html body header hgroup h1 .logo-small:focus,
-:root.dark-theme html body nav .logo:hover,
-:root.dark-theme html body nav .logo:active,
-:root.dark-theme html body nav .logo:focus,
-:root.dark-theme html body nav .logo-main:hover,
-:root.dark-theme html body nav .logo-main:active,
-:root.dark-theme html body nav .logo-main:focus,
-:root.dark-theme html body nav .logo-small:hover,
-:root.dark-theme html body nav .logo-small:active,
-:root.dark-theme html body nav .logo-small:focus,
-html.dark-theme body header hgroup h1 .logo:hover,
-html.dark-theme body header hgroup h1 .logo:active,
-html.dark-theme body header hgroup h1 .logo:focus,
-html.dark-theme body header hgroup h1 .logo-main:hover,
-html.dark-theme body header hgroup h1 .logo-main:active,
-html.dark-theme body header hgroup h1 .logo-main:focus,
-html.dark-theme body header hgroup h1 .logo-small:hover,
-html.dark-theme body header hgroup h1 .logo-small:active,
-html.dark-theme body header hgroup h1 .logo-small:focus,
-html.dark-theme body nav .logo:hover,
-html.dark-theme body nav .logo:active,
-html.dark-theme body nav .logo:focus,
-html.dark-theme body nav .logo-main:hover,
-html.dark-theme body nav .logo-main:active,
-html.dark-theme body nav .logo-main:focus,
-html.dark-theme body nav .logo-small:hover,
-html.dark-theme body nav .logo-small:active,
-html.dark-theme body nav .logo-small:focus,
-body.dark-theme header hgroup h1 .logo:hover,
-body.dark-theme header hgroup h1 .logo:active,
-body.dark-theme header hgroup h1 .logo:focus,
-body.dark-theme header hgroup h1 .logo-main:hover,
-body.dark-theme header hgroup h1 .logo-main:active,
-body.dark-theme header hgroup h1 .logo-main:focus,
-body.dark-theme header hgroup h1 .logo-small:hover,
-body.dark-theme header hgroup h1 .logo-small:active,
-body.dark-theme header hgroup h1 .logo-small:focus,
-body.dark-theme nav .logo:hover,
-body.dark-theme nav .logo:active,
-body.dark-theme nav .logo:focus,
-body.dark-theme nav .logo-main:hover,
-body.dark-theme nav .logo-main:active,
-body.dark-theme nav .logo-main:focus,
-body.dark-theme nav .logo-small:hover,
-body.dark-theme nav .logo-small:active,
-body.dark-theme nav .logo-small:focus,
-.dark-theme html body header hgroup h1 .logo:hover,
-.dark-theme html body header hgroup h1 .logo:active,
-.dark-theme html body header hgroup h1 .logo:focus,
-.dark-theme html body header hgroup h1 .logo-main:hover,
-.dark-theme html body header hgroup h1 .logo-main:active,
-.dark-theme html body header hgroup h1 .logo-main:focus,
-.dark-theme html body header hgroup h1 .logo-small:hover,
-.dark-theme html body header hgroup h1 .logo-small:active,
-.dark-theme html body header hgroup h1 .logo-small:focus,
-.dark-theme html body nav .logo:hover,
-.dark-theme html body nav .logo:active,
-.dark-theme html body nav .logo:focus,
-.dark-theme html body nav .logo-main:hover,
-.dark-theme html body nav .logo-main:active,
-.dark-theme html body nav .logo-main:focus,
-.dark-theme html body nav .logo-small:hover,
-.dark-theme html body nav .logo-small:active,
-.dark-theme html body nav .logo-small:focus {
-  background: transparent !important;
-  color: #ffffff !important;
-  border-color: #ffffff !important;
-  outline: none !important;
-  
-  // Force all child elements to white in dark mode hover
-  a, a:hover, a:active, a:focus, a:visited,
   em, span, strong, i, b {
-    color: #ffffff !important;
-    background: transparent !important;
+    display: block;
+    line-height: 1;
+    font-weight: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    transform: translate(-0.08em, -0.05em);
+    font-family: inherit;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    outline: none;
   }
 }
 
-// BULLETPROOF LOGO POSITIONING MIXIN - For layout control
-@mixin logo-positioning($margin: "0 auto", $max-width: "calc(100% - 2rem)") {
-  margin: #{$margin} !important;
-  max-width: #{$max-width} !important;
-  position: relative !important;
-  z-index: 9999 !important;
+// Logo positioning mixin - clean and simple
+@mixin logo-positioning($margin: 0 auto, $max-width: calc(100% - 2rem)) {
+  margin: $margin;
+  max-width: $max-width;
+  position: relative;
 }
 
-// BULLETPROOF LIGHT MODE HOVER OVERRIDE - Maximum specificity to override dark mode rules
-html body header hgroup h1 .logo:hover,
-html body header hgroup h1 .logo:active,
-html body header hgroup h1 .logo:focus,
-html body nav .logo:hover,
-html body nav .logo:active,
-html body nav .logo:focus {
-  background: transparent !important;
-  color: #000000 !important;
-  border-color: #000000 !important;
-  outline: none !important;
-  
-  // Force all child elements to black in light mode hover
-  a, a:hover, a:active, a:focus, a:visited,
-  em, span, strong, i, b {
-    color: #000000 !important;
-    background: transparent !important;
-  }
+// Apply the logo mixin to standard logo classes
+.logo {
+  @include logo();
+}
+
+.logo-main {
+  @include logo(4rem, 0.6, false);
+}
+
+.logo-small {
+  @include logo(2.5rem, 0.6, true);
 }

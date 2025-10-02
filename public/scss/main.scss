@@ -51,16 +51,6 @@ body.dark-theme {
   --link-hover-opacity: var(--link-hover-opacity-inverted);
 }
 
-// Theme toggle button positioning for main page (fixed position)
-.theme-toggle {
-  position: fixed;
-  top: clamp(1rem, 4vw, 2rem);
-  right: clamp(1rem, 4vw, 2rem);
-  z-index: 1000;
-}
-
-
-
 section#about {
   @include font-family;
   font-size: clamp(1rem, 2.5vw, 1.25rem);
