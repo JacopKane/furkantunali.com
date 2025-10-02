@@ -140,7 +140,7 @@ body {
     }
 
     .logo {
-      @include logo(3rem, 0.55, true, true); // Enable hover effects for resume nav logo
+      @include logo(3rem, 0.55, true); // Hover always enabled, small logo
       margin: 0;
     }
 

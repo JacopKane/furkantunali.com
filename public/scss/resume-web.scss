@@ -28,7 +28,7 @@ body {
     
     // Style the logo using unified mixin - NO hover effects for resume web
     .logo {
-      @include logo(3rem, 0.58, true, false); // Disable hover effects for resume web
+      @include logo(3rem, 0.58, true); // Hover always enabled
     }
     
     a:not(.logo) {

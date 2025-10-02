@@ -2,7 +2,7 @@
 // This file contains everything logo-related and cannot be overridden by any external styles
 
 // BULLETPROOF LOGO MIXIN - MAXIMUM PRIORITY ISOLATED COMPONENT
-@mixin logo($size: 4rem, $font-ratio: 0.6, $is-small: false, $enable-hover: true) {
+@mixin logo($size: 4rem, $font-ratio: 0.6, $is-small: false) {
   // CORE STRUCTURAL PROPERTIES - BULLETPROOF WITH MAXIMUM !important
   border-radius: $size !important;
   display: flex !important;
@@ -86,23 +86,20 @@
     outline: none !important;
   }
   
-  // CONDITIONAL HOVER EFFECTS - Only if enabled
-  @if $enable-hover {
-    // BULLETPROOF LIGHT MODE HOVER STATES
-    &:hover,
-    &:active,
-    &:focus {
-      background: transparent !important;
+  // BULLETPROOF LIGHT MODE HOVER STATES - Always enabled
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+    outline: none !important;
+    
+    // Force all child elements to black in light mode hover
+    a, a:hover, a:active, a:focus, a:visited,
+    em, span, strong, i, b {
       color: #000000 !important;
-      border-color: #000000 !important;
-      outline: none !important;
-      
-      // Force all child elements to black in light mode hover
-      a, a:hover, a:active, a:focus, a:visited,
-      em, span, strong, i, b {
-        color: #000000 !important;
-        background: transparent !important;
-      }
+      background: transparent !important;
     }
   }
   
@@ -322,4 +319,24 @@ body.dark-theme nav .logo-small:focus,
   max-width: #{$max-width} !important;
   position: relative !important;
   z-index: 9999 !important;
+}
+
+// BULLETPROOF LIGHT MODE HOVER OVERRIDE - Maximum specificity to override dark mode rules
+html body header hgroup h1 .logo:hover,
+html body header hgroup h1 .logo:active,
+html body header hgroup h1 .logo:focus,
+html body nav .logo:hover,
+html body nav .logo:active,
+html body nav .logo:focus {
+  background: transparent !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+  outline: none !important;
+  
+  // Force all child elements to black in light mode hover
+  a, a:hover, a:active, a:focus, a:visited,
+  em, span, strong, i, b {
+    color: #000000 !important;
+    background: transparent !important;
+  }
 }

@@ -256,7 +256,7 @@ html {
           
           .logo {
             $logo-size: clamp(4rem, 12vw, 8rem);
-            @include logo($logo-size, 0.6, false, true); // Enable hover effects for main page
+            @include logo($logo-size, 0.6, false); // Hover always enabled
           }
         }
       }
