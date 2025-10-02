@@ -117,12 +117,16 @@ body {
     margin: 0 !important;
     max-width: 100% !important;
     
-    ul.experiences {
+    #experiences ul.experiences {
       width: 100% !important;
+      list-style-type: disc !important;
+      padding-left: 1.5rem !important;
       
-      .experience {
+      li.experience {
         // Single-column vertical layout for print
         width: 100% !important;
+        display: list-item !important;
+        list-style-type: disc !important;
         
         // Allow page breaks inside experience items
         break-inside: auto !important;
@@ -135,12 +139,19 @@ body {
           line-height: 1.2 !important;
         }
         
-        // Let the regular styles handle bullets - don't override here
+        // Ensure bullets are preserved in print mode
         > ul {
           margin-top: 0 !important;
           margin-bottom: 0.05em !important;
           padding-top: 0 !important;
           padding-bottom: 0 !important;
+          list-style-type: circle !important;
+          padding-left: 1.5rem !important;
+          
+          li {
+            display: list-item !important;
+            list-style-type: circle !important;
+          }
         }
         
         li, p {
