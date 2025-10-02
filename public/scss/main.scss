@@ -111,6 +111,11 @@ section#about {
       text-underline-offset: 0.1em;
       color: var(--link-color);
       transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+        text-decoration-color: transparent;
+      }
     }
   }
 }
@@ -132,6 +137,11 @@ section#about {
     text-underline-offset: 0.1em;
     color: var(--link-color);
     transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+      text-decoration-color: transparent;
+    }
   }
 }
 
@@ -198,6 +208,11 @@ html {
         font-size: clamp(0.875rem, 2vw, 1.125rem);
         color: var(--link-color);
         transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.7;
+          text-decoration-color: transparent;
+        }
       }
     }
 
@@ -258,13 +273,13 @@ html {
           border-color: var(--logo-border) !important;
           transition: all 0.3s ease-in-out;
 
-          // Override hover states to use CSS variables
+          // Resume-style hover effect (white background with black text/border)
           &:hover,
           &:active,
           &:focus {
-            background: var(--logo-bg) !important;
-            color: var(--logo-color) !important;
-            border-color: var(--logo-border) !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+            border-color: #000000 !important;
           }
         }
 
