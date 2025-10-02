@@ -133,6 +133,11 @@
       </hgroup>
     </header>
 
+    <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-toggle-icon">🌙</span>
+    </button>
+
     <!-- Navigation Links -->
     <nav>
       <a class="nav-link" href="//linkedin.com/in/furkan" target="_blank" title="LinkedIn">linkedin</a>
@@ -205,9 +210,74 @@
       </p>
     </footer>
 
-
-
-
+    <!-- Dark Mode Toggle Script -->
+    <script>
+      (function() {
+        // Theme management
+        const THEME_KEY = 'theme';
+        const THEME_LIGHT = 'light';
+        const THEME_DARK = 'dark';
+        const THEME_AUTO = 'auto';
+        
+        // Get elements
+        const html = document.documentElement;
+        const body = document.body;
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.querySelector('.theme-toggle-icon');
+        
+        // Get system preference
+        function getSystemTheme() {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? THEME_DARK : THEME_LIGHT;
+        }
+        
+        // Get stored theme or default to system
+        function getStoredTheme() {
+          const stored = localStorage.getItem(THEME_KEY);
+          if (stored === THEME_LIGHT || stored === THEME_DARK) {
+            return stored;
+          }
+          return getSystemTheme();
+        }
+        
+        // Apply theme
+        function applyTheme(theme) {
+          const isDark = theme === THEME_DARK;
+          
+          if (isDark) {
+            html.classList.add('dark-theme');
+            body.classList.add('dark-theme');
+            icon.textContent = '☀️';
+          } else {
+            html.classList.remove('dark-theme');
+            body.classList.remove('dark-theme');
+            icon.textContent = '🌙';
+          }
+        }
+        
+        // Toggle theme
+        function toggleTheme() {
+          const currentTheme = getStoredTheme();
+          const newTheme = currentTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
+          
+          localStorage.setItem(THEME_KEY, newTheme);
+          applyTheme(newTheme);
+        }
+        
+        // Initialize theme
+        const initialTheme = getStoredTheme();
+        applyTheme(initialTheme);
+        
+        // Add toggle event listener
+        toggle.addEventListener('click', toggleTheme);
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          if (!localStorage.getItem(THEME_KEY) || localStorage.getItem(THEME_KEY) === THEME_AUTO) {
+            applyTheme(getSystemTheme());
+          }
+        });
+      })();
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script
