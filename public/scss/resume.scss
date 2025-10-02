@@ -2,6 +2,7 @@
 @import "fonts.scss";
 @import "common.scss";
 
+// Light mode colors (default)
 $color-text: #000;
 $color-link: #000;
 // Use color.adjust instead of lighten() to avoid deprecation warnings
@@ -9,20 +10,26 @@ $color-link-hover: color.adjust($color-link, $lightness: 60%);
 $color-link-visited: color.adjust($color-link, $lightness: 40%);
 $color-background: #fff;
 $color-selection: #ffc;
+
+// Dark mode colors
+$color-text-dark: #ffffff;
+$color-link-dark: #ffffff;
+$color-link-hover-dark: color.adjust($color-link-dark, $lightness: -30%);
+$color-link-visited-dark: color.adjust($color-link-dark, $lightness: -20%);
+$color-background-dark: #000000;
+$color-selection-dark: #333;
+
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
 // Logo mixin now available from common.scss
-
-html {
-  border: 1px solid #fff;
-}
 
 html,
 body {
   @include font-family;
   color: $color-text;
   background-color: $color-background;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   font-size: calc(#{$size} * 3.6);
   font-size: clamp(14px, 1vw, 18px); // Smaller base size, limits scaling
@@ -38,7 +45,6 @@ body {
   padding: 0;
   a {
     color: $color-link;
-
     transition: color 0.2s ease;
 
     &:not(.no-decoration) {
@@ -53,6 +59,31 @@ body {
 
     &:hover {
       color: $color-link-hover;
+    }
+  }
+
+  // Dark mode styles
+  &.dark-theme,
+  .dark-theme & {
+    color: $color-text-dark;
+    background-color: $color-background-dark;
+    
+    a {
+      color: $color-link-dark;
+
+      &:not(.no-decoration) {
+        &:hover {
+          color: $color-link-hover-dark;
+        }
+      }
+
+      &:visited {
+        color: $color-link-visited-dark;
+      }
+
+      &:hover {
+        color: $color-link-hover-dark;
+      }
     }
   }
 }
@@ -81,6 +112,11 @@ body {
 
   a.side-note {
     text-decoration: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-text;
+    transition: color 0.3s ease-in-out;
   }
 
   h1 {
@@ -124,6 +160,14 @@ body {
     line-height: $standard-line-height;
   }
 
+  // Dark mode styles for headings
+  &.dark-theme,
+  .dark-theme & {
+    h1, h2, h3, h4, h5, h6 {
+      color: $color-text-dark;
+    }
+  }
+
   ul,
   h1,
   h2,
@@ -145,17 +189,31 @@ body {
     .logo {
       @include logo(3rem, 0.55, true); // Hover always enabled, small logo
       margin: 0;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
     }
 
     a {
       &:not(.logo) {
         font-size: 1rem;
         text-align: right;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
       }
     }
 
     div.right {
       text-align: right;
+    }
+  }
+
+  // Dark mode styles for nav
+  &.dark-theme,
+  .dark-theme & {
+    nav a:not(.logo) {
+      color: $color-link-dark;
+      
+      &:hover {
+        color: $color-link-hover-dark;
+      }
     }
   }
 
@@ -168,6 +226,16 @@ body {
     margin-top: calc((#{$size-margin}) / 2);
     text-align: center;
     line-height: $standard-line-height;
+    color: $color-text;
+    transition: color 0.3s ease-in-out;
+  }
+
+  // Dark mode styles for footer
+  &.dark-theme,
+  .dark-theme & {
+    footer {
+      color: color.adjust($color-text-dark, $lightness: -20%);
+    }
   }
 
   ul.info,
