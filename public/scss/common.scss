@@ -24,3 +24,57 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
 // Add a standardized line height variable to use across all files
 $standard-line-height: 1.5;
+
+// Unified logo mixin with black-to-white hover effect
+@mixin logo($size: 4rem, $font-ratio: 0.6, $is-small: false) {
+  border-radius: $size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(#{$size} * #{$font-ratio});
+  font-weight: 100;
+  height: $size;
+  letter-spacing: calc(#{$size} * -0.02);
+  line-height: $size;
+  width: $size;
+  background: #000000 !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  
+  // Calculate border thickness based on font size to match text thickness
+  $calculated-font-size: calc(#{$size} * #{$font-ratio});
+  
+  @if $is-small {
+    // Small logos (navigation) - 1px border for small text
+    border: 1px solid #000000;
+  } @else {
+    // Large responsive logos - border scales with text size
+    border: 1px solid #000000;
+    
+    // When font gets larger than ~1.5rem, increase border to 2px
+    @media (min-width: 768px) {
+      border-width: 2px;
+    }
+    
+    // Keep 2px for largest sizes to match text thickness
+    @media (min-width: 1200px) {
+      border-width: 2px;
+    }
+  }
+  
+  &:hover,
+  &:active,
+  &:focus {
+    background: #ffffff !important;
+    border-color: #000000;
+    color: #000000 !important;
+  }
+  
+  // Ensure any child links inherit the color
+  a {
+    color: inherit !important;
+    text-decoration: none;
+  }
+}

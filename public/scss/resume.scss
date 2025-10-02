@@ -12,39 +12,7 @@ $color-selection: #ffc;
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
-@mixin logo($size: 4vmin) {
-  $ratio: 1.6;
-  &,
-  &:active,
-  &:visited {
-    background: $color-link;
-    //letter-spacing: calc((0 - (#{$size})) / 18);
-
-    border-radius: calc((#{$size}));
-    color: $color-background;
-    display: inline-block;
-
-    font-size: calc(#{$size} * 0.5);
-
-    font-weight: 100;
-
-    height: calc((#{$size}));
-
-    line-height: calc((#{$size}));
-
-    text-align: center;
-
-    transition:
-      color 0.2s ease-out,
-      background-color 0.2s ease-out;
-    width: calc((#{$size}));
-  }
-
-  &:hover {
-    background: $color-link-hover;
-    color: $color-link;
-  }
-}
+// Logo mixin now available from common.scss
 
 html {
   border: 1px solid #fff;
@@ -172,7 +140,7 @@ body {
     }
 
     .logo {
-      @include logo("#{$size-margin} * 3");
+      @include logo(3rem, 0.5, true);
       margin: 0;
     }
 
