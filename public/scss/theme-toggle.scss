@@ -1,0 +1,92 @@
+// Theme Toggle Mixin System
+// Provides a bulletproof theme toggle button with proper dark/light mode support
+
+@mixin theme-toggle($size: clamp(2.5rem, 6vw, 3rem), $border-width: 2px, $font-size: clamp(1rem, 3vw, 1.2rem), $position: fixed) {
+  // Base appearance styles
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size;
+  font-weight: normal;
+  height: $size;
+  line-height: 1;
+  width: $size;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: $position;
+  cursor: pointer;
+  z-index: 1000;
+  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
+  
+  // Fixed positioning for main page (only applies when position is fixed)
+  @if $position == fixed {
+    top: clamp(1rem, 4vw, 2rem);
+    right: clamp(1rem, 4vw, 2rem);
+  }
+  
+  // Light mode colors (default)
+  background: #000000;
+  color: #ffffff;
+  border: $border-width solid #000000;
+  
+  // Light mode hover
+  &:hover,
+  &:active,
+  &:focus {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+    outline: none;
+    transition: none;
+  }
+  
+  // Dark mode overrides
+  .dark-theme & {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    
+    &:hover,
+    &:active,
+    &:focus {
+      background: #000000;
+      color: #ffffff;
+      border-color: #ffffff;
+      outline: none;
+      transition: none;
+    }
+  }
+}
+
+@mixin theme-toggle-icon {
+  transition: transform 0.3s ease-in-out;
+  display: block;
+  line-height: 1;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  // Dark mode icon rotation
+  .dark-theme & {
+    transform: rotate(180deg);
+  }
+}
+
+// Usage Examples (commented out):
+// .theme-toggle { @include theme-toggle(); }
+// .custom-toggle { @include theme-toggle(3rem, 1px, 1.5rem, fixed); }
+// .mini-toggle { @include theme-toggle(1.5rem, 1px, 0.8rem, relative); }
+
+// Apply the mixin to the standard theme toggle class
+.theme-toggle {
+  @include theme-toggle();
+  
+  .theme-toggle-icon {
+    @include theme-toggle-icon();
+  }
+}

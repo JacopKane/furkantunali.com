@@ -228,8 +228,7 @@ html {
           @include logo-positioning(); // Apply positioning only to h1
           
           .logo {
-            $logo-size: clamp(4rem, 12vw, 8rem);
-            @include logo($logo-size, 0.6, false); // Hover always enabled
+            @include logo(clamp(4rem, 12vw, 8rem), 0.6, false); // Hover always enabled
           }
         }
       }
