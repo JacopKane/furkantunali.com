@@ -16,6 +16,7 @@
   --logo-color: #ffffff;
   --logo-border: #000000;
   --footer-color: #bbbbbb;
+  --link-hover-opacity: 0.7;
   
   // Inverted color scheme
   --text-color-inverted: #777777;
@@ -27,6 +28,7 @@
   --logo-color-inverted: #000000;
   --logo-border-inverted: #ffffff;
   --footer-color-inverted: #444444;
+  --link-hover-opacity-inverted: 0.6;
   
   background-color: var(--background-color);
   color: var(--text-color);
@@ -46,6 +48,7 @@ body.dark-theme {
   --logo-color: var(--logo-color-inverted);
   --logo-border: var(--logo-border-inverted);
   --footer-color: var(--footer-color-inverted);
+  --link-hover-opacity: var(--link-hover-opacity-inverted);
 }
 
 // Theme toggle button styles
@@ -113,7 +116,7 @@ section#about {
       transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
 
       &:hover {
-        opacity: 0.7;
+        opacity: var(--link-hover-opacity);
         text-decoration-color: transparent;
       }
     }
@@ -139,7 +142,7 @@ section#about {
     transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
 
     &:hover {
-      opacity: 0.7;
+      opacity: var(--link-hover-opacity);
       text-decoration-color: transparent;
     }
   }
@@ -210,7 +213,7 @@ html {
         transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
 
         &:hover {
-          opacity: 0.7;
+          opacity: var(--link-hover-opacity);
           text-decoration-color: transparent;
         }
       }
@@ -247,41 +250,18 @@ html {
           transition: color 0.3s ease-in-out;
         }
 
+        // BULLETPROOF LOGO - MAIN PAGE WITH HOVER EFFECTS
         h1 {
-          $logo-size: clamp(4rem, 12vw, 8rem);
-          @include logo($logo-size, 0.6);
-          margin: 0 auto;
-          max-width: calc(100% - 2rem);
-
-          a {
-            border-radius: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            text-decoration: none;
-            color: inherit !important;
+          @include logo-positioning(); // Apply positioning only to h1
+          
+          .logo {
+            $logo-size: clamp(4rem, 12vw, 8rem);
+            @include logo($logo-size, 0.6, false, true); // Enable hover effects for main page
           }
         }
+      }
 
-        // Override logo styles after the mixin to use CSS variables for main page only
-        h1 {
-          background: var(--logo-bg) !important;
-          color: var(--logo-color) !important;
-          border-color: var(--logo-border) !important;
-          transition: all 0.3s ease-in-out;
 
-          // Resume-style hover effect (white background with black text/border)
-          &:hover,
-          &:active,
-          &:focus {
-            background: #ffffff !important;
-            color: #000000 !important;
-            border-color: #000000 !important;
-          }
-        }
 
         h2 {
           font-size: clamp(2rem, 6vw, 3.5rem);
@@ -339,4 +319,7 @@ html {
       transition: color 0.3s ease-in-out;
     }
   }
-}
+
+// Logo styles are now completely self-contained in logo.scss
+// No external theme-dependent logo styles needed
+

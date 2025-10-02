@@ -26,9 +26,9 @@ body {
     justify-content: space-between;
     align-items: center;
     
-    // Style the logo using unified mixin
+    // Style the logo using unified mixin - NO hover effects for resume web
     .logo {
-      @include logo(3rem, 0.58, true);
+      @include logo(3rem, 0.58, true, false); // Disable hover effects for resume web
     }
     
     a:not(.logo) {
