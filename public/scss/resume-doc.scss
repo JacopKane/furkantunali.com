@@ -18,9 +18,24 @@ body {
   }
 
   a {
+    color: $color-link;
+    transition: color 0.2s ease;
+    
     &:not(.no-decoration) {
       // @include no-smart-underline();
       text-decoration: underline;
+      
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+    
+    &:visited {
+      color: $color-link-visited;
+    }
+    
+    &:hover {
+      color: $color-link-hover;
     }
   }
 
