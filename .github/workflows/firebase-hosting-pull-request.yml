@@ -8,11 +8,27 @@ jobs:
     if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: volta-cli/action@v4
+      - uses: actions/checkout@v4
 
-      - run: npm install
-      - run: npm run build
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install workspace dependencies
+        run: |
+          npm install --workspace=functions
+          npm install --workspace=public
+
+      - name: Build functions
+        run: npm run --workspace=functions build
+
+      - name: Build public assets (SCSS + HTML)
+        run: npm run --workspace=public build
 
       - name: Deploy to Firebase Hosting with Functions
         uses: FirebaseExtended/action-hosting-deploy@v0
