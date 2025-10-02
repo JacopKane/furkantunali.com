@@ -14,18 +14,8 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
 // Logo mixin now available from common.scss
 
-// Theme toggle button positioning for resume page (inline with nav)
-nav .theme-toggle {
-  position: static;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1rem;
-}
-
-// Logo mixin now available from common.scss
-
 html {
-  background-color: $color-background;
+  border: 1px solid #fff;
 }
 
 html,
@@ -33,7 +23,6 @@ body {
   @include font-family;
   color: $color-text;
   background-color: $color-background;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   font-size: calc(#{$size} * 3.6);
   font-size: clamp(14px, 1vw, 18px); // Smaller base size, limits scaling
@@ -65,21 +54,7 @@ body {
     &:hover {
       color: $color-link-hover;
     }
-
   }
-}
-
-// Apply hover opacity only to content section links, not navigation
-.about a:hover,
-.content a:hover,
-section a:hover,
-article a:hover,
-main a:hover,
-p a:hover,
-.experience a:hover,
-.skills a:hover,
-.intro a:hover {
-  color: $color-link-hover;
 }
 
 body {
@@ -161,11 +136,6 @@ body {
   }
 
   nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: calc(#{$size-margin} / 2);
-    
     @media print {
       display: none;
     }
@@ -175,40 +145,10 @@ body {
       margin: 0;
     }
 
-    // Right side content (PDF download + theme toggle)
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
     a {
       &:not(.logo) {
         font-size: 1rem;
-        color: $color-link;
-        text-decoration: none;
-        transition: color 0.3s ease-in-out;
-        
-        &:hover {
-          color: $color-link-hover;
-        }
-      }
-      
-      // PDF Download button styling
-      &#download-pdf-link {
-        background: $color-background;
-        border: 1px solid $color-text;
-        color: $color-text;
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
-        text-decoration: none;
-        transition: all 0.3s ease-in-out;
-        
-        &:hover {
-          background: $color-text;
-          color: $color-background;
-          border-color: $color-text;
-        }
+        text-align: right;
       }
     }
 
@@ -271,11 +211,6 @@ body {
     @media (hover: hover) {
       &:hover {
         background-color: rgba(0, 0, 0, 0.02);
-        
-        // Dark mode hover effect
-        .dark-theme & {
-          background-color: rgba(255, 255, 255, 0.05);
-        }
       }
     }
 
@@ -286,7 +221,8 @@ body {
     // Add bullet styles for nested lists within experiences
     ul {
       padding-left: 1.5em;
-      list-style-type: disc;
+      list-style-type: circle; // Nested bullets: hollow circles ○
+      list-style-position: outside;
       
       li {
         display: list-item;
@@ -300,125 +236,38 @@ body {
     > ul.experiences {
       width: 100%;
       max-width: 100%;
-      padding: 0;
+      padding: 0 0 0 1.2em; // Add left padding for main bullets
       margin: 0;
-      list-style-type: none;
     }
     
     li.experience {
-      // Vertical layout - full width
-      display: block;
-      width: 100%;
+      // Main experience items - show as list items with bullets
+      display: list-item;
+      width: calc(100% - 1.2em); // Adjust width to account for padding
+      list-style-type: disc; // Main bullets: solid circles ●
+      list-style-position: outside;
       
       // Allow content to flow naturally
       break-inside: auto;
       
-      // Add a subtle separation between experiences
-      margin-bottom: 1.5em;
+      // Remove default margins
+      margin: 0;
       
-      // Target nested lists properly
+      // Add spacing only to parent experience items (not last one)
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
+      
+      // Target nested lists properly - different bullet style
       > ul {
         padding-left: 1.5em;
-        list-style-type: disc;
+        list-style-type: circle; // Nested bullets: hollow circles ○
+        list-style-position: outside;
+        margin: 0; // Remove margins from nested lists
         
         li {
           display: list-item;
-        }
-      }
-    }
-  }
-}
-
-// Dark mode styles for resume page
-@media (prefers-color-scheme: dark) {
-  html {
-    background-color: #000000;
-  }
-  
-  html, body {
-    background-color: #000000;
-    color: #ffffff;
-  }
-  
-  body {
-    a {
-      color: #ffffff;
-      
-      &:hover {
-        color: #cccccc;
-      }
-      
-      &:visited {
-        color: #cccccc;
-      }
-    }
-    
-    .experience {
-      @media (hover: hover) {
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.05);
-        }
-      }
-    }
-    
-    nav {
-      a {
-        &#download-pdf-link {
-          background: #ffffff;
-          border-color: #ffffff;
-          color: #000000;
-          
-          &:hover {
-            background: #000000;
-            color: #ffffff;
-            border-color: #ffffff;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Manual dark theme class for resume page
-html.dark-theme {
-  background-color: #000000;
-  
-  body {
-    background-color: #000000;
-    color: #ffffff;
-    
-    a {
-      color: #ffffff;
-      
-      &:hover {
-        color: #cccccc;
-      }
-      
-      &:visited {
-        color: #cccccc;
-      }
-    }
-    
-    .experience {
-      @media (hover: hover) {
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.05);
-        }
-      }
-    }
-    
-    nav {
-      a {
-        &#download-pdf-link {
-          background: #ffffff;
-          border-color: #ffffff;
-          color: #000000;
-          
-          &:hover {
-            background: #000000;
-            color: #ffffff;
-            border-color: #ffffff;
-          }
+          margin: 0; // Remove margins from nested items
         }
       }
     }
@@ -441,19 +290,29 @@ html.dark-theme {
   // Print-specific styles for experiences
   #experiences > ul.experiences {
     width: 100% !important;
+    padding-left: 1.2em !important; // Ensure space for bullets in print
     
     li.experience {
-      display: block !important;
-      width: 100% !important;
-      margin-bottom: 0.7em !important;
+      display: list-item !important;
+      width: calc(100% - 1.2em) !important;
+      margin: 0 !important; // Remove default margins in print
+      list-style-type: disc !important; // Main bullets: solid circles ●
+      list-style-position: outside !important;
       break-inside: auto !important; // Allow page breaks within experiences for better space utilization
+      
+      // Add spacing only to parent experience items (not last one) in print
+      &:not(:last-child) {
+        margin-bottom: 0.5em !important; // Smaller margin for print
+      }
       
       > ul {
         padding-left: 1.5em !important;
-        list-style-type: disc !important;
+        list-style-type: circle !important; // Nested bullets: hollow circles ○
+        margin: 0 !important; // Remove margins from nested lists in print
         
         li {
           display: list-item !important;
+          margin: 0 !important; // Remove margins from nested items in print
         }
       }
     }
@@ -622,7 +481,3 @@ html.dark-theme {
     margin-bottom: 0 !important;
   }
 }
-
-
-
-

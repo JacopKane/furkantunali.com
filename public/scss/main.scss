@@ -59,6 +59,8 @@ body.dark-theme {
   z-index: 1000;
 }
 
+
+
 section#about {
   @include font-family;
   font-size: clamp(1rem, 2.5vw, 1.25rem);

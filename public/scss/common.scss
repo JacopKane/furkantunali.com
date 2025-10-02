@@ -104,13 +104,12 @@ $dark-accent: #999999;
   }
 }
 
-// Global theme toggle button styles - shared across all pages
-// Following the same pattern as logo and buttons for consistent theming
+// Global theme toggle button styles - following the same bulletproof pattern as logo
 .theme-toggle {
-  // Base styles - light mode defaults (black bg, white text)
-  background: #000000;
-  border: 1px solid #000000;
-  color: #ffffff;
+  // Base styles - light mode defaults (white bg, black text)
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+  color: #000000 !important;
   border-radius: 50%;
   width: clamp(2.5rem, 6vw, 3rem);
   height: clamp(2.5rem, 6vw, 3rem);
@@ -121,11 +120,14 @@ $dark-accent: #999999;
   font-size: clamp(1rem, 3vw, 1.2rem);
   transition: all 0.3s ease-in-out;
   
-  // Light mode hover - invert to white bg, black text
-  &:hover {
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
+  // BULLETPROOF LIGHT MODE HOVER STATES - Same as logo
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+    outline: none !important;
     transform: scale(1.1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
@@ -138,34 +140,57 @@ $dark-accent: #999999;
   .dark-theme & .theme-toggle-icon {
     transform: rotate(180deg);
   }
-  
-  // Dark mode styles - system preference (white bg, black text)
-  @media (prefers-color-scheme: dark) {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-    
-    &:hover {
-      background: #000000;
-      color: #ffffff;
-      border-color: #ffffff;
-      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-    }
+}
+
+// BULLETPROOF DARK MODE OVERRIDES - Same pattern as logo with maximum specificity
+@media (prefers-color-scheme: dark) {
+  html body .theme-toggle,
+  :root html body .theme-toggle {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
   }
   
-  // Manual dark theme class override (white bg, black text)
-  html.dark-theme & {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-    
-    &:hover {
-      background: #000000;
-      color: #ffffff;
-      border-color: #ffffff;
-      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-    }
+  // Dark mode hover states
+  html body .theme-toggle:hover,
+  html body .theme-toggle:active,
+  html body .theme-toggle:focus,
+  :root html body .theme-toggle:hover,
+  :root html body .theme-toggle:active,
+  :root html body .theme-toggle:focus {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    outline: none !important;
   }
+}
+
+// Manual dark theme class override - Same pattern as logo
+html.dark-theme .theme-toggle,
+html.dark-theme body .theme-toggle,
+:root html.dark-theme .theme-toggle,
+:root html.dark-theme body .theme-toggle {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+html.dark-theme .theme-toggle:hover,
+html.dark-theme .theme-toggle:active,
+html.dark-theme .theme-toggle:focus,
+html.dark-theme body .theme-toggle:hover,
+html.dark-theme body .theme-toggle:active,
+html.dark-theme body .theme-toggle:focus,
+:root html.dark-theme .theme-toggle:hover,
+:root html.dark-theme .theme-toggle:active,
+:root html.dark-theme .theme-toggle:focus,
+:root html.dark-theme body .theme-toggle:hover,
+:root html.dark-theme body .theme-toggle:active,
+:root html.dark-theme body .theme-toggle:focus {
+  background: transparent !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  outline: none !important;
 }
 
 // Import the bulletproof logo system
