@@ -43,6 +43,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: inherit;
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    transition: background-color 0.3s ease-in-out;
     
     // Style the logo using unified mixin - NO hover effects for resume web
     .logo {
