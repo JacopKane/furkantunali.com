@@ -4,6 +4,27 @@
   line-height: 1.5; // Standardized line height
 }
 
+/* Global box-sizing fix to prevent width calculation issues */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Prevent text overflow by allowing proper word breaking */
+p, li, span, div, td {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Specifically target experience content for aggressive word breaking */
+.experience p, .experience li, #experiences li, #experiences p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
 .no-decoration {
   text-decoration: none;
 }

@@ -35,13 +35,16 @@
   
   // Light mode hover
   &:hover,
-  &:active,
-  &:focus {
+  &:active {
     background: #ffffff;
     color: #000000;
     border-color: #000000;
     outline: none;
     transition: none;
+  }
+  
+  &:focus {
+    outline: none;
   }
   
   // Dark mode overrides
@@ -51,13 +54,16 @@
     border-color: #ffffff;
     
     &:hover,
-    &:active,
-    &:focus {
+    &:active {
       background: #000000;
       color: #ffffff;
       border-color: #ffffff;
       outline: none;
       transition: none;
+    }
+    
+    &:focus {
+      outline: none;
     }
   }
 }
