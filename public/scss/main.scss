@@ -51,37 +51,12 @@ body.dark-theme {
   --link-hover-opacity: var(--link-hover-opacity-inverted);
 }
 
-// Theme toggle button styles
+// Theme toggle button positioning for main page (fixed position)
 .theme-toggle {
   position: fixed;
   top: clamp(1rem, 4vw, 2rem);
   right: clamp(1rem, 4vw, 2rem);
-  background: var(--background-color);
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  width: clamp(2.5rem, 6vw, 3rem);
-  height: clamp(2.5rem, 6vw, 3rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  transition: all 0.3s ease-in-out;
   z-index: 1000;
-  
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .theme-toggle-icon {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  // Dark mode icon rotation
-  .dark-theme & .theme-toggle-icon {
-    transform: rotate(180deg);
-  }
 }
 
 section#about {

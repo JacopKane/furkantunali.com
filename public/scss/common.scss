@@ -25,5 +25,49 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 // Add a standardized line height variable to use across all files
 $standard-line-height: 1.5;
 
+// Global theme toggle button styles - shared across all pages
+.theme-toggle {
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 50%;
+  width: clamp(2.5rem, 6vw, 3rem);
+  height: clamp(2.5rem, 6vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .theme-toggle-icon {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  // Dark mode icon rotation
+  .dark-theme & .theme-toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  // Dark mode specific styles
+  .dark-theme & {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+    
+    &:hover {
+      background: transparent;
+      border-color: #ffffff;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
 // Import the bulletproof logo system
 @import "logo.scss";
