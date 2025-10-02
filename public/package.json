@@ -9,7 +9,7 @@
     "watch-scss": "sass --watch scss/:styles/",
     "watch-html": "nodemon",
     "build": "concurrently \"npm run build-scss\" \"npm run build-html\"",
-    "build-scss": "sass scss/:styles/",
+    "build-scss": "sass --source-map=false scss/:styles/",
     "build-html-resume": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume.json",
     "build-html-resume-doc": "ejsc \"./**/*.ejs\" --out . --data-file ./ejs/resume-doc.json",
     "mv-resume-doc": "mv ./resume.html ./resume-doc.html && echo 'resume.html moved to resume-doc.html'",

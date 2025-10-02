@@ -14,10 +14,6 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
 // Logo mixin now available from common.scss
 
-html {
-  border: 1px solid $color-background;
-}
-
 // Theme toggle button positioning for resume page (inline with nav)
 nav .theme-toggle {
   position: static;
@@ -29,7 +25,6 @@ nav .theme-toggle {
 // Logo mixin now available from common.scss
 
 html {
-  border: 1px solid $color-background;
   background-color: $color-background;
 }
 
@@ -338,7 +333,6 @@ body {
 @media (prefers-color-scheme: dark) {
   html {
     background-color: #000000;
-    border-color: #000000;
   }
   
   html, body {
@@ -388,7 +382,6 @@ body {
 // Manual dark theme class for resume page
 html.dark-theme {
   background-color: #000000;
-  border-color: #000000;
   
   body {
     background-color: #000000;
