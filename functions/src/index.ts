@@ -1,5 +1,16 @@
 /**
- * Import function triggers from their respective submodules:
+ * Import function triggers from   if (isEmulator) {
+    // Use Firebase hosting emulator URL - use configured port
+    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "8080";
+    const url = `http://localhost:${hostingPort}${path}`;
+    logger.info("Using local emulator URL", { 
+      url, 
+      hostingPort, 
+      env_hosting_port: process.env.FIREBASE_HOSTING_EMULATOR_PORT,
+      structuredData: true 
+    });
+    return url;
+  }espective submodules:
  */
 
 import { onRequest } from "firebase-functions/v2/https";
@@ -15,20 +26,48 @@ import { launch } from "puppeteer";
  * @return {string} The complete URL
  */
 function getUrl(path = "") {
-  // Check if we're running in the Firebase emulator
+  // More comprehensive check for Firebase emulator environment
   const isEmulator =
     process.env.FUNCTIONS_EMULATOR === "true" ||
     process.env.FIREBASE_CONFIG?.includes("localhost") ||
-    !process.env.GCLOUD_PROJECT;
+    !process.env.GCLOUD_PROJECT ||
+    process.env.NODE_ENV === "development" ||
+    // Check for Firebase emulator hub
+    process.env.FIREBASE_EMULATOR_HUB !== undefined;
+
+  // Debug logging
+  logger.info("Environment detection", {
+    FUNCTIONS_EMULATOR: process.env.FUNCTIONS_EMULATOR,
+    FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
+    GCLOUD_PROJECT: process.env.GCLOUD_PROJECT,
+    NODE_ENV: process.env.NODE_ENV,
+    FIREBASE_EMULATOR_HUB: process.env.FIREBASE_EMULATOR_HUB,
+    isEmulator: isEmulator,
+    structuredData: true,
+  });
 
   if (isEmulator) {
-    // Use Firebase hosting emulator URL (configured port 5002)
-    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "5002";
-    return `http://localhost:${hostingPort}${path}`;
+    // Use Firebase hosting emulator URL (configured port 8080)
+    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "8080";
+    const url = `http://localhost:${hostingPort}${path}`;
+    logger.info("✅ EMULATOR MODE - Using local URL", {
+      url,
+      hostingPort,
+      path,
+      env_hosting_port: process.env.FIREBASE_HOSTING_EMULATOR_PORT,
+      structuredData: true,
+    });
+    return url;
   }
 
   // Production environment - use the actual hosting URL
-  return `https://furkantunali.com${path}`;
+  const url = `https://furkantunali.com${path}`;
+  logger.info("🚀 PRODUCTION MODE - Using production URL", {
+    url,
+    path,
+    structuredData: true,
+  });
+  return url;
 }
 
 export const downloadAsPDF = onRequest(
@@ -38,7 +77,11 @@ export const downloadAsPDF = onRequest(
     memory: "512MiB",
   },
   async (request, response) => {
-    logger.info("Begin downloadAsPDF", { structuredData: true });
+    logger.info("Begin downloadAsPDF", {
+      requestUrl: request.url,
+      requestHeaders: request.headers,
+      structuredData: true,
+    });
 
     const browser = await launch({
       headless: true,
@@ -60,6 +103,25 @@ export const downloadAsPDF = onRequest(
 
     try {
       const page = await browser.newPage();
+
+      // Enable console logging from the page
+      page.on("console", (msg) => {
+        logger.info(`PAGE LOG: ${msg.text()}`, { structuredData: true });
+      });
+
+      // Enable request/response logging
+      page.on("request", (request) => {
+        logger.info(`PAGE REQUEST: ${request.method()} ${request.url()}`, {
+          structuredData: true,
+        });
+      });
+
+      page.on("response", (response) => {
+        logger.info(`PAGE RESPONSE: ${response.status()} ${response.url()}`, {
+          structuredData: true,
+        });
+      });
+
       await page.setViewport({
         width: 2480,
         height: 3508,
@@ -69,11 +131,23 @@ export const downloadAsPDF = onRequest(
 
       const url = getUrl("/resume-doc.html");
 
-      await page.goto(url, {
-        waitUntil: "networkidle2",
+      logger.info("About to navigate to URL", {
+        targetUrl: url,
+        path: "/resume-doc.html",
+        structuredData: true,
       });
 
-      logger.info("Page loaded", { structuredData: true });
+      const navigationResponse = await page.goto(url, {
+        waitUntil: "networkidle2",
+        timeout: 30000,
+      });
+
+      logger.info("Page navigation completed", {
+        finalUrl: page.url(),
+        responseStatus: navigationResponse?.status(),
+        responseHeaders: navigationResponse?.headers(),
+        structuredData: true,
+      });
 
       await page.setUserAgent(
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",

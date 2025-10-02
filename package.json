@@ -13,9 +13,10 @@
   "scripts": {
     "build": "npm run --workspaces build",
     "lint": "npm run --workspaces lint",
-    "dev": "concurrently \"npm run dev:functions\" \"npm run dev:public\"",
+    "dev": "concurrently \"npm run dev:functions\" \"npm run dev:public\" \"npm run emulators\"",
     "dev:public": "npm run --workspace=public dev",
     "dev:functions": "npm run --workspace=functions build:watch",
+    "emulators": "firebase emulators:start --only hosting,functions",
     "build:watch": "concurrently \"npm run build:watch:functions\" \"npm run build:watch:public\"",
     "build:watch:public": "npm run --workspace=public build:watch",
     "build:watch:functions": "npm run --workspace=functions build:watch",

@@ -4,7 +4,7 @@
     "outputPath": "./"
   },
   "scripts": {
-    "dev": "npm run build && concurrently \"npm run watch-scss\" \"npm run watch-html\" \"npm run serve\"",
+    "dev": "npm run build && concurrently \"npm run watch-scss\" \"npm run watch-html\"",
     "build:watch": "concurrently \"npm run watch-scss\" \"npm run watch-html\"",
     "watch-scss": "sass --watch scss/:styles/",
     "watch-html": "nodemon",

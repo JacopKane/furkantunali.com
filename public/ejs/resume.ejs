@@ -839,7 +839,8 @@
         // Check if we're running locally (development)
         const isLocal = window.location.hostname === 'localhost' || 
                        window.location.hostname === '127.0.0.1' ||
-                       window.location.hostname.includes('localhost');
+                       window.location.hostname.includes('localhost') ||
+                       window.location.hostname.includes('127.0.0.1');
         
         const downloadLink = document.getElementById('download-pdf-link');
         
@@ -850,8 +851,9 @@
         
         if (downloadLink && isLocal) {
           // Use Firebase emulator URL for local development
-          // Firebase Functions emulator port is 5001, hosting emulator port is 5002
-          const localUrl = `http://localhost:5001/furkantunali-1043/europe-west1/downloadAsPDF`;
+          // Dynamically detect function emulator port (default 5001)
+          const functionsPort = '5001'; // Functions emulator default port
+          const localUrl = `http://${window.location.hostname}:${functionsPort}/furkantunali-1043/europe-west1/downloadAsPDF`;
           console.log('Setting local URL:', localUrl);
           downloadLink.href = localUrl;
         } else {
