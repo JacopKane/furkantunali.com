@@ -236,38 +236,40 @@ body {
     > ul.experiences {
       width: 100%;
       max-width: 100%;
-      padding: 0 0 0 1.2em; // Add left padding for main bullets
+      padding-left: 1em; // Minimal padding to show bullets
       margin: 0;
+      list-style-type: disc; // Parent bullets for experience titles
     }
     
     li.experience {
-      // Main experience items - show as list items with bullets
-      display: list-item;
-      width: calc(100% - 1.2em); // Adjust width to account for padding
-      list-style-type: disc; // Main bullets: solid circles ●
-      list-style-position: outside;
+      // Simple vertical layout with parent bullets
+      display: list-item; // Show parent bullets
+      width: 100%;
       
       // Allow content to flow naturally
       break-inside: auto;
       
-      // Remove default margins
-      margin: 0;
+      // Reduce spacing between bullet and text
+      padding-left: 0.25em; // Pull text closer to bullet
       
-      // Add spacing only to parent experience items (not last one)
-      &:not(:last-child) {
-        margin-bottom: 1em;
+      // No spacing between parent experience bullets
+      margin: 0; // Remove all margins
+      
+      // Remove bottom spacing from last experience
+      &:last-child {
+        margin-bottom: 0;
       }
       
-      // Target nested lists properly - different bullet style
+      // Child bullets (experience details) - different style
       > ul {
-        padding-left: 1.5em;
-        list-style-type: circle; // Nested bullets: hollow circles ○
-        list-style-position: outside;
-        margin: 0; // Remove margins from nested lists
+        padding-left: 1.5em; // Normal padding for child bullets
+        list-style-type: circle; // Different bullet style for details
+        margin: 0; // Remove all margins from child lists
         
         li {
           display: list-item;
-          margin: 0; // Remove margins from nested items
+          margin: 0; // Remove all margins from child items
+          padding-left: 0.25em; // Pull child text closer to bullets
         }
       }
     }
@@ -290,29 +292,31 @@ body {
   // Print-specific styles for experiences
   #experiences > ul.experiences {
     width: 100% !important;
-    padding-left: 1.2em !important; // Ensure space for bullets in print
+    padding-left: 1em !important; // Minimal padding to show bullets in print
+    list-style-type: disc !important; // Parent bullets in print
+    margin: 0 !important;
     
     li.experience {
-      display: list-item !important;
-      width: calc(100% - 1.2em) !important;
-      margin: 0 !important; // Remove default margins in print
-      list-style-type: disc !important; // Main bullets: solid circles ●
-      list-style-position: outside !important;
+      display: list-item !important; // Show parent bullets in print
+      width: 100% !important;
+      margin: 0 !important; // No spacing at all in print
+      padding-left: 0.25em !important; // Pull text closer to bullet in print
       break-inside: auto !important; // Allow page breaks within experiences for better space utilization
       
-      // Add spacing only to parent experience items (not last one) in print
-      &:not(:last-child) {
-        margin-bottom: 0.5em !important; // Smaller margin for print
+      // Remove bottom spacing from last experience in print
+      &:last-child {
+        margin-bottom: 0 !important;
       }
       
       > ul {
-        padding-left: 1.5em !important;
-        list-style-type: circle !important; // Nested bullets: hollow circles ○
-        margin: 0 !important; // Remove margins from nested lists in print
+        padding-left: 1.5em !important; // Normal padding for child bullets in print
+        list-style-type: circle !important; // Child bullets different in print
+        margin: 0 !important;
         
         li {
           display: list-item !important;
-          margin: 0 !important; // Remove margins from nested items in print
+          margin: 0 !important; // No spacing for child items in print
+          padding-left: 0.25em !important; // Pull child text closer to bullets in print
         }
       }
     }
