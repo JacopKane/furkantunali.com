@@ -35,7 +35,7 @@ $standard-line-height: 1.5;
   font-weight: 100;
   height: $size;
   letter-spacing: calc(#{$size} * -0.02);
-  line-height: $size;
+  line-height: 1;
   width: $size;
   background: #000000 !important;
   color: #ffffff !important;
@@ -43,22 +43,20 @@ $standard-line-height: 1.5;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
   
-  // Calculate border thickness based on font size to match text thickness
-  $calculated-font-size: calc(#{$size} * #{$font-ratio});
-  
+  // Border thickness based on logo size and screen size
   @if $is-small {
-    // Small logos (navigation) - 1px border for small text
-    border: 1px solid #000000;
+    // Small logos always get 1px border regardless of screen size
+    border: 1px solid #000000 !important;
   } @else {
-    // Large responsive logos - border scales with text size
+    // Large responsive logos - border scales with screen size
     border: 1px solid #000000;
     
-    // When font gets larger than ~1.5rem, increase border to 2px
+    // When screen gets larger, increase border to 2px for large logos only
     @media (min-width: 768px) {
       border-width: 2px;
     }
     
-    // Keep 2px for largest sizes to match text thickness
+    // Keep 2px for largest screens to match text thickness
     @media (min-width: 1200px) {
       border-width: 2px;
     }
@@ -72,9 +70,29 @@ $standard-line-height: 1.5;
     color: #000000 !important;
   }
   
-  // Ensure any child links inherit the color
-  a {
+  // Ensure child elements are properly styled and centered within logo context only
+  > a {
     color: inherit !important;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+    // Style child elements within the logo anchor only - fully reset inherited styles
+    > em, > span, > strong, > i, > b {
+      display: flex; // Use flexbox for perfect centering
+      align-items: center; // Vertical centering
+      justify-content: center; // Horizontal centering
+      width: 100%;
+      height: 100%;
+      line-height: 1 !important; // Force override of any inherited line-height
+      font-weight: inherit;
+      margin: 0 !important; // Reset any potential margins from global styles
+      padding: 0 !important; // Reset any potential padding from global styles
+      box-sizing: border-box !important; // Ensure consistent box model
+      // Preserve italic style for em elements - don't override font-style
+    }
   }
 }
