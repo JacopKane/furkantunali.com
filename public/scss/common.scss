@@ -34,7 +34,7 @@ $standard-line-height: 1.5;
   font-size: calc(#{$size} * #{$font-ratio});
   font-weight: 100;
   height: $size;
-  letter-spacing: calc(#{$size} * -0.02);
+  letter-spacing: calc(#{$size} * -0.05);
   line-height: 1;
   width: $size;
   background: #000000 !important;
@@ -42,6 +42,11 @@ $standard-line-height: 1.5;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
+  margin: 0 !important; // Reset any potential margins
+  padding: 0 !important; // Reset any potential padding
+  
+  // Ensure consistent font loading across all pages - let browser handle rendering naturally
+  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif !important;
   
   // Border thickness based on logo size and screen size
   @if $is-small {
@@ -70,29 +75,32 @@ $standard-line-height: 1.5;
     color: #000000 !important;
   }
   
-  // Ensure child elements are properly styled and centered within logo context only
-  > a {
+  // Ensure links within logo inherit colors properly
+  a, a:visited, a:hover, a:active, a:focus {
     color: inherit !important;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  // Direct styling for text content - ensure proper inheritance
+  em, span, strong, i, b {
+    display: block !important; // Use block for better positioning control
+    line-height: 1 !important; // Perfect line height for centering
+    font-weight: inherit !important;
+    color: inherit !important; // Ensure color inheritance
+    margin: 0 !important; // Reset any margins
+    padding: 0 !important; // Reset any padding
+    box-sizing: border-box !important;
+    text-align: center !important; // Ensure text is centered horizontally
+    width: 100% !important; // Full width for proper centering
+    transform: translate(-0.08em, -0.05em) !important; // Pull text slightly left and up for optical centering
     
-    // Style child elements within the logo anchor only - fully reset inherited styles
-    > em, > span, > strong, > i, > b {
-      display: flex; // Use flexbox for perfect centering
-      align-items: center; // Vertical centering
-      justify-content: center; // Horizontal centering
-      width: 100%;
-      height: 100%;
-      line-height: 1 !important; // Force override of any inherited line-height
-      font-weight: inherit;
-      margin: 0 !important; // Reset any potential margins from global styles
-      padding: 0 !important; // Reset any potential padding from global styles
-      box-sizing: border-box !important; // Ensure consistent box model
-      // Preserve italic style for em elements - don't override font-style
-    }
+    // Inherit consistent font from parent logo, let browser handle rendering naturally
+    font-family: inherit !important;
+    // Preserve italic style for em elements - don't override font-style
   }
 }

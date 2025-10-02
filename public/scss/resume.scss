@@ -140,7 +140,7 @@ body {
     }
 
     .logo {
-      @include logo(3rem, 0.5, true);
+      @include logo(3rem, 0.55, true);
       margin: 0;
     }
 
