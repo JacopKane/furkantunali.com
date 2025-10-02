@@ -16,6 +16,7 @@
     }
   ],
   "hosting": {
+    "site": "furkantunali-1043",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
