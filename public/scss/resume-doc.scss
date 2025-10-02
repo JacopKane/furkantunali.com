@@ -17,26 +17,27 @@ body {
     }
   }
 
-  // Vertical layout for experiences
+  // Vertical layout for experiences with hierarchical bullets
   #experiences {
-    ul {
+    ul.experiences {
       width: 100%;
-      list-style-type: none;
-      padding: 0;
+      list-style-type: disc; // Parent bullets for experience titles
+      padding-left: 1.5rem;
       margin: 0;
     }
     
     li.experience {
-      // Simple vertical layout
-      display: block;
+      // Simple vertical layout with parent bullets
+      display: list-item; // Show parent bullets
       width: 100%;
       break-inside: auto; // Modern property - no need for page-break-inside
       margin-bottom: 1.2em;
       
-      // Add bullet styling for nested lists
-      & > ul {
-        padding-left: 1.5em;
-        list-style-type: disc;
+      // Child bullets (experience details) - different style
+      > ul {
+        list-style-type: circle; // Different bullet style for details
+        margin-top: 0.5rem;
+        padding-left: 1.5rem;
         
         li {
           display: list-item;
