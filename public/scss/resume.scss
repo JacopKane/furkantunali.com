@@ -210,7 +210,9 @@ body {
         transition: all 0.3s ease-in-out;
         
         &:hover {
-          opacity: 0.8;
+          background: $color-text;
+          color: $color-background;
+          border-color: $color-text;
         }
       }
     }
@@ -368,13 +370,14 @@ body {
     nav {
       a {
         &#download-pdf-link {
-          background: #000000;
+          background: #ffffff;
           border-color: #ffffff;
-          color: #ffffff;
+          color: #000000;
           
           &:hover {
-            background: #ffffff;
-            color: #000000;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
           }
         }
       }
@@ -414,13 +417,14 @@ html.dark-theme {
     nav {
       a {
         &#download-pdf-link {
-          background: #000000;
+          background: #ffffff;
           border-color: #ffffff;
-          color: #ffffff;
+          color: #000000;
           
           &:hover {
-            background: #ffffff;
-            color: #000000;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
           }
         }
       }
