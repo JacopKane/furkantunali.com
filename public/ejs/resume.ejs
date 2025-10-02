@@ -889,7 +889,6 @@
         
         // Get elements
         const html = document.documentElement;
-        const body = document.body;
         const toggle = document.getElementById('theme-toggle');
         const icon = document.querySelector('.theme-toggle-icon');
         
@@ -913,11 +912,9 @@
           
           if (isDark) {
             html.classList.add('dark-theme');
-            body.classList.add('dark-theme');
             icon.textContent = '☀️';
           } else {
             html.classList.remove('dark-theme');
-            body.classList.remove('dark-theme');
             icon.textContent = '🌙';
           }
         }

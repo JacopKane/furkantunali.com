@@ -20,13 +20,91 @@ $color-background-dark: #000000;
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
+// Theme mixins
+@mixin light-theme {
+  color: $color-text;
+  background-color: $color-background;
+  
+  a {
+    color: $color-link;
+
+    &:not(.no-decoration) {
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+
+    &:visited {
+      color: $color-link-visited;
+    }
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-text;
+  }
+  
+  nav a:not(.logo) {
+    color: $color-link;
+    
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+  
+  footer {
+    color: $color-text;
+  }
+}
+
+@mixin dark-theme {
+  color: $color-text-dark;
+  background-color: $color-background-dark;
+  
+  a {
+    color: $color-link-dark;
+
+    &:not(.no-decoration) {
+      &:hover {
+        color: $color-link-hover-dark;
+      }
+    }
+
+    &:visited {
+      color: $color-link-visited-dark;
+    }
+
+    &:hover {
+      color: $color-link-hover-dark;
+    }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-text-dark;
+  }
+  
+  nav a:not(.logo) {
+    color: $color-link-dark;
+    
+    &:hover {
+      color: $color-link-hover-dark;
+    }
+  }
+  
+  footer {
+    color: color.adjust($color-text-dark, $lightness: -20%);
+  }
+}
+
 // Logo mixin now available from common.scss
 
 html,
 body {
   @include font-family;
-  color: $color-text;
-  background-color: $color-background;
+  @include light-theme;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   font-size: calc(#{$size} * 3.6);
@@ -42,7 +120,6 @@ body {
 
   padding: 0;
   a {
-    color: $color-link;
     transition: color 0.2s ease;
 
     &:not(.no-decoration) {
@@ -60,30 +137,12 @@ body {
     }
   }
 
-  // Dark mode styles
-  &.dark-theme,
-  .dark-theme & {
-    color: $color-text-dark;
-    background-color: $color-background-dark;
-    
-    a {
-      color: $color-link-dark;
+}
 
-      &:not(.no-decoration) {
-        &:hover {
-          color: $color-link-hover-dark;
-        }
-      }
-
-      &:visited {
-        color: $color-link-visited-dark;
-      }
-
-      &:hover {
-        color: $color-link-hover-dark;
-      }
-    }
-  }
+// Dark theme application
+html.dark-theme,
+html.dark-theme body {
+  @include dark-theme;
 }
 
 body {
@@ -158,13 +217,6 @@ body {
     line-height: $standard-line-height;
   }
 
-  // Dark mode styles for headings
-  &.dark-theme,
-  .dark-theme & {
-    h1, h2, h3, h4, h5, h6 {
-      color: $color-text-dark;
-    }
-  }
 
   ul,
   h1,
@@ -201,18 +253,6 @@ body {
     }
   }
 
-  // Dark mode styles for nav
-  &.dark-theme,
-  .dark-theme & {
-    nav a:not(.logo) {
-      color: $color-link-dark;
-      
-      &:hover {
-        color: $color-link-hover-dark;
-      }
-    }
-  }
-
   header {
     margin-top: calc((#{$size-margin}) / 2);
   }
@@ -225,15 +265,6 @@ body {
     color: $color-text;
     transition: color 0.3s ease-in-out;
   }
-
-  // Dark mode styles for footer
-  &.dark-theme,
-  .dark-theme & {
-    footer {
-      color: color.adjust($color-text-dark, $lightness: -20%);
-    }
-  }
-
   ul.info,
   ul.educations,
   ul.skills {
