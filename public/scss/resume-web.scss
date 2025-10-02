@@ -48,6 +48,40 @@ body {
     }
   }
   
+  // Dark mode styles for the PDF download button
+  @media (prefers-color-scheme: dark) {
+    nav#download {
+      a:not(.logo) {
+        background: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+        
+        &:hover {
+          background: #000000;
+          color: #ffffff;
+          border-color: #ffffff;
+        }
+      }
+    }
+  }
+  
+  // Manual dark theme class override for PDF download button
+  html.dark-theme {
+    nav#download {
+      a:not(.logo) {
+        background: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+        
+        &:hover {
+          background: #000000;
+          color: #ffffff;
+          border-color: #ffffff;
+        }
+      }
+    }
+  }
+  
   // Reset section styling for info and contact sections
   section {
     // Remove extra margin and styling for info/contact sections
