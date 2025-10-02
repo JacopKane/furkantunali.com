@@ -118,16 +118,20 @@ body {
       background: transparent !important;
       opacity: 1 !important;
     }
-  }
     
     h3 {
-      color: #000;
+      @include text-color(#000, #ffffff);
       font-weight: 600;
       margin-bottom: 0.5rem;
+      
+      // Ensure dates are visible in dark mode
+      .dates {
+        @include text-color-muted(#555, #cccccc);
+      }
     }
     
     h4 {
-      color: #555;
+      @include text-color-muted(#555, #cccccc);
       font-weight: 400;
       font-size: 0.95em;
       margin-bottom: 0.75rem;
@@ -137,12 +141,50 @@ body {
       margin-top: 0.75rem;
       
       li {
+        @include text-color(#000, #ffffff);
         margin-bottom: 0.5rem;
         line-height: 1.6;
+        
+        // Ensure bullet points are visible in dark mode
+        &::marker {
+          @include text-color(#000, #ffffff);
+        }
+        
+        p {
+          @include text-color(#000, #ffffff);
+        }
       }
     }
   }
   
+  // Education section styling to match experiences
+  .education {
+    margin-bottom: 1.5rem;
+    
+    h3 {
+      @include text-color(#000, #ffffff);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      
+      // Ensure dates are visible in dark mode
+      .dates {
+        @include text-color-muted(#555, #cccccc);
+      }
+    }
+    
+    h4 {
+      @include text-color-muted(#555, #cccccc);
+      font-weight: 400;
+      font-size: 0.95em;
+      margin-bottom: 0.75rem;
+    }
+    
+    // Ensure any paragraphs in education are visible
+    p {
+      @include text-color(#000, #ffffff);
+    }
+  }
+
   // Reset the intro section to proper left/right alignment without extra spacing
   .intro {
     // Remove extra padding and margin to match original layout
@@ -172,7 +214,51 @@ body {
     padding-top: 2rem;
     border-top: none;
     text-align: center;
-    color: #666;
+    @include text-color-muted(#666, #999999);
+  }
+  
+  // Ensure all list items have proper bullet points and text color in dark mode
+  ul {
+    li {
+      @include text-color(#000, #ffffff);
+      
+      &::marker {
+        @include text-color(#000, #ffffff);
+      }
+    }
+  }
+  
+  // Ensure proper text colors for all sections in dark mode
+  section {
+    h2 {
+      @include text-color(#000, #ffffff);
+    }
+    
+    p {
+      @include text-color(#000, #ffffff);
+    }
+    
+    strong {
+      @include text-color(#000, #ffffff);
+    }
+  }
+  
+  // Specific fixes for experiences and education lists
+  #experiences, #education {
+    ul {
+      li {
+        @include text-color(#000, #ffffff);
+        
+        &::marker {
+          @include text-color(#000, #ffffff);
+        }
+        
+        // Nested paragraphs and text elements
+        p, strong, em {
+          @include text-color(#000, #ffffff);
+        }
+      }
+    }
   }
   
   // Ensure print version is full width and removes web constraints
@@ -181,6 +267,7 @@ body {
       max-width: none !important;
       margin: 0 !important;
       padding: 0 !important;
+    }
     
     .container {
       padding: 0 !important;
@@ -210,10 +297,10 @@ body {
       }
     }
     
-      footer {
-        margin-top: 1em !important;
-        padding-top: 1em !important;
-        border-top: none !important;
-      }
+    footer {
+      margin-top: 1em !important;
+      padding-top: 1em !important;
+      border-top: none !important;
     }
   }
+}

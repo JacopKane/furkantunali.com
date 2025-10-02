@@ -25,6 +25,85 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 // Add a standardized line height variable to use across all files
 $standard-line-height: 1.5;
 
+// Dark mode color variables
+$dark-background: #000000;
+$dark-text: #ffffff;
+$dark-text-muted: #cccccc;
+$dark-accent: #999999;
+
+// Color mixins for consistent theming
+@mixin text-color($light-color: $color-text, $dark-color: $dark-text) {
+  color: $light-color;
+  
+  @media (prefers-color-scheme: dark) {
+    color: $dark-color;
+  }
+  
+  html.dark-theme & {
+    color: $dark-color;
+  }
+}
+
+@mixin text-color-muted($light-color: #555, $dark-color: $dark-text-muted) {
+  color: $light-color;
+  
+  @media (prefers-color-scheme: dark) {
+    color: $dark-color;
+  }
+  
+  html.dark-theme & {
+    color: $dark-color;
+  }
+}
+
+@mixin background-color($light-color: $color-background, $dark-color: $dark-background) {
+  background-color: $light-color;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: $dark-color;
+  }
+  
+  html.dark-theme & {
+    background-color: $dark-color;
+  }
+}
+
+@mixin link-color($light-color: $color-link, $light-hover: $color-link-hover, $light-visited: $color-link-visited, $dark-color: $dark-text, $dark-hover: $dark-text-muted, $dark-visited: $dark-text-muted) {
+  color: $light-color;
+  
+  &:hover {
+    color: $light-hover;
+  }
+  
+  &:visited {
+    color: $light-visited;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    color: $dark-color;
+    
+    &:hover {
+      color: $dark-hover;
+    }
+    
+    &:visited {
+      color: $dark-visited;
+    }
+  }
+  
+  html.dark-theme & {
+    color: $dark-color;
+    
+    &:hover {
+      color: $dark-hover;
+    }
+    
+    &:visited {
+      color: $dark-visited;
+    }
+  }
+}
+
 // Global theme toggle button styles - shared across all pages
 .theme-toggle {
   background: var(--background-color);
