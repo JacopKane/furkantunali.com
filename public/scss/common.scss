@@ -1,7 +1,11 @@
+@import "config";
+@import "mixins";
+
+// Legacy font-family mixin for backward compatibility
 @mixin font-family() {
   font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: normal;
-  line-height: 1.5; // Standardized line height
+  line-height: 1.5;
 }
 
 /* Global box-sizing fix to prevent width calculation issues */
@@ -33,96 +37,40 @@ p, li, span, div, td {
 
 
 
-// Variables for resume files  
-$color-text: #000;
-$color-link: #000;
-$color-link-hover: #666;
-$color-link-visited: #333;
-$color-background: #fff;
+// Legacy variables for backward compatibility - now using centralized config
+$color-text: #000000;
+$color-link: #000000;
+$color-link-hover: #666666;
+$color-link-visited: #333333;
+$color-background: #ffffff;
 $color-selection: #eee;
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
-// Add a standardized line height variable to use across all files
+// Legacy line height - now using centralized config
 $standard-line-height: 1.5;
 
-// Dark mode color variables
+// Legacy dark mode variables - now using centralized config
 $dark-background: #000000;
 $dark-text: #ffffff;
 $dark-text-muted: #cccccc;
 $dark-accent: #999999;
 
-// Color mixins for consistent theming
+// Legacy color mixins - now using centralized theme system
 @mixin text-color($light-color: $color-text, $dark-color: $dark-text) {
-  color: $light-color;
-  
-  @media (prefers-color-scheme: dark) {
-    color: $dark-color;
-  }
-  
-  html.dark-theme & {
-    color: $dark-color;
-  }
+  @include theme-color-legacy('text', $light-color, $dark-color);
 }
 
 @mixin text-color-muted($light-color: #555, $dark-color: $dark-text-muted) {
-  color: $light-color;
-  
-  @media (prefers-color-scheme: dark) {
-    color: $dark-color;
-  }
-  
-  html.dark-theme & {
-    color: $dark-color;
-  }
+  @include theme-color-legacy('text-muted', $light-color, $dark-color);
 }
 
 @mixin background-color($light-color: $color-background, $dark-color: $dark-background) {
-  background-color: $light-color;
-  
-  @media (prefers-color-scheme: dark) {
-    background-color: $dark-color;
-  }
-  
-  html.dark-theme & {
-    background-color: $dark-color;
-  }
+  @include theme-color-legacy('background', $light-color, $dark-color);
 }
 
 @mixin link-color($light-color: $color-link, $light-hover: $color-link-hover, $light-visited: $color-link-visited, $dark-color: $dark-text, $dark-hover: $dark-text-muted, $dark-visited: $dark-text-muted) {
-  color: $light-color;
-  
-  &:hover {
-    color: $light-hover;
-  }
-  
-  &:visited {
-    color: $light-visited;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    color: $dark-color;
-    
-    &:hover {
-      color: $dark-hover;
-    }
-    
-    &:visited {
-      color: $dark-visited;
-    }
-  }
-  
-  html.dark-theme & {
-    color: $dark-color;
-    
-    &:hover {
-      color: $dark-hover;
-    }
-    
-    &:visited {
-      color: $dark-visited;
-    }
-  }
+  @include link-styles($light-color, $light-hover, $light-visited, $dark-color, $dark-hover, $dark-visited);
 }
 
 // Import the bulletproof theme toggle system

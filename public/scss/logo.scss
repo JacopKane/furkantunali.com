@@ -1,41 +1,88 @@
+@import "config";
+@import "mixins";
+
 // Clean logo system with nested class definitions
-@mixin logo($size: 4rem, $font-ratio: 0.6, $is-small: false) {
+@mixin logo($size: map-get($logo-config, 'size-default'), $font-ratio: map-get($logo-config, 'font-ratio'), $is-small: false) {
   // Core structural properties
   border-radius: $size;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(#{$size} * #{$font-ratio});
-  font-weight: 100;
+  font-weight: map-get($font-weights, 'thin');
   height: $size;
   letter-spacing: calc(#{$size} * -0.05);
   line-height: 1;
   width: $size;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  @include theme-transitions();
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   position: relative;
-  z-index: 100;
-  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
+  z-index: map-get($z-index, 'header');
+  @include font-family();
   
   // Light mode colors (default) - CORRECTED
   background: #000000;  // black background
   color: #ffffff;       // white text
   
-  // Responsive border based on logo size
+    // Responsive border based on logo size
   @if $is-small {
-    border: 1px solid #000000;  // black border
+    border: 1px solid #000000;
   } @else {
-    border: 1px solid #000000;  // black border
+    border: 1px solid #000000;
     
     @media (min-width: 768px) {
       border-width: 2px;
     }
+  }
+  
+  // Light mode colors (default)
+  background: #000000;
+  color: #ffffff;
+  
+  // Light mode hover
+  &:hover,
+  &:active,
+  &:focus {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+    outline: none;
     
-    @media (min-width: 1200px) {
-      border-width: 2px;
+    a, a:hover, a:active, a:focus, a:visited,
+    em, span, strong, i, b {
+      color: #000000;
+      background: transparent;
+    }
+  }
+  
+  // Dark mode overrides
+  .dark-theme & {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    
+    &:hover,
+    &:active,
+    &:focus {
+      background: #000000;
+      color: #ffffff;
+      border-color: #ffffff;
+      outline: none;
+      
+      a, a:hover, a:active, a:focus, a:visited,
+      em, span, strong, i, b {
+        color: #ffffff;
+        background: transparent;
+      }
+    }
+    
+    a, a:visited, a:hover, a:active, a:focus,
+    em, span, strong, i, b {
+      color: #000000;
+      background: transparent;
     }
   }
   
@@ -141,9 +188,9 @@
 }
 
 .logo-main {
-  @include logo(4rem, 0.6, false);
+  @include logo(clamp(4rem, 12vw, 8rem), 0.6, false);
 }
 
 .logo-small {
-  @include logo(2.5rem, 0.6, true);
+  @include logo(clamp(2rem, 6vw, 3rem), 0.6, true);
 }

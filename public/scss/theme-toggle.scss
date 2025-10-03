@@ -1,3 +1,6 @@
+@import "config";
+@import "mixins";
+
 // Theme Toggle Mixin System
 // Provides a bulletproof theme toggle button with proper dark/light mode support
 
@@ -13,14 +16,14 @@
   line-height: 1;
   width: $size;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  @include theme-transitions();
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   position: $position;
   cursor: pointer;
-  z-index: 1000;
-  font-family: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif;
+  z-index: map-get($z-index, 'modal');
+  @include font-family();
   
   // Fixed positioning for main page (only applies when position is fixed)
   @if $position == fixed {

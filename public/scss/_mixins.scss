@@ -1,0 +1,520 @@
+// =============================================================================
+// UTILITY MIXINS LIBRARY
+// Reusable mixins based on the configuration system
+// =============================================================================
+
+@import "config";
+
+// =============================================================================
+// RESPONSIVE UTILITIES
+// =============================================================================
+
+@mixin breakpoint($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media (min-width: map-get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$size}` not found in $breakpoints map.";
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media (max-width: calc(#{map-get($breakpoints, $size)} - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$size}` not found in $breakpoints map.";
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+    @media (min-width: map-get($breakpoints, $min)) and (max-width: calc(#{map-get($breakpoints, $max)} - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoints `#{$min}` or `#{$max}` not found in $breakpoints map.";
+  }
+}
+
+// =============================================================================
+// SPACING UTILITIES
+// =============================================================================
+
+@mixin spacing($property, $size, $responsive: false) {
+  @if $responsive {
+    @if map-has-key($responsive-spacing, $size) {
+      #{$property}: map-get($responsive-spacing, $size);
+    } @else {
+      @warn "Responsive spacing `#{$size}` not found.";
+    }
+  } @else {
+    @if map-has-key($spacing-scale, $size) {
+      #{$property}: map-get($spacing-scale, $size);
+    } @else {
+      @warn "Spacing `#{$size}` not found.";
+    }
+  }
+}
+
+@mixin margin($size, $responsive: false) {
+  @include spacing(margin, $size, $responsive);
+}
+
+@mixin padding($size, $responsive: false) {
+  @include spacing(padding, $size, $responsive);
+}
+
+@mixin margin-x($size, $responsive: false) {
+  @include spacing(margin-left, $size, $responsive);
+  @include spacing(margin-right, $size, $responsive);
+}
+
+@mixin margin-y($size, $responsive: false) {
+  @include spacing(margin-top, $size, $responsive);
+  @include spacing(margin-bottom, $size, $responsive);
+}
+
+@mixin padding-x($size, $responsive: false) {
+  @include spacing(padding-left, $size, $responsive);
+  @include spacing(padding-right, $size, $responsive);
+}
+
+@mixin padding-y($size, $responsive: false) {
+  @include spacing(padding-top, $size, $responsive);
+  @include spacing(padding-bottom, $size, $responsive);
+}
+
+// =============================================================================
+// TYPOGRAPHY UTILITIES
+// =============================================================================
+
+@mixin font-family($family: primary) {
+  @if $family == primary {
+    font-family: $font-family-primary;
+  } @else if $family == secondary {
+    font-family: $font-family-secondary;
+  } @else {
+    font-family: $family;
+  }
+}
+
+@mixin font-size($size, $print-size: null) {
+  @if map-has-key($font-sizes, $size) {
+    font-size: map-get($font-sizes, $size);
+    
+    @if $print-size and map-has-key($print-font-sizes, $print-size) {
+      @media print {
+        font-size: map-get($print-font-sizes, $print-size) !important;
+      }
+    }
+  } @else {
+    @warn "Font size `#{$size}` not found.";
+  }
+}
+
+@mixin font-weight($weight) {
+  @if map-has-key($font-weights, $weight) {
+    font-weight: map-get($font-weights, $weight);
+  } @else {
+    font-weight: $weight;
+  }
+}
+
+@mixin line-height($height) {
+  @if map-has-key($line-heights, $height) {
+    line-height: map-get($line-heights, $height);
+  } @else {
+    line-height: $height;
+  }
+}
+
+@mixin typography($size: base, $weight: regular, $line-height: normal, $family: primary) {
+  @include font-family($family);
+  @include font-size($size);
+  @include font-weight($weight);
+  @include line-height($line-height);
+}
+
+// Heading mixins
+@mixin heading-base {
+  @include font-family();
+  @include line-height(tight);
+  margin: 0;
+  padding: 0;
+}
+
+@mixin h1 {
+  @include heading-base;
+  @include font-size(display);
+  @include font-weight(thin);
+}
+
+@mixin h2 {
+  @include heading-base;
+  @include font-size(xxxl);
+  @include font-weight(light);
+}
+
+@mixin h3 {
+  @include heading-base;
+  @include font-size(xxl);
+  @include font-weight(normal);
+}
+
+@mixin h4 {
+  @include heading-base;
+  @include font-size(xl);
+  @include font-weight(medium);
+}
+
+@mixin h5 {
+  @include heading-base;
+  @include font-size(lg);
+  @include font-weight(semibold);
+}
+
+@mixin h6 {
+  @include heading-base;
+  @include font-size(base);
+  @include font-weight(bold);
+}
+
+// =============================================================================
+// THEME & COLOR UTILITIES
+// =============================================================================
+
+@function theme-color($token, $theme: light) {
+  @if $theme == light {
+    @if map-has-key($light-theme, $token) {
+      @return map-get($light-theme, $token);
+    }
+  } @else if $theme == dark {
+    @if map-has-key($dark-theme, $token) {
+      @return map-get($dark-theme, $token);
+    }
+  }
+  @warn "Color token `#{$token}` not found in `#{$theme}` theme.";
+  @return null;
+}
+
+@mixin theme-colors($property, $token) {
+  #{$property}: theme-color($token, light);
+  
+  html.dark-theme & {
+    #{$property}: theme-color($token, dark);
+  }
+}
+
+@mixin text-color($token: text-primary) {
+  @include theme-colors(color, $token);
+}
+
+@mixin background-color($token: background-primary) {
+  @include theme-colors(background-color, $token);
+}
+
+@mixin border-color($token: border-primary) {
+  @include theme-colors(border-color, $token);
+}
+
+// Link styling with theme support
+@mixin link-styles($color: inherit, $hover-color: inherit) {
+  color: $color;
+  text-decoration: underline;
+  transition: opacity 0.3s ease-in-out, 
+              text-decoration 0.3s ease-in-out,
+              color 0.3s ease-in-out;
+  
+  &:hover {
+    color: $hover-color;
+    opacity: var(--link-hover-opacity);
+    text-decoration: none;
+  }
+}// Legacy theme color mixin for backward compatibility
+@mixin theme-color-legacy($property, $light-color, $dark-color) {
+  color: $light-color;
+  
+  @media (prefers-color-scheme: dark) {
+    color: $dark-color;
+  }
+  
+  html.dark-theme & {
+    color: $dark-color;
+  }
+}
+
+// =============================================================================
+// LAYOUT UTILITIES
+// =============================================================================
+
+@mixin container($max-width: null, $padding: true) {
+  width: 100%;
+  margin: 0 auto;
+  
+  @if $max-width {
+    max-width: $max-width;
+  } @else {
+    max-width: map-get($content-config, max-width);
+  }
+  
+  @if $padding {
+    @include padding-x(md, true);
+    
+    @include breakpoint(md) {
+      @include padding-x(lg);
+    }
+    
+    @include breakpoint(lg) {
+      @include padding-x(xl);
+    }
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin grid($columns: 1, $gap: md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  
+  @if map-has-key($spacing-scale, $gap) {
+    gap: map-get($spacing-scale, $gap);
+  } @else {
+    gap: $gap;
+  }
+}
+
+// =============================================================================
+// COMPONENT UTILITIES
+// =============================================================================
+
+// Button mixin with full configuration support
+@mixin button($size: base, $variant: primary, $full-width: false) {
+  @include font-family(map-get($button-config, font-family));
+  @include font-weight(map-get($button-config, font-weight));
+  
+  // Size configuration
+  @if map-has-key(map-get($button-config, padding), $size) {
+    padding: map-get(map-get($button-config, padding), $size);
+  }
+  
+  @if map-has-key(map-get($button-config, font-sizes), $size) {
+    font-size: map-get(map-get($button-config, font-sizes), $size);
+  }
+  
+  // Base styles
+  border: map-get($button-config, border-width) solid;
+  border-radius: map-get($button-config, border-radius);
+  transition: map-get($button-config, transition);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  
+  @if $full-width {
+    width: 100%;
+  }
+  
+  // Variant styles
+  @if $variant == primary {
+    @include background-color(text-primary);
+    @include text-color(background-primary);
+    @include border-color(text-primary);
+    
+    &:hover {
+      @include background-color(background-primary);
+      @include text-color(text-primary);
+      @include border-color(text-primary);
+    }
+  } @else if $variant == secondary {
+    @include background-color(background-primary);
+    @include text-color(text-primary);
+    @include border-color(text-primary);
+    
+    &:hover {
+      @include background-color(text-primary);
+      @include text-color(background-primary);
+    }
+  }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  @media print {
+    display: none !important;
+  }
+}
+
+// Card/container with theme support
+@mixin card($padding: md, $radius: base, $shadow: base) {
+  @include background-color(background-primary);
+  @include padding($padding);
+  
+  @if map-has-key($border-radius, $radius) {
+    border-radius: map-get($border-radius, $radius);
+  }
+  
+  @if map-has-key($shadows, $shadow) {
+    box-shadow: map-get($shadows, $shadow);
+  }
+  
+  box-sizing: border-box;
+}
+
+// Input field styling
+@mixin input-field($size: base) {
+  @include font-family();
+  @include background-color(background-primary);
+  @include text-color(text-primary);
+  @include border-color(border-secondary);
+  
+  border: map-get($border-widths, 1) solid;
+  border-radius: map-get($border-radius, base);
+  transition: map-get($standard-transitions, border);
+  box-sizing: border-box;
+  
+  @if $size == sm {
+    @include padding-y(xs);
+    @include padding-x(sm);
+    @include font-size(sm);
+  } @else if $size == lg {
+    @include padding-y(md);
+    @include padding-x(lg);
+    @include font-size(lg);
+  } @else {
+    @include padding-y(sm);
+    @include padding-x(md);
+    @include font-size(base);
+  }
+  
+  &:focus {
+    outline: none;
+    @include border-color(text-primary);
+  }
+}
+
+// =============================================================================
+// ANIMATION UTILITIES
+// =============================================================================
+
+@mixin transition($properties...) {
+  $transitions: ();
+  
+  @each $property in $properties {
+    @if map-has-key($standard-transitions, $property) {
+      $transitions: append($transitions, map-get($standard-transitions, $property), comma);
+    } @else {
+      $transitions: append($transitions, $property, comma);
+    }
+  }
+  
+  transition: $transitions;
+}
+
+@mixin animation($name, $duration: normal, $easing: ease-in-out, $delay: 0s, $iteration: 1, $direction: normal, $fill-mode: both) {
+  animation-name: $name;
+  animation-duration: map-get($transitions, $duration);
+  animation-timing-function: map-get($easings, $easing);
+  animation-delay: $delay;
+  animation-iteration-count: $iteration;
+  animation-direction: $direction;
+  animation-fill-mode: $fill-mode;
+}
+
+// =============================================================================
+// UTILITY HELPERS
+// =============================================================================
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin aspect-ratio($ratio: 16/9) {
+  position: relative;
+  
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: (1 / $ratio) * 100%;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin word-break {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+// Print utilities
+@mixin print-hidden {
+  @media print {
+    display: none !important;
+  }
+}
+
+@mixin print-only {
+  display: none !important;
+  
+  @media print {
+    display: block !important;
+  }
+}
+
+@mixin print-styles {
+  @media print {
+    @content;
+  }
+}
+
+// Theme transitions mixin
+@mixin theme-transitions() {
+  transition: background-color 0.3s ease-in-out, 
+              color 0.3s ease-in-out,
+              border-color 0.3s ease-in-out;
+}

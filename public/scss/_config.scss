@@ -1,0 +1,303 @@
+// =============================================================================
+// SCSS CONFIGURATION SYSTEM
+// Centralized configuration for all styling values
+// =============================================================================
+
+@use "sass:color";
+@use "sass:map";
+
+// =============================================================================
+// BREAKPOINTS
+// =============================================================================
+$breakpoints: (
+  xs: 320px,
+  sm: 480px,  
+  md: 768px,
+  lg: 960px,
+  xl: 1200px,
+  xxl: 1440px
+) !default;
+
+// =============================================================================
+// SPACING SYSTEM
+// =============================================================================
+$spacing-base: 1rem !default;
+$spacing-scale: (
+  xs: 0.25rem,    // 4px
+  sm: 0.5rem,     // 8px
+  md: 1rem,       // 16px
+  lg: 1.5rem,     // 24px
+  xl: 2rem,       // 32px
+  xxl: 3rem,      // 48px
+  xxxl: 4rem      // 64px
+) !default;
+
+// Responsive spacing using clamp
+$responsive-spacing: (
+  xs: clamp(0.25rem, 1vw, 0.5rem),
+  sm: clamp(0.5rem, 2vw, 1rem),
+  md: clamp(1rem, 3vw, 1.5rem),
+  lg: clamp(1.5rem, 4vw, 2rem),
+  xl: clamp(2rem, 5vw, 3rem),
+  xxl: clamp(3rem, 6vw, 4rem),
+  xxxl: clamp(4rem, 8vw, 6rem)
+) !default;
+
+// =============================================================================
+// TYPOGRAPHY SYSTEM
+// =============================================================================
+$font-family-primary: "Proba Pro W01", "Helvetica Neue", "Helvetica", sans-serif !default;
+$font-family-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !default;
+
+$font-weights: (
+  thin: 100,
+  light: 200,
+  normal: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  heavy: 800
+) !default;
+
+$line-heights: (
+  tight: 1.2,
+  normal: 1.5,
+  relaxed: 1.6,
+  loose: 1.8
+) !default;
+
+// Responsive font sizes using clamp
+$font-sizes: (
+  xs: clamp(0.75rem, 1.5vw, 0.875rem),    // 12-14px
+  sm: clamp(0.875rem, 2vw, 1rem),         // 14-16px
+  base: clamp(1rem, 2.5vw, 1.125rem),     // 16-18px
+  lg: clamp(1.125rem, 3vw, 1.25rem),      // 18-20px
+  xl: clamp(1.25rem, 3.5vw, 1.5rem),      // 20-24px
+  xxl: clamp(1.5rem, 4vw, 2rem),          // 24-32px
+  xxxl: clamp(2rem, 6vw, 3rem),           // 32-48px
+  display: clamp(3rem, 8vw, 6rem)         // 48-96px
+) !default;
+
+// Print-specific font sizes
+$print-font-sizes: (
+  xs: 10px,
+  sm: 11px,
+  base: 12px,
+  lg: 13px,
+  xl: 14px,
+  xxl: 16px,
+  xxxl: 18px
+) !default;
+
+// =============================================================================
+// COLOR SYSTEM
+// =============================================================================
+
+// Base colors
+$colors: (
+  white: #ffffff,
+  black: #000000,
+  gray: (
+    50: #f9fafb,
+    100: #f3f4f6,
+    200: #e5e7eb,
+    300: #d1d5db,
+    400: #9ca3af,
+    500: #6b7280,
+    600: #4b5563,
+    700: #374151,
+    800: #1f2937,
+    900: #111827
+  )
+) !default;
+
+// Theme color tokens - Light theme
+$light-theme: (
+  text-primary: map-get($colors, black),
+  text-secondary: #555555,
+  text-muted: #888888,
+  text-accent: map-get($colors, black),
+  background-primary: map-get($colors, white),
+  background-secondary: #f8f9fa,
+  link-primary: map-get($colors, black),
+  link-hover: #666666,
+  link-visited: #333333,
+  border-primary: map-get($colors, black),
+  border-secondary: #e5e7eb,
+  footer-text: #bbbbbb
+) !default;
+
+// Theme color tokens - Dark theme
+$dark-theme: (
+  text-primary: map-get($colors, white),
+  text-secondary: #cccccc,
+  text-muted: #777777,
+  text-accent: map-get($colors, white),
+  background-primary: map-get($colors, black),
+  background-secondary: #111111,
+  link-primary: map-get($colors, white),
+  link-hover: color.adjust(map-get($colors, white), $lightness: -30%),
+  link-visited: color.adjust(map-get($colors, white), $lightness: -20%),
+  border-primary: map-get($colors, white),
+  border-secondary: #333333,
+  footer-text: #444444
+) !default;
+
+// =============================================================================
+// ANIMATION & TRANSITIONS
+// =============================================================================
+$transitions: (
+  fast: 0.15s,
+  normal: 0.3s,
+  slow: 0.5s
+) !default;
+
+$easings: (
+  linear: linear,
+  ease: ease,
+  ease-in: ease-in,
+  ease-out: ease-out,
+  ease-in-out: ease-in-out,
+  bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+) !default;
+
+// Standard transition combinations
+$standard-transitions: (
+  colors: all map-get($transitions, normal) map-get($easings, ease-in-out),
+  transform: transform map-get($transitions, normal) map-get($easings, ease-in-out),
+  opacity: opacity map-get($transitions, fast) map-get($easings, ease-out),
+  background: background-color map-get($transitions, normal) map-get($easings, ease-in-out),
+  border: border-color map-get($transitions, normal) map-get($easings, ease-in-out)
+) !default;
+
+// =============================================================================
+// BORDERS & SHADOWS
+// =============================================================================
+$border-radius: (
+  none: 0,
+  sm: 0.125rem,
+  base: 0.25rem,
+  md: 0.375rem,
+  lg: 0.5rem,
+  xl: 0.75rem,
+  xxl: 1rem,
+  full: 9999px
+) !default;
+
+$border-widths: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  4: 4px,
+  8: 8px
+) !default;
+
+$shadows: (
+  sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  base: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)
+) !default;
+
+// =============================================================================
+// Z-INDEX SYSTEM
+// =============================================================================
+$z-index: (
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  modal-backdrop: 1040,
+  modal: 1050,
+  popover: 1060,
+  tooltip: 1070
+) !default;
+
+// =============================================================================
+// COMPONENT-SPECIFIC CONFIGURATIONS
+// =============================================================================
+
+// Logo configuration
+$logo-config: (
+  font-family: $font-family-primary,
+  font-weight: map-get($font-weights, normal),
+  border-radius: map-get($border-radius, full),
+  transition: map-get($standard-transitions, colors),
+  sizes: (
+    sm: clamp(2rem, 5vw, 3rem),
+    base: clamp(3rem, 8vw, 5rem),
+    lg: clamp(4rem, 12vw, 8rem)
+  )
+) !default;
+
+// Button configuration
+$button-config: (
+  font-family: $font-family-primary,
+  font-weight: map-get($font-weights, medium),
+  border-radius: map-get($border-radius, base),
+  border-width: map-get($border-widths, 2),
+  transition: map-get($standard-transitions, colors),
+  padding: (
+    sm: 0.5rem 1rem,
+    base: 0.75rem 1.5rem,
+    lg: 1rem 2rem
+  ),
+  font-sizes: (
+    sm: map-get($font-sizes, sm),
+    base: map-get($font-sizes, base),
+    lg: map-get($font-sizes, lg)
+  )
+) !default;
+
+// Theme toggle configuration  
+$theme-toggle-config: (
+  sizes: (
+    sm: clamp(1.5rem, 4vw, 2rem),
+    base: clamp(2rem, 5vw, 2.5rem),
+    lg: clamp(2.5rem, 6vw, 3rem)
+  ),
+  font-sizes: (
+    sm: clamp(0.7rem, 2vw, 0.9rem),
+    base: clamp(0.8rem, 2.5vw, 1rem),
+    lg: clamp(1rem, 3vw, 1.2rem)
+  ),
+  border-width: map-get($border-widths, 2),
+  transition: map-get($standard-transitions, colors),
+  z-index: map-get($z-index, sticky)
+) !default;
+
+// Navigation configuration
+$nav-config: (
+  sticky-background-blur: blur(10px),
+  padding: map-get($spacing-scale, lg) 0,
+  z-index: map-get($z-index, sticky),
+  transition: map-get($standard-transitions, background)
+) !default;
+
+// Content layout configuration
+$content-config: (
+  max-width: 1200px,
+  padding: (
+    mobile: map-get($spacing-scale, md),
+    tablet: map-get($spacing-scale, lg),
+    desktop: map-get($spacing-scale, xl)
+  ),
+  margin: (
+    section: map-get($spacing-scale, xl),
+    paragraph: map-get($spacing-scale, md)
+  )
+) !default;
+
+// Print-specific configuration
+$print-config: (
+  max-width: 190mm,
+  margin: 0.2cm,
+  font-sizes: $print-font-sizes,
+  line-height: 1.3,
+  colors: (
+    text: map-get($colors, black),
+    background: map-get($colors, white)
+  )
+) !default;
