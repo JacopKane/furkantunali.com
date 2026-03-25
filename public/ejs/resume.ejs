@@ -13,7 +13,7 @@
       Background in leadership, founding, and design."
     />
     <title>Furkan Tunalı CV</title>
-    
+
     <% if (!GLOBEL.resumeDoc) { %>
     <!-- Apple Touch Icons -->
     <link
@@ -88,13 +88,13 @@
     <link rel="manifest" href="icons/manifest.json" />
     <!-- Safari Pinned Tab Icon -->
     <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
-    
+
     <!-- Microsoft Tile -->
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="msapplication-TileImage" content="icons/mstile-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
     <% } %>
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/resume.css" />
     <% if (GLOBEL.resume) { %>
@@ -124,7 +124,11 @@
           >Download as PDF</a
         >
         <!-- Dark Mode Toggle -->
-        <button id="theme-toggle" class="theme-toggle theme-toggle-resume" aria-label="Toggle dark mode">
+        <button
+          id="theme-toggle"
+          class="theme-toggle theme-toggle-resume"
+          aria-label="Toggle dark mode"
+        >
           <span class="theme-toggle-icon">🌙</span>
         </button>
       </div>
@@ -198,9 +202,13 @@
               </li>
               <li>
                 <strong>
-                <a alt="https://furkantunali.com" href="https://furkantunali.com" target="_blank">
-                  Web
-                </a>
+                  <a
+                    alt="https://furkantunali.com"
+                    href="https://furkantunali.com"
+                    target="_blank"
+                  >
+                    Web
+                  </a>
                 </strong>
               </li>
             </ul>
@@ -208,35 +216,36 @@
         </div>
       </div>
 
-      <hr>
+      <hr />
 
       <section id="summary">
         <h2>Summary</h2>
         <p>
           Experienced software engineer architecting scalable, innovative
           solutions for multi-cloud environments, optimizing developer
-          experience across web development, full-stack. Currently working with AI
-          to reimagine software functionality and create intelligent solutions.
-          Background in leadership, founding, and design.
+          experience across web development, full-stack. Currently working with
+          AI to reimagine software functionality and create intelligent
+          solutions. Background in leadership, founding, and design.
         </p>
       </section>
 
-      <hr>
+      <hr />
 
       <section id="skills">
         <h2>Skills</h2>
         <ul class="skills">
           <li>
             <strong>AI</strong>
-          
-            PydanticAI, AutoGen, Jupyter Notebooks, OpenAI API, Gemini, Tavily API
+
+            PydanticAI, AutoGen, Jupyter Notebooks, OpenAI API, Gemini, Tavily
+            API
           </li>
           <li>
             <strong>Cloud</strong>
-            AWS (EKS, ECS, CloudFormation, Lambda, Fargate, ECR,
-            RDS, Cloud Map, EC2, Route53, IAM, EventBridge), Azure (Azure Active
-            Directory, Azure Functions, Cosmos DB), GCP (Vertex
-            AI, Cloud Vision API, Cloud Run, Cloud Storage), Firebase (Functions, Firestore), Vercel
+            AWS (EKS, ECS, CloudFormation, Lambda, Fargate, ECR, RDS, Cloud Map,
+            EC2, Route53, IAM, EventBridge), Azure (Azure Active Directory,
+            Azure Functions, Cosmos DB), GCP (Vertex AI, Cloud Vision API, Cloud
+            Run, Cloud Storage), Firebase (Functions, Firestore), Vercel
           </li>
           <li>
             <strong>Containerization and Orchestration</strong>
@@ -252,7 +261,8 @@
           </li>
           <li>
             <strong>Languages and Markup</strong>
-            Node.js, TypeScript, JavaScript, Python, Ruby, PHP, HTML, CSS, PostCSS, SCSS
+            Node.js, TypeScript, JavaScript, Python, Ruby, PHP, HTML, CSS,
+            PostCSS, SCSS
           </li>
           <li>
             <strong>Frameworks & Libraries</strong>
@@ -282,552 +292,650 @@
         </ul>
       </section>
 
-      <hr>
+      <hr />
 
       <section id="projects">
         <h2>Recent Projects</h2>
         <ul class="projects">
           <li class="project">
             <h3>
-              <strong>Newsify.today</strong> — AI-Powered News Aggregator
+              <strong
+                ><a href="https://newsify.today" target="_blank"
+                  >Newsify Today</a
+                ></strong
+              >
+              — Description here
             </h3>
             <p>
-              A <em>production news aggregation platform</em> that fetches <em>trending topics</em>, scrapes related news, and generates <em>AI summaries</em>. Built with <strong>NestJS</strong>, <strong>Next.js</strong>, <strong>PostgreSQL</strong>, and <strong>OpenAI</strong>. Deployed via <strong>Docker</strong> on <strong>Google Cloud Run</strong> with <strong>Vercel</strong> frontend.
-            </p>
-          </li>
-          <li class="project">
-            <h3>
-              <strong>CV Fixer</strong> — AI Resume Enhancement Platform (Prototype for Randstad)
-            </h3>
-            <p>
-              An <em>AI-driven web app</em> leveraging <strong>Gemini</strong> for <em>professional CV enhancement</em> and <em>ATS optimization</em>. <strong>Next.js</strong> frontend with <strong>TypeScript</strong>, <strong>Firebase Functions</strong> backend, <strong>Firestore</strong> persistence, and <em>secure file handling</em>.
-            </p>
-          </li>
-          <li class="project">
-            <h3>
-              <strong>CustomBot</strong> — Enterprise AI Assistant Management System
-            </h3>
-            <p>
-              A <em>full-stack RAG platform</em> integrating <strong>OpenAI</strong> with <strong>NestJS</strong> backend, <strong>Next.js/Refine</strong> admin dashboard, and <strong>Supabase</strong>. Features <em>dynamic assistant creation</em>, <em>vector search</em>, <em>cost monitoring</em>, and <em>embeddable chat widgets</em>. Deployed in a <strong>Turborepo</strong> monorepo with <strong>Docker</strong>.
+              A <em>production news aggregation platform</em> that fetches
+              <em>trending topics</em>, scrapes related news, and generates
+              <em>AI summaries</em>. Built with <strong>NestJS</strong>,
+              <strong>Next.js</strong>, <strong>PostgreSQL</strong>, and
+              <strong>OpenAI</strong>. Deployed via <strong>Docker</strong> on
+              <strong>Google Cloud Run</strong> with
+              <strong>Vercel</strong> frontend.
             </p>
           </li>
         </ul>
       </section>
 
-      <hr>
+      <hr />
 
       <section id="experiences">
         <h2>Experiences</h2>
 
         <!-- Experiences in a single list -->
         <ul class="experiences">
-                <!-- heyData Senior AI Solutions Engineer Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Senior AI Solutions Engineer</em>
-                    at
-                    <a target="_blank" href="https://heydata.eu/"
-                      >heyData GmbH, Berlin</a
-                    >
-                    <span class="dates">10/2024 - 08/2025</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <p>
-                        Integrated OpenAI and Tavily APIs to build an AI-powered system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving structured data such as hosting locations, DPO emails, and privacy policy links.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Researching about how to utilise AI Agent frameworks (PydanticAI, Autogen) to solve current challenges in the company.
-                      </p>
-                    </li>
-                  </ul>
-                </li>
-                
-                <!-- heyData Senior Infrastructure Engineer Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Senior Infrastructure Engineer</em>
-                    at
-                    <a target="_blank" href="https://heydata.eu/"
-                      >heyData GmbH, Berlin</a
-                    >
-                    <span class="dates">10/2023 - 10/2024</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <p>
-                        Created Kubernetes and Terraform from scratch for scalable infrastructure setup and reliable deployments.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Drafted technical implementation details to guide project development and ensure consistent coding standards across teams.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Led successful migration from ECS to <em>Kubernetes</em> (EKS), learning the technology from scratch and executing a smooth switchover with zero downtime.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) to improve service deployment.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Supported infrastructure initiatives including Route53 configuration, domain management, and DMARC reporting setup for email delivery.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Addressed critical technical incidents and provided rapid resolution to maintain continuous service availability for customers.
-                      </p>
-                    </li>
-                  </ul>
-                </li>
-                
-                <!-- heyData Senior Developer Experience Engineer Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Senior Developer Experience Engineer</em>
-                    at
-                    <a target="_blank" href="https://heydata.eu/"
-                      >heyData GmbH, Berlin</a
-                    >
-                    <span class="dates">01/2022 - 10/2023</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <p>
-                        Developed software solutions using JavaScript and TypeScript, with a focus on modern frameworks such as NestJS, NextJS, Rails, and VUE.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Migrated infrastructure from Heroku to AWS ECS.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Restructured legacy Ruby on Rails systems into a monorepo, Dockerized applications, and established reliable local development environments enabling efficient developer onboarding.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> to streamline environment provisioning across Testing and Production.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Implemented an event-driven scheduling system using AWS EventBridge to automate client reminders without building a custom solution.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Developed DevOps and DX tools, including Makefile and Bash scripts, to automate routine tasks and improve development workflow efficiency.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Maintained Docker Compose setups for service orchestration and environment consistency.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Mentored team members, offering structured and insightful feedback while serving as a trusted technical resource.
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Contributed to the hiring process by evaluating candidates with deep expertise in design patterns, best practices, and JavaScript.
-                      </p>
-                    </li>
-                  </ul>
-                </li>
-                
-                <!-- Senior Software Architect Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Senior Software Architect</em> at
-                    <a target="_blank" href="https://www.sgef-digital-factory.com/">
-                      Société Générale Digital Factory, Berlin</a>
-                    <span class="dates">09/2019 - 05/2020</span>
-                  </h3>
-                  <ul>
-                    <!-- Technical Leadership -->
-                    <li>
-                      <p>
-                        Established technical vision and drove adoption of architectural concepts aligned with enterprise requirements
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Implemented cloud infrastructure and CI/CD pipelines for secure, on-time product delivery
-                      </p>
-                    </li>
-                
-                    <!-- AI/ML Implementation -->
-                    <li>
-                      <p>
-                        Optimized containerization strategies for AI/ML workloads and deployed complex models to Azure CUDA for
-                        accelerated performance
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Integrated AI systems through Jupyter Notebooks while ensuring compatibility with parent company services
-                      </p>
-                    </li>
-                
-                    <!-- DevOps & Engineering Excellence -->
-                    <li>
-                      <p>
-                        Enhanced developer experience through monorepo management, automated semantic versioning, and comprehensive
-                        testing strategies
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Designed full-stack boilerplates for MVPs and facilitated data migrations for upcoming services
-                      </p>
-                    </li>
-                
-                    <!-- Team Leadership -->
-                    <li>
-                      <p>
-                        Led technical hiring, mentoring, and onboarding while implementing code quality standards through reviews and
-                        linting
-                      </p>
-                    </li>
-                  </ul>
-                </li>
-                
-                <!-- GameBook Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Senior Back-end Architect</em> at
-                    <a target="_blank" href="https://gamebook.io">
-                      GameBook AG (Formerly Experimental Game GmBH), Berlin</a>
-                    <span class="dates">12/2018 - 04/2019</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <p>
-                        Architected and refactored back-end services while developing full-stack features for gaming platform
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Optimized system performance through comprehensive profiling and containerization implementation
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Enhanced development infrastructure through improved tooling and strategic data structure migrations
-                      </p>
-                    </li>
-                  </ul>           </li>
+          <!-- heyData Senior AI Solutions Engineer Experience -->
+          <li class="experience">
+            <h3>
+              <em>Senior AI Solutions Engineer</em>
+              at
+              <a target="_blank" href="https://heydata.eu/"
+                >heyData GmbH, Berlin</a
+              >
+              <span class="dates">10/2024 - 08/2025</span>
+            </h3>
+            <ul>
+              <li>
+                <p>
+                  Integrated OpenAI and Tavily APIs to build an AI-powered
+                  system that analyzed customer input to identify GDPR-relevant
+                  vendors, automatically retrieving structured data such as
+                  hosting locations, DPO emails, and privacy policy links.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Researching about how to utilise AI Agent frameworks
+                  (PydanticAI, Autogen) to solve current challenges in the
+                  company.
+                </p>
+              </li>
+            </ul>
+          </li>
 
-                <li class="experience">
-                  <h3>
-                    <em>Lead Front-End Developer</em> at
-                    <a target="_blank" href="https://chantelle.com">Groupe Chantelle, Digital Lab, Berlin</a>
-                    <span class="dates">08/2017 - 12/2018</span>
-                  </h3>
-                  <ul>
-                    <!-- Team Leadership -->
-                    <li>
-                      <p>
-                        Led front-end development team, overseeing recruitment, onboarding, and mentoring while ensuring delivery of
-                        projects within sprint timelines
-                      </p>
-                    </li>
-                
-                    <!-- Technical Transformation -->
-                    <li>
-                      <p>
-                        Modernized front-end architecture while preserving functionality, implementing code quality tools, and
-                        establishing DevOps processes for accelerated development
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Orchestrated migration from monolithic architecture to microservices and expanded team capabilities from
-                        front-end to full-stack development
-                      </p>
-                    </li>
-                
-                    <!-- Process Improvement -->
-                    <li>
-                      <p>
-                        Implemented Agile methodologies with robust code review processes and facilitated data-driven development
-                        through A/B testing solutions
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Developed UI component library that bridged UX and front-end teams, creating a unified design system and
-                        improving cross-functional collaboration
-                      </p>
-                    </li>
-                  </ul>           </li>
-              <!-- Continuing the experience list -->
-              <li class="experience">
-                <h3>
-                  <em>Universal JavaScript Engineer</em> at
-                  <a target="_blank" href="http://pixsy.com">Pixsy GmbH, Berlin</a>
-                  <span class="dates">01/2017 - 08/2017</span>
-                </h3>
-                <ul>
-                  <!-- Full-Stack Development -->
-                  <li>
-                    <p>
-                      Implemented full-stack JavaScript features while maintaining and migrating existing functionality across both client and server environments
-                    </p>
-                  </li>
-                  
-                  <!-- Microservices & Architecture -->
-                  <li>
-                    <p>
-                      Developed and maintained microservices architecture, continually improving system design and technical stack to enhance performance and scalability
-                    </p>
-                  </li>
-                  
-                  <!-- Quality Assurance -->
-                  <li>
-                    <p>
-                      Established robust quality standards through comprehensive test coverage (unit, integration, E2E), code reviews, and adherence to development conventions
-                    </p>
-                  </li>
-                  
-                  <!-- System Integration & Monitoring -->
-                  <li>
-                    <p>
-                      Integrated and maintained data across multiple platforms (MongoDB, Stripe, SalesForce) while monitoring application health via Heroku and Sentry
-                    </p>
-                  </li>
-                  
-                  <!-- Process -->
-                  <li>
-                    <p>
-                      Followed Kanban workflow with Agile methodologies to ensure efficient delivery and continuous improvement
-                    </p>
-                  </li>
-                </ul>
+          <!-- heyData Senior Infrastructure Engineer Experience -->
+          <li class="experience">
+            <h3>
+              <em>Senior Infrastructure Engineer</em>
+              at
+              <a target="_blank" href="https://heydata.eu/"
+                >heyData GmbH, Berlin</a
+              >
+              <span class="dates">10/2023 - 10/2024</span>
+            </h3>
+            <ul>
+              <li>
+                <p>
+                  Created Kubernetes and Terraform from scratch for scalable
+                  infrastructure setup and reliable deployments.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Drafted technical implementation details to guide project
+                  development and ensure consistent coding standards across
+                  teams.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Led successful migration from ECS to
+                  <em>Kubernetes</em> (EKS), learning the technology from
+                  scratch and executing a smooth switchover with zero downtime.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS,
+                  Cloud Map, EC2, Route53, Lambda) to improve service
+                  deployment.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Supported infrastructure initiatives including Route53
+                  configuration, domain management, and DMARC reporting setup
+                  for email delivery.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Addressed critical technical incidents and provided rapid
+                  resolution to maintain continuous service availability for
+                  customers.
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <!-- heyData Senior Developer Experience Engineer Experience -->
+          <li class="experience">
+            <h3>
+              <em>Senior Developer Experience Engineer</em>
+              at
+              <a target="_blank" href="https://heydata.eu/"
+                >heyData GmbH, Berlin</a
+              >
+              <span class="dates">01/2022 - 10/2023</span>
+            </h3>
+            <ul>
+              <li>
+                <p>
+                  Developed software solutions using JavaScript and TypeScript,
+                  with a focus on modern frameworks such as NestJS, NextJS,
+                  Rails, and VUE.
+                </p>
+              </li>
+              <li>
+                <p>Migrated infrastructure from Heroku to AWS ECS.</p>
+              </li>
+              <li>
+                <p>
+                  Restructured legacy Ruby on Rails systems into a monorepo,
+                  Dockerized applications, and established reliable local
+                  development environments enabling efficient developer
+                  onboarding.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Built CI/CD pipelines using <em>GitHub Actions</em>,
+                  integrated AWS ECR, and introduced <em>Terraform</em> to
+                  streamline environment provisioning across Testing and
+                  Production.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Implemented an event-driven scheduling system using AWS
+                  EventBridge to automate client reminders without building a
+                  custom solution.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Developed DevOps and DX tools, including Makefile and Bash
+                  scripts, to automate routine tasks and improve development
+                  workflow efficiency.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Maintained Docker Compose setups for service orchestration and
+                  environment consistency.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Mentored team members, offering structured and insightful
+                  feedback while serving as a trusted technical resource.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Contributed to the hiring process by evaluating candidates
+                  with deep expertise in design patterns, best practices, and
+                  JavaScript.
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Senior Software Architect Experience -->
+          <li class="experience">
+            <h3>
+              <em>Senior Software Architect</em> at
+              <a target="_blank" href="https://www.sgef-digital-factory.com/">
+                Société Générale Digital Factory, Berlin</a
+              >
+              <span class="dates">09/2019 - 05/2020</span>
+            </h3>
+            <ul>
+              <!-- Technical Leadership -->
+              <li>
+                <p>
+                  Established technical vision and drove adoption of
+                  architectural concepts aligned with enterprise requirements
+                </p>
+              </li>
+              <li>
+                <p>
+                  Implemented cloud infrastructure and CI/CD pipelines for
+                  secure, on-time product delivery
+                </p>
               </li>
 
-                <li class="experience">
-                  <h3>
-                    <em>Software Architect</em> at
-                    <a target="_blank" href="https://www.linkedin.com/company/talented-square-corporation">Talented Square, CA</a>
-                    <span class="dates">08/2015 - 08/2016</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <p>
-                        Led front-end development and architectural improvements for ASDA UK (Walmart) online wholesale seller portal
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Designed architecture for a recruiting startup, focusing on performance optimization and modern frameworks
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        <small><strong>Technical Skills:</strong> JavaScript, React, Redux, Angular, Backbone,
-                          LoopBack, Webpack, Gulp, AMD, HTML, CSS/SCSS, jQuery, MySQL</small>
-                      </p>
-                    </li>
-                  </ul>           </li>
-                
-                <!-- Founder -->
-                <li class="experience">
-                  <h3>
-                    <em>Founder</em> at
-                    <a target="_blank" href="http://nod.st">NOD studios, Istanbul</a>
-                    <span class="dates">11/2012 - 07/2015</span>
-                  </h3>
-                  <ul>
-                    <li>
-                      <p>
-                        Led design and development for diverse clients including
-                        <a target="_blank" href="https://beinsports.com.tr">BeinSports</a>,
-                        <a target="_blank" href="http://lesbenjamins.com">Les Benjamins</a>,
-                        <a target="_blank" href="http://www.ulker.com.tr/">Ülker</a>, and
-                        <a target="_blank" href="https://www.gripati.com">Gripati</a>
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Delivered comprehensive web solutions: e-commerce platforms, content management systems,
-                        mobile-optimized websites, and APIs
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Created UX/UI design, wireframes, and mockups for web and mobile applications
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Contributed to open source projects on
-                        <a target="_blank" href="http://github.com/NOD-studios">GitHub</a>
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        <small><strong>Technical Skills:</strong> JavaScript, PHP, HTML/CSS, LESS, CanJS,
-                          Mustache, WordPress, CakePHP, CodeIgniter, AMD</small>
-                      </p>
-                    </li>
-                  </ul>
-                </li>
+              <!-- AI/ML Implementation -->
+              <li>
+                <p>
+                  Optimized containerization strategies for AI/ML workloads and
+                  deployed complex models to Azure CUDA for accelerated
+                  performance
+                </p>
+              </li>
+              <li>
+                <p>
+                  Integrated AI systems through Jupyter Notebooks while ensuring
+                  compatibility with parent company services
+                </p>
+              </li>
 
-                <!-- Full-stack web developer FOX Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Full-stack web developer</em> at
-                    <a target="_blank" href="http://ficturkey.com/"
-                      >FOX International Channels, Istanbul</a
-                    >
-                    <span class="dates">01/2012 - 12/2012</span>
-                  </h3>
-                  <p>
-                    Development of some social app and microsite web development for
-                    some clients including:
-                    <a href="http://www.samsung.com/tr/" target="_blank">Samsung Turkey</a>,
-                    <a href="http://www.nationalgeographic.com.tr/" target="_blank">National Geographic Turkey</a>,
-                    <a href="http://www.nationalgeographic.com.tr/" target="_blank">Nokia Turkey</a>,
-                    <a href="http://www.hbo.com/true-blood" target="_blank">True Blood TV show</a>,
-                    <a href="http://www.fox.com/glee" target="_blank">Glee TV Show</a>,
-                    <a href="http://www.imdb.com/title/tt1641349/" target="_blank">TerraNova TV show</a>
-                  </p>
-                </li>
-                
-                <!-- Front-end developer and designer at projectz Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Front-end developer and designer</em> at
-                    <a target="_blank" href="http://projectz.com/"
-                      >projectz, Istanbul</a
-                    >
-                    <span class="dates">06/2011 - 12/2011</span>
-                  </h3>
-                  <p>
-                    Front-end coding, refactoring and web design for startup project
-                    <a href="http://yardimlazim.com" target="_blank"
-                      >yardimlazim.com</a
-                    >
-                  </p>
-                </li>
-                
-                <!-- Full-stack developer at Manajans Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Full-stack developer</em> at
-                    <a target="_blank" href="http://manajans-jwt.com/"
-                      >Manajans / JWT, Istanbul</a
-                    >
-                    <span class="dates">05/2009 - 06/2011</span>
-                  </h3>
-                  <p>
-                    Development of websites, CMS development, online communities,
-                    social apps and microsites for some clients including:
-                    <a href="http://www.anadoluefes.com/" target="_blank">Miller</a>,
-                    <a href="http://gnctrkcll.turkcell.com.tr/" target="_blank">GncTurkcell / Turkcell</a>,
-                    <a href="http://estonyapi.com/" target="_blank">Eston Yapı</a>,
-                    <a href="http://www.first.com.tr" target="_blank">First</a>,
-                    <a href="http://www.anadoluefes.com" target="_blank">Bomonti</a>,
-                    <a href="http://www.anadoluefes.com" target="_blank">Efes</a>,
-                    <a href="https://www.terayatirim.com" target="_blank">TeraYatirim</a>
-                  </p>
-                </li>
-                
-                <!-- Front-end developer at Tribal DDB Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Front-end developer</em> at
-                    <a target="_blank" href="http://projectz.com/"
-                      >Tribal DDB Worldwide Istanbul<em>
-                        (formerly Manadigital)</em
-                      ></a
-                    >
-                    <span class="dates">03/2009 - 05/2009</span>
-                  </h3>
-                  <p>
-                    Front-end development for <a href="https://www.turktelekom.com.tr" target="_blank">Türk Telekom</a>
-                  </p>
-                </li>
-                
-                <!-- Full-stack developer at Ping Digital Agency Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Full-stack developer</em> at
-                    <a target="_blank" href="http://ping.com.tr"
-                      >Ping Digital Agency Istanbul<em> (formerly OnKaplan)</em></a
-                    >
-                    <span class="dates">05/2008 - 03/2009</span>
-                  </h3>
-                  <p>
-                    Front-end development for some clients including:
-                    <a href="https://www.garantibbva.com.tr" target="_blank">Garanti BBVA</a>,
-                    <a href="https://www.turktelekom.com.tr" target="_blank">Türk Telekom</a>
-                  </p>
-                </li>
-                
-                <!-- Designer, front-end and Flash developer Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Designer, front-end and Flash developer</em> at
-                    <a target="_blank" href="http://ping.com.tr"
-                      >Koçak Dizayn, Istanbul</a
-                    >
-                    <span class="dates">05/2008 - 03/2009</span>
-                  </h3>
-                  <p>
-                    Design, concept art creation, front-end development and
-                    illustration for an online art community startup.
-                  </p>
-                </li>
-                
-                <!-- Designer and front-end developer Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Designer and front-end developer</em> at
-                    <a target="_blank" href="http://www.medyanova.com/"
-                      >MedyaNova, Istanbul</a
-                    >
-                    <span class="dates">05/2005 - 02/2007</span>
-                  </h3>
-                  <p>
-                    Design and front-end web development for various web projects
-                    mostly regarding travelling, hotel and hotel franchise clients
-                    like
-                    <a href="http://www.bestwestern.com.tr/" target="_blank"
-                      >Best Western Hotels</a
-                    >.
-                  </p>
-                </li>
-                
-                <!-- Internship Experience -->
-                <li class="experience">
-                  <h3>
-                    <em>Internship</em> at
-                    <a target="_blank" href="http://www.medyanova.com/"
-                      >MedyaNova, Istanbul</a
-                    >
-                    <span class="dates">04/2005 - 05/2005</span>
-                  </h3>
-                </li>
-              </ul>
+              <!-- DevOps & Engineering Excellence -->
+              <li>
+                <p>
+                  Enhanced developer experience through monorepo management,
+                  automated semantic versioning, and comprehensive testing
+                  strategies
+                </p>
+              </li>
+              <li>
+                <p>
+                  Designed full-stack boilerplates for MVPs and facilitated data
+                  migrations for upcoming services
+                </p>
+              </li>
+
+              <!-- Team Leadership -->
+              <li>
+                <p>
+                  Led technical hiring, mentoring, and onboarding while
+                  implementing code quality standards through reviews and
+                  linting
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <!-- GameBook Experience -->
+          <li class="experience">
+            <h3>
+              <em>Senior Back-end Architect</em> at
+              <a target="_blank" href="https://gamebook.io">
+                GameBook AG (Formerly Experimental Game GmBH), Berlin</a
+              >
+              <span class="dates">12/2018 - 04/2019</span>
+            </h3>
+            <ul>
+              <li>
+                <p>
+                  Architected and refactored back-end services while developing
+                  full-stack features for gaming platform
+                </p>
+              </li>
+              <li>
+                <p>
+                  Optimized system performance through comprehensive profiling
+                  and containerization implementation
+                </p>
+              </li>
+              <li>
+                <p>
+                  Enhanced development infrastructure through improved tooling
+                  and strategic data structure migrations
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <li class="experience">
+            <h3>
+              <em>Lead Front-End Developer</em> at
+              <a target="_blank" href="https://chantelle.com"
+                >Groupe Chantelle, Digital Lab, Berlin</a
+              >
+              <span class="dates">08/2017 - 12/2018</span>
+            </h3>
+            <ul>
+              <!-- Team Leadership -->
+              <li>
+                <p>
+                  Led front-end development team, overseeing recruitment,
+                  onboarding, and mentoring while ensuring delivery of projects
+                  within sprint timelines
+                </p>
+              </li>
+
+              <!-- Technical Transformation -->
+              <li>
+                <p>
+                  Modernized front-end architecture while preserving
+                  functionality, implementing code quality tools, and
+                  establishing DevOps processes for accelerated development
+                </p>
+              </li>
+              <li>
+                <p>
+                  Orchestrated migration from monolithic architecture to
+                  microservices and expanded team capabilities from front-end to
+                  full-stack development
+                </p>
+              </li>
+
+              <!-- Process Improvement -->
+              <li>
+                <p>
+                  Implemented Agile methodologies with robust code review
+                  processes and facilitated data-driven development through A/B
+                  testing solutions
+                </p>
+              </li>
+              <li>
+                <p>
+                  Developed UI component library that bridged UX and front-end
+                  teams, creating a unified design system and improving
+                  cross-functional collaboration
+                </p>
+              </li>
+            </ul>
+          </li>
+          <!-- Continuing the experience list -->
+          <li class="experience">
+            <h3>
+              <em>Universal JavaScript Engineer</em> at
+              <a target="_blank" href="http://pixsy.com">Pixsy GmbH, Berlin</a>
+              <span class="dates">01/2017 - 08/2017</span>
+            </h3>
+            <ul>
+              <!-- Full-Stack Development -->
+              <li>
+                <p>
+                  Implemented full-stack JavaScript features while maintaining
+                  and migrating existing functionality across both client and
+                  server environments
+                </p>
+              </li>
+
+              <!-- Microservices & Architecture -->
+              <li>
+                <p>
+                  Developed and maintained microservices architecture,
+                  continually improving system design and technical stack to
+                  enhance performance and scalability
+                </p>
+              </li>
+
+              <!-- Quality Assurance -->
+              <li>
+                <p>
+                  Established robust quality standards through comprehensive
+                  test coverage (unit, integration, E2E), code reviews, and
+                  adherence to development conventions
+                </p>
+              </li>
+
+              <!-- System Integration & Monitoring -->
+              <li>
+                <p>
+                  Integrated and maintained data across multiple platforms
+                  (MongoDB, Stripe, SalesForce) while monitoring application
+                  health via Heroku and Sentry
+                </p>
+              </li>
+
+              <!-- Process -->
+              <li>
+                <p>
+                  Followed Kanban workflow with Agile methodologies to ensure
+                  efficient delivery and continuous improvement
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <li class="experience">
+            <h3>
+              <em>Software Architect</em> at
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/company/talented-square-corporation"
+                >Talented Square, CA</a
+              >
+              <span class="dates">08/2015 - 08/2016</span>
+            </h3>
+            <ul>
+              <li>
+                <p>
+                  Led front-end development and architectural improvements for
+                  ASDA UK (Walmart) online wholesale seller portal
+                </p>
+              </li>
+              <li>
+                <p>
+                  Designed architecture for a recruiting startup, focusing on
+                  performance optimization and modern frameworks
+                </p>
+              </li>
+              <li>
+                <p>
+                  <small
+                    ><strong>Technical Skills:</strong> JavaScript, React,
+                    Redux, Angular, Backbone, LoopBack, Webpack, Gulp, AMD,
+                    HTML, CSS/SCSS, jQuery, MySQL</small
+                  >
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Founder -->
+          <li class="experience">
+            <h3>
+              <em>Founder</em> at
+              <a target="_blank" href="http://nod.st">NOD studios, Istanbul</a>
+              <span class="dates">11/2012 - 07/2015</span>
+            </h3>
+            <ul>
+              <li>
+                <p>
+                  Led design and development for diverse clients including
+                  <a target="_blank" href="https://beinsports.com.tr"
+                    >BeinSports</a
+                  >,
+                  <a target="_blank" href="http://lesbenjamins.com"
+                    >Les Benjamins</a
+                  >,
+                  <a target="_blank" href="http://www.ulker.com.tr/">Ülker</a>,
+                  and
+                  <a target="_blank" href="https://www.gripati.com">Gripati</a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  Delivered comprehensive web solutions: e-commerce platforms,
+                  content management systems, mobile-optimized websites, and
+                  APIs
+                </p>
+              </li>
+              <li>
+                <p>
+                  Created UX/UI design, wireframes, and mockups for web and
+                  mobile applications
+                </p>
+              </li>
+              <li>
+                <p>
+                  Contributed to open source projects on
+                  <a target="_blank" href="http://github.com/NOD-studios"
+                    >GitHub</a
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  <small
+                    ><strong>Technical Skills:</strong> JavaScript, PHP,
+                    HTML/CSS, LESS, CanJS, Mustache, WordPress, CakePHP,
+                    CodeIgniter, AMD</small
+                  >
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Full-stack web developer FOX Experience -->
+          <li class="experience">
+            <h3>
+              <em>Full-stack web developer</em> at
+              <a target="_blank" href="http://ficturkey.com/"
+                >FOX International Channels, Istanbul</a
+              >
+              <span class="dates">01/2012 - 12/2012</span>
+            </h3>
+            <p>
+              Development of some social app and microsite web development for
+              some clients including:
+              <a href="http://www.samsung.com/tr/" target="_blank"
+                >Samsung Turkey</a
+              >,
+              <a href="http://www.nationalgeographic.com.tr/" target="_blank"
+                >National Geographic Turkey</a
+              >,
+              <a href="http://www.nationalgeographic.com.tr/" target="_blank"
+                >Nokia Turkey</a
+              >,
+              <a href="http://www.hbo.com/true-blood" target="_blank"
+                >True Blood TV show</a
+              >,
+              <a href="http://www.fox.com/glee" target="_blank">Glee TV Show</a
+              >,
+              <a href="http://www.imdb.com/title/tt1641349/" target="_blank"
+                >TerraNova TV show</a
+              >
+            </p>
+          </li>
+
+          <!-- Front-end developer and designer at projectz Experience -->
+          <li class="experience">
+            <h3>
+              <em>Front-end developer and designer</em> at
+              <a target="_blank" href="http://projectz.com/"
+                >projectz, Istanbul</a
+              >
+              <span class="dates">06/2011 - 12/2011</span>
+            </h3>
+            <p>
+              Front-end coding, refactoring and web design for startup project
+              <a href="http://yardimlazim.com" target="_blank"
+                >yardimlazim.com</a
+              >
+            </p>
+          </li>
+
+          <!-- Full-stack developer at Manajans Experience -->
+          <li class="experience">
+            <h3>
+              <em>Full-stack developer</em> at
+              <a target="_blank" href="http://manajans-jwt.com/"
+                >Manajans / JWT, Istanbul</a
+              >
+              <span class="dates">05/2009 - 06/2011</span>
+            </h3>
+            <p>
+              Development of websites, CMS development, online communities,
+              social apps and microsites for some clients including:
+              <a href="http://www.anadoluefes.com/" target="_blank">Miller</a>,
+              <a href="http://gnctrkcll.turkcell.com.tr/" target="_blank"
+                >GncTurkcell / Turkcell</a
+              >, <a href="http://estonyapi.com/" target="_blank">Eston Yapı</a>,
+              <a href="http://www.first.com.tr" target="_blank">First</a>,
+              <a href="http://www.anadoluefes.com" target="_blank">Bomonti</a>,
+              <a href="http://www.anadoluefes.com" target="_blank">Efes</a>,
+              <a href="https://www.terayatirim.com" target="_blank"
+                >TeraYatirim</a
+              >
+            </p>
+          </li>
+
+          <!-- Front-end developer at Tribal DDB Experience -->
+          <li class="experience">
+            <h3>
+              <em>Front-end developer</em> at
+              <a target="_blank" href="http://projectz.com/"
+                >Tribal DDB Worldwide Istanbul<em>
+                  (formerly Manadigital)</em
+                ></a
+              >
+              <span class="dates">03/2009 - 05/2009</span>
+            </h3>
+            <p>
+              Front-end development for
+              <a href="https://www.turktelekom.com.tr" target="_blank"
+                >Türk Telekom</a
+              >
+            </p>
+          </li>
+
+          <!-- Full-stack developer at Ping Digital Agency Experience -->
+          <li class="experience">
+            <h3>
+              <em>Full-stack developer</em> at
+              <a target="_blank" href="http://ping.com.tr"
+                >Ping Digital Agency Istanbul<em> (formerly OnKaplan)</em></a
+              >
+              <span class="dates">05/2008 - 03/2009</span>
+            </h3>
+            <p>
+              Front-end development for some clients including:
+              <a href="https://www.garantibbva.com.tr" target="_blank"
+                >Garanti BBVA</a
+              >,
+              <a href="https://www.turktelekom.com.tr" target="_blank"
+                >Türk Telekom</a
+              >
+            </p>
+          </li>
+
+          <!-- Designer, front-end and Flash developer Experience -->
+          <li class="experience">
+            <h3>
+              <em>Designer, front-end and Flash developer</em> at
+              <a target="_blank" href="http://ping.com.tr"
+                >Koçak Dizayn, Istanbul</a
+              >
+              <span class="dates">05/2008 - 03/2009</span>
+            </h3>
+            <p>
+              Design, concept art creation, front-end development and
+              illustration for an online art community startup.
+            </p>
+          </li>
+
+          <!-- Designer and front-end developer Experience -->
+          <li class="experience">
+            <h3>
+              <em>Designer and front-end developer</em> at
+              <a target="_blank" href="http://www.medyanova.com/"
+                >MedyaNova, Istanbul</a
+              >
+              <span class="dates">05/2005 - 02/2007</span>
+            </h3>
+            <p>
+              Design and front-end web development for various web projects
+              mostly regarding travelling, hotel and hotel franchise clients
+              like
+              <a href="http://www.bestwestern.com.tr/" target="_blank"
+                >Best Western Hotels</a
+              >.
+            </p>
+          </li>
+
+          <!-- Internship Experience -->
+          <li class="experience">
+            <h3>
+              <em>Internship</em> at
+              <a target="_blank" href="http://www.medyanova.com/"
+                >MedyaNova, Istanbul</a
+              >
+              <span class="dates">04/2005 - 05/2005</span>
+            </h3>
+          </li>
+        </ul>
       </section>
 
       <!-- Add HTML horizontal rule for clear separation -->
-      <hr>
+      <hr />
 
       <section id="education">
         <h2>Education</h2>
@@ -845,12 +953,12 @@
         </ul>
       </section>
 
-      <hr>
+      <hr />
 
       <section id="interests">
         <h2>Interests</h2>
-        Swimming &bull; Vibe-coding &bull; Photography &bull; AI generated design and art &bull;
-        Video games &bull;
+        Swimming &bull; Vibe-coding &bull; Photography &bull; AI generated
+        design and art &bull; Video games &bull;
         <a href="http://soundcloud.com/JacopKane" target="_blank">DJing</a> and
         formerly founding the music label
         <a target="_blank" href="http://soundcloud.com/AmbientData"
@@ -859,8 +967,7 @@
         &bull; Contributing back to
         <a href="http://github.com/JacopKane/" target="_blank">Open source</a>
         projects &bull; Experimenting with product ideas &bull; Travelling
-        &bull; Ping-pong &bull; Sci-Fi &bull; 80s &bull; Exploring print, product,
-        interior and typography designs &bull; Staycations.
+        &bull; Sci-Fi &bull; 80s &bull; Exploring design.
       </section>
 
       <% if (!GLOBEL.resume) { %>
@@ -869,34 +976,38 @@
 
     <!-- Environment detection for PDF download URL -->
     <script>
-      (function() {
+      (function () {
         // Check if we're running locally (development)
-        const isLocal = window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1' ||
-                       window.location.hostname.includes('localhost') ||
-                       window.location.hostname.includes('127.0.0.1');
-        
-        const downloadLink = document.getElementById('download-pdf-link');
-        
+        const isLocal =
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1" ||
+          window.location.hostname.includes("localhost") ||
+          window.location.hostname.includes("127.0.0.1");
+
+        const downloadLink = document.getElementById("download-pdf-link");
+
         // Debug: Log the detection results
-        console.log('Hostname:', window.location.hostname);
-        console.log('Is Local:', isLocal);
-        console.log('Download Link:', downloadLink);
-        
+        console.log("Hostname:", window.location.hostname);
+        console.log("Is Local:", isLocal);
+        console.log("Download Link:", downloadLink);
+
         if (downloadLink && isLocal) {
           // Use Firebase emulator URL for local development
           // Dynamically detect function emulator port (default 5001)
-          const functionsPort = '5001'; // Functions emulator default port
+          const functionsPort = "5001"; // Functions emulator default port
           const localUrl = `http://${window.location.hostname}:${functionsPort}/furkantunali-1043/europe-west1/downloadAsPDF`;
-          console.log('Setting local URL:', localUrl);
+          console.log("Setting local URL:", localUrl);
           downloadLink.href = localUrl;
         } else {
-          console.log('Using production URL:', downloadLink ? downloadLink.href : 'No link found');
+          console.log(
+            "Using production URL:",
+            downloadLink ? downloadLink.href : "No link found",
+          );
         }
-        
+
         // Also log the final URL after any changes
         if (downloadLink) {
-          console.log('Final URL:', downloadLink.href);
+          console.log("Final URL:", downloadLink.href);
         }
       })();
     </script>
@@ -913,23 +1024,25 @@
 
     <!-- Dark Mode Toggle Script -->
     <script>
-      (function() {
+      (function () {
         // Theme management
-        const THEME_KEY = 'theme';
-        const THEME_LIGHT = 'light';
-        const THEME_DARK = 'dark';
-        const THEME_AUTO = 'auto';
-        
+        const THEME_KEY = "theme";
+        const THEME_LIGHT = "light";
+        const THEME_DARK = "dark";
+        const THEME_AUTO = "auto";
+
         // Get elements
         const html = document.documentElement;
-        const toggle = document.getElementById('theme-toggle');
-        const icon = document.querySelector('.theme-toggle-icon');
-        
+        const toggle = document.getElementById("theme-toggle");
+        const icon = document.querySelector(".theme-toggle-icon");
+
         // Get system preference
         function getSystemTheme() {
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ? THEME_DARK : THEME_LIGHT;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? THEME_DARK
+            : THEME_LIGHT;
         }
-        
+
         // Get stored theme or default to system
         function getStoredTheme() {
           const stored = localStorage.getItem(THEME_KEY);
@@ -938,44 +1051,50 @@
           }
           return getSystemTheme();
         }
-        
+
         // Apply theme
         function applyTheme(theme) {
           const isDark = theme === THEME_DARK;
-          
+
           if (isDark) {
-            html.classList.add('dark-theme');
-            icon.textContent = '☀️';
+            html.classList.add("dark-theme");
+            icon.textContent = "☀️";
           } else {
-            html.classList.remove('dark-theme');
-            icon.textContent = '🌙';
+            html.classList.remove("dark-theme");
+            icon.textContent = "🌙";
           }
         }
-        
+
         // Toggle theme
         function toggleTheme() {
           const currentTheme = getStoredTheme();
-          const newTheme = currentTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
-          
+          const newTheme =
+            currentTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
+
           localStorage.setItem(THEME_KEY, newTheme);
           applyTheme(newTheme);
         }
-        
+
         // Initialize theme
         const initialTheme = getStoredTheme();
         applyTheme(initialTheme);
-        
+
         // Add toggle event listener
         if (toggle) {
-          toggle.addEventListener('click', toggleTheme);
+          toggle.addEventListener("click", toggleTheme);
         }
-        
+
         // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-          if (!localStorage.getItem(THEME_KEY) || localStorage.getItem(THEME_KEY) === THEME_AUTO) {
-            applyTheme(getSystemTheme());
-          }
-        });
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", function () {
+            if (
+              !localStorage.getItem(THEME_KEY) ||
+              localStorage.getItem(THEME_KEY) === THEME_AUTO
+            ) {
+              applyTheme(getSystemTheme());
+            }
+          });
       })();
     </script>
 
