@@ -1,13 +1,14 @@
-@import "config";
-@import "mixins";
-@import "fonts";
-@import "common";
+@use "config" as *;
+@use "mixins" as *;
+@use "fonts";
+@use "common";
+@use "logo" as *;
 
 :root {
   --base-font-size: 16px;
   font-size: var(--base-font-size);
   line-height: 1.5;
-  
+
   // Normal color scheme
   --text-color: #888888;
   --accent-color: #000000;
@@ -19,7 +20,7 @@
   --logo-border: #000000;
   --footer-color: #bbbbbb;
   --link-hover-opacity: 0.4;
-  
+
   // Inverted color scheme
   --text-color-inverted: #777777;
   --accent-color-inverted: #ffffff;
@@ -31,7 +32,7 @@
   --logo-border-inverted: #ffffff;
   --footer-color-inverted: #444444;
   --link-hover-opacity-inverted: 0.4;
-  
+
   background-color: var(--background-color);
   color: var(--text-color);
   border-color: var(--border-color);
@@ -71,17 +72,17 @@ section#about {
     font-weight: 700;
     @include theme-transitions();
   }
-  
+
   em {
     color: var(--accent-color);
     font-style: italic;
     @include theme-transitions();
   }
-  
+
   p {
     margin: 1.5rem 0 0 0;
     line-height: 1.6;
-    
+
     a,
     a:visited {
       @include link-styles(var(--link-color), var(--link-color));
@@ -98,7 +99,7 @@ section#about {
   padding: 0 clamp(1rem, 4vw, 2rem);
   color: var(--text-color);
   @include theme-transitions();
-  
+
   a,
   a:visited {
     @include link-styles(var(--link-color), var(--link-color));
@@ -128,32 +129,30 @@ html {
     min-height: 100vh;
     padding: clamp(0.5rem, 2vw, 1.5rem);
     box-sizing: border-box;
-    
+
     // Use flexbox with equal flex containers for true centering
     display: flex;
     flex-direction: column;
-    
+    width: 100%;
+    max-width: 100vw;
+
     // Create three sections: top spacer, content, bottom spacer
     &::before,
     &::after {
-      content: '';
+      content: "";
       flex: 1;
     }
-    
+
     // Content area - no flex grow so it stays natural size
     > * {
       flex: 0 0 auto;
       width: 100%;
       text-align: center;
-      
+
       &:not(:last-child) {
         margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
       }
     }
-    
-    // Ensure proper width control
-    width: 100%;
-    max-width: 100vw;
 
     @media (max-width: 480px) {
       padding: 1rem;
@@ -194,7 +193,7 @@ html {
       justify-content: center;
       align-items: center;
       margin: 0;
-      
+
       hgroup {
         font-weight: lighter;
         text-align: center;
@@ -220,7 +219,7 @@ html {
         // BULLETPROOF LOGO - MAIN PAGE WITH HOVER EFFECTS
         h1 {
           @include logo-positioning(); // Apply positioning only to h1
-          
+
           .logo {
             @include logo(clamp(4rem, 12vw, 8rem), 0.6, false);
           }
@@ -283,4 +282,3 @@ html {
     }
   }
 }
-

@@ -1,10 +1,16 @@
-@import "config";
-@import "mixins";
+@use "sass:map";
+@use "config" as *;
+@use "mixins" as *;
 
 // Theme Toggle Mixin System
 // Provides a bulletproof theme toggle button with proper dark/light mode support
 
-@mixin theme-toggle($size: clamp(2.5rem, 6vw, 3rem), $border-width: 2px, $font-size: clamp(1rem, 3vw, 1.2rem), $position: fixed) {
+@mixin theme-toggle(
+  $size: clamp(2.5rem, 6vw, 3rem),
+  $border-width: 2px,
+  $font-size: clamp(1rem, 3vw, 1.2rem),
+  $position: fixed
+) {
   // Base appearance styles
   border-radius: 50%;
   display: flex;
@@ -22,20 +28,20 @@
   padding: 0;
   position: $position;
   cursor: pointer;
-  z-index: map-get($z-index, 'modal');
+  z-index: map.get($z-index, "modal");
   @include font-family();
-  
+
   // Fixed positioning for main page (only applies when position is fixed)
   @if $position == fixed {
     top: clamp(1rem, 4vw, 2rem);
     right: clamp(1rem, 4vw, 2rem);
   }
-  
+
   // Light mode colors (default)
   background: #000000;
   color: #ffffff;
   border: $border-width solid #000000;
-  
+
   // Light mode hover
   &:hover,
   &:active {
@@ -45,17 +51,17 @@
     outline: none;
     transition: none;
   }
-  
+
   &:focus {
     outline: none;
   }
-  
+
   // Dark mode overrides
   .dark-theme & {
     background: #ffffff;
     color: #000000;
     border-color: #ffffff;
-    
+
     &:hover,
     &:active {
       background: #000000;
@@ -64,7 +70,7 @@
       outline: none;
       transition: none;
     }
-    
+
     &:focus {
       outline: none;
     }
@@ -79,7 +85,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
   // Dark mode icon rotation
   .dark-theme & {
     transform: rotate(180deg);
@@ -94,7 +100,7 @@
 // Apply the mixin to the standard theme toggle class
 .theme-toggle {
   @include theme-toggle();
-  
+
   .theme-toggle-icon {
     @include theme-toggle-icon();
   }

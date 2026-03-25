@@ -1,18 +1,25 @@
-@import "common.scss";
+@use "common" as *;
+@use "theme-toggle" as *;
+@use "logo" as *;
 
 // Theme toggle specific to resume page
 .theme-toggle-resume {
-  @include theme-toggle(clamp(2rem, 4vw, 2.5rem), 2px, clamp(0.8rem, 2vw, 1rem), static);
-  
+  @include theme-toggle(
+    clamp(2rem, 4vw, 2.5rem),
+    2px,
+    clamp(0.8rem, 2vw, 1rem),
+    static
+  );
+
   // Inline positioning - flow like text next to the PDF button
   margin-left: 1rem;
   display: inline-flex;
   vertical-align: middle;
-  
+
   @media print {
     display: none;
   }
-  
+
   .theme-toggle-icon {
     @include theme-toggle-icon();
   }
@@ -26,17 +33,17 @@ body {
   // Full width layout
   max-width: none;
   margin: 0;
-  
+
   // Add some padding on smaller screens
   @media (max-width: 960px) {
     margin: 0 1rem;
   }
-  
+
   // Ensure proper spacing for the web version
   .container {
     padding: 1rem 0;
   }
-  
+
   // Make the navigation more prominent for web
   nav#download {
     margin-bottom: 2rem;
@@ -50,18 +57,18 @@ body {
     backdrop-filter: blur(10px);
     padding: 1rem 0;
     transition: background-color 0.3s ease-in-out;
-    
+
     // Style the logo using unified mixin - NO hover effects for resume web
     .logo {
       @include logo(3rem, 0.58, true); // Hover always enabled
     }
-    
+
     .nav-right {
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
     }
-    
+
     a:not(.logo) {
       padding: 0.75rem 1.5rem;
       background: #000;
@@ -70,19 +77,19 @@ body {
       border-radius: 4px;
       border: 1px solid #000000; // Always have a border to prevent layout shift
       transition: all 0.3s ease;
-      
+
       &:hover {
         background: #ffffff;
         color: #000000;
         border-color: #000000; // Change only the color, not the width
       }
-      
+
       // Dark mode styles for download button
       .dark-theme & {
         background: #ffffff;
         color: #000000;
         border-color: #ffffff;
-        
+
         &:hover {
           background: #000000;
           color: #ffffff;
@@ -91,36 +98,36 @@ body {
       }
     }
   }
-  
+
   // Reset section styling for info and contact sections
   section {
     // Remove extra margin and styling for info/contact sections
     margin-bottom: 0;
-    
+
     h2 {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
     }
   }
-  
+
   // Only apply enhanced styling to experiences section
   #experiences section {
     margin-bottom: 2rem;
-    
+
     h2 {
       margin-bottom: 1rem;
       padding-bottom: 0;
       border-bottom: none;
     }
   }
-  
+
   // Experience items with NO hover effects whatsoever
   .experience {
     padding: 1.5rem;
     margin-bottom: 2rem;
     transition: none;
-    
+
     // Completely disable all hover effects
     &:hover {
       transform: none;
@@ -128,35 +135,35 @@ body {
       background: transparent;
       opacity: 1;
     }
-    
+
     h3 {
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
-    
+
     h4 {
       opacity: 0.8;
       font-weight: 400;
       font-size: 0.95em;
       margin-bottom: 0.75rem;
     }
-    
+
     ul {
       margin-top: 0.75rem;
-      
+
       li {
         margin-bottom: 0.5rem;
         line-height: 1.6;
       }
     }
   }
-  
+
   // Reset the intro section to proper left/right alignment without extra spacing
   .intro {
     // Remove extra padding and margin to match original layout
     padding: 0;
     margin-bottom: 1em;
-    
+
     .left-column,
     .right-column {
       @media (max-width: 768px) {
@@ -166,14 +173,14 @@ body {
         margin-bottom: 1rem;
       }
     }
-    
+
     .right-column {
       @media (max-width: 768px) {
         margin-bottom: 0;
       }
     }
   }
-  
+
   // Improve footer for web
   footer {
     margin-top: 3rem;
@@ -182,13 +189,13 @@ body {
     text-align: center;
     color: #666;
     transition: color 0.3s ease-in-out;
-    
+
     // Dark mode styles for web footer
     .dark-theme & {
       color: #999;
     }
   }
-  
+
   // Ensure print version is full width and removes web constraints
   @media print {
     body {
@@ -196,35 +203,35 @@ body {
       margin: 0 !important;
       padding: 0 !important;
     }
-    
+
     .container {
       padding: 0 !important;
     }
-    
+
     .intro {
       padding: 0 !important;
       margin-bottom: 1em !important;
     }
-    
+
     .experience {
       padding: 0 !important;
       margin-bottom: 1em !important;
       transform: none !important;
     }
-    
+
     nav#download {
       display: none !important;
     }
-    
+
     section {
       margin-bottom: 1em !important;
-      
+
       h2 {
         margin-bottom: 0.5em !important;
         border-bottom: none !important;
       }
     }
-    
+
     footer {
       margin-top: 1em !important;
       padding-top: 1em !important;

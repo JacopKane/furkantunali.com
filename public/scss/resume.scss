@@ -1,6 +1,7 @@
 @use "sass:color";
-@import "fonts.scss";
-@import "common.scss";
+@use "fonts";
+@use "common" as *;
+@use "logo" as *;
 
 // Light mode colors (default)
 $color-text: #000;
@@ -24,7 +25,7 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 @mixin light-theme {
   color: $color-text;
   background-color: $color-background;
-  
+
   a {
     color: $color-link;
 
@@ -42,19 +43,24 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
       color: $color-link-hover;
     }
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $color-text;
   }
-  
+
   nav a:not(.logo) {
     color: $color-link;
-    
+
     &:hover {
       color: $color-link-hover;
     }
   }
-  
+
   footer {
     color: $color-text;
   }
@@ -63,7 +69,7 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
 @mixin dark-theme {
   color: $color-text-dark;
   background-color: $color-background-dark;
-  
+
   a {
     color: $color-link-dark;
 
@@ -81,19 +87,24 @@ $size-margin: "((1vmin + 1vmax) / 3) * 2";
       color: $color-link-hover-dark;
     }
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $color-text-dark;
   }
-  
+
   nav a:not(.logo) {
     color: $color-link-dark;
-    
+
     &:hover {
       color: $color-link-hover-dark;
     }
   }
-  
+
   footer {
     color: color.adjust($color-text-dark, $lightness: -20%);
   }
@@ -105,11 +116,15 @@ html,
 body {
   @include font-family;
   @include light-theme;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 
   font-size: calc(#{$size} * 3.6);
   font-size: clamp(14px, 1vw, 18px); // Smaller base size, limits scaling
   line-height: $standard-line-height;
+  margin: 0 auto;
+  padding: 0;
 
   @media print {
     font-size: calc(#{$size} * 2.8);
@@ -117,9 +132,7 @@ body {
     line-height: $standard-line-height;
     margin-top: 0 !important; // Remove any top margin in print
   }
-  margin: 0 auto;
 
-  padding: 0;
   a {
     transition: color 0.2s ease;
 
@@ -137,7 +150,6 @@ body {
       color: $color-link-hover;
     }
   }
-
 }
 
 // Dark theme application
@@ -172,7 +184,12 @@ body {
     text-decoration: none;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $color-text;
     transition: color 0.3s ease-in-out;
   }
@@ -193,7 +210,7 @@ body {
     em {
       font-weight: 300;
     }
-    
+
     .dates {
       font-weight: 400;
       font-size: 0.85em;
@@ -217,7 +234,6 @@ body {
     font-weight: 800;
     line-height: $standard-line-height;
   }
-
 
   ul,
   h1,
@@ -301,11 +317,13 @@ body {
     display: flex;
     flex-direction: column;
 
-    h3, h4, h5 {
+    h3,
+    h4,
+    h5 {
       margin: 0; // Reset all margins
       padding: 0; // Reset all paddings
     }
-    
+
     // Add bullet styles for nested lists within experiences
     ul {
       padding: 0; // Reset padding
@@ -313,13 +331,13 @@ body {
       margin: 0; // Reset all margins
       list-style-type: circle; // Nested bullets: hollow circles ○
       list-style-position: outside;
-      
+
       li {
         display: list-item;
         margin: 0; // Reset all margins
         padding: 0; // Reset all paddings
         line-height: 1.3; // Tighter line height
-        
+
         p {
           margin: 0; // Remove paragraph margins
           padding: 0; // Remove paragraph paddings
@@ -327,7 +345,7 @@ body {
       }
     }
   }
-  
+
   // Styling for the experiences section
   #experiences {
     // General styles for all experience lists
@@ -339,26 +357,26 @@ body {
       margin: 0; // Reset margin
       list-style-type: disc; // Parent bullets for experience titles
     }
-    
+
     li.experience {
       // Simple vertical layout with parent bullets
       display: list-item; // Show parent bullets
       width: 100%;
-      
+
       // Allow content to flow naturally
       break-inside: auto;
-      
+
       // Reset all spacing
       margin: 0; // No margins at all
       padding: 0; // No padding at all
-      
+
       // Child bullets (experience details) - different style
       > ul {
         padding: 0; // Reset padding
         padding-left: 1.25em; // Only left padding for child bullets
         margin: 0; // No margins
         list-style-type: circle; // Different bullet style for details
-        
+
         li {
           display: list-item;
           margin: 0; // No margins
@@ -371,7 +389,8 @@ body {
 
 // Ensure print-specific styles are applied
 @media print {
-  html, body {
+  html,
+  body {
     font-size: 13px !important; // Slightly increased from 12px
     line-height: 1.3 !important; // Slightly increased from 1.2
     margin: 0 !important; // Remove all margins for print
@@ -385,7 +404,7 @@ body {
     background: #fff !important; // Ensure background is white
     box-sizing: border-box !important;
   }
-  
+
   // Remove all container margins and paddings
   .container {
     margin: 0 !important;
@@ -393,7 +412,7 @@ body {
     max-width: none !important;
     width: 100% !important;
   }
-  
+
   // Fix the intro section alignment for print
   .intro {
     margin: 0 !important;
@@ -404,72 +423,73 @@ body {
     align-items: flex-start !important;
     width: 100% !important;
   }
-  
-  .left-column, .right-column {
+
+  .left-column,
+  .right-column {
     float: none !important;
     margin: 0 !important;
     padding: 0 !important;
     width: 48% !important;
     box-sizing: border-box !important;
   }
-  
+
   .left-column {
     text-align: left !important;
   }
-  
+
   .right-column {
     text-align: right !important;
   }
-  
+
   // Hide navigation in print and remove its space
   nav {
     display: none !important;
   }
-  
+
   // Remove margins and padding from header
   header {
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
   // Remove margins from header elements
   header hgroup,
   header h1 {
     margin: 0 !important;
     padding: 0 !important;
   }
-  
+
   // Remove top margin from first element to eliminate page top spacing
   body > *:first-child,
   body > *:first-child > *:first-child {
     margin-top: 0 !important;
     padding-top: 0 !important;
   }
-  
+
   // Print-specific styles for experiences
   #experiences > ul.experiences {
     width: 100% !important;
     padding-left: 1em !important; // Minimal padding to show bullets in print
     list-style-type: disc !important; // Parent bullets in print
     margin: 0 !important;
-    
+
     li.experience {
       display: list-item !important; // Show parent bullets in print
       width: 100% !important;
       margin: 0 !important; // No spacing at all in print
       padding-left: 0.25em !important; // Pull text closer to bullet in print
       break-inside: auto !important; // Allow page breaks within experiences for better space utilization
-      
+
       // Remove bottom spacing from last experience in print
       &:last-child {
         margin-bottom: 0 !important;
       }
-      
+
       > ul {
         padding-left: 1.25em !important; // Slightly reduced padding for child bullets in print (was 1.5em)
         list-style-type: circle !important; // Child bullets different in print
         margin: 0 !important;
-        
+
         li {
           display: list-item !important;
           margin: 0 !important; // No spacing for child items in print
@@ -479,45 +499,49 @@ body {
     }
   }
 
-  h1 { 
-    font-size: 19px !important; 
-    line-height: 1.2 !important; 
+  h1 {
+    font-size: 19px !important;
+    line-height: 1.2 !important;
     margin-top: 0 !important; // Remove top margin in print
   }
-  h2 { 
-    font-size: 17px !important; 
-    line-height: 1.2 !important; 
+  h2 {
+    font-size: 17px !important;
+    line-height: 1.2 !important;
     margin-top: 0 !important; // Remove top margin in print
   }
-  h3 { 
-    font-size: 15px !important; 
-    line-height: 1.2 !important; 
+  h3 {
+    font-size: 15px !important;
+    line-height: 1.2 !important;
     margin-top: 0 !important; // Remove top margin in print
   }
-  h4 { 
-    font-size: 14px !important; 
-    line-height: 1.2 !important; 
+  h4 {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
     margin-top: 0 !important; // Remove top margin in print
   }
-  
-  ul, ol, p { 
+
+  ul,
+  ol,
+  p {
     margin-top: 0.15em !important; // Increased from 0.1em
     margin-bottom: 0.15em !important; // Increased from 0.1em
     line-height: 1.25 !important; // Increased from 1.2
   }
-  
+
   .experience {
     break-inside: auto !important; /* Allow content to flow across pages */
     margin-bottom: 1em !important; /* Reduced from 1.5em to minimize excessive space */
     padding: 0 !important;
-    
-    h3, h4, h5 {
+
+    h3,
+    h4,
+    h5 {
       margin-bottom: 0.15em !important; // Increased from 0.1em
       margin-top: 0 !important;
       line-height: 1.2 !important; // Increased from 1.1
       break-after: avoid !important; /* Keep headings with their content */
     }
-    
+
     ul {
       margin-top: 0 !important;
       margin-bottom: 0.1em !important; // Increased from 0.05em
@@ -525,24 +549,26 @@ body {
       padding-bottom: 0 !important;
       padding-left: 1.5em !important;
       list-style-type: disc !important;
-      
+
       li {
         break-inside: auto !important;
         display: list-item !important;
       }
     }
-    
+
     /* Keep the end of one job experience from separating from its header */
     &:last-child {
       break-after: auto !important;
     }
-    
+
     /* Keep title with at least some content */
-    h3, h4 {
+    h3,
+    h4 {
       break-after: avoid !important;
     }
-    
-    li, p {
+
+    li,
+    p {
       margin-bottom: 0 !important;
       margin-top: 0 !important;
       line-height: 1.25 !important; // Increased from 1.15
@@ -554,7 +580,7 @@ body {
       line-height: 1.2 !important; // Increased from 1.1
     }
   }
-  
+
   /* Force Education and Interests sections to start on new lines but not new pages */
   #education {
     clear: both;
@@ -562,7 +588,7 @@ body {
     width: 100%;
     margin-top: 0.8em;
   }
-  
+
   #interests {
     clear: both;
     display: block;
@@ -571,13 +597,13 @@ body {
     font-size: 12px !important; // Increased from 11px
     line-height: 1.25 !important; // Increased from 1.15
   }
-  
+
   /* Ensure the education section displays properly */
   .educations {
     padding-left: 0;
     list-style-type: none;
   }
-  
+
   /* Make sure section headings are clearly visible */
   section h2 {
     margin-top: 0.3em; /* Reduced from 0.4em */
@@ -585,74 +611,76 @@ body {
     font-weight: bold;
     break-after: avoid;
   }
-  
+
   /* Make sure content stays with its heading */
   section h2 + * {
     break-before: avoid;
   }
-  
+
   /* Ensure job headings stay with their content */
-  .experience h3, .experience h4 {
+  .experience h3,
+  .experience h4 {
     break-after: avoid !important;
   }
-  
+
   /* Fix for heyData to Société Générale transition */
   .experience + .experience {
     break-before: auto;
   }
-  
+
   /* Reduce spacing in skills section */
   .skills li {
     margin-bottom: 0.15em !important; // Increased from 0.1em
     line-height: 1.25 !important; // Increased from 1.15
     font-size: 12px !important; // Increased from 11px
-    
+
     strong {
       font-size: 13px !important; // Increased from 12px
     }
   }
-  
+
   /* Add page breaks where needed */
   #education {
     page-break-before: auto;
   }
-  
+
   /* Optimize experiences layout for printing */
   #experiences ul {
     padding: 0 0.5% !important;
   }
-  
+
   /* Hide unnecessary elements */
   .grain-overlay {
     display: none !important;
   }
-  
+
   /* Hide social and web links in print as they're not relevant on paper */
   #contact li:nth-child(2),
   #contact li:nth-child(3),
   #contact li:nth-child(4) {
     display: none !important;
   }
-  
+
   /* Fix text truncation issues with client links */
   .experience > a {
     display: inline-block;
     margin-right: 0.25em;
   }
-  
+
   /* Ensure links print in black without underlines */
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: none !important;
     color: #000 !important;
   }
-  
+
   /* Add horizontal rules for better section separation */
   hr {
     border: none;
     border-top: 1px solid #ccc;
     margin: 0.3em 0;
   }
-  
+
   /* Fix for experience items at bottom of page/column */
   li.experience:last-child {
     margin-bottom: 0 !important;

@@ -1,17 +1,17 @@
-@import "common.scss";
+@use "common" as *;
 
 :root {
   --base-font-size: 16px;
   --scaling-factor: 0.5vmin;
   font-size: calc(var(--base-font-size) + var(--scaling-factor));
   line-height: $standard-line-height;
-  
+
   --text-color: #888888;
   --accent-color: #000000;
   --link-color: #000000;
   --background-color: #ffffff;
   --border-color: #000000;
-  
+
   background-color: var(--background-color);
   color: var(--text-color);
   border-color: var(--border-color);
@@ -20,7 +20,7 @@
 /* Global colorful state - activated only when hovering actual links via JavaScript */
 body.colorful-mode {
   --text-color: transparent;
-  --accent-color: #00FF41;
+  --accent-color: #00ff41;
   --link-color: transparent;
 }
 
@@ -97,10 +97,18 @@ body.colorful-mode {
 }
 
 @keyframes blink-caret {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  51% { opacity: 0; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @mixin gradient(
@@ -126,7 +134,8 @@ body.colorful-mode {
 }
 
 section#about {
-  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-family: "VT323", "Courier Prime", "Andale Mono", "Lucida Console",
+    "Monaco", "Consolas", "Courier New", monospace;
   font-size: calc(var(--base-font-size) + (var(--scaling-factor) * 3.2));
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -144,11 +153,11 @@ section#about {
     font-weight: 700;
     transition: all 0.3s ease;
   }
-  
+
   p {
     margin-top: 0;
     line-height: $standard-line-height;
-    
+
     a,
     a:visited {
       text-decoration: underline;
@@ -172,12 +181,12 @@ body.colorful-mode nav a.nav-link {
   background: rgb(0, 0, 0)
     linear-gradient(
       90deg,
-      rgba(255, 140, 0, 1.0),
-      rgba(128, 0, 128, 1.0),
-      rgba(255, 255, 255, 1.0),
-      rgba(0, 0, 0, 1.0),
-      rgba(178, 34, 34, 1.0),
-      rgba(255, 140, 0, 1.0)
+      rgba(255, 140, 0, 1),
+      rgba(128, 0, 128, 1),
+      rgba(255, 255, 255, 1),
+      rgba(0, 0, 0, 1),
+      rgba(178, 34, 34, 1),
+      rgba(255, 140, 0, 1)
     );
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
@@ -194,12 +203,12 @@ body.colorful-mode section#about p a:visited {
   background: rgb(0, 0, 0)
     linear-gradient(
       90deg,
-      rgba(254, 166, 247, 1.0),
-      rgba(249, 251, 177, 1.0),
-      rgba(254, 166, 247, 1.0),
-      rgba(170, 254, 163, 1.0),
-      rgba(254, 166, 247, 1.0),
-      rgba(148, 254, 247, 1.0)
+      rgba(254, 166, 247, 1),
+      rgba(249, 251, 177, 1),
+      rgba(254, 166, 247, 1),
+      rgba(170, 254, 163, 1),
+      rgba(254, 166, 247, 1),
+      rgba(148, 254, 247, 1)
     );
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
@@ -210,7 +219,8 @@ body.colorful-mode section#about p a:visited {
 }
 
 .terminal-cursor {
-  font-family: 'VT323', 'Courier Prime', 'Andale Mono', 'Lucida Console', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-family: "VT323", "Courier Prime", "Andale Mono", "Lucida Console",
+    "Monaco", "Consolas", "Courier New", monospace;
   /* Default monochrome - black cursor */
   color: #000000 !important;
   background-color: #000000 !important;
@@ -230,17 +240,25 @@ body.colorful-mode section#about p a:visited {
 
 /* Colorful effects in colorful mode */
 body.colorful-mode .terminal-cursor {
-  color: #94FEF7 !important;
-  background-color: #94FEF7 !important;
+  color: #94fef7 !important;
+  background-color: #94fef7 !important;
 }
 
 /* Apply gradient backgrounds in colorful mode */
 html.colorful-mode {
-  @include gradient($degree: -270deg, $animation: gradient-reverse, $color: rgba(0, 0, 0, 0.4));
+  @include gradient(
+    $degree: -270deg,
+    $animation: gradient-reverse,
+    $color: rgba(0, 0, 0, 0.4)
+  );
 }
 
 body.colorful-mode {
-  @include gradient($degree: 90deg, $animation: gradient, $color: rgba(0, 0, 0, 0.3));
+  @include gradient(
+    $degree: 90deg,
+    $animation: gradient,
+    $color: rgba(0, 0, 0, 0.3)
+  );
 }
 
 /* Colorful gradient for entire section in colorful mode */
@@ -249,12 +267,12 @@ body.colorful-mode section#about {
   background: rgb(0, 0, 0)
     linear-gradient(
       90deg,
-      rgba(255, 255, 255, 1.0),
-      rgba(139, 69, 19, 1.0),
-      rgba(75, 0, 130, 1.0),
-      rgba(220, 20, 60, 1.0),
-      rgba(25, 25, 112, 1.0),
-      rgba(255, 255, 255, 1.0)
+      rgba(255, 255, 255, 1),
+      rgba(139, 69, 19, 1),
+      rgba(75, 0, 130, 1),
+      rgba(220, 20, 60, 1),
+      rgba(25, 25, 112, 1),
+      rgba(255, 255, 255, 1)
     );
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
@@ -262,14 +280,14 @@ body.colorful-mode section#about {
   background-clip: text;
 
   strong {
-    color: #00FF41 !important;
-    text-shadow: 0 0 5px #00FF41;
+    color: #00ff41 !important;
+    text-shadow: 0 0 5px #00ff41;
   }
 
   p {
     margin-top: 0;
     line-height: $standard-line-height;
-    
+
     a,
     a:visited {
       text-decoration: underline;
@@ -364,8 +382,6 @@ html {
         color: #000000;
         transition: all 0.3s ease;
       }
-
-
     }
 
     header {
@@ -376,7 +392,7 @@ html {
       justify-content: center;
       align-items: center;
       margin: 4vmin 0;
-      
+
       hgroup {
         font-weight: lighter;
         text-align: center;
@@ -403,7 +419,7 @@ html {
         h1 {
           // Use container-relative sizing instead of viewport units
           $logo-size: clamp(3rem, 8vw, 6rem);
-          
+
           border-radius: $logo-size;
           display: flex;
           align-items: center;
@@ -539,11 +555,11 @@ html {
           -webkit-text-fill-color: initial;
           background-clip: initial;
           text-fill-color: initial;
-          color: #94FEF7;
+          color: #94fef7;
           text-decoration-color: rgba(148, 254, 247, 0.6);
 
           &:hover {
-            color: #94FEF7;
+            color: #94fef7;
             text-decoration-color: rgba(148, 254, 247, 0.6);
           }
         }
@@ -557,11 +573,11 @@ html {
         -webkit-text-fill-color: initial;
         background-clip: initial;
         text-fill-color: initial;
-        color: #94FEF7;
+        color: #94fef7;
         text-decoration-color: rgba(148, 254, 247, 0.6);
 
         &:hover {
-          color: #94FEF7;
+          color: #94fef7;
           text-decoration-color: rgba(148, 254, 247, 0.6);
         }
       }
@@ -571,14 +587,10 @@ html {
 
 /* Apply gradient colors to logo/headers in colorful mode */
 body.colorful-mode header hgroup h1 {
-  @include gradient(
-    $degree: -270deg,
-    $color: rgba(0, 0, 0, 0.2),
-    $opacity: 1
-  );
-  border-color: #94FEF7 !important;
+  @include gradient($degree: -270deg, $color: rgba(0, 0, 0, 0.2), $opacity: 1);
+  border-color: #94fef7 !important;
   box-shadow: 0 0 10px rgba(148, 254, 247, 0.3);
-  
+
   a {
     @include gradient;
     @include gradient-text;

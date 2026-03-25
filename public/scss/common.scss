@@ -1,5 +1,7 @@
-@import "config";
-@import "mixins";
+@use "config" as *;
+@use "mixins" as *;
+@use "theme-toggle";
+@use "logo";
 
 // Legacy font-family mixin for backward compatibility
 @mixin font-family() {
@@ -9,19 +11,28 @@
 }
 
 /* Global box-sizing fix to prevent width calculation issues */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 /* Prevent text overflow by allowing proper word breaking */
-p, li, span, div, td {
+p,
+li,
+span,
+div,
+td {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
 }
 
 /* Specifically target experience content for aggressive word breaking */
-.experience p, .experience li, #experiences li, #experiences p {
+.experience p,
+.experience li,
+#experiences li,
+#experiences p {
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -32,10 +43,6 @@ p, li, span, div, td {
 .no-decoration {
   text-decoration: none;
 }
-
-
-
-
 
 // Legacy variables for backward compatibility - now using centralized config
 $color-text: #000000;
@@ -58,25 +65,34 @@ $dark-accent: #999999;
 
 // Legacy color mixins - now using centralized theme system
 @mixin text-color($light-color: $color-text, $dark-color: $dark-text) {
-  @include theme-color-legacy('text', $light-color, $dark-color);
+  @include theme-color-legacy("text", $light-color, $dark-color);
 }
 
 @mixin text-color-muted($light-color: #555, $dark-color: $dark-text-muted) {
-  @include theme-color-legacy('text-muted', $light-color, $dark-color);
+  @include theme-color-legacy("text-muted", $light-color, $dark-color);
 }
 
-@mixin background-color($light-color: $color-background, $dark-color: $dark-background) {
-  @include theme-color-legacy('background', $light-color, $dark-color);
+@mixin background-color(
+  $light-color: $color-background,
+  $dark-color: $dark-background
+) {
+  @include theme-color-legacy("background", $light-color, $dark-color);
 }
 
-@mixin link-color($light-color: $color-link, $light-hover: $color-link-hover, $light-visited: $color-link-visited, $dark-color: $dark-text, $dark-hover: $dark-text-muted, $dark-visited: $dark-text-muted) {
-  @include link-styles($light-color, $light-hover, $light-visited, $dark-color, $dark-hover, $dark-visited);
+@mixin link-color(
+  $light-color: $color-link,
+  $light-hover: $color-link-hover,
+  $light-visited: $color-link-visited,
+  $dark-color: $dark-text,
+  $dark-hover: $dark-text-muted,
+  $dark-visited: $dark-text-muted
+) {
+  @include link-styles(
+    $light-color,
+    $light-hover,
+    $light-visited,
+    $dark-color,
+    $dark-hover,
+    $dark-visited
+  );
 }
-
-// Import the bulletproof theme toggle system
-@import "theme-toggle.scss";
-
-// Import the bulletproof logo system
-@import "logo.scss";
-
-

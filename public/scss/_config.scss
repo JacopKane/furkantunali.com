@@ -114,32 +114,32 @@ $colors: (
 
 // Theme color tokens - Light theme
 $light-theme: (
-  text-primary: map-get($colors, black),
+  text-primary: map.get($colors, black),
   text-secondary: #555555,
   text-muted: #888888,
-  text-accent: map-get($colors, black),
-  background-primary: map-get($colors, white),
+  text-accent: map.get($colors, black),
+  background-primary: map.get($colors, white),
   background-secondary: #f8f9fa,
-  link-primary: map-get($colors, black),
+  link-primary: map.get($colors, black),
   link-hover: #666666,
   link-visited: #333333,
-  border-primary: map-get($colors, black),
+  border-primary: map.get($colors, black),
   border-secondary: #e5e7eb,
   footer-text: #bbbbbb
 ) !default;
 
 // Theme color tokens - Dark theme
 $dark-theme: (
-  text-primary: map-get($colors, white),
+  text-primary: map.get($colors, white),
   text-secondary: #cccccc,
   text-muted: #777777,
-  text-accent: map-get($colors, white),
-  background-primary: map-get($colors, black),
+  text-accent: map.get($colors, white),
+  background-primary: map.get($colors, black),
   background-secondary: #111111,
-  link-primary: map-get($colors, white),
-  link-hover: color.adjust(map-get($colors, white), $lightness: -30%),
-  link-visited: color.adjust(map-get($colors, white), $lightness: -20%),
-  border-primary: map-get($colors, white),
+  link-primary: map.get($colors, white),
+  link-hover: color.adjust(map.get($colors, white), $lightness: -30%),
+  link-visited: color.adjust(map.get($colors, white), $lightness: -20%),
+  border-primary: map.get($colors, white),
   border-secondary: #333333,
   footer-text: #444444
 ) !default;
@@ -164,11 +164,11 @@ $easings: (
 
 // Standard transition combinations
 $standard-transitions: (
-  colors: all map-get($transitions, normal) map-get($easings, ease-in-out),
-  transform: transform map-get($transitions, normal) map-get($easings, ease-in-out),
-  opacity: opacity map-get($transitions, fast) map-get($easings, ease-out),
-  background: background-color map-get($transitions, normal) map-get($easings, ease-in-out),
-  border: border-color map-get($transitions, normal) map-get($easings, ease-in-out)
+  colors: all map.get($transitions, normal) map.get($easings, ease-in-out),
+  transform: transform map.get($transitions, normal) map.get($easings, ease-in-out),
+  opacity: opacity map.get($transitions, fast) map.get($easings, ease-out),
+  background: background-color map.get($transitions, normal) map.get($easings, ease-in-out),
+  border: border-color map.get($transitions, normal) map.get($easings, ease-in-out)
 ) !default;
 
 // =============================================================================
@@ -222,9 +222,9 @@ $z-index: (
 // Logo configuration
 $logo-config: (
   font-family: $font-family-primary,
-  font-weight: map-get($font-weights, normal),
-  border-radius: map-get($border-radius, full),
-  transition: map-get($standard-transitions, colors),
+  font-weight: map.get($font-weights, normal),
+  border-radius: map.get($border-radius, full),
+  transition: map.get($standard-transitions, colors),
   sizes: (
     sm: clamp(2rem, 5vw, 3rem),
     base: clamp(3rem, 8vw, 5rem),
@@ -235,19 +235,19 @@ $logo-config: (
 // Button configuration
 $button-config: (
   font-family: $font-family-primary,
-  font-weight: map-get($font-weights, medium),
-  border-radius: map-get($border-radius, base),
-  border-width: map-get($border-widths, 2),
-  transition: map-get($standard-transitions, colors),
+  font-weight: map.get($font-weights, medium),
+  border-radius: map.get($border-radius, base),
+  border-width: map.get($border-widths, 2),
+  transition: map.get($standard-transitions, colors),
   padding: (
     sm: 0.5rem 1rem,
     base: 0.75rem 1.5rem,
     lg: 1rem 2rem
   ),
   font-sizes: (
-    sm: map-get($font-sizes, sm),
-    base: map-get($font-sizes, base),
-    lg: map-get($font-sizes, lg)
+    sm: map.get($font-sizes, sm),
+    base: map.get($font-sizes, base),
+    lg: map.get($font-sizes, lg)
   )
 ) !default;
 
@@ -263,30 +263,30 @@ $theme-toggle-config: (
     base: clamp(0.8rem, 2.5vw, 1rem),
     lg: clamp(1rem, 3vw, 1.2rem)
   ),
-  border-width: map-get($border-widths, 2),
-  transition: map-get($standard-transitions, colors),
-  z-index: map-get($z-index, sticky)
+  border-width: map.get($border-widths, 2),
+  transition: map.get($standard-transitions, colors),
+  z-index: map.get($z-index, sticky)
 ) !default;
 
 // Navigation configuration
 $nav-config: (
   sticky-background-blur: blur(10px),
-  padding: map-get($spacing-scale, lg) 0,
-  z-index: map-get($z-index, sticky),
-  transition: map-get($standard-transitions, background)
+  padding: map.get($spacing-scale, lg) 0,
+  z-index: map.get($z-index, sticky),
+  transition: map.get($standard-transitions, background)
 ) !default;
 
 // Content layout configuration
 $content-config: (
   max-width: 1200px,
   padding: (
-    mobile: map-get($spacing-scale, md),
-    tablet: map-get($spacing-scale, lg),
-    desktop: map-get($spacing-scale, xl)
+    mobile: map.get($spacing-scale, md),
+    tablet: map.get($spacing-scale, lg),
+    desktop: map.get($spacing-scale, xl)
   ),
   margin: (
-    section: map-get($spacing-scale, xl),
-    paragraph: map-get($spacing-scale, md)
+    section: map.get($spacing-scale, xl),
+    paragraph: map.get($spacing-scale, md)
   )
 ) !default;
 
@@ -297,7 +297,7 @@ $print-config: (
   font-sizes: $print-font-sizes,
   line-height: 1.3,
   colors: (
-    text: map-get($colors, black),
-    background: map-get($colors, white)
+    text: map.get($colors, black),
+    background: map.get($colors, white)
   )
 ) !default;
