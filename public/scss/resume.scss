@@ -346,6 +346,44 @@ body {
     }
   }
 
+  // Styling for the projects section
+  #projects {
+    > ul.projects {
+      padding: 0;
+      margin: 0;
+      list-style-type: none; // Project title is its own heading, no parent bullet needed
+    }
+
+    li.project {
+      display: block;
+
+      > p {
+        margin-top: 0.3em; // Breathing room between intro para, bullets, stack
+      }
+
+      // Bullet list inside project
+      > ul {
+        padding: 0;
+        padding-left: 1.25em;
+        margin: 0.3em 0;
+        list-style-type: circle;
+        list-style-position: outside;
+
+        li {
+          display: list-item;
+          margin: 0;
+          padding: 0;
+          line-height: 1.35;
+
+          p {
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
   // Styling for the experiences section
   #experiences {
     // General styles for all experience lists
@@ -464,6 +502,36 @@ body {
   body > *:first-child > *:first-child {
     margin-top: 0 !important;
     padding-top: 0 !important;
+  }
+
+  // Print-specific styles for projects
+  #projects > ul.projects {
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    li.project {
+      > p {
+        margin-top: 0.15em !important;
+      }
+
+      > ul {
+        padding-left: 1.25em !important;
+        list-style-type: circle !important;
+        margin: 0.15em 0 !important;
+
+        li {
+          display: list-item !important;
+          margin: 0 !important;
+          padding-left: 0.15em !important;
+
+          p {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+        }
+      }
+    }
   }
 
   // Print-specific styles for experiences

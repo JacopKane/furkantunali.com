@@ -243,13 +243,13 @@
           <li>
             <strong>Data & Storage</strong>
 
-            PostgreSQL, MongoDB, Firestore, Supabase
+            PostgreSQL, Redis, BullMQ, MongoDB, Firestore, Supabase
           </li>
           <li>
             <strong>AI & LLM Tooling</strong>
 
-            PydanticAI, AutoGen, Jupyter Notebooks, OpenAI API, Gemini, Tavily
-            API
+            LangGraph, LangChain, LangSmith, Ollama, Model Context Protocol
+            (MCP), OpenAI API, Gemini API, PydanticAI, AutoGen, Tavily API
           </li>
           <li>
             <strong>Cloud & Infrastructure</strong>
@@ -258,7 +258,9 @@
             Map, EC2, Route53, IAM, EventBridge), Azure (Azure Active
             Directory, Azure Functions, Cosmos DB), GCP (Vertex AI, Cloud
             Vision API, Cloud Run, Cloud Storage), Firebase (Functions,
-            Firestore), Vercel, Kubernetes, Docker, Terraform, Nginx
+            Firestore), Vercel, Kubernetes, MicroK8s, Docker, Terraform, Nginx,
+            Cloudflare (Tunnels, Workers, Access), ZeroTier, Grafana, Loki,
+            Tempo, Prometheus
           </li>
           <li>
             <strong>Delivery & Tooling</strong>
@@ -284,25 +286,80 @@
                   >Newsify Today</a
                 ></strong
               >
-              — Production GenAI news platform and MCP app
+              — AI news platform &amp; ChatGPT MCP app · Solo founder
+              <span class="dates">09/2024 - Present</span>
             </h3>
             <p>
-              Designed and shipped a <em>production GenAI news platform</em>
-              that tracks live trends across <em>27 region/language feeds</em>,
-              curates related coverage, and delivers AI-generated summaries
-              through both the web product and an <em>MCP integration</em>.
+              Built and operate a full-stack AI news platform that tracks
+              Google Trends across <em>16 regions</em> and
+              <em>12 languages</em>, runs an agentic AI pipeline to curate,
+              score, and summarize news in real time — served via web app and
+              as one of the first
+              <em>ChatGPT MCP apps</em> (pending App Store review).
             </p>
+            <ul>
+              <li>
+                <p>
+                  Built a LangGraph-based agent with 9 tools (scrape,
+                  summarize, validate, score, deduplicate) that processes
+                  trends end‑to‑end with deterministic tool routing — no
+                  prompt-level orchestration, each step has explicit contracts.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Run self-hosted Ollama (<em>qwen3.5:4b</em>) across 3 nodes
+                  with health-aware least-connections routing, tier-based
+                  fallback to Google Gemini, and in-flight slot tracking —
+                  keeping inference cost near zero.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Implemented a Model Context Protocol server with
+                  <em>get_trend_news</em> tool, embedded React widget (OpenAI
+                  Apps SDK), and streamable HTTP transport — submitted as one
+                  of the first ChatGPT MCP apps for App Store review.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Run the entire stack on a 2-node MicroK8s cluster at home —
+                  API, web, scraper, database, Redis queues, Cloudflare Tunnel
+                  ingress — with automated CI/CD via GitHub Actions and rolling
+                  deploys.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Server-Sent Events pipeline streams AI-generated articles to
+                  a Next.js 15 frontend in real time, with bridge-seeded first
+                  paint and fingerprint-based cache invalidation for instant
+                  updates without full re-generation.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Full observability with LangSmith, Grafana, Loki, Tempo, and Prometheus
+                  — logs, traces, and metrics from both server and browser,
+                  plus LangSmith tracing for every AI agent run.
+                </p>
+              </li>
+            </ul>
             <p>
-              ChatGPT App Demo: <a href="https://www.youtube.com/watch?v=N5p5B6t1Ol0" target="_blank">https://www.youtube.com/watch?v=N5p5B6t1Ol0</a>
+              <a
+                href="https://www.youtube.com/watch?v=N5p5B6t1Ol0"
+                target="_blank"
+                >ChatGPT App demo video</a
+              >
             </p>
             <p>
               <small
-                ><strong>Technical Focus:</strong> <strong>NestJS</strong>,
-                <strong>Next.js</strong>, <strong>PostgreSQL</strong>,
-                <strong>LangGraph</strong>, <strong>LangSmith</strong>,
-                <strong>Ollama</strong>, <strong>Kubernetes</strong>, shared UI
-                components, and a production <em>get_trend_news</em> MCP
-                tool.</small
+                ><strong>Stack:</strong> TypeScript, Python, NestJS, Next.js
+                15, React, LangGraph, LangChain, Ollama, Gemini API,
+                PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare
+                Tunnels, Grafana/Loki/Tempo, MCP SDK, Vite,
+                Turborepo</small
               >
             </p>
           </li>
