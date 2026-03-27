@@ -21,7 +21,7 @@
   "skills": [
     {
       "category": "AI & LLM Tooling",
-      "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, OpenAI API, Gemini API, PydanticAI, AutoGen, Tavily API"
+      "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, PydanticAI, AutoGen, Claude API, OpenAI, Gemini and Tavily APIs"
     },
     {
       "category": "Cloud & Infrastructure",
