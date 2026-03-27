@@ -29,6 +29,9 @@ $type-size-entry-meta: 0.82rem;
 $type-size-entry-detail: 0.9rem;
 $space-section: 0.75rem;
 $space-section-print: 0.18em;
+$bullet-level-1: disc;
+$bullet-level-2: circle;
+$bullet-level-3: square;
 
 // Theme mixins
 @mixin light-theme {
@@ -296,23 +299,6 @@ body {
     }
   }
 
-  .resume-secondary-columns {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $space-section;
-    align-items: start;
-
-    @media (min-width: 820px), print {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      column-gap: 1.5rem;
-    }
-
-    > section {
-      min-width: 0;
-      margin-bottom: 0;
-    }
-  }
-
   section {
     margin: 0 0 $space-section 0;
 
@@ -462,7 +448,7 @@ body {
       padding: 0; // Reset padding
       padding-left: 1.5em; // Only left padding for bullets
       margin: 0; // Reset all margins
-      list-style-type: circle; // Nested bullets: hollow circles ○
+      list-style-type: $bullet-level-1;
       list-style-position: outside;
 
       li {
@@ -475,6 +461,14 @@ body {
           margin: 0; // Remove paragraph margins
           padding: 0; // Remove paragraph paddings
         }
+      }
+
+      ul {
+        list-style-type: $bullet-level-2;
+      }
+
+      ul ul {
+        list-style-type: $bullet-level-3;
       }
     }
   }
@@ -499,7 +493,7 @@ body {
         padding: 0;
         padding-left: 1.25em;
         margin: 0.3em 0;
-        list-style-type: circle;
+        list-style-type: $bullet-level-1;
         list-style-position: outside;
 
         li {
@@ -511,6 +505,14 @@ body {
           p {
             margin: 0;
             padding: 0;
+          }
+
+          ul {
+            list-style-type: $bullet-level-2;
+          }
+
+          ul ul {
+            list-style-type: $bullet-level-3;
           }
         }
       }
@@ -569,13 +571,21 @@ body {
         padding: 0; // Reset padding
         padding-left: 1.25em; // Only left padding for child bullets
         margin: 0; // No margins
-        list-style-type: disc; // Different bullet style for details
+        list-style-type: $bullet-level-1;
 
         li {
           display: list-item;
           margin: 0.2em 0; // Minimal vertical margin
           padding: 0; // No padding
           font-size: $type-size-entry-detail;
+        }
+
+        > li > ul {
+          list-style-type: $bullet-level-2;
+        }
+
+        > li > ul > li > ul {
+          list-style-type: $bullet-level-3;
         }
       }
     }
@@ -926,7 +936,7 @@ body {
 
       > ul {
         padding-left: 0.9em !important;
-        list-style-type: disc !important;
+        list-style-type: $bullet-level-1 !important;
         margin: 0.1rem 0 0 0 !important;
 
         li {
@@ -940,6 +950,11 @@ body {
 
       > ul > li > ul {
         display: block !important;
+        list-style-type: $bullet-level-2 !important;
+      }
+
+      > ul > li > ul > li > ul {
+        list-style-type: $bullet-level-3 !important;
       }
     }
   }
@@ -1082,11 +1097,19 @@ body {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
       padding-left: 1.5em !important;
-      list-style-type: disc !important;
+      list-style-type: $bullet-level-1 !important;
 
       li {
         break-inside: auto !important;
         display: list-item !important;
+      }
+
+      ul {
+        list-style-type: $bullet-level-2 !important;
+      }
+
+      ul ul {
+        list-style-type: $bullet-level-3 !important;
       }
     }
 
