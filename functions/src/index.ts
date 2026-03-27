@@ -23,18 +23,20 @@ import { launch } from "puppeteer";
 /**
  * Constructs a URL for the hosting environment
  * @param {string} path - The path to append to the base URL
+ * @param {boolean} isEmulator - Whether running in emulator environment
  * @return {string} The complete URL
  */
-function getUrl(path = "") {
-  // More comprehensive check for Firebase emulator environment
-  const isEmulator =
+function isEmulatorEnvironment() {
+  return (
     process.env.FUNCTIONS_EMULATOR === "true" ||
     process.env.FIREBASE_CONFIG?.includes("localhost") ||
     !process.env.GCLOUD_PROJECT ||
     process.env.NODE_ENV === "development" ||
-    // Check for Firebase emulator hub
-    process.env.FIREBASE_EMULATOR_HUB !== undefined;
+    process.env.FIREBASE_EMULATOR_HUB !== undefined
+  );
+}
 
+function getUrl(path = "", isEmulator = false) {
   // Debug logging
   logger.info("Environment detection", {
     FUNCTIONS_EMULATOR: process.env.FUNCTIONS_EMULATOR,
@@ -129,8 +131,8 @@ export const downloadAsPDF = onRequest(
         isMobile: false,
       });
 
-      const url = getUrl("/resume-doc.html");
-      const fallbackUrl = "https://furkantunali.com/resume-doc.html";
+      const isEmulator = isEmulatorEnvironment();
+      const url = getUrl("/resume-doc.html", isEmulator);
 
       logger.info("About to navigate to URL", {
         targetUrl: url,
@@ -138,30 +140,18 @@ export const downloadAsPDF = onRequest(
         structuredData: true,
       });
 
-      let navigationResponse;
+      const navigationResponse = await page.goto(url, {
+        waitUntil: "networkidle2",
+        timeout: 30000,
+      });
 
-      try {
-        navigationResponse = await page.goto(url, {
-          waitUntil: "networkidle2",
-          timeout: 30000,
-        });
-      } catch (error: unknown) {
-        logger.warn("Primary navigation failed, retrying with fallback URL", {
-          targetUrl: url,
-          fallbackUrl,
-          error: `${error}`,
-          structuredData: true,
-        });
+      // Force print media so PDF render matches browser print preview.
+      await page.emulateMediaType("print");
 
-        if (url === fallbackUrl) {
-          throw error;
-        }
-
-        navigationResponse = await page.goto(fallbackUrl, {
-          waitUntil: "networkidle2",
-          timeout: 30000,
-        });
-      }
+      // Wait for web fonts to finish loading to avoid layout shifts in PDF.
+      await page.evaluate(async () => {
+        await (document as Document & { fonts?: FontFaceSet }).fonts?.ready;
+      });
 
       logger.info("Page navigation completed", {
         finalUrl: page.url(),

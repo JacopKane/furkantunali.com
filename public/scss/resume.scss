@@ -21,6 +21,15 @@ $color-background-dark: #000000;
 $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
+// Compact, consistent type scale so section content does not overpower experience entries
+$type-size-section-title: 0.96rem;
+$type-size-section-body: 0.92rem;
+$type-size-entry-title: 0.95rem;
+$type-size-entry-meta: 0.82rem;
+$type-size-entry-detail: 0.9rem;
+$space-section: 0.75rem;
+$space-section-print: 0.18em;
+
 // Theme mixins
 @mixin light-theme {
   color: $color-text;
@@ -214,16 +223,21 @@ body {
 
   h1 {
     font-weight: 100;
+    font-size: 1.7rem;
     line-height: $standard-line-height;
   }
 
   h2 {
     font-weight: 300;
+    font-size: $type-size-section-title;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     line-height: $standard-line-height;
   }
 
   h3 {
     font-weight: 500;
+    font-size: 1rem;
     line-height: $standard-line-height;
     em {
       font-weight: 300;
@@ -240,6 +254,7 @@ body {
 
   h4 {
     font-weight: 600;
+    font-size: 0.94rem;
     line-height: $standard-line-height;
   }
 
@@ -250,7 +265,47 @@ body {
 
   h6 {
     font-weight: 800;
+    font-size: 0.86rem;
     line-height: $standard-line-height;
+  }
+
+  #info,
+  #contact,
+  #summary,
+  #skills,
+  #education,
+  #interests,
+  #projects {
+    p,
+    li {
+      font-size: $type-size-section-body;
+      line-height: 1.35;
+    }
+  }
+
+  #info,
+  #contact {
+    li strong {
+      font-weight: 600;
+    }
+  }
+
+  #education {
+    li.education h3 {
+      font-size: $type-size-entry-title;
+    }
+  }
+
+  section {
+    margin: 0 0 $space-section 0;
+
+    > h2 {
+      margin: 0 0 0.35rem 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   ul,
@@ -301,14 +356,33 @@ body {
     transition: color 0.3s ease-in-out;
   }
   ul.info,
-  ul.educations,
-  ul.skills {
+  ul.educations {
     li {
       display: inline;
       margin: 0;
       line-height: $standard-line-height;
       &:not(:first-child)::before {
         content: "\00a0\2022\00a0\00a0";
+      }
+    }
+  }
+
+  ul.skills {
+    margin: 0.1rem 0 0;
+    padding: 0;
+
+    li {
+      display: inline;
+      margin: 0;
+      line-height: 1.3;
+
+      &:not(:first-child)::before {
+        content: "\00a0\2022\00a0\00a0";
+      }
+
+      strong {
+        display: inline;
+        margin-right: 0.25em;
       }
     }
   }
@@ -468,7 +542,7 @@ body {
 
       h3 {
         margin: 0 0 0.5rem 0;
-        font-size: 0.95em;
+        font-size: $type-size-entry-title;
       }
 
       // Child bullets (experience details) - different style
@@ -482,7 +556,7 @@ body {
           display: list-item;
           margin: 0.2em 0; // Minimal vertical margin
           padding: 0; // No padding
-          font-size: 0.9em;
+          font-size: $type-size-entry-detail;
         }
       }
     }
@@ -569,7 +643,7 @@ body {
   }
 
   .experience-older__dates {
-    font-size: 0.82em;
+    font-size: $type-size-entry-meta;
     color: rgba($color-text, 0.65);
     margin: 0;
     padding: 0;
@@ -615,11 +689,11 @@ body {
 
   // Global section margin reduction
   section {
-    margin: 0.2em 0 !important;
+    margin: $space-section-print 0 !important;
     padding: 0 !important;
 
     h2 {
-      margin: 0.12em 0 0.12em 0 !important;
+      margin: 0.1em 0 0.12em 0 !important;
       padding: 0 !important;
       font-size: 11px !important;
     }
@@ -1035,8 +1109,8 @@ body {
     display: block;
     width: 100%;
     margin-top: 0.8em;
-    font-size: 12px !important; // Increased from 11px
-    line-height: 1.25 !important; // Increased from 1.15
+    font-size: 9px !important;
+    line-height: 1.15 !important;
   }
 
   /* Ensure the education section displays properly */
@@ -1077,13 +1151,29 @@ body {
 
   /* Reduce spacing in skills section */
   .skills li {
-    margin-bottom: 0.15em !important; // Increased from 0.1em
-    line-height: 1.25 !important; // Increased from 1.15
-    font-size: 12px !important; // Increased from 11px
+    display: inline !important;
+    margin: 0 !important;
+    line-height: 1.15 !important;
+    font-size: 9px !important;
+    padding: 0 !important;
+
+    &:not(:first-child)::before {
+      content: " \00b7 " !important;
+      margin: 0 0.1em !important;
+    }
 
     strong {
-      font-size: 13px !important; // Increased from 12px
+      display: inline !important;
+      margin-right: 0.25em !important;
+      font-size: 9.5px !important;
     }
+  }
+
+  #skills ul.skills {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    line-height: 1.15 !important;
   }
 
   /* Add page breaks where needed */
