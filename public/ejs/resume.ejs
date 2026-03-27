@@ -222,6 +222,15 @@
               <%= project.subtitle %>
               <% } %>
             </h3>
+            <% toArray(project.links).forEach(function(link) { %>
+            <% if (link && link.href) { %>
+            <p class="demo-cta">
+              <a href="<%= link.href %>" target="_blank"
+                ><%= link.text || link.href %></a
+              >
+            </p>
+            <% } %>
+            <% }); %>
             <% if (project.intro) { %>
             <p><%- project.intro %></p>
             <% } %>
@@ -234,15 +243,6 @@
               <% }); %>
             </ul>
             <% } %>
-            <% toArray(project.links).forEach(function(link) { %>
-            <% if (link && link.href) { %>
-            <p>
-              <a href="<%= link.href %>" target="_blank"
-                ><%= link.text || link.href %></a
-              >
-            </p>
-            <% } %>
-            <% }); %>
             <% if (project.stack) { %>
             <p>
               <small
@@ -259,59 +259,112 @@
       <section id="experiences">
         <h2>Experiences</h2>
 
-        <ul class="experiences">
-          <% toArray(data.experiences).forEach(function(exp) { %>
-          <li class="experience">
-            <h3>
-              <em><%= exp.role || '' %></em>
-              at
-              <% if (exp.url) { %>
-              <a target="_blank" href="<%= exp.url %>"
-                ><%- exp.company || '' %></a
-              >
-              <% } else { %>
-              <span><%- exp.company || '' %></span>
+        <% var expList = toArray(data.recentExperiences); %>
+        <% var splitIdx = data.experiencesColumnSplit != null ? data.experiencesColumnSplit : Math.ceil(expList.length / 2); %>
+        <% function renderExpItems(items) { %>
+        <% items.forEach(function(exp) { %>
+        <li class="experience">
+          <h3>
+            <em><%= exp.role || '' %></em>
+            at
+            <% if (exp.url) { %>
+            <a target="_blank" href="<%= exp.url %>"
+              ><%- exp.company || '' %></a
+            >
+            <% } else { %>
+            <span><%- exp.company || '' %></span>
+            <% } %>
+            <% if (exp.dates) { %>
+            <span class="dates"><%= exp.dates %></span>
+            <% } %>
+          </h3>
+          <% if (toArray(exp.subroles).length) { %>
+          <ul>
+            <% toArray(exp.subroles).forEach(function(subrole) { %>
+            <li>
+              <p>
+                <strong><%= subrole.title || '' %></strong>
+                <% if (subrole.dates) { %>
+                <span class="dates"><%= subrole.dates %></span>
+                <% } %>
+              </p>
+              <% if (toArray(subrole.bullets).length) { %>
+              <ul>
+                <% toArray(subrole.bullets).forEach(function(bullet) { %>
+                <li>
+                  <p><%- bullet %></p>
+                </li>
+                <% }); %>
+              </ul>
               <% } %>
-              <% if (exp.dates) { %>
-              <span class="dates"><%= exp.dates %></span>
-              <% } %>
-            </h3>
-            <% if (toArray(exp.subroles).length) { %>
-            <ul>
-              <% toArray(exp.subroles).forEach(function(subrole) { %>
-              <li>
-                <p>
-                  <strong><%= subrole.title || '' %></strong>
-                  <% if (subrole.dates) { %>
-                  <span class="dates"><%= subrole.dates %></span>
+            </li>
+            <% }); %>
+          </ul>
+          <% } else if (toArray(exp.bullets).length) { %>
+          <ul>
+            <% toArray(exp.bullets).forEach(function(bullet) { %>
+            <li>
+              <p><%- bullet %></p>
+            </li>
+            <% }); %>
+          </ul>
+          <% } else if (exp.description) { %>
+          <p><%- exp.description %></p>
+          <% } %>
+        </li>
+        <% }); %>
+        <% } %>
+
+        <div class="experiences-columns">
+          <ul class="experiences experiences--left">
+            <%- renderExpItems(expList.slice(0, splitIdx)) %>
+          </ul>
+          <ul class="experiences experiences--right">
+            <%- renderExpItems(expList.slice(splitIdx)) %>
+          </ul>
+        </div>
+      </section>
+
+      <section id="experiences-older">
+        <h2>Earlier Experiences</h2>
+
+        <div class="experiences-older">
+          <% toArray(data.olderExperiences).forEach(function(yearGroup) { %>
+          <div class="experience-older__group">
+            <h3 class="experience-older__year"><%= yearGroup.year %></h3>
+            <div class="experience-older__list">
+              <% toArray(yearGroup.experiences).forEach(function(exp) { %>
+              <div class="experience-older__entry">
+                <div class="experience-older__header">
+                  <p class="experience-older__role"><%= exp.role || '' %></p>
+                  <% if (exp.url) { %>
+                  <p class="experience-older__company">
+                    <a target="_blank" href="<%= exp.url %>"
+                      ><%- exp.company || '' %></a
+                    >
+                  </p>
+                  <% } else { %>
+                  <p class="experience-older__company">
+                    <%- exp.company || '' %>
+                  </p>
                   <% } %>
-                </p>
-                <% if (toArray(subrole.bullets).length) { %>
-                <ul>
-                  <% toArray(subrole.bullets).forEach(function(bullet) { %>
-                  <li>
-                    <p><%- bullet %></p>
-                  </li>
+                  <% if (exp.dates) { %>
+                  <p class="experience-older__dates"><%= exp.dates %></p>
+                  <% } %>
+                </div>
+                <% if (toArray(exp.bullets).length) { %>
+                <ul class="experience-older__bullets">
+                  <% toArray(exp.bullets).forEach(function(bullet) { %>
+                  <li><%- bullet %></li>
                   <% }); %>
                 </ul>
                 <% } %>
-              </li>
+              </div>
               <% }); %>
-            </ul>
-            <% } else if (toArray(exp.bullets).length) { %>
-            <ul>
-              <% toArray(exp.bullets).forEach(function(bullet) { %>
-              <li>
-                <p><%- bullet %></p>
-              </li>
-              <% }); %>
-            </ul>
-            <% } else if (exp.description) { %>
-            <p><%- exp.description %></p>
-            <% } %>
-          </li>
+            </div>
+          </div>
           <% }); %>
-        </ul>
+        </div>
       </section>
 
       <section id="education">
@@ -342,10 +395,7 @@
         <h2>Interests</h2>
         <%- data.interests || '' %>
       </section>
-
-      <% if (!data.resume) { %>
     </div>
-    <% } %>
 
     <!-- Environment detection for PDF download URL -->
     <script>

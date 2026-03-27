@@ -48,15 +48,15 @@
     {
       "name": "Newsify Today",
       "url": "https://newsify.today",
-      "subtitle": "AI news platform & ChatGPT App (MCP App)",
-      "intro": "Built and operate a full-stack AI news platform that tracks Google Trends across <em>16 regions</em> and <em>12 languages</em>, runs an agentic AI pipeline to curate, score, and summarize news in real time — served via web app and as one of the first <em>ChatGPT MCP apps</em> (pending App Store review).",
+      "subtitle": "AI news platform & ChatGPT App (MCP UI App)",
+      "intro": "Built and operate a full-stack AI news platform that tracks Google Trends across <em>16 regions</em> and <em>12 languages</em>, runs an agentic AI pipeline to curate, score, and summarize news in <em>real time</em> — served via web app and as an early <strong>ChatGPT App</strong>",
       "bullets": [
-        "Built a LangGraph-based agent with 9 tools (scrape, summarize, validate, score, deduplicate) that processes trends end\u2011to\u2011end with deterministic tool routing — no prompt-level orchestration, each step has explicit contracts.",
-        "Run self-hosted Ollama (<em>qwen3.5:4b</em>) across 3 nodes with health-aware least-connections routing, tier-based fallback to Google Gemini, and in-flight slot tracking — keeping inference cost near zero.",
-        "Implemented a Model Context Protocol server with <em>get_trend_news</em> tool, embedded React widget (OpenAI Apps SDK), and streamable HTTP transport — submitted as one of early MCP Apps for to be included in ChatGPT App directory.",
-        "Run the entire stack on a 2-node MicroK8s cluster at home — API, web, scraper, database, Redis queues, Cloudflare Tunnel ingress — with automated CI/CD via GitHub Actions and rolling deploys.",
-        "Server-Sent Events pipeline streams AI-generated articles to a Next.js 15 frontend in real time, with bridge-seeded first paint and fingerprint-based cache invalidation for instant updates without full re-generation.",
-        "Full observability with LangSmith, Grafana, Loki, Tempo, and Prometheus — logs, traces, and metrics from both server and browser, plus LangSmith tracing for every AI agent run."
+        "Built a <strong>LangGraph</strong>-based agent with <em>9 tools</em> (<strong>scrape</strong>, <strong>summarize</strong>, <strong>validate</strong>, <strong>score</strong>, <strong>deduplicate</strong>) that processes trends end\u2011to\u2011end with <em>deterministic tool routing</em> — no prompt-level orchestration, each step has explicit contracts.",
+        "Run self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across <em>3 nodes</em> with <em>health-aware least-connections routing</em>, tier-based fallback to <strong>Google Gemini</strong>, and in-flight slot tracking — <em>keeping inference cost near zero</em>.",
+        "Implemented a <strong>Model Context Protocol</strong> server with a tool fetching trend news, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — submitted as one of the early <strong>MCP Apps</strong> to be included in the <strong>ChatGPT Apps</strong>.",
+        "Run the entire stack on a <em>3-node</em> <strong>Kubernetes</strong> cluster at home — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with automated CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
+        "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to a <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em> for instant updates without full re-generation.",
+        "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong>, <strong>Tempo</strong>, and <strong>Prometheus</strong> — logs, traces, and metrics from both server and browser, plus <em>tracing for every AI agent run</em>."
       ],
       "links": [
         {
@@ -64,10 +64,11 @@
           "text": "ChatGPT App demo video"
         }
       ],
-      "stack": "TypeScript, Python, NestJS, Next.js 15, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare Tunnels, Grafana/Loki/Tempo, MCP SDK, Vite, Turborepo"
+      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare Tunnels, Grafana/Loki/Tempo, MCP SDK, Vite, Turborepo"
     }
   ],
-  "experiences": [
+  "experiencesColumnSplit": 2,
+  "recentExperiences": [
     {
       "role": "Senior Engineer (AI, Infrastructure, Developer Experience)",
       "company": "heyData GmbH, Berlin",
@@ -173,73 +174,114 @@
         "Designed architecture for a recruiting startup, focusing on performance optimization and modern frameworks",
         "<small><strong>Technical Skills:</strong> JavaScript, React, Redux, Angular, Backbone, LoopBack, Webpack, Gulp, AMD, HTML, CSS/SCSS, jQuery, MySQL</small>"
       ]
-    },
+    }
+  ],
+  "olderExperiences": [
     {
-      "role": "Founder",
-      "company": "NOD studios, Istanbul",
-      "url": "http://nod.st",
-      "dates": "11/2012 - 07/2015",
-      "bullets": [
-        "Led design and development for diverse clients including <a target=\"_blank\" href=\"https://beinsports.com.tr\">BeinSports</a>, <a target=\"_blank\" href=\"http://lesbenjamins.com\">Les Benjamins</a>, <a target=\"_blank\" href=\"http://www.ulker.com.tr/\">Ülker</a>, and <a target=\"_blank\" href=\"https://www.gripati.com\">Gripati</a>",
-        "Delivered comprehensive web solutions: e-commerce platforms, content management systems, mobile-optimized websites, and APIs",
-        "Created UX/UI design, wireframes, and mockups for web and mobile applications",
-        "Contributed to open source projects on <a target=\"_blank\" href=\"http://github.com/NOD-studios\">GitHub</a>",
-        "<small><strong>Technical Skills:</strong> JavaScript, PHP, HTML/CSS, LESS, CanJS, Mustache, WordPress, CakePHP, CodeIgniter, AMD</small>"
+      "year": "2012–2015",
+      "experiences": [
+        {
+          "role": "Founder",
+          "company": "NOD studios, Istanbul",
+          "url": "http://nod.st",
+          "dates": "11/2012 - 07/2015",
+          "bullets": [
+            "Founded and led design & dev studio for clients (BeinSports, Les Benjamins, Ülker, Gripati)",
+            "Delivered e-commerce platforms, CMS solutions, mobile-optimized websites, and full-stack APIs"
+          ]
+        }
       ]
     },
     {
-      "role": "Full-stack web developer",
-      "company": "FOX International Channels, Istanbul",
-      "url": "http://ficturkey.com/",
-      "dates": "01/2012 - 12/2012",
-      "description": "Development of some social app and microsite web development for some clients including: <a href=\"http://www.samsung.com/tr/\" target=\"_blank\">Samsung Turkey</a>, <a href=\"http://www.nationalgeographic.com.tr/\" target=\"_blank\">National Geographic Turkey</a>, <a href=\"http://www.nationalgeographic.com.tr/\" target=\"_blank\">Nokia Turkey</a>, <a href=\"http://www.hbo.com/true-blood\" target=\"_blank\">True Blood TV show</a>, <a href=\"http://www.fox.com/glee\" target=\"_blank\">Glee TV Show</a>, <a href=\"http://www.imdb.com/title/tt1641349/\" target=\"_blank\">TerraNova TV show</a>"
+      "year": "2011–2012",
+      "experiences": [
+        {
+          "role": "Full-stack web developer",
+          "company": "FOX International Channels, Istanbul",
+          "url": "http://ficturkey.com/",
+          "dates": "01/2012 - 12/2012",
+          "bullets": [
+            "Developed social apps and microsites for high-profile clients (Samsung Turkey, National Geographic, HBO, Fox)",
+            "Multi-platform web development and content integration"
+          ]
+        },
+        {
+          "role": "Front-end developer & designer",
+          "company": "projectz, Istanbul",
+          "url": "http://projectz.com/",
+          "dates": "06/2011 - 12/2011",
+          "bullets": [
+            "Front-end development and UX design for social network startup",
+            "Refactoring and modern web standards implementation"
+          ]
+        }
+      ]
     },
     {
-      "role": "Front-end developer and designer",
-      "company": "projectz, Istanbul",
-      "url": "http://projectz.com/",
-      "dates": "06/2011 - 12/2011",
-      "description": "Front-end coding, refactoring and web design for startup project <a href=\"http://yardimlazim.com\" target=\"_blank\">yardimlazim.com</a>"
+      "year": "2008–2011",
+      "experiences": [
+        {
+          "role": "Full-stack developer",
+          "company": "Manajans / JWT, Istanbul",
+          "url": "http://manajans-jwt.com/",
+          "dates": "05/2009 - 06/2011",
+          "bullets": [
+            "Web development and CMS creation for major Turkish brands (Turkcell, Miller, Eston Yapı)",
+            "Online communities, social apps, and microsite development"
+          ]
+        },
+        {
+          "role": "Full-stack developer",
+          "company": "Ping Digital Agency Istanbul",
+          "url": "http://ping.com.tr",
+          "dates": "05/2008 - 03/2009",
+          "bullets": [
+            "Frontend development for enterprise clients (Garanti BBVA, Türk Telekom)",
+            "Design and interactive web solutions"
+          ]
+        },
+        {
+          "role": "Front-end developer",
+          "company": "Tribal DDB Worldwide Istanbul",
+          "url": "http://projectz.com/",
+          "dates": "03/2009 - 05/2009",
+          "bullets": [
+            "Frontend development for Türk Telekom projects",
+            "Interactive web design and implementation"
+          ]
+        },
+        {
+          "role": "Designer & Front-end developer",
+          "company": "Koçak Dizayn, Istanbul",
+          "dates": "05/2008 - 03/2009",
+          "bullets": [
+            "Design and front-end development for online art community startup",
+            "Concept art creation and digital illustration"
+          ]
+        }
+      ]
     },
     {
-      "role": "Full-stack developer",
-      "company": "Manajans / JWT, Istanbul",
-      "url": "http://manajans-jwt.com/",
-      "dates": "05/2009 - 06/2011",
-      "description": "Development of websites, CMS development, online communities, social apps and microsites for some clients including: <a href=\"http://www.anadoluefes.com/\" target=\"_blank\">Miller</a>, <a href=\"http://gnctrkcll.turkcell.com.tr/\" target=\"_blank\">GncTurkcell / Turkcell</a>, <a href=\"http://estonyapi.com/\" target=\"_blank\">Eston Yapı</a>, <a href=\"http://www.first.com.tr\" target=\"_blank\">First</a>, <a href=\"http://www.anadoluefes.com\" target=\"_blank\">Bomonti</a>, <a href=\"http://www.anadoluefes.com\" target=\"_blank\">Efes</a>, <a href=\"https://www.terayatirim.com\" target=\"_blank\">TeraYatirim</a>"
-    },
-    {
-      "role": "Front-end developer",
-      "company": "Tribal DDB Worldwide Istanbul<em> (formerly Manadigital)</em>",
-      "url": "http://projectz.com/",
-      "dates": "03/2009 - 05/2009",
-      "description": "Front-end development for <a href=\"https://www.turktelekom.com.tr\" target=\"_blank\">Türk Telekom</a>"
-    },
-    {
-      "role": "Full-stack developer",
-      "company": "Ping Digital Agency Istanbul<em> (formerly OnKaplan)</em>",
-      "url": "http://ping.com.tr",
-      "dates": "05/2008 - 03/2009",
-      "description": "Front-end development for some clients including: <a href=\"https://www.garantibbva.com.tr\" target=\"_blank\">Garanti BBVA</a>, <a href=\"https://www.turktelekom.com.tr\" target=\"_blank\">Türk Telekom</a>"
-    },
-    {
-      "role": "Designer, front-end and Flash developer",
-      "company": "Koçak Dizayn, Istanbul",
-      "dates": "05/2008 - 03/2009",
-      "description": "Design, concept art creation, front-end development and illustration for an online art community startup."
-    },
-    {
-      "role": "Designer and front-end developer",
-      "company": "MedyaNova, Istanbul",
-      "url": "http://www.medyanova.com/",
-      "dates": "05/2005 - 02/2007",
-      "description": "Design and front-end web development for various web projects mostly regarding travelling, hotel and hotel franchise clients like <a href=\"http://www.bestwestern.com.tr/\" target=\"_blank\">Best Western Hotels</a>."
-    },
-    {
-      "role": "Internship",
-      "company": "MedyaNova, Istanbul",
-      "url": "http://www.medyanova.com/",
-      "dates": "04/2005 - 05/2005"
+      "year": "2005–2007",
+      "experiences": [
+        {
+          "role": "Designer & Front-end developer",
+          "company": "MedyaNova, Istanbul",
+          "url": "http://www.medyanova.com/",
+          "dates": "05/2005 - 02/2007",
+          "bullets": [
+            "Web design and frontend development for travel and hospitality projects",
+            "Hotel booking platforms and franchise websites"
+          ]
+        },
+        {
+          "role": "Internship",
+          "company": "MedyaNova, Istanbul",
+          "url": "http://www.medyanova.com/",
+          "dates": "04/2005 - 05/2005",
+          "bullets": []
+        }
+      ]
     }
   ],
   "education": [
@@ -250,5 +292,5 @@
       "dates": "2003 - 2007"
     }
   ],
-  "interests": "Swimming &bull; Photography &bull; Sci-Fi &bull; 80s &bull; Design."
+  "interests": "Music  &bull; Swimming &bull; Photography &bull; Sci-Fi &bull; 80s &bull; Design."
 }
