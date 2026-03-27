@@ -20,18 +20,6 @@
   "summary": "Experienced software engineer architecting scalable, innovative solutions for multi-cloud environments, optimizing developer experience across web development, full-stack. Currently working with GenAI to reimagine software functionality and create intelligent solutions.",
   "skills": [
     {
-      "category": "UI & Front-End",
-      "items": "React, NextJS, Vue.js, Refine, HTML, CSS, PostCSS, SCSS, UI Design, Wireframing, Branding, Print Design"
-    },
-    {
-      "category": "Back-End & Application",
-      "items": "Node.js, TypeScript, JavaScript, Python, Ruby, PHP, NestJS, Express, Turborepo"
-    },
-    {
-      "category": "Data & Storage",
-      "items": "PostgreSQL, Redis, BullMQ, MongoDB, Firestore, Supabase"
-    },
-    {
       "category": "AI & LLM Tooling",
       "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, OpenAI API, Gemini API, PydanticAI, AutoGen, Tavily API"
     },
@@ -40,12 +28,20 @@
       "items": "AWS (EKS, ECS, CloudFormation, Lambda, Fargate, ECR, RDS, Cloud Map, EC2, Route53, IAM, EventBridge), Azure (Azure Active Directory, Azure Functions, Cosmos DB), GCP (Vertex AI, Cloud Vision API, Cloud Run, Cloud Storage), Firebase (Functions, Firestore), Vercel, Kubernetes, MicroK8s, Docker, Terraform, Nginx, Cloudflare (Tunnels, Workers, Access), ZeroTier, Grafana, Loki, Tempo, Prometheus"
     },
     {
-      "category": "Delivery & Tooling",
-      "items": "Git, GitHub Actions, Travis, Jenkins, TeamCity"
+      "category": "Back-End & Application",
+      "items": "Node.js, TypeScript, JavaScript, Python, Ruby, PHP, NestJS, Express, Turborepo"
     },
     {
-      "category": "Languages",
-      "items": "Turkish - Native, English - Advanced, German - A1"
+      "category": "UI & Front-End",
+      "items": "React, NextJS, Vue.js, Refine, HTML, CSS, PostCSS, SCSS, UI Design, Wireframing, Branding, Print Design"
+    },
+    {
+      "category": "Data & Storage",
+      "items": "PostgreSQL, Redis, BullMQ, MongoDB, Firestore, Supabase"
+    },
+    {
+      "category": "Delivery & Tooling",
+      "items": "Git, GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
     }
   ],
   "projects": [
