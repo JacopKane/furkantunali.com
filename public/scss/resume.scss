@@ -755,7 +755,7 @@ body {
 
   // Layout
   $p-page-m: 0.55cm; // @page side/bottom margin
-  $p-page-m-top: 0.64cm; // @page top margin to balance optical whitespace
+  $p-page-m-top: 0.6cm; // @page top margin to balance optical whitespace
   $p-gutter: 0.35cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.58rem; // li.experience left padding — must be > bullet marker offset
@@ -1251,15 +1251,12 @@ body {
 
   // ── 14. Secondary columns (Education + Interests) ─────────────────────────────
   .resume-secondary-columns {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 0.3rem !important;
-    align-items: flex-start !important;
+    display: block !important;
     margin: 0 !important;
   }
 
   .resume-secondary-column {
-    flex: 1 1 0 !important;
+    display: inline !important;
     min-width: 0 !important;
     margin: 0 !important;
     font-size: 8.3px !important;
@@ -1267,7 +1264,32 @@ body {
 
   #education > h2,
   #interests > h2 {
-    display: none !important;
+    display: inline !important;
+    font-size: 7.6px !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0.02em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #education > h2::after,
+  #interests > h2::after {
+    content: ": " !important;
+  }
+
+  #education {
+    margin-right: 0.4rem !important;
+  }
+
+  #education .educations,
+  #education .education,
+  #education .education h3,
+  #interests p {
+    display: inline !important;
+    font-size: 8.2px !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   #education .education h3,
