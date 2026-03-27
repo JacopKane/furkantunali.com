@@ -41,7 +41,7 @@
     },
     {
       "category": "Delivery & Tooling",
-      "items": "Git, GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
+      "items": "GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
     }
   ],
   "projects": [
