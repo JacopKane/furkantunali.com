@@ -17,7 +17,7 @@
     { "href": "https://github.com/JacopKane", "text": "GitHub" },
     { "href": "https://furkantunali.com", "text": "Web" }
   ],
-  "summary": "Experienced software engineer architecting scalable, innovative solutions for multi-cloud environments, optimizing developer experience across web development, full-stack. Currently working with GenAI to reimagine software functionality and create intelligent solutions.",
+  "summary": "Experienced software engineer architecting scalable solutions for multi-cloud environments, optimizing developer experience across full-stack web development. Currently building GenAI-powered systems and intelligent automation.",
   "skills": [
     {
       "category": "AI",
@@ -49,14 +49,14 @@
       "name": "Newsify Today",
       "url": "https://newsify.today",
       "subtitle": "AI news platform & ChatGPT App (MCP UI App)",
-      "intro": "Built and operate <strong>Newsify Today</strong> as both an AI news platform and an early <strong>ChatGPT App</strong>, tracking global web search trends across <em>16 regions</em> and <em>12 languages</em> and running an agentic AI pipeline to curate, score, and summarize news in <em>real time</em>.",
+      "intro": "Built and operate <strong>Newsify Today</strong> — an AI news platform and early <strong>ChatGPT App</strong> tracking web search trends across <em>16 regions</em> and <em>12 languages</em>, running an agentic AI pipeline to curate, score, and summarize news in <em>real time</em>.",
       "bullets": [
-        "Built a <strong>LangGraph</strong>-based agent with <em>9 tools</em> (<strong>scrape</strong>, <strong>summarize</strong>, <strong>validate</strong>, <strong>score</strong>, <strong>deduplicate</strong>) that processes trends end\u2011to\u2011end with <em>deterministic tool routing</em> — no prompt-level orchestration, each step has explicit contracts.",
-        "Run self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across <em>3 nodes</em> with <em>health-aware least-connections routing</em>, tier-based fallback to <strong>Google Gemini</strong>, and in-flight slot tracking — <em>keeping inference cost near zero</em>.",
-        "Implemented a <strong>Model Context Protocol</strong> server with a trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — launched as an early <strong>ChatGPT App</strong>.",
-        "Run the entire stack on a <em>3-node</em> <strong>Kubernetes</strong> on-premises cluster — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with automated CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
-        "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to a <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em> for instant updates without full re-generation.",
-        "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong> — logs, traces, and metrics from both server and browser, plus <em>tracing for every AI agent run</em>."
+        "Built a <strong>LangGraph</strong>-based agent with <em>9 tools</em> (<strong>scrape</strong>, <strong>summarize</strong>, <strong>validate</strong>, <strong>score</strong>, <strong>deduplicate</strong>) processing trends end\u2011to\u2011end with <em>deterministic tool routing</em> and explicit step contracts.",
+        "Self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across <em>3 nodes</em> with <em>health-aware routing</em>, tier-based fallback to <strong>Google Gemini</strong>, and in-flight slot tracking — <em>keeping inference cost near zero</em>.",
+        "Implemented a <strong>Model Context Protocol</strong> server with trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — launched as an early <strong>ChatGPT App</strong>.",
+        "Run full stack on a <em>3-node</em> <strong>Kubernetes</strong> on-premises cluster — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
+        "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em>.",
+        "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong> — logs, traces, and metrics from server and browser, with <em>tracing for every AI agent run</em>."
       ],
       "links": [
         {
@@ -80,35 +80,33 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Integrated OpenAI and Tavily APIs to build an AI-powered system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving structured data such as hosting locations, DPO emails, and privacy policy links.",
-            "Researching about how to utilise AI Agent frameworks (PydanticAI, Autogen) to solve current challenges in the company."
+            "Integrated OpenAI and Tavily APIs to build an AI system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving hosting locations, DPO emails, and privacy policy links.",
+            "Researched AI Agent frameworks (PydanticAI, AutoGen) for solving domain-specific challenges."
           ]
         },
         {
           "title": "Senior Infrastructure Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
-            "Created Kubernetes and Terraform from scratch for scalable infrastructure setup and reliable deployments.",
-            "Drafted technical implementation details to guide project development and ensure consistent coding standards across teams.",
-            "Led successful migration from ECS to <em>Kubernetes</em> (EKS), learning the technology from scratch and executing a smooth switchover with zero downtime.",
-            "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) to improve service deployment.",
-            "Supported infrastructure initiatives including Route53 configuration, domain management, and DMARC reporting setup for email delivery.",
-            "Addressed critical technical incidents and provided rapid resolution to maintain continuous service availability for customers."
+            "Created Kubernetes and Terraform setups from scratch for scalable infrastructure and reliable deployments.",
+            "Led migration from ECS to <em>Kubernetes</em> (EKS) with zero downtime.",
+            "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) for service deployment.",
+            "Drafted technical implementation details to guide project development and ensure consistent coding standards.",
+            "Managed Route53 configuration, domain management, DMARC reporting, and critical incident resolution."
           ]
         },
         {
           "title": "Senior Developer Experience Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Developed software solutions using JavaScript and TypeScript, with a focus on modern frameworks such as NestJS, NextJS, Rails, and VUE.",
+            "Built with JavaScript, TypeScript, NestJS, NextJS, Rails, and Vue.",
             "Migrated infrastructure from Heroku to AWS ECS.",
-            "Restructured legacy Ruby on Rails systems into a monorepo, Dockerized applications, and established reliable local development environments enabling efficient developer onboarding.",
-            "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> to streamline environment provisioning across Testing and Production.",
-            "Implemented an event-driven scheduling system using AWS EventBridge to automate client reminders without building a custom solution.",
-            "Developed DevOps and DX tools, including Makefile and Bash scripts, to automate routine tasks and improve development workflow efficiency.",
-            "Maintained Docker Compose setups for service orchestration and environment consistency.",
-            "Mentored team members, offering structured and insightful feedback while serving as a trusted technical resource.",
-            "Contributed to the hiring process by evaluating candidates with deep expertise in design patterns, best practices, and JavaScript."
+            "Restructured legacy Rails systems into a monorepo, Dockerized applications, and established local development environments for efficient onboarding.",
+            "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
+            "Implemented event-driven scheduling via AWS EventBridge for automated client reminders.",
+            "Developed DevOps and DX tooling (Makefile, Bash) to automate routine tasks.",
+            "Maintained Docker Compose setups for service orchestration.",
+            "Mentored team members and contributed to technical hiring."
           ]
         }
       ]
@@ -119,13 +117,13 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "Established technical vision and drove adoption of architectural concepts aligned with enterprise requirements",
-        "Implemented cloud infrastructure and CI/CD pipelines for secure, on-time product delivery",
-        "Optimized containerization strategies for AI/ML workloads and deployed complex models to Azure CUDA for accelerated performance",
-        "Integrated AI systems through Jupyter Notebooks while ensuring compatibility with parent company services",
-        "Enhanced developer experience through monorepo management, automated semantic versioning, and comprehensive testing strategies",
-        "Designed full-stack boilerplates for MVPs and facilitated data migrations for upcoming services",
-        "Led technical hiring, mentoring, and onboarding while implementing code quality standards through reviews and linting"
+        "Established technical vision and architectural standards aligned with enterprise requirements",
+        "Implemented cloud infrastructure and CI/CD pipelines for secure product delivery",
+        "Optimized containerization for AI/ML workloads, deployed models to Azure CUDA",
+        "Integrated AI systems via Jupyter Notebooks, ensuring compatibility with parent company services",
+        "Managed monorepo, automated semantic versioning, and testing strategies",
+        "Designed full-stack boilerplates for MVPs and facilitated data migrations",
+        "Led technical hiring, mentoring, and code quality standards"
       ]
     },
     {
@@ -134,9 +132,9 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected and refactored back-end services while developing full-stack features for gaming content management platform",
-        "Optimized system performance through comprehensive profiling and containerization implementation",
-        "Enhanced development infrastructure through improved tooling and strategic data structure migrations"
+        "Architected and refactored back-end services, developed full-stack features for gaming content platform",
+        "Optimized performance through profiling and containerization",
+        "Enhanced development infrastructure through improved tooling and data structure migrations"
       ]
     },
     {
@@ -145,11 +143,11 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Led front-end development team, overseeing recruitment, onboarding, and mentoring while ensuring delivery of projects within sprint timelines",
-        "Modernized front-end architecture while preserving functionality, implementing code quality tools, and establishing DevOps processes for accelerated development",
-        "Orchestrated migration from monolithic architecture to microservices and expanded team capabilities from front-end to full-stack development",
-        "Implemented Agile methodologies with robust code review processes and facilitated data-driven development through A/B testing solutions",
-        "Developed UI component library that bridged UX and front-end teams, creating a unified design system and improving cross-functional collaboration"
+        "Led front-end team: recruitment, onboarding, mentoring, and sprint delivery",
+        "Modernized front-end architecture, implemented code quality tools, and established DevOps processes",
+        "Migrated from monolithic to microservices architecture, expanded team to full-stack",
+        "Implemented Agile with code reviews and A/B testing",
+        "Built UI component library bridging UX and front-end into a unified design system"
       ]
     },
     {
@@ -158,11 +156,10 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Implemented full-stack JavaScript features while maintaining and migrating existing functionality across both client and server environments",
-        "Developed and maintained microservices architecture, continually improving system design and technical stack to enhance performance and scalability",
-        "Established robust quality standards through comprehensive test coverage (unit, integration, E2E), code reviews, and adherence to development conventions",
-        "Integrated and maintained data across multiple platforms (MongoDB, Stripe, SalesForce) while monitoring application health via Heroku and Sentry",
-        "Followed Kanban workflow with Agile methodologies to ensure efficient delivery and continuous improvement"
+        "Implemented full-stack JavaScript features across client and server",
+        "Developed microservices architecture, improving system design and scalability",
+        "Established quality standards through test coverage (unit, integration, E2E) and code reviews",
+        "Integrated data across MongoDB, Stripe, SalesForce; monitored health via Heroku and Sentry"
       ]
     },
     {
@@ -171,9 +168,8 @@
       "url": "https://www.linkedin.com/company/talented-square-corporation",
       "dates": "08/2015 - 08/2016",
       "bullets": [
-        "Led front-end development and architectural improvements for ASDA UK (Walmart) online wholesale seller portal",
-        "Designed architecture for a recruiting startup, focusing on performance optimization and modern frameworks",
-        "<small><strong>Technical Skills:</strong> JavaScript, React, Redux, Angular, Backbone, LoopBack, Webpack, Gulp, AMD, HTML, CSS/SCSS, jQuery, MySQL</small>"
+        "Led front-end development for ASDA UK (Walmart) online wholesale seller portal",
+        "Designed architecture for a recruiting startup with focus on performance optimization"
       ]
     }
   ],
