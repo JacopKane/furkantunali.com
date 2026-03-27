@@ -296,6 +296,23 @@ body {
     }
   }
 
+  .resume-secondary-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-section;
+    align-items: start;
+
+    @media (min-width: 820px), print {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 1.5rem;
+    }
+
+    > section {
+      min-width: 0;
+      margin-bottom: 0;
+    }
+  }
+
   section {
     margin: 0 0 $space-section 0;
 
@@ -383,6 +400,8 @@ body {
       strong {
         display: inline;
         margin-right: 0.25em;
+        font-weight: 700;
+        letter-spacing: 0.01em;
       }
     }
   }
@@ -1165,6 +1184,8 @@ body {
     strong {
       display: inline !important;
       margin-right: 0.25em !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.01em !important;
       font-size: 9.5px !important;
     }
   }

@@ -367,34 +367,36 @@
         </div>
       </section>
 
-      <section id="education">
-        <h2>Education</h2>
+      <div class="resume-secondary-columns">
+        <section id="education">
+          <h2>Education</h2>
 
-        <ul class="educations">
-          <% toArray(data.education).forEach(function(edu) { %>
-          <li class="education">
-            <h3>
-              <em><%= edu.degree || '' %></em> at
-              <% if (edu.url) { %>
-              <a target="_blank" href="<%= edu.url %>"
-                ><%= edu.school || '' %></a
-              >
-              <% } else { %>
-              <span><%= edu.school || '' %></span>
-              <% } %>
-              <% if (edu.dates) { %>
-              <span class="dates"><%= edu.dates %></span>
-              <% } %>
-            </h3>
-          </li>
-          <% }); %>
-        </ul>
-      </section>
+          <ul class="educations">
+            <% toArray(data.education).forEach(function(edu) { %>
+            <li class="education">
+              <h3>
+                <em><%= edu.degree || '' %></em> at
+                <% if (edu.url) { %>
+                <a target="_blank" href="<%= edu.url %>"
+                  ><%= edu.school || '' %></a
+                >
+                <% } else { %>
+                <span><%= edu.school || '' %></span>
+                <% } %>
+                <% if (edu.dates) { %>
+                <span class="dates"><%= edu.dates %></span>
+                <% } %>
+              </h3>
+            </li>
+            <% }); %>
+          </ul>
+        </section>
 
-      <section id="interests">
-        <h2>Interests</h2>
-        <%- data.interests || '' %>
-      </section>
+        <section id="interests">
+          <h2>Interests</h2>
+          <%- data.interests || '' %>
+        </section>
+      </div>
     </div>
 
     <!-- Environment detection for PDF download URL -->
