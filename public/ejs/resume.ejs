@@ -164,7 +164,14 @@
               <li>
                 <% if (item.label && item.href) { %>
                 <strong><%= item.label %>:</strong>
-                <a href="<%= item.href %>" target="_blank"><%= item.text %></a>
+                <a href="<%= item.href %>" target="_blank">
+                  <% if (item.href.indexOf('mailto:') === 0) { %>
+                  <span class="link-text-screen"><%= item.text %></span>
+                  <span class="link-text-print"><%= item.href %></span>
+                  <% } else { %>
+                  <%= item.text %>
+                  <% } %>
+                </a>
                 <% } else if (item.label) { %>
                 <strong><%= item.label %>:</strong>
                 <%= item.text || '' %>
@@ -225,9 +232,12 @@
             <% toArray(project.links).forEach(function(link) { %>
             <% if (link && link.href) { %>
             <p class="demo-cta">
-              <a href="<%= link.href %>" target="_blank"
-                ><%= link.text || link.href %></a
-              >
+              <a href="<%= link.href %>" target="_blank">
+                <span class="link-text-screen"
+                  ><%= link.text || link.href %></span
+                >
+                <span class="link-text-print"><%= link.href %></span>
+              </a>
             </p>
             <% } %>
             <% }); %>
@@ -260,7 +270,42 @@
         <h2>Experiences</h2>
 
         <% var expList = toArray(data.recentExperiences); %>
+        <% function estimateExpWeight(exp) { %>
+        <% var subroles = toArray(exp.subroles); %>
+        <% var bullets = toArray(exp.bullets); %>
+        <% var weight = 2; %>
+        <% if (subroles.length) { %>
+        <% weight += subroles.length * 2; %>
+        <% subroles.forEach(function(subrole) { %>
+        <% weight += toArray(subrole.bullets).length; %>
+        <% }); %>
+        <% } else if (bullets.length) { %>
+        <% weight += bullets.length; %>
+        <% } else if (exp.description) { %>
+        <% weight += 2; %>
+        <% } %>
+        <% return weight; %>
+        <% } %>
+        <% var leftItems = []; %>
+        <% var rightItems = []; %>
+        <% if (data.experiencesColumnAutoBalance !== false) { %>
+        <% var leftWeight = 0; %>
+        <% var rightWeight = 0; %>
+        <% expList.forEach(function(exp) { %>
+        <% var weight = estimateExpWeight(exp); %>
+        <% if (leftWeight <= rightWeight) { %>
+        <% leftItems.push(exp); %>
+        <% leftWeight += weight; %>
+        <% } else { %>
+        <% rightItems.push(exp); %>
+        <% rightWeight += weight; %>
+        <% } %>
+        <% }); %>
+        <% } else { %>
         <% var splitIdx = data.experiencesColumnSplit != null ? data.experiencesColumnSplit : Math.ceil(expList.length / 2); %>
+        <% leftItems = expList.slice(0, splitIdx); %>
+        <% rightItems = expList.slice(splitIdx); %>
+        <% } %>
         <% function renderExpItems(items) { %>
         <% items.forEach(function(exp) { %>
         <li class="experience">
@@ -317,10 +362,10 @@
 
         <div class="experiences-columns">
           <ul class="experiences experiences--left">
-            <%- renderExpItems(expList.slice(0, splitIdx)) %>
+            <%- renderExpItems(leftItems) %>
           </ul>
           <ul class="experiences experiences--right">
-            <%- renderExpItems(expList.slice(splitIdx)) %>
+            <%- renderExpItems(rightItems) %>
           </ul>
         </div>
       </section>

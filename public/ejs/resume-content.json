@@ -29,7 +29,11 @@
     },
     {
       "category": "Back-End",
-      "items": "Node.js, TypeScript, JavaScript, Python, Ruby, PHP, NestJS, Express, Turborepo"
+      "items": "Node.js, TypeScript, JavaScript, Python, Ruby, PHP, NestJS, Express"
+    },
+    {
+      "category": "Tooling",
+      "items": "Turborepo"
     },
     {
       "category": "Front-End",
@@ -52,7 +56,7 @@
         "Implemented a <strong>Model Context Protocol</strong> server with a trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — launched as an early <strong>ChatGPT App</strong>.",
         "Run the entire stack on a <em>3-node</em> <strong>Kubernetes</strong> on-premises cluster — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with automated CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
         "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to a <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em> for instant updates without full re-generation.",
-        "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong>, <strong>Tempo</strong>, and <strong>Prometheus</strong> — logs, traces, and metrics from both server and browser, plus <em>tracing for every AI agent run</em>."
+        "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong> — logs, traces, and metrics from both server and browser, plus <em>tracing for every AI agent run</em>."
       ],
       "links": [
         {
@@ -63,6 +67,7 @@
       "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare Tunnels, Grafana/Loki/Tempo, MCP SDK, Vite, Turborepo"
     }
   ],
+  "experiencesColumnAutoBalance": true,
   "experiencesColumnSplit": 2,
   "recentExperiences": [
     {
@@ -148,7 +153,7 @@
       ]
     },
     {
-      "role": "Universal JavaScript Engineer",
+      "role": "Full-stack JavaScript Engineer",
       "company": "Pixsy GmbH, Berlin",
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",

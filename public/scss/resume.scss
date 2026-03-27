@@ -173,6 +173,14 @@ html.dark-theme body {
 body {
   padding: calc(#{$size-margin} / 2);
 
+  .link-text-print {
+    display: none;
+  }
+
+  .link-text-screen {
+    display: inline;
+  }
+
   .intro {
     overflow: hidden; // Clearfix alternative
     margin-bottom: 1em;
@@ -741,14 +749,15 @@ body {
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
   $p-sp-1: 0.1rem; // micro  — between sibling list items
-  $p-sp-2: 0.25rem; // tight  — heading → content within a card
-  $p-sp-3: 0.45rem; // normal — between cards
-  $p-sp-4: 0.7rem; // loose  — between major sections
+  $p-sp-2: 0.2rem; // tight  — heading → content within a card
+  $p-sp-3: 0.3rem; // normal — between cards / column gaps
+  $p-sp-4: 0.5rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.5cm; // @page margin (printer bleed zone)
-  $p-gutter: 0.3cm; // .container / header inner left-right padding
+  $p-page-m: 0.35cm; // @page margin (printer bleed zone)
+  $p-gutter: 0.25cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
+  $p-card-pl: 0.5rem; // li.experience left padding — must be > bullet marker offset
 
   // ── 1. Page setup ──────────────────────────────────────────────────────────
   @page {
@@ -896,6 +905,14 @@ body {
     text-decoration: none !important;
   }
 
+  .link-text-screen {
+    display: none !important;
+  }
+
+  .link-text-print {
+    display: inline !important;
+  }
+
   // ── 7. Section rhythm ────────────────────────────────────────────────────────
   section {
     margin: 0 0 $p-sp-4 0 !important;
@@ -1038,7 +1055,7 @@ body {
   #experiences li.experience {
     flex: 0 0 auto !important;
     margin: 0 0 $p-sp-3 0 !important;
-    padding: $p-sp-2 $p-sp-2 $p-sp-2 $p-sp-3 !important;
+    padding: $p-sp-2 $p-sp-2 $p-sp-2 $p-card-pl !important;
     border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
     font-size: $p-xs !important;
     break-inside: auto !important;
