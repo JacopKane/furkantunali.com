@@ -129,7 +129,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected and refactored back-end services while developing full-stack features for gaming platform",
+        "Architected and refactored back-end services while developing full-stack features for gaming content management platform",
         "Optimized system performance through comprehensive profiling and containerization implementation",
         "Enhanced development infrastructure through improved tooling and strategic data structure migrations"
       ]

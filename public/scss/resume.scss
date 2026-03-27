@@ -725,74 +725,93 @@ body {
   }
 }
 
-// Ensure print-specific styles are applied
+// =============================================================================
+// PRINT STYLES
+// Single authoritative block. All decisions live here; nothing is repeated.
+// =============================================================================
 @media print {
-  html,
-  body {
-    font-size: 11px !important;
-    line-height: 1.15 !important;
-    margin: 0 !important; // Remove all margins for print
-    padding: 0 !important; // Remove all padding for print
-    max-width: none !important; // Remove width constraints
-    width: 100% !important; // Full width
+  // ── Design tokens ──────────────────────────────────────────────────────────
+  // Type scale
+  $p-h1: 14px; // page title
+  $p-base: 11px; // body / section labels
+  $p-sm: 9.5px; // entry titles (h3)
+  $p-xs: 8.5px; // bullet detail text
+  $p-xxs: 7.5px; // older-exp / meta labels
+  $p-lh: 1.2; // single line-height used everywhere
+
+  // Spacing — 4-step scale (rem so it scales with $p-base root)
+  $p-sp-1: 0.1rem; // micro  — between sibling list items
+  $p-sp-2: 0.25rem; // tight  — heading → content within a card
+  $p-sp-3: 0.45rem; // normal — between cards
+  $p-sp-4: 0.7rem; // loose  — between major sections
+
+  // Layout
+  $p-page-m: 0.5cm; // @page margin (printer bleed zone)
+  $p-gutter: 0.3cm; // .container / header inner left-right padding
+  $p-indent: 1.1em; // list indent, all nesting levels
+
+  // ── 1. Page setup ──────────────────────────────────────────────────────────
+  @page {
+    size: A4;
+    margin: $p-page-m;
   }
 
+  // ── 2. Root reset ────────────────────────────────────────────────────────────
+  html,
   body {
-    color: #000 !important; // Ensure text is black for better printing
-    background: #fff !important; // Ensure background is white
+    font-size: $p-base !important;
+    line-height: $p-lh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    color: #000 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    text-rendering: optimizeLegibility;
+  }
+
+  // ── 3. Hidden elements ───────────────────────────────────────────────────────
+  nav,
+  .grain-overlay {
+    display: none !important;
+  }
+
+  // ── 4. Layout shell ──────────────────────────────────────────────────────────
+  .container {
+    margin: 0 !important;
+    padding: 0 $p-gutter !important;
+    max-width: none !important;
+    width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  // Global section margin reduction
-  section {
-    margin: $space-section-print 0 !important;
-    padding: 0 !important;
-
-    h2 {
-      margin: 0.1em 0 0.12em 0 !important;
-      padding: 0 !important;
-      font-size: 11px !important;
-    }
-  }
-
-  // List item margin reduction
-  ul,
-  ol {
-    margin: 0.08em 0 !important;
-    padding-left: 1.05em !important;
-  }
-
-  li {
-    margin: 0.02em 0 !important;
-    padding: 0 !important;
-  }
-
-  p {
-    margin: 0.1em 0 !important;
-    padding: 0 !important;
-  }
-
-  // Remove all container margins and paddings
-  .container {
-    margin: 0 !important;
-    padding: 0 0.2cm !important;
-    max-width: none !important;
+  header {
+    margin: 0 0 $p-sp-3 0 !important;
+    padding: 0 $p-gutter !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  // Fix the intro section alignment for print
-  .intro {
+  header hgroup,
+  header h1 {
     margin: 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
+  }
+
+  // ── 5. Intro row (name + contact bar) ────────────────────────────────────────
+  .intro {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
+    overflow: visible !important;
+    margin: 0 0 $p-sp-4 0 !important;
+    padding: 0 !important;
     gap: 0 !important;
-    width: 100% !important;
-    line-height: 1 !important;
+    line-height: $p-lh !important;
   }
 
   .intro section {
@@ -807,12 +826,12 @@ body {
 
   .intro ul.info,
   .intro ul.contact {
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: 1 !important;
-    font-size: 10px !important;
     display: inline !important;
     list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: $p-xs !important;
+    line-height: $p-lh !important;
   }
 
   .intro ul.info li,
@@ -820,509 +839,415 @@ body {
     display: inline !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 10px !important;
   }
 
   .intro ul.info li:not(:first-child)::before,
   .intro ul.contact li:not(:first-child)::before {
     content: " · " !important;
-    margin: 0 0.2em !important;
-  }
-
-  .left-column,
-  .right-column {
-    float: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: calc(50% - 0.1cm) !important;
-    box-sizing: border-box !important;
   }
 
   .left-column {
+    float: none !important;
+    width: 50% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
     text-align: left !important;
   }
 
   .right-column {
-    text-align: right !important;
-    margin-left: auto !important;
-    padding-right: 0.05cm !important;
-  }
-
-  // Hide navigation in print and remove its space
-  nav {
-    display: none !important;
-  }
-
-  // Remove margins and padding from header
-  header {
+    float: none !important;
+    width: 50% !important;
     margin: 0 !important;
-    padding: 0 0.2cm !important;
-    margin-bottom: 0.08cm !important;
-    width: 100% !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
+    text-align: right !important;
   }
 
-  // Remove margins from header elements
-  header hgroup,
-  header h1 {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  header h1 {
-    font-size: 11px !important;
-    line-height: 1 !important;
-    margin-bottom: 0.02cm !important;
-  }
-
-  // Remove top margin from first element to eliminate page top spacing
-  body > *:first-child,
-  body > *:first-child > *:first-child {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  // Print-specific styles for projects
-  #projects > ul.projects {
-    list-style-type: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-
-    li.project {
-      > p {
-        margin-top: 0.15em !important;
-      }
-
-      > ul {
-        padding-left: 1.05em !important;
-        list-style-type: $bullet-level-1 !important;
-        list-style-position: outside !important;
-        margin: 0.08em 0 !important;
-
-        li {
-          display: list-item !important;
-          margin: 0.02em 0 !important;
-          padding-left: 0.15em !important;
-
-          p {
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-
-          ul {
-            margin: 0 !important;
-            padding-left: 0.95em !important;
-            list-style-type: square !important;
-          }
-
-          ul ul {
-            margin: 0 !important;
-            padding-left: 0.9em !important;
-            list-style-type: disc !important;
-          }
-        }
-      }
-    }
-  }
-
-  // Print-specific styles for experiences
-  #experiences {
-    margin-bottom: 0 !important;
-
-    .experiences-columns {
-      display: grid !important;
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 1rem !important;
-      align-items: start !important;
-    }
-
-    ul.experiences {
-      flex: 1 !important;
-      display: flex !important;
-      flex-direction: column !important;
-      list-style-type: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-
-    ul.experiences--left {
-      justify-content: flex-start !important;
-    }
-
-    ul.experiences--right {
-      justify-content: flex-start !important;
-    }
-
-    li.experience {
-      flex: 0 0 auto !important;
-      margin: 0 0 0.22rem 0 !important;
-      padding: 0.35rem 0.35rem 0.35rem 0.6rem !important;
-      border-left: 1px solid #999 !important;
-      font-size: 9px !important;
-      break-inside: auto !important;
-      page-break-inside: auto !important;
-
-      h3 {
-        margin: 0 0 0.1rem 0 !important;
-        padding: 0 !important;
-        font-size: 9.5px !important;
-        font-weight: 700 !important;
-        line-height: 1.1 !important;
-      }
-
-      &:last-child {
-        margin-bottom: 0 !important;
-      }
-
-      > ul {
-        padding-left: 0.95em !important;
-        list-style-type: $bullet-level-1 !important;
-        margin: 0.04rem 0 0 0 !important;
-
-        li {
-          display: list-item !important;
-          margin: 0.02em 0 !important;
-          padding: 0 !important;
-          font-size: 8px !important;
-          line-height: 1.1 !important;
-        }
-      }
-
-      > ul > li > ul {
-        display: block !important;
-        margin: 0 !important;
-        padding-left: 0.9em !important;
-        list-style-type: square !important;
-      }
-
-      > ul > li > ul > li > ul {
-        margin: 0 !important;
-        padding-left: 0.85em !important;
-        list-style-type: disc !important;
-      }
-    }
-  }
-
-  // Print-specific styles for older experiences — ultra compact
-  #experiences-older {
-    margin-top: 0 !important;
-
-    h2 {
-      margin: 0 0 0.1em 0 !important;
-      line-height: 1 !important;
-    }
-
-    .experiences-older {
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 0 !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-
-    .experience-older__group {
-      break-inside: auto !important;
-      page-break-inside: auto !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    .experience-older__year {
-      font-size: 8px !important;
-      font-weight: 700 !important;
-      margin: 0.1em 0 0.05em 0 !important;
-      padding: 0 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.3px !important;
-    }
-
-    .experience-older__list {
-      display: grid !important;
-      grid-template-columns: repeat(8, 1fr) !important;
-      gap: 0.08em !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-
-    .experience-older__entry {
-      font-size: 7px !important;
-      line-height: 1.1 !important;
-      padding: 0.05em 0.1em !important;
-      margin: 0 !important;
-      border: none !important;
-      border-left: 1px solid #ccc !important;
-      break-inside: auto !important;
-      page-break-inside: auto !important;
-    }
-
-    .experience-older__header {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    .experience-older__role {
-      font-weight: 700 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      font-size: 8px !important;
-    }
-
-    .experience-older__company {
-      margin: 0 !important;
-      padding: 0 !important;
-      font-size: 7.5px !important;
-
-      a {
-        color: #000 !important;
-        text-decoration: none !important;
-      }
-    }
-
-    .experience-older__dates {
-      display: inline !important;
-      font-size: 7px !important;
-      color: #555 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    // Hide bullets for older experiences in print — save space
-    .experience-older__bullets {
-      display: none !important;
-    }
-  }
-
+  // ── 6. Global typography ─────────────────────────────────────────────────────
   h1 {
-    font-size: 14px !important;
-    line-height: 1.1 !important;
-    margin-top: 0 !important;
+    font-size: $p-h1 !important;
+    line-height: $p-lh !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   h2 {
-    font-size: 11px !important;
-    line-height: 1.1 !important;
-    margin-top: 0 !important;
+    font-size: $p-base !important;
+    line-height: $p-lh !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   h3 {
-    font-size: 9.5px !important;
-    line-height: 1.1 !important;
-    margin-top: 0 !important;
+    font-size: $p-sm !important;
+    line-height: $p-lh !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   h4 {
-    font-size: 9px !important;
-    line-height: 1.1 !important;
-    margin-top: 0 !important;
-  }
-
-  ul,
-  ol,
-  p {
-    margin-top: 0.03em !important;
-    margin-bottom: 0.03em !important;
-    line-height: 1.1 !important;
-  }
-
-  .experience {
-    break-inside: auto !important; /* Allow content to flow across pages */
-    margin-bottom: 0.15em !important;
+    font-size: $p-sm !important;
+    line-height: $p-lh !important;
+    margin: 0 !important;
     padding: 0 !important;
-
-    h3,
-    h4,
-    h5 {
-      margin-bottom: 0.04em !important;
-      margin-top: 0 !important;
-      line-height: 1.1 !important;
-      break-after: avoid !important; /* Keep headings with their content */
-    }
-
-    ul {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      padding-left: 1.1em !important;
-      list-style-type: $bullet-level-1 !important;
-      list-style-position: outside !important;
-
-      li {
-        break-inside: auto !important;
-        display: list-item !important;
-      }
-
-      ul {
-        margin: 0 !important;
-        padding-left: 0.95em !important;
-        list-style-type: square !important;
-      }
-
-      ul ul {
-        margin: 0 !important;
-        padding-left: 0.9em !important;
-        list-style-type: disc !important;
-      }
-    }
-
-    /* Keep the end of one job experience from separating from its header */
-    &:last-child {
-      break-after: auto !important;
-    }
-
-    /* Keep title with at least some content */
-    h3,
-    h4 {
-      break-after: avoid !important;
-    }
-
-    li,
-    p {
-      margin-bottom: 0 !important;
-      margin-top: 0 !important;
-      line-height: 1.08 !important;
-      font-size: 8px !important;
-    }
-
-    p small {
-      font-size: 7px !important;
-      line-height: 1.05 !important;
-    }
   }
 
-  .resume-secondary-columns {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.8em;
-    align-items: flex-start;
-
-    > .resume-secondary-column {
-      flex: 1 1 0;
-      min-width: 0;
-      margin-top: 0.8em;
-    }
+  a,
+  a:visited {
+    color: #000 !important;
+    text-decoration: none !important;
   }
 
-  /* Keep Education and Interests on the same row in print when space allows */
-  #education,
-  #interests {
-    clear: none;
-    display: block;
-    width: auto;
+  // ── 7. Section rhythm ────────────────────────────────────────────────────────
+  section {
+    margin: 0 0 $p-sp-4 0 !important;
+    padding: 0 !important;
+    break-inside: auto;
   }
 
-  #interests {
-    font-size: 9px !important;
-    line-height: 1.15 !important;
+  section:last-child {
+    margin-bottom: 0 !important;
   }
 
-  /* Ensure the education section displays properly */
-  .educations {
-    padding-left: 0;
-    list-style-type: none;
-  }
-
-  /* Make sure section headings are clearly visible */
-  section h2 {
-    margin-top: 0.3em; /* Reduced from 0.4em */
-    margin-bottom: 0.15em; /* Reduced from 0.2em */
-    font-weight: bold;
-    break-after: avoid;
-  }
-
-  /* Make sure content stays with its heading */
-  section h2 + * {
-    break-before: avoid;
-  }
-
-  /* Let large experience sections continue on current page instead of jumping */
-  #experiences h2 + *,
-  #experiences-older h2 + * {
-    break-before: auto !important;
-  }
-
-  /* Ensure job headings stay with their content */
-  .experience h3,
-  .experience h4 {
+  section > h2 {
+    margin: 0 0 $p-sp-2 0 !important;
+    padding: 0 !important;
     break-after: avoid !important;
   }
 
-  /* Fix for heyData to Société Générale transition */
-  .experience + .experience {
-    break-before: auto;
+  section > h2 + * {
+    break-before: avoid !important;
   }
 
-  /* Reduce spacing in skills section */
-  .skills li {
+  // ── 8. Generic block spacing ──────────────────────────────────────────────────
+  p {
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
+    line-height: $p-lh !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  ul,
+  ol {
+    margin: 0 !important;
+    padding-left: $p-indent !important;
+    line-height: $p-lh !important;
+  }
+
+  li {
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
+    line-height: $p-lh !important;
+  }
+
+  li:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  hr {
+    border: none !important;
+    border-top: 0.5px solid #ccc !important;
+    margin: $p-sp-2 0 !important;
+  }
+
+  // ── 9. Skills ─────────────────────────────────────────────────────────────────
+  #skills ul.skills {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #skills ul.skills li {
     display: inline !important;
     margin: 0 !important;
-    line-height: 1.15 !important;
-    font-size: 9px !important;
     padding: 0 !important;
-
-    &:not(:first-child)::before {
-      content: " \00b7 " !important;
-      margin: 0 0.1em !important;
-    }
-
-    strong {
-      display: inline !important;
-      margin-right: 0.25em !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.01em !important;
-      font-size: 9.5px !important;
-    }
+    font-size: $p-sm !important;
+    line-height: $p-lh !important;
   }
 
-  #skills ul.skills {
-    margin: 0 !important;
-    padding-left: 0 !important;
+  #skills ul.skills li:not(:first-child)::before {
+    content: " · " !important;
+  }
+
+  #skills ul.skills li strong {
+    display: inline !important;
+    font-weight: 700 !important;
+  }
+
+  // ── 10. Projects ──────────────────────────────────────────────────────────────
+  p.demo-cta {
+    margin: 0 0 $p-sp-2 0 !important;
+    font-size: $p-xs !important;
+  }
+
+  #projects > ul.projects {
     list-style: none !important;
-    line-height: 1.15 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Add page breaks where needed */
-  #education {
-    page-break-before: auto;
+  #projects li.project > p {
+    font-size: $p-xs !important;
+    margin: 0 0 $p-sp-1 0 !important;
   }
 
-  /* Optimize experiences layout for printing */
-  #experiences ul {
-    padding: 0 0.5% !important;
+  #projects li.project > ul {
+    list-style-type: $bullet-level-1 !important;
+    padding-left: $p-indent !important;
+    margin: 0 !important;
   }
 
-  /* Hide unnecessary elements */
-  .grain-overlay {
+  #projects li.project > ul li {
+    font-size: $p-xs !important;
+    line-height: $p-lh !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
+  }
+
+  #projects li.project > ul li:last-child {
+    margin-bottom: 0 !important;
+  }
+  #projects li.project > ul li p {
+    margin: 0 !important;
+  }
+
+  #projects li.project > ul ul {
+    list-style-type: $bullet-level-2 !important;
+    padding-left: $p-indent !important;
+  }
+
+  // ── 11. Experience cards (2-col grid layout) ──────────────────────────────────
+  #experiences {
+    margin-bottom: 0 !important;
+  }
+
+  #experiences .experiences-columns {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0 $p-sp-3 !important;
+    align-items: start !important;
+  }
+
+  #experiences ul.experiences {
+    display: flex !important;
+    flex-direction: column !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #experiences li.experience {
+    flex: 0 0 auto !important;
+    margin: 0 0 $p-sp-3 0 !important;
+    padding: $p-sp-2 $p-sp-2 $p-sp-2 $p-sp-3 !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
+    font-size: $p-xs !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  #experiences li.experience:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  #experiences li.experience h3 {
+    font-size: $p-sm !important;
+    font-weight: 700 !important;
+    line-height: $p-lh !important;
+    margin: 0 0 $p-sp-2 0 !important;
+    padding: 0 !important;
+    break-after: avoid !important;
+  }
+
+  #experiences li.experience h3 + * {
+    break-before: avoid !important;
+  }
+
+  #experiences li.experience > ul {
+    list-style-type: $bullet-level-1 !important;
+    padding-left: $p-indent !important;
+    margin: $p-sp-1 0 0 0 !important;
+  }
+
+  #experiences li.experience > ul li {
+    display: list-item !important;
+    font-size: $p-xs !important;
+    line-height: $p-lh !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
+  }
+
+  #experiences li.experience > ul li:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  #experiences li.experience > ul > li > ul {
+    list-style-type: $bullet-level-2 !important;
+    padding-left: $p-indent !important;
+    margin: 0 !important;
+  }
+
+  #experiences li.experience > ul > li > ul > li > ul {
+    list-style-type: $bullet-level-3 !important;
+  }
+
+  // ── 12. .experience shared component ─────────────────────────────────────────
+  .experience {
+    break-inside: auto !important;
+    margin: 0 0 $p-sp-3 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience h3,
+  .experience h4,
+  .experience h5 {
+    font-size: $p-sm !important;
+    line-height: $p-lh !important;
+    margin: 0 0 $p-sp-2 0 !important;
+    padding: 0 !important;
+    break-after: avoid !important;
+  }
+
+  .experience ul {
+    list-style-type: $bullet-level-1 !important;
+    padding-left: $p-indent !important;
+    margin: 0 !important;
+  }
+
+  .experience ul ul {
+    list-style-type: $bullet-level-2 !important;
+  }
+  .experience ul ul ul {
+    list-style-type: $bullet-level-3 !important;
+  }
+
+  .experience li,
+  .experience p {
+    font-size: $p-xs !important;
+    line-height: $p-lh !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience li:last-child,
+  .experience p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .experience p small {
+    font-size: $p-xxs !important;
+  }
+
+  // ── 13. Older experiences strip ───────────────────────────────────────────────
+  #experiences-older {
+    margin: 0 !important;
+  }
+
+  #experiences-older > h2 {
+    margin: 0 0 $p-sp-1 0 !important;
+  }
+
+  .experiences-older {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__group {
+    margin: 0 !important;
+    padding: 0 !important;
+    break-inside: auto !important;
+  }
+
+  .experience-older__year {
+    font-size: $p-xxs !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    color: #444 !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__list {
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
+    gap: $p-sp-1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__entry {
+    font-size: $p-xxs !important;
+    line-height: $p-lh !important;
+    padding: 0.2em 0.4em !important;
+    margin: 0 !important;
+    border: none !important;
+    border-left: 1px solid #ccc !important;
+    break-inside: auto !important;
+  }
+
+  .experience-older__header {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__role {
+    font-size: $p-xxs !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__company {
+    font-size: $p-xxs !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__company a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  .experience-older__dates {
+    display: inline !important;
+    font-size: $p-xxs !important;
+    color: #555 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .experience-older__bullets {
     display: none !important;
   }
 
-  /* Fix text truncation issues with client links */
-  .experience > a {
-    display: inline-block;
-    margin-right: 0.25em;
+  // ── 14. Secondary columns (Education + Interests) ─────────────────────────────
+  .resume-secondary-columns {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: $p-sp-3 !important;
+    align-items: flex-start !important;
+    margin: 0 !important;
   }
 
-  /* Ensure links print in black without underlines */
-  a,
-  a:visited {
-    text-decoration: none !important;
-    color: #000 !important;
+  .resume-secondary-column {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Slightly soften print marker weight for compact text sizes */
+  .educations {
+    list-style: none !important;
+    padding: 0 !important;
+  }
+
+  // ── 15. Bullet marker softening ───────────────────────────────────────────────
   #projects li.project > ul li::marker,
   #experiences li.experience > ul li::marker,
   .experience ul li::marker {
-    color: rgba(0, 0, 0, 0.72) !important;
-    font-size: 0.9em;
-  }
-
-  /* Add horizontal rules for better section separation */
-  hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 0.3em 0;
-  }
-
-  /* Fix for experience items at bottom of page/column */
-  li.experience:last-child {
-    margin-bottom: 0 !important;
+    color: rgba(0, 0, 0, 0.65) !important;
+    font-size: 0.9em !important;
   }
 }
