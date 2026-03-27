@@ -22,11 +22,11 @@ $size: "((1vmin + 1vmax) / 3)";
 $size-margin: "((1vmin + 1vmax) / 3) * 2";
 
 // Compact, consistent type scale so section content does not overpower experience entries
-$type-size-section-title: 0.96rem;
-$type-size-section-body: 0.92rem;
-$type-size-entry-title: 0.95rem;
-$type-size-entry-meta: 0.82rem;
-$type-size-entry-detail: 0.9rem;
+$type-size-section-title: 1rem;
+$type-size-section-body: 0.95rem;
+$type-size-entry-title: 0.98rem;
+$type-size-entry-meta: 0.84rem;
+$type-size-entry-detail: 0.93rem;
 $space-section: 0.75rem;
 $space-section-print: 0.18em;
 $bullet-level-1: disc;
@@ -133,7 +133,11 @@ body {
     color 0.3s ease-in-out;
 
   font-size: calc(#{$size} * 3.6);
-  font-size: clamp(14px, 1vw, 18px); // Smaller base size, limits scaling
+  font-size: clamp(
+    15px,
+    1.05vw,
+    19px
+  ); // Slightly larger for improved screen readability
   line-height: $standard-line-height;
   margin: 0 auto;
   padding: 0;
@@ -742,20 +746,20 @@ body {
   // Type scale
   $p-h1: 14.8px; // page title
   $p-base: 12.05px; // body / section labels
-  $p-sm: 10.6px; // entry titles (h3)
-  $p-xs: 9.6px; // bullet detail text
+  $p-sm: 10.7px; // entry titles (h3)
+  $p-xs: 9.7px; // bullet detail text
   $p-xxs: 8.3px; // older-exp / meta labels
   $p-lh: 1.34; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
-  $p-sp-1: 0.145rem; // micro  — between sibling list items
-  $p-sp-2: 0.27rem; // tight  — heading → content within a card
-  $p-sp-3: 0.35rem; // normal — between cards / column gaps
-  $p-sp-4: 0.5rem; // loose  — between major sections
+  $p-sp-1: 0.13rem; // micro  — between sibling list items
+  $p-sp-2: 0.255rem; // tight  — heading → content within a card
+  $p-sp-3: 0.31rem; // normal — between cards / column gaps
+  $p-sp-4: 0.45rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.55cm; // @page side/bottom margin
-  $p-page-m-top: 0.5cm; // @page top margin to balance optical whitespace
+  $p-page-m: 0.5cm; // @page side/bottom margin
+  $p-page-m-top: 0.45cm; // @page top margin to balance optical whitespace
   $p-gutter: 0.35cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.58rem; // li.experience left padding — must be > bullet marker offset
@@ -1199,7 +1203,7 @@ body {
   }
 
   .experience-older__entry {
-    font-size: 8px !important;
+    font-size: 8.1px !important;
     line-height: 1.12 !important;
     padding: 0.09em 0.3em !important;
     margin: 0 !important;
@@ -1216,7 +1220,7 @@ body {
   }
 
   .experience-older__role {
-    font-size: 8.2px !important;
+    font-size: 8.1px !important;
     font-weight: 700 !important;
     line-height: 1.15 !important;
     display: block !important;
@@ -1232,7 +1236,7 @@ body {
   }
 
   .experience-older__company {
-    font-size: 7.2px !important;
+    font-size: 7.1px !important;
     display: block !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -1281,7 +1285,7 @@ body {
     font-weight: 600 !important;
     line-height: $p-lh !important;
     letter-spacing: 0.02em !important;
-    margin: 0 0 $p-sp-2 0 !important;
+    margin: 0 0 0.16rem 0 !important;
     padding: 0 !important;
   }
 
@@ -1299,8 +1303,8 @@ body {
   #education .education h3,
   #interests p {
     display: block !important;
-    font-size: 9.2px !important;
-    line-height: 1.2 !important;
+    font-size: 9px !important;
+    line-height: 1.16 !important;
     margin: 0 !important;
     padding: 0 !important;
   }

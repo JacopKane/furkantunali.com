@@ -80,7 +80,7 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Integrated OpenAI and Tavily APIs to build an AI system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving hosting locations, DPO emails, and privacy policy links.",
+            "Integrated OpenAI and Tavily APIs to build an AI system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving hosting and data storage locations, DPO emails, and privacy policy links.",
             "Researched AI Agent frameworks (PydanticAI, AutoGen) for solving domain-specific challenges."
           ]
         },
@@ -209,18 +209,6 @@
           "role": "Full-stack developer",
           "company": "Ping Digital Agency Istanbul",
           "url": "http://ping.com.tr",
-          "dates": "05/2008 - 03/2009",
-          "bullets": []
-        },
-        {
-          "role": "Front-end developer",
-          "company": "Tribal DDB Worldwide Istanbul",
-          "dates": "03/2009 - 05/2009",
-          "bullets": []
-        },
-        {
-          "role": "Designer & Front-end developer",
-          "company": "Koçak Dizayn, Istanbul",
           "dates": "05/2008 - 03/2009",
           "bullets": []
         },
