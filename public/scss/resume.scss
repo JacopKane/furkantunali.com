@@ -594,11 +594,6 @@ body {
 
 // Ensure print-specific styles are applied
 @media print {
-  @page {
-    size: A4;
-    margin: 10mm;
-  }
-
   html,
   body {
     font-size: 11px !important;
@@ -642,27 +637,44 @@ body {
   p {
     margin: 0.1em 0 !important;
     padding: 0 !important;
-    orphans: 3;
-    widows: 3;
   }
 
   // Remove all container margins and paddings
   .container {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 0.2cm !important;
     max-width: none !important;
     width: 100% !important;
   }
 
   // Fix the intro section alignment for print
   .intro {
-    margin: 0 !important;
+    margin: 0 0 0.06cm 0 !important;
     padding: 0 !important;
     overflow: visible !important;
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
+    gap: 0 !important;
     width: 100% !important;
+  }
+
+  .intro section {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .intro #info h2,
+  .intro #contact h2 {
+    display: none !important;
+  }
+
+  .intro ul.info,
+  .intro ul.contact {
+    margin: 0 !important;
+    line-height: 1.05 !important;
   }
 
   .left-column,
@@ -670,7 +682,7 @@ body {
     float: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    width: 48% !important;
+    width: calc(50% - 0.1cm) !important;
     box-sizing: border-box !important;
   }
 
@@ -680,6 +692,8 @@ body {
 
   .right-column {
     text-align: right !important;
+    margin-left: auto !important;
+    padding-right: 0.05cm !important;
   }
 
   // Hide navigation in print and remove its space
@@ -691,6 +705,7 @@ body {
   header {
     margin: 0 !important;
     padding: 0 !important;
+    margin-bottom: 0.08cm !important;
   }
 
   // Remove margins from header elements
@@ -698,6 +713,12 @@ body {
   header h1 {
     margin: 0 !important;
     padding: 0 !important;
+  }
+
+  header h1 {
+    padding-left: 0.2cm !important;
+    font-size: 12px !important;
+    line-height: 1.05 !important;
   }
 
   // Remove top margin from first element to eliminate page top spacing
@@ -771,8 +792,8 @@ body {
       padding: 0.35rem 0.35rem 0.35rem 0.6rem !important;
       border-left: 1px solid #999 !important;
       font-size: 9px !important;
-      break-inside: avoid-page !important;
-      page-break-inside: avoid !important;
+      break-inside: auto !important;
+      page-break-inside: auto !important;
 
       h3 {
         margin: 0 0 0.1rem 0 !important;
@@ -798,11 +819,6 @@ body {
           font-size: 8px !important;
           line-height: 1.1 !important;
         }
-
-        > li {
-          break-inside: avoid-page !important;
-          page-break-inside: avoid !important;
-        }
       }
 
       > ul > li > ul {
@@ -827,8 +843,8 @@ body {
     }
 
     .experience-older__group {
-      break-inside: avoid-page !important;
-      page-break-inside: avoid !important;
+      break-inside: auto !important;
+      page-break-inside: auto !important;
       margin-bottom: 0.08em !important;
       padding: 0 !important;
     }
@@ -854,8 +870,8 @@ body {
       padding: 0 !important;
       margin: 0 0 0.04em 0 !important;
       border: none !important;
-      break-inside: avoid-page !important;
-      page-break-inside: avoid !important;
+      break-inside: auto !important;
+      page-break-inside: auto !important;
     }
 
     .experience-older__header {
