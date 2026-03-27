@@ -741,17 +741,17 @@ body {
   // ── Design tokens ──────────────────────────────────────────────────────────
   // Type scale
   $p-h1: 14px; // page title
-  $p-base: 11px; // body / section labels
-  $p-sm: 9.5px; // entry titles (h3)
-  $p-xs: 8.5px; // bullet detail text
-  $p-xxs: 7.5px; // older-exp / meta labels
-  $p-lh: 1.2; // single line-height used everywhere
+  $p-base: 11.4px; // body / section labels
+  $p-sm: 10px; // entry titles (h3)
+  $p-xs: 9px; // bullet detail text
+  $p-xxs: 8px; // older-exp / meta labels
+  $p-lh: 1.28; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
-  $p-sp-1: 0.1rem; // micro  — between sibling list items
-  $p-sp-2: 0.2rem; // tight  — heading → content within a card
-  $p-sp-3: 0.3rem; // normal — between cards / column gaps
-  $p-sp-4: 0.5rem; // loose  — between major sections
+  $p-sp-1: 0.13rem; // micro  — between sibling list items
+  $p-sp-2: 0.24rem; // tight  — heading → content within a card
+  $p-sp-3: 0.38rem; // normal — between cards / column gaps
+  $p-sp-4: 0.58rem; // loose  — between major sections
 
   // Layout
   $p-page-m: 0.35cm; // @page margin (printer bleed zone)
@@ -882,6 +882,8 @@ body {
   }
   h2 {
     font-size: $p-base !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
     line-height: $p-lh !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -1040,7 +1042,7 @@ body {
   #experiences .experiences-columns {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0 $p-sp-3 !important;
+    gap: 0 $p-sp-4 !important;
     align-items: start !important;
   }
 

@@ -148,17 +148,17 @@ body {
 @media print {
   // ── Design tokens (must match resume.scss exactly) ─────────────────────────
   $p-h1: 14px;
-  $p-base: 11px;
-  $p-sm: 9.5px;
-  $p-xs: 8.5px;
-  $p-xxs: 7.5px;
-  $p-lh: 1.2;
-  $p-sp-1: 0.1rem;
-  $p-sp-2: 0.25rem;
-  $p-sp-3: 0.45rem;
-  $p-sp-4: 0.7rem;
-  $p-page-m: 0.5cm;
-  $p-gutter: 0.3cm;
+  $p-base: 11.4px;
+  $p-sm: 10px;
+  $p-xs: 9px;
+  $p-xxs: 8px;
+  $p-lh: 1.28;
+  $p-sp-1: 0.13rem;
+  $p-sp-2: 0.24rem;
+  $p-sp-3: 0.38rem;
+  $p-sp-4: 0.58rem;
+  $p-page-m: 0.35cm;
+  $p-gutter: 0.25cm;
   $p-indent: 1.1em;
 
   // ── Experience: single-column vertical list (overrides 2-col grid) ─────────
