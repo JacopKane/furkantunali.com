@@ -47,8 +47,8 @@ function getUrl(path = "") {
   });
 
   if (isEmulator) {
-    // Use Firebase hosting emulator URL (configured port 8080)
-    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "8080";
+    // Use Firebase hosting emulator URL (configured port 8088)
+    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "8088";
     const url = `http://localhost:${hostingPort}${path}`;
     logger.info("✅ EMULATOR MODE - Using local URL", {
       url,
@@ -130,6 +130,7 @@ export const downloadAsPDF = onRequest(
       });
 
       const url = getUrl("/resume-doc.html");
+      const fallbackUrl = "https://furkantunali.com/resume-doc.html";
 
       logger.info("About to navigate to URL", {
         targetUrl: url,
@@ -137,10 +138,30 @@ export const downloadAsPDF = onRequest(
         structuredData: true,
       });
 
-      const navigationResponse = await page.goto(url, {
-        waitUntil: "networkidle2",
-        timeout: 30000,
-      });
+      let navigationResponse;
+
+      try {
+        navigationResponse = await page.goto(url, {
+          waitUntil: "networkidle2",
+          timeout: 30000,
+        });
+      } catch (error: unknown) {
+        logger.warn("Primary navigation failed, retrying with fallback URL", {
+          targetUrl: url,
+          fallbackUrl,
+          error: `${error}`,
+          structuredData: true,
+        });
+
+        if (url === fallbackUrl) {
+          throw error;
+        }
+
+        navigationResponse = await page.goto(fallbackUrl, {
+          waitUntil: "networkidle2",
+          timeout: 30000,
+        });
+      }
 
       logger.info("Page navigation completed", {
         finalUrl: page.url(),

@@ -20,28 +20,24 @@
   "summary": "Experienced software engineer architecting scalable, innovative solutions for multi-cloud environments, optimizing developer experience across web development, full-stack. Currently working with GenAI to reimagine software functionality and create intelligent solutions.",
   "skills": [
     {
-      "category": "AI & LLM Tooling",
+      "category": "AI",
       "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, PydanticAI, AutoGen, Claude API, OpenAI, Gemini and Tavily APIs"
     },
     {
-      "category": "Cloud & Infrastructure",
-      "items": "Kubernetes, AWS, GCP, Azure, Firebase, Vercel, Docker, Terraform, Nginx, Cloudflare, ZeroTier, Grafana, Loki, Tempo, Prometheus"
+      "category": "Infrastructure",
+      "items": "Kubernetes, AWS, GCP, Azure, Firebase, Vercel, Docker, Terraform, Nginx, Cloudflare, ZeroTier, Grafana, Loki, Tempo, Prometheus, GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
     },
     {
-      "category": "Back-End & Application",
+      "category": "Back-End",
       "items": "Node.js, TypeScript, JavaScript, Python, Ruby, PHP, NestJS, Express, Turborepo"
     },
     {
-      "category": "UI & Front-End",
-      "items": "React, NextJS, Vue.js, Refine, HTML, CSS, PostCSS, SCSS, Wireframing"
+      "category": "Front-End",
+      "items": "React, NextJS, Vue.js, Nuxt, HTML, CSS, PostCSS, SCSS, Wireframing"
     },
     {
-      "category": "Data & Storage",
+      "category": "Storage",
       "items": "PostgreSQL, Redis, BullMQ, MongoDB, Firestore, Supabase"
-    },
-    {
-      "category": "Delivery & Tooling",
-      "items": "GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
     }
   ],
   "projects": [
@@ -178,107 +174,60 @@
   ],
   "olderExperiences": [
     {
-      "year": "2012–2015",
+      "year": "2005–2015",
       "experiences": [
         {
           "role": "Founder",
           "company": "NOD studios, Istanbul",
           "url": "http://nod.st",
           "dates": "11/2012 - 07/2015",
-          "bullets": [
-            "Founded and led design & dev studio for clients (BeinSports, Les Benjamins, Ülker, Gripati)",
-            "Delivered e-commerce platforms, CMS solutions, mobile-optimized websites, and full-stack APIs"
-          ]
-        }
-      ]
-    },
-    {
-      "year": "2011–2012",
-      "experiences": [
+          "bullets": []
+        },
         {
           "role": "Full-stack web developer",
           "company": "FOX International Channels, Istanbul",
           "url": "http://ficturkey.com/",
           "dates": "01/2012 - 12/2012",
-          "bullets": [
-            "Developed social apps and microsites for high-profile clients (Samsung Turkey, National Geographic, HBO, Fox)",
-            "Multi-platform web development and content integration"
-          ]
+          "bullets": []
         },
         {
           "role": "Front-end developer & designer",
           "company": "projectz, Istanbul",
           "url": "http://projectz.com/",
           "dates": "06/2011 - 12/2011",
-          "bullets": [
-            "Front-end development and UX design for social network startup",
-            "Refactoring and modern web standards implementation"
-          ]
-        }
-      ]
-    },
-    {
-      "year": "2008–2011",
-      "experiences": [
+          "bullets": []
+        },
         {
           "role": "Full-stack developer",
           "company": "Manajans / JWT, Istanbul",
           "url": "http://manajans-jwt.com/",
           "dates": "05/2009 - 06/2011",
-          "bullets": [
-            "Web development and CMS creation for major Turkish brands (Turkcell, Miller, Eston Yapı)",
-            "Online communities, social apps, and microsite development"
-          ]
+          "bullets": []
         },
         {
           "role": "Full-stack developer",
           "company": "Ping Digital Agency Istanbul",
           "url": "http://ping.com.tr",
           "dates": "05/2008 - 03/2009",
-          "bullets": [
-            "Frontend development for enterprise clients (Garanti BBVA, Türk Telekom)",
-            "Design and interactive web solutions"
-          ]
+          "bullets": []
         },
         {
           "role": "Front-end developer",
           "company": "Tribal DDB Worldwide Istanbul",
-          "url": "http://projectz.com/",
           "dates": "03/2009 - 05/2009",
-          "bullets": [
-            "Frontend development for Türk Telekom projects",
-            "Interactive web design and implementation"
-          ]
+          "bullets": []
         },
         {
           "role": "Designer & Front-end developer",
           "company": "Koçak Dizayn, Istanbul",
           "dates": "05/2008 - 03/2009",
-          "bullets": [
-            "Design and front-end development for online art community startup",
-            "Concept art creation and digital illustration"
-          ]
-        }
-      ]
-    },
-    {
-      "year": "2005–2007",
-      "experiences": [
+          "bullets": []
+        },
         {
           "role": "Designer & Front-end developer",
           "company": "MedyaNova, Istanbul",
           "url": "http://www.medyanova.com/",
           "dates": "05/2005 - 02/2007",
-          "bullets": [
-            "Web design and frontend development for travel and hospitality projects",
-            "Hotel booking platforms and franchise websites"
-          ]
-        },
-        {
-          "role": "Internship",
-          "company": "MedyaNova, Istanbul",
-          "url": "http://www.medyanova.com/",
-          "dates": "04/2005 - 05/2005",
           "bullets": []
         }
       ]
