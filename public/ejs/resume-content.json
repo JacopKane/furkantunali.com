@@ -69,44 +69,46 @@
   ],
   "experiences": [
     {
-      "role": "Senior AI Solutions Engineer",
+      "role": "Senior Engineer (AI, Infrastructure, Developer Experience)",
       "company": "heyData GmbH, Berlin",
       "url": "https://heydata.eu/",
-      "dates": "10/2024 - 08/2025",
-      "bullets": [
-        "Integrated OpenAI and Tavily APIs to build an AI-powered system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving structured data such as hosting locations, DPO emails, and privacy policy links.",
-        "Researching about how to utilise AI Agent frameworks (PydanticAI, Autogen) to solve current challenges in the company."
-      ]
-    },
-    {
-      "role": "Senior Infrastructure Engineer",
-      "company": "heyData GmbH, Berlin",
-      "url": "https://heydata.eu/",
-      "dates": "10/2023 - 10/2024",
-      "bullets": [
-        "Created Kubernetes and Terraform from scratch for scalable infrastructure setup and reliable deployments.",
-        "Drafted technical implementation details to guide project development and ensure consistent coding standards across teams.",
-        "Led successful migration from ECS to <em>Kubernetes</em> (EKS), learning the technology from scratch and executing a smooth switchover with zero downtime.",
-        "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) to improve service deployment.",
-        "Supported infrastructure initiatives including Route53 configuration, domain management, and DMARC reporting setup for email delivery.",
-        "Addressed critical technical incidents and provided rapid resolution to maintain continuous service availability for customers."
-      ]
-    },
-    {
-      "role": "Senior Developer Experience Engineer",
-      "company": "heyData GmbH, Berlin",
-      "url": "https://heydata.eu/",
-      "dates": "01/2022 - 10/2023",
-      "bullets": [
-        "Developed software solutions using JavaScript and TypeScript, with a focus on modern frameworks such as NestJS, NextJS, Rails, and VUE.",
-        "Migrated infrastructure from Heroku to AWS ECS.",
-        "Restructured legacy Ruby on Rails systems into a monorepo, Dockerized applications, and established reliable local development environments enabling efficient developer onboarding.",
-        "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> to streamline environment provisioning across Testing and Production.",
-        "Implemented an event-driven scheduling system using AWS EventBridge to automate client reminders without building a custom solution.",
-        "Developed DevOps and DX tools, including Makefile and Bash scripts, to automate routine tasks and improve development workflow efficiency.",
-        "Maintained Docker Compose setups for service orchestration and environment consistency.",
-        "Mentored team members, offering structured and insightful feedback while serving as a trusted technical resource.",
-        "Contributed to the hiring process by evaluating candidates with deep expertise in design patterns, best practices, and JavaScript."
+      "dates": "01/2022 - 08/2025",
+      "subroles": [
+        {
+          "title": "Senior AI Solutions Engineer",
+          "dates": "10/2024 - 08/2025",
+          "bullets": [
+            "Integrated OpenAI and Tavily APIs to build an AI-powered system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving structured data such as hosting locations, DPO emails, and privacy policy links.",
+            "Researching about how to utilise AI Agent frameworks (PydanticAI, Autogen) to solve current challenges in the company."
+          ]
+        },
+        {
+          "title": "Senior Infrastructure Engineer",
+          "dates": "10/2023 - 10/2024",
+          "bullets": [
+            "Created Kubernetes and Terraform from scratch for scalable infrastructure setup and reliable deployments.",
+            "Drafted technical implementation details to guide project development and ensure consistent coding standards across teams.",
+            "Led successful migration from ECS to <em>Kubernetes</em> (EKS), learning the technology from scratch and executing a smooth switchover with zero downtime.",
+            "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) to improve service deployment.",
+            "Supported infrastructure initiatives including Route53 configuration, domain management, and DMARC reporting setup for email delivery.",
+            "Addressed critical technical incidents and provided rapid resolution to maintain continuous service availability for customers."
+          ]
+        },
+        {
+          "title": "Senior Developer Experience Engineer",
+          "dates": "01/2022 - 10/2023",
+          "bullets": [
+            "Developed software solutions using JavaScript and TypeScript, with a focus on modern frameworks such as NestJS, NextJS, Rails, and VUE.",
+            "Migrated infrastructure from Heroku to AWS ECS.",
+            "Restructured legacy Ruby on Rails systems into a monorepo, Dockerized applications, and established reliable local development environments enabling efficient developer onboarding.",
+            "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> to streamline environment provisioning across Testing and Production.",
+            "Implemented an event-driven scheduling system using AWS EventBridge to automate client reminders without building a custom solution.",
+            "Developed DevOps and DX tools, including Makefile and Bash scripts, to automate routine tasks and improve development workflow efficiency.",
+            "Maintained Docker Compose setups for service orchestration and environment consistency.",
+            "Mentored team members, offering structured and insightful feedback while serving as a trusted technical resource.",
+            "Contributed to the hiring process by evaluating candidates with deep expertise in design patterns, best practices, and JavaScript."
+          ]
+        }
       ]
     },
     {

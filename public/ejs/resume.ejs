@@ -240,7 +240,29 @@
               <a target="_blank" href="<%= exp.url %>"><%- exp.company %></a>
               <span class="dates"><%= exp.dates %></span>
             </h3>
-            <% if (exp.bullets && exp.bullets.length) { %>
+            <% if (exp.subroles && exp.subroles.length) { %>
+            <ul>
+              <% exp.subroles.forEach(function(subrole) { %>
+              <li>
+                <p>
+                  <strong><%= subrole.title %></strong>
+                  <% if (subrole.dates) { %>
+                  <span class="dates"><%= subrole.dates %></span>
+                  <% } %>
+                </p>
+                <% if (subrole.bullets && subrole.bullets.length) { %>
+                <ul>
+                  <% subrole.bullets.forEach(function(bullet) { %>
+                  <li>
+                    <p><%- bullet %></p>
+                  </li>
+                  <% }); %>
+                </ul>
+                <% } %>
+              </li>
+              <% }); %>
+            </ul>
+            <% } else if (exp.bullets && exp.bullets.length) { %>
             <ul>
               <% exp.bullets.forEach(function(bullet) { %>
               <li>
