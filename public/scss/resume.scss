@@ -649,7 +649,7 @@ body {
 
   // Fix the intro section alignment for print
   .intro {
-    margin: 0 0 0.06cm 0 !important;
+    margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
     display: flex !important;
@@ -659,6 +659,7 @@ body {
     align-items: flex-start !important;
     gap: 0 !important;
     width: 100% !important;
+    line-height: 1 !important;
   }
 
   .intro section {
@@ -674,7 +675,25 @@ body {
   .intro ul.info,
   .intro ul.contact {
     margin: 0 !important;
-    line-height: 1.05 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    font-size: 10px !important;
+    display: inline !important;
+    list-style: none !important;
+  }
+
+  .intro ul.info li,
+  .intro ul.contact li {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 10px !important;
+  }
+
+  .intro ul.info li:not(:first-child)::before,
+  .intro ul.contact li:not(:first-child)::before {
+    content: " · " !important;
+    margin: 0 0.2em !important;
   }
 
   .left-column,
@@ -704,8 +723,10 @@ body {
   // Remove margins and padding from header
   header {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 0.2cm !important;
     margin-bottom: 0.08cm !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   // Remove margins from header elements
@@ -716,9 +737,9 @@ body {
   }
 
   header h1 {
-    padding-left: 0.2cm !important;
-    font-size: 12px !important;
-    line-height: 1.05 !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    margin-bottom: 0.02cm !important;
   }
 
   // Remove top margin from first element to eliminate page top spacing

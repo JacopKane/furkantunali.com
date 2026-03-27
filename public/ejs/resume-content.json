@@ -25,7 +25,7 @@
     },
     {
       "category": "Cloud & Infrastructure",
-      "items": "AWS (EKS, ECS, CloudFormation, Lambda, Fargate, ECR, RDS, Cloud Map, EC2, Route53, IAM, EventBridge), Azure (Azure Active Directory, Azure Functions, Cosmos DB), GCP (Vertex AI, Cloud Vision API, Cloud Run, Cloud Storage), Firebase (Functions, Firestore), Vercel, Kubernetes, MicroK8s, Docker, Terraform, Nginx, Cloudflare (Tunnels, Workers, Access), ZeroTier, Grafana, Loki, Tempo, Prometheus"
+      "items": "Kubernetes, AWS, GCP, Azure, Firebase, Vercel, Docker, Terraform, Nginx, Cloudflare, ZeroTier, Grafana, Loki, Tempo, Prometheus"
     },
     {
       "category": "Back-End & Application",
@@ -33,7 +33,7 @@
     },
     {
       "category": "UI & Front-End",
-      "items": "React, NextJS, Vue.js, Refine, HTML, CSS, PostCSS, SCSS, UI Design, Wireframing, Branding, Print Design"
+      "items": "React, NextJS, Vue.js, Refine, HTML, CSS, PostCSS, SCSS, Wireframing"
     },
     {
       "category": "Data & Storage",
