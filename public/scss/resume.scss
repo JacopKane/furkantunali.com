@@ -731,12 +731,12 @@ body {
   // List item margin reduction
   ul,
   ol {
-    margin: 0.2em 0 !important;
-    padding-left: 1.2em !important;
+    margin: 0.08em 0 !important;
+    padding-left: 1.05em !important;
   }
 
   li {
-    margin: 0.05em 0 !important;
+    margin: 0.02em 0 !important;
     padding: 0 !important;
   }
 
@@ -867,18 +867,31 @@ body {
       }
 
       > ul {
-        padding-left: 1.25em !important;
-        list-style-type: circle !important;
-        margin: 0.15em 0 !important;
+        padding-left: 1.05em !important;
+        list-style-type: $bullet-level-1 !important;
+        list-style-position: outside !important;
+        margin: 0.08em 0 !important;
 
         li {
           display: list-item !important;
-          margin: 0 !important;
+          margin: 0.02em 0 !important;
           padding-left: 0.15em !important;
 
           p {
             margin: 0 !important;
             padding: 0 !important;
+          }
+
+          ul {
+            margin: 0 !important;
+            padding-left: 0.95em !important;
+            list-style-type: square !important;
+          }
+
+          ul ul {
+            margin: 0 !important;
+            padding-left: 0.9em !important;
+            list-style-type: disc !important;
           }
         }
       }
@@ -935,13 +948,13 @@ body {
       }
 
       > ul {
-        padding-left: 0.9em !important;
+        padding-left: 0.95em !important;
         list-style-type: $bullet-level-1 !important;
-        margin: 0.1rem 0 0 0 !important;
+        margin: 0.04rem 0 0 0 !important;
 
         li {
           display: list-item !important;
-          margin: 0.03em 0 !important;
+          margin: 0.02em 0 !important;
           padding: 0 !important;
           font-size: 8px !important;
           line-height: 1.1 !important;
@@ -950,11 +963,15 @@ body {
 
       > ul > li > ul {
         display: block !important;
-        list-style-type: $bullet-level-2 !important;
+        margin: 0 !important;
+        padding-left: 0.9em !important;
+        list-style-type: square !important;
       }
 
       > ul > li > ul > li > ul {
-        list-style-type: $bullet-level-3 !important;
+        margin: 0 !important;
+        padding-left: 0.85em !important;
+        list-style-type: disc !important;
       }
     }
   }
@@ -1096,8 +1113,9 @@ body {
       margin-bottom: 0 !important;
       padding-top: 0 !important;
       padding-bottom: 0 !important;
-      padding-left: 1.5em !important;
+      padding-left: 1.1em !important;
       list-style-type: $bullet-level-1 !important;
+      list-style-position: outside !important;
 
       li {
         break-inside: auto !important;
@@ -1105,11 +1123,15 @@ body {
       }
 
       ul {
-        list-style-type: $bullet-level-2 !important;
+        margin: 0 !important;
+        padding-left: 0.95em !important;
+        list-style-type: square !important;
       }
 
       ul ul {
-        list-style-type: $bullet-level-3 !important;
+        margin: 0 !important;
+        padding-left: 0.9em !important;
+        list-style-type: disc !important;
       }
     }
 
@@ -1246,6 +1268,14 @@ body {
   a:visited {
     text-decoration: none !important;
     color: #000 !important;
+  }
+
+  /* Slightly soften print marker weight for compact text sizes */
+  #projects li.project > ul li::marker,
+  #experiences li.experience > ul li::marker,
+  .experience ul li::marker {
+    color: rgba(0, 0, 0, 0.72) !important;
+    font-size: 0.9em;
   }
 
   /* Add horizontal rules for better section separation */

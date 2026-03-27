@@ -37,7 +37,7 @@
     },
     {
       "category": "Storage",
-      "items": "PostgreSQL, Redis, BullMQ, MongoDB, Firestore, Supabase"
+      "items": "PostgreSQL, Redis, BullMQ, MongoDB"
     }
   ],
   "projects": [
@@ -45,11 +45,11 @@
       "name": "Newsify Today",
       "url": "https://newsify.today",
       "subtitle": "AI news platform & ChatGPT App (MCP UI App)",
-      "intro": "Built and operate a full-stack AI news platform that tracks Google Trends across <em>16 regions</em> and <em>12 languages</em>, runs an agentic AI pipeline to curate, score, and summarize news in <em>real time</em> — served via web app and as an early <strong>ChatGPT App</strong>",
+      "intro": "Built and operate <strong>Newsify Today</strong> as both an AI news platform and an early <strong>ChatGPT App</strong>, tracking global web search trends across <em>16 regions</em> and <em>12 languages</em> and running an agentic AI pipeline to curate, score, and summarize news in <em>real time</em>.",
       "bullets": [
         "Built a <strong>LangGraph</strong>-based agent with <em>9 tools</em> (<strong>scrape</strong>, <strong>summarize</strong>, <strong>validate</strong>, <strong>score</strong>, <strong>deduplicate</strong>) that processes trends end\u2011to\u2011end with <em>deterministic tool routing</em> — no prompt-level orchestration, each step has explicit contracts.",
         "Run self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across <em>3 nodes</em> with <em>health-aware least-connections routing</em>, tier-based fallback to <strong>Google Gemini</strong>, and in-flight slot tracking — <em>keeping inference cost near zero</em>.",
-        "Implemented a <strong>Model Context Protocol</strong> server with a tool fetching trend news, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — submitted as one of the early <strong>MCP Apps</strong> to be included in the <strong>ChatGPT Apps</strong>.",
+        "Implemented a <strong>Model Context Protocol</strong> server with a trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — launched as an early <strong>ChatGPT App</strong>.",
         "Run the entire stack on a <em>3-node</em> <strong>Kubernetes</strong> on-premises cluster — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with automated CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
         "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to a <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em> for instant updates without full re-generation.",
         "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong>, <strong>Tempo</strong>, and <strong>Prometheus</strong> — logs, traces, and metrics from both server and browser, plus <em>tracing for every AI agent run</em>."
