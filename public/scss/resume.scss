@@ -754,8 +754,8 @@ body {
   $p-sp-4: 0.58rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.35cm; // @page margin (printer bleed zone)
-  $p-gutter: 0.25cm; // .container / header inner left-right padding
+  $p-page-m: 0.55cm; // @page margin (printer bleed zone)
+  $p-gutter: 0.35cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.5rem; // li.experience left padding — must be > bullet marker offset
 
