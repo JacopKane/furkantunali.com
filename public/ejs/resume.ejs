@@ -1,13 +1,18 @@
 <!doctype html>
 <html lang="">
   <head>
+    <% 
+      const data = GLOBEL || {};
+      const meta = data.meta || {};
+      const toArray = function(value) { return Array.isArray(value) ? value : []; };
+    %>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="<%= GLOBEL.meta.description %>" />
-    <title><%= GLOBEL.meta.title %></title>
+    <meta name="description" content="<%= meta.description || '' %>" />
+    <title><%= meta.title || 'Resume' %></title>
 
-    <% if (!GLOBEL.resumeDoc) { %>
+    <% if (!data.resumeDoc) { %>
     <!-- Apple Touch Icons -->
     <link
       rel="apple-touch-icon"
@@ -90,15 +95,15 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/resume.css" />
-    <% if (GLOBEL.resume) { %>
+    <% if (data.resume) { %>
     <link rel="stylesheet" href="styles/resume-web.css" />
     <% } %>
-    <% if (GLOBEL.resumeDoc) { %>
+    <% if (data.resumeDoc) { %>
     <link rel="stylesheet" href="styles/resume-doc.css" />
     <% } %>
   </head>
   <body>
-    <% if (!GLOBEL.resumeDoc) { %>
+    <% if (!data.resumeDoc) { %>
     <nav id="download">
       <a
         href="/"
@@ -130,7 +135,7 @@
 
     <header>
       <hgroup>
-        <h1><%= GLOBEL.meta.title %></h1>
+        <h1><%= meta.title || 'Resume' %></h1>
       </hgroup>
     </header>
 
@@ -140,10 +145,12 @@
           <section id="info">
             <h2>Info</h2>
             <ul class="info">
-              <% GLOBEL.info.forEach(function(item) { %>
+              <% toArray(data.info).forEach(function(item) { %>
               <li>
+                <% if (item.label) { %>
                 <strong><%= item.label %>:</strong>
-                <%= item.value %>
+                <% } %>
+                <%= item.value || '' %>
               </li>
               <% }); %>
             </ul>
@@ -153,17 +160,22 @@
           <section id="contact">
             <h2>Contact</h2>
             <ul class="contact">
-              <% GLOBEL.contact.forEach(function(item) { %>
+              <% toArray(data.contact).forEach(function(item) { %>
               <li>
-                <% if (item.label) { %>
+                <% if (item.label && item.href) { %>
                 <strong><%= item.label %>:</strong>
                 <a href="<%= item.href %>" target="_blank"><%= item.text %></a>
-                <% } else { %>
+                <% } else if (item.label) { %>
+                <strong><%= item.label %>:</strong>
+                <%= item.text || '' %>
+                <% } else if (item.href) { %>
                 <strong
                   ><a href="<%= item.href %>" target="_blank"
                     ><%= item.text %></a
                   ></strong
                 >
+                <% } else { %>
+                <strong><%= item.text || '' %></strong>
                 <% } %>
               </li>
               <% }); %>
@@ -174,17 +186,17 @@
 
       <section id="summary">
         <h2>Summary</h2>
-        <p><%- GLOBEL.summary %></p>
+        <p><%- data.summary || '' %></p>
       </section>
 
       <section id="skills">
         <h2>Skills</h2>
         <ul class="skills">
-          <% GLOBEL.skills.forEach(function(skill) { %>
+          <% toArray(data.skills).forEach(function(skill) { %>
           <li>
-            <strong><%= skill.category %></strong>
+            <strong><%= skill.category || '' %></strong>
 
-            <%= skill.items %>
+            <%= skill.items || '' %>
           </li>
           <% }); %>
         </ul>
@@ -193,36 +205,52 @@
       <section id="projects">
         <h2>Recent Projects</h2>
         <ul class="projects">
-          <% GLOBEL.projects.forEach(function(project) { %>
+          <% toArray(data.projects).forEach(function(project) { %>
           <li class="project">
             <h3>
+              <% if (project.url) { %>
               <strong
                 ><a href="<%= project.url %>" target="_blank"
-                  ><%= project.name %></a
+                  ><%= project.name || '' %></a
                 ></strong
               >
+              <% } else { %>
+              <strong><%= project.name || '' %></strong>
+              <% } %>
+              <% if (project.subtitle) { %>
               —
               <%= project.subtitle %>
+              <% } %>
             </h3>
+            <% if (project.intro) { %>
             <p><%- project.intro %></p>
+            <% } %>
+            <% if (toArray(project.bullets).length) { %>
             <ul>
-              <% project.bullets.forEach(function(bullet) { %>
+              <% toArray(project.bullets).forEach(function(bullet) { %>
               <li>
                 <p><%- bullet %></p>
               </li>
               <% }); %>
             </ul>
-            <% project.links.forEach(function(link) { %>
+            <% } %>
+            <% toArray(project.links).forEach(function(link) { %>
+            <% if (link && link.href) { %>
             <p>
-              <a href="<%= link.href %>" target="_blank"><%= link.text %></a>
+              <a href="<%= link.href %>" target="_blank"
+                ><%= link.text || link.href %></a
+              >
             </p>
+            <% } %>
             <% }); %>
+            <% if (project.stack) { %>
             <p>
               <small
                 ><strong>Stack:</strong>
                 <%= project.stack %></small
               >
             </p>
+            <% } %>
           </li>
           <% }); %>
         </ul>
@@ -232,27 +260,35 @@
         <h2>Experiences</h2>
 
         <ul class="experiences">
-          <% GLOBEL.experiences.forEach(function(exp) { %>
+          <% toArray(data.experiences).forEach(function(exp) { %>
           <li class="experience">
             <h3>
-              <em><%= exp.role %></em>
+              <em><%= exp.role || '' %></em>
               at
-              <a target="_blank" href="<%= exp.url %>"><%- exp.company %></a>
+              <% if (exp.url) { %>
+              <a target="_blank" href="<%= exp.url %>"
+                ><%- exp.company || '' %></a
+              >
+              <% } else { %>
+              <span><%- exp.company || '' %></span>
+              <% } %>
+              <% if (exp.dates) { %>
               <span class="dates"><%= exp.dates %></span>
+              <% } %>
             </h3>
-            <% if (exp.subroles && exp.subroles.length) { %>
+            <% if (toArray(exp.subroles).length) { %>
             <ul>
-              <% exp.subroles.forEach(function(subrole) { %>
+              <% toArray(exp.subroles).forEach(function(subrole) { %>
               <li>
                 <p>
-                  <strong><%= subrole.title %></strong>
+                  <strong><%= subrole.title || '' %></strong>
                   <% if (subrole.dates) { %>
                   <span class="dates"><%= subrole.dates %></span>
                   <% } %>
                 </p>
-                <% if (subrole.bullets && subrole.bullets.length) { %>
+                <% if (toArray(subrole.bullets).length) { %>
                 <ul>
-                  <% subrole.bullets.forEach(function(bullet) { %>
+                  <% toArray(subrole.bullets).forEach(function(bullet) { %>
                   <li>
                     <p><%- bullet %></p>
                   </li>
@@ -262,9 +298,9 @@
               </li>
               <% }); %>
             </ul>
-            <% } else if (exp.bullets && exp.bullets.length) { %>
+            <% } else if (toArray(exp.bullets).length) { %>
             <ul>
-              <% exp.bullets.forEach(function(bullet) { %>
+              <% toArray(exp.bullets).forEach(function(bullet) { %>
               <li>
                 <p><%- bullet %></p>
               </li>
@@ -282,12 +318,20 @@
         <h2>Education</h2>
 
         <ul class="educations">
-          <% GLOBEL.education.forEach(function(edu) { %>
+          <% toArray(data.education).forEach(function(edu) { %>
           <li class="education">
             <h3>
-              <em><%= edu.degree %></em> at
-              <a target="_blank" href="<%= edu.url %>"><%= edu.school %></a>
+              <em><%= edu.degree || '' %></em> at
+              <% if (edu.url) { %>
+              <a target="_blank" href="<%= edu.url %>"
+                ><%= edu.school || '' %></a
+              >
+              <% } else { %>
+              <span><%= edu.school || '' %></span>
+              <% } %>
+              <% if (edu.dates) { %>
               <span class="dates"><%= edu.dates %></span>
+              <% } %>
             </h3>
           </li>
           <% }); %>
@@ -296,10 +340,10 @@
 
       <section id="interests">
         <h2>Interests</h2>
-        <%- GLOBEL.interests %>
+        <%- data.interests || '' %>
       </section>
 
-      <% if (!GLOBEL.resume) { %>
+      <% if (!data.resume) { %>
     </div>
     <% } %>
 
@@ -341,7 +385,7 @@
       })();
     </script>
 
-    <% if (!GLOBEL.resumeDoc) { %>
+    <% if (!data.resumeDoc) { %>
     <footer>
       <em>
         <script>
