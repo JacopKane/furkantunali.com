@@ -124,12 +124,12 @@
     },
     {
       "role": "Senior Back-end Architect",
-      "company": "GameBook AG (Formerly Experimental Game GmBH), Berlin",
+      "company": "GameBook AG, Berlin",
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
         "Architected and refactored back-end services, developed full-stack features for gaming content management platform",
-        "Enhanced development infrastructure through improved tooling and data structure migrations"
+        "Made audits to improve system-wide speed"
       ]
     },
     {
@@ -183,8 +183,8 @@
         },
         {
           "role": "Full-stack web developer",
-          "company": "FOX International Channels, Istanbul",
-          "url": "http://ficturkey.com/",
+          "company": "FOX (NOW) TV Channels, Istanbul",
+          "url": "https://www.nowtv.com.tr/",
           "dates": "01/2012 - 12/2012",
           "bullets": []
         },
@@ -197,11 +197,11 @@
         },
         {
           "role": "Full-stack developer",
-          "company": "Manajans / JWT, Istanbul",
+          "company": "WPP / JWT, Istanbul",
           "url": "http://manajans-jwt.com/",
           "dates": "05/2009 - 06/2011",
           "bullets": [
-            "Built websites, CMS platforms, and campaign microsites for major brands including Turkcell, Miller, Eston Yapi, and Efes."
+            "Built websites, CMS platforms, and campaign microsites for major brands including Turkcell, Miller, Bomonti, Eston, and Efes."
           ]
         },
         {
@@ -232,7 +232,9 @@
           "company": "MedyaNova, Istanbul",
           "url": "http://www.medyanova.com/",
           "dates": "05/2005 - 02/2007",
-          "bullets": []
+          "bullets": [
+            "Designed and implemented various websites including Best Western Hotels."
+          ]
         }
       ]
     }
