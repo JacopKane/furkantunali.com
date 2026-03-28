@@ -744,11 +744,11 @@ body {
 @media print {
   // ── Design tokens ──────────────────────────────────────────────────────────
   // Type scale
-  $p-h1: 15.8px; // page title
-  $p-base: 12.75px; // body / section labels
-  $p-sm: 11.3px; // entry titles (h3)
-  $p-xs: 10.25px; // bullet detail text
-  $p-xxs: 8.6px; // older-exp / meta labels
+  $p-h1: 16px; // page title
+  $p-base: 12.95px; // body / section labels
+  $p-sm: 11.45px; // entry titles (h3)
+  $p-xs: 10.4px; // bullet detail text
+  $p-xxs: 8.7px; // older-exp / meta labels
   $p-lh: 1.32; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
@@ -1203,7 +1203,7 @@ body {
   }
 
   .experience-older__entry {
-    font-size: 8.45px !important;
+    font-size: 8.55px !important;
     line-height: 1.12 !important;
     padding: 0.09em 0.3em !important;
     margin: 0 !important;
@@ -1220,7 +1220,7 @@ body {
   }
 
   .experience-older__role {
-    font-size: 8.45px !important;
+    font-size: 8.55px !important;
     font-weight: 700 !important;
     line-height: 1.15 !important;
     display: block !important;
@@ -1236,7 +1236,7 @@ body {
   }
 
   .experience-older__company {
-    font-size: 7.4px !important;
+    font-size: 7.5px !important;
     display: block !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -1303,7 +1303,7 @@ body {
   #education .education h3,
   #interests p {
     display: block !important;
-    font-size: 9.45px !important;
+    font-size: 9.6px !important;
     line-height: 1.16 !important;
     margin: 0 !important;
     padding: 0 !important;
