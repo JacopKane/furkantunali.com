@@ -132,11 +132,11 @@ export const downloadAsPDF = onRequest(
       });
 
       const isEmulator = isEmulatorEnvironment();
-      const url = getUrl("/resume-doc.html", isEmulator);
+      const url = getUrl("/resume.html", isEmulator);
 
       logger.info("About to navigate to URL", {
         targetUrl: url,
-        path: "/resume-doc.html",
+        path: "/resume.html",
         structuredData: true,
       });
 

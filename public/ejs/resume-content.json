@@ -25,7 +25,7 @@
     },
     {
       "category": "Infrastructure",
-      "items": "Kubernetes, AWS, GCP, Azure, Firebase, Vercel, Docker, Terraform, Nginx, Cloudflare, ZeroTier, Grafana, Loki, Tempo, Prometheus, GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
+      "items": "Kubernetes, AWS, GCP, Azure, Docker, Terraform, Nginx, Cloudflare, ZeroTier, Grafana, Loki, Tempo, Prometheus, GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
     },
     {
       "category": "Back-End",
@@ -89,14 +89,12 @@
           "dates": "10/2023 - 10/2024",
           "bullets": [
             "Created Kubernetes and Terraform setups from scratch for scalable infrastructure and reliable deployments.",
-            "Led migration from ECS to <em>Kubernetes</em> (EKS) with zero downtime.",
-            "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) for service deployment.",
-            "Drafted technical implementation details to guide project development and ensure consistent coding standards.",
-            "Managed Route53 configuration, domain management, DMARC reporting, and critical incident resolution."
+            "Led migration from ECS to Kubernetes (EKS) with zero downtime.",
+            "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) for service deployment."
           ]
         },
         {
-          "title": "Senior Developer Experience Engineer",
+          "title": "Senior DX Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
             "Built with JavaScript, TypeScript, NestJS, NextJS, Rails, and Vue.",
@@ -117,13 +115,11 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "Established technical vision and architectural standards aligned with enterprise requirements",
+        "AI/ML workloads, deployed models to Azure CUDA",
+        "Developed decenteralised authentication system with OAuth2 to integrate multiple partner and parent company systems",
+        "Contributed to  AI systems via Jupyter Notebooks",
         "Implemented cloud infrastructure and CI/CD pipelines for secure product delivery",
-        "Optimized containerization for AI/ML workloads, deployed models to Azure CUDA",
-        "Integrated AI systems via Jupyter Notebooks, ensuring compatibility with parent company services",
-        "Managed monorepo, automated semantic versioning, and testing strategies",
-        "Designed full-stack boilerplates for MVPs and facilitated data migrations",
-        "Led technical hiring, mentoring, and code quality standards"
+        "Implemented and configured MVP boilerplate with monorepo, automated semantic versioning, and testing strategies"
       ]
     },
     {
@@ -132,8 +128,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected and refactored back-end services, developed full-stack features for gaming content platform",
-        "Optimized performance through profiling and containerization",
+        "Architected and refactored back-end services, developed full-stack features for gaming content management platform",
         "Enhanced development infrastructure through improved tooling and data structure migrations"
       ]
     },
@@ -143,7 +138,7 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Led front-end team: recruitment, onboarding, mentoring, and sprint delivery",
+        "Led front-end team: recruitment, onboarding, mentoring, and delivery",
         "Modernized front-end architecture, implemented code quality tools, and established DevOps processes",
         "Migrated from monolithic to microservices architecture, expanded team to full-stack",
         "Implemented Agile with code reviews and A/B testing",
@@ -157,9 +152,9 @@
       "dates": "01/2017 - 08/2017",
       "bullets": [
         "Implemented full-stack JavaScript features across client and server",
-        "Developed microservices architecture, improving system design and scalability",
+        "Developed AWS lambda functions for queue processing system for image analysis and copyright claim management",
         "Established quality standards through test coverage (unit, integration, E2E) and code reviews",
-        "Integrated data across MongoDB, Stripe, SalesForce; monitored health via Heroku and Sentry"
+        "Integrated data across MongoDB, Stripe, SalesForce; monitored health via Sentry"
       ]
     },
     {
@@ -183,7 +178,7 @@
           "url": "http://nod.st",
           "dates": "11/2012 - 07/2015",
           "bullets": [
-            "Founded and led a design and development studio delivering web products for clients including BeinSports, Les Benjamins, Ulker, and Gripati."
+            "Founded and led a design and development studio delivering web and mobile products for clients including BeinSports, Les Benjamins, Ulker"
           ]
         },
         {
