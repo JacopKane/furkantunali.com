@@ -744,12 +744,12 @@ body {
 @media print {
   // ── Design tokens ──────────────────────────────────────────────────────────
   // Type scale
-  $p-h1: 16px; // page title
-  $p-base: 12.95px; // body / section labels
-  $p-sm: 11.45px; // entry titles (h3)
-  $p-xs: 10.4px; // bullet detail text
-  $p-xxs: 8.7px; // older-exp / meta labels
-  $p-lh: 1.32; // single line-height used everywhere
+  $p-h1: 19px; // page title
+  $p-base: 14.8px; // body / section labels
+  $p-sm: 13.6px; // entry titles (h3)
+  $p-xs: 12.4px; // bullet detail text
+  $p-xxs: 11.2px; // older-exp / meta labels
+  $p-lh: 1.36; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
   $p-sp-1: 0.12rem; // micro  — between sibling list items
@@ -1203,8 +1203,8 @@ body {
   }
 
   .experience-older__entry {
-    font-size: 8.55px !important;
-    line-height: 1.12 !important;
+    font-size: $p-xxs !important;
+    line-height: 1.24 !important;
     padding: 0.09em 0.3em !important;
     margin: 0 !important;
     border: none !important;
@@ -1220,9 +1220,9 @@ body {
   }
 
   .experience-older__role {
-    font-size: 8.55px !important;
+    font-size: $p-xxs !important;
     font-weight: 700 !important;
-    line-height: 1.15 !important;
+    line-height: 1.24 !important;
     display: block !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -1236,7 +1236,7 @@ body {
   }
 
   .experience-older__company {
-    font-size: 7.5px !important;
+    font-size: 10.8px !important;
     display: block !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -1253,7 +1253,7 @@ body {
 
   .experience-older__dates {
     display: none !important;
-    font-size: 7.7px !important;
+    font-size: 10.8px !important;
     color: #555 !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -1303,8 +1303,8 @@ body {
   #education .education h3,
   #interests p {
     display: block !important;
-    font-size: 9.6px !important;
-    line-height: 1.16 !important;
+    font-size: $p-xs !important;
+    line-height: $p-lh !important;
     margin: 0 !important;
     padding: 0 !important;
   }

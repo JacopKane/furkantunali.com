@@ -63,19 +63,17 @@ body {
     background-color: inherit;
     backdrop-filter: blur(10px);
     padding: 1rem 0;
-    transition: background-color 0.3s ease-in-out;
+    transition:
+      background-color 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out;
 
-    // Style the logo using unified mixin - NO hover effects for resume web
-    .logo {
-      @include logo(3rem, 0.58, true); // Hover always enabled
+    &.scrolled {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+      .dark-theme & {
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      }
     }
-
-    .nav-right {
-      display: inline-flex;
-      align-items: center;
-      white-space: nowrap;
-    }
-
     a:not(.logo) {
       padding: 0.75rem 1.5rem;
       background: #000;

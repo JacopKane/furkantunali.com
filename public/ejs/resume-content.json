@@ -80,30 +80,30 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Integrated OpenAI and Tavily APIs to build an AI system that analyzed customer input to identify GDPR-relevant vendors, automatically retrieving hosting and data storage locations, DPO emails, and privacy policy links.",
-            "Researched AI Agent frameworks (PydanticAI, AutoGen) for solving domain-specific challenges."
+            "Integrated <strong>OpenAI</strong> and <strong>Tavily APIs</strong> to build an AI system that analyzed newly signed up customer input to identify GDPR-relevant vendors they use, automatically retrieving hosting and data storage locations, DPO emails, and privacy policy links.",
+            "Evaluated AI Agent frameworks (<strong>PydanticAI</strong>, <strong>AutoGen</strong>) for solving <em>domain-specific challenges</em>."
           ]
         },
         {
           "title": "Senior Infrastructure Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
-            "Created Kubernetes and Terraform setups from scratch for scalable infrastructure and reliable deployments.",
-            "Led migration from ECS to Kubernetes (EKS) with zero downtime.",
-            "Worked with AWS suite (Fargate, ECS, CloudFormation, ECR, RDS, Cloud Map, EC2, Route53, Lambda) for service deployment."
+            "Created <strong>Kubernetes</strong> and <strong>Terraform</strong> setups from scratch for scalable infrastructure and reliable deployments.",
+            "Led migration from <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> with <em>zero downtime</em>.",
+            "Worked with <strong>AWS</strong> suite (<strong>Fargate</strong>, <strong>ECS</strong>, <strong>CloudFormation</strong>, <strong>ECR</strong>, <strong>RDS</strong>, <strong>Cloud Map</strong>, <strong>EC2</strong>, <strong>Route53</strong>, <strong>Lambda</strong>) for service deployment."
           ]
         },
         {
           "title": "Senior DX Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Built with JavaScript, TypeScript, NestJS, NextJS, Rails, and Vue.",
-            "Migrated infrastructure from Heroku to AWS ECS.",
-            "Restructured legacy Rails systems into a monorepo, Dockerized applications, and established local development environments for efficient onboarding.",
+            "Built with <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>NestJS</strong>, <strong>NextJS</strong>, <strong>Rails</strong>, and <strong>Vue</strong>.",
+            "Migrated from monolithic to <em>microservices architecture</em>",
+            "Restructured legacy <strong>Rails</strong> systems into a monorepo, <strong>Dockerized</strong> applications, and established local development environments for efficient onboarding.",
             "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
-            "Implemented event-driven scheduling via AWS EventBridge for automated client reminders.",
-            "Developed DevOps and DX tooling (Makefile, Bash) to automate routine tasks.",
-            "Maintained Docker Compose setups for service orchestration.",
+            "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders.",
+            "Developed DevOps and DX tooling to automate daily tasks.",
+            "Maintained <strong>Docker Compose</strong> setups for service orchestration.",
             "Mentored team members and contributed to technical hiring."
           ]
         }
@@ -115,11 +115,11 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "AI/ML workloads, deployed models to Azure CUDA",
-        "Developed decenteralised authentication system with OAuth2 to integrate multiple partner and parent company systems",
-        "Contributed to  AI systems via Jupyter Notebooks",
-        "Implemented cloud infrastructure and CI/CD pipelines for secure product delivery",
-        "Implemented and configured MVP boilerplate with monorepo, automated semantic versioning, and testing strategies"
+        "AI/ML workloads, deployed models to <strong>Azure CUDA</strong>",
+        "Developed decenteralised authentication system with <strong>OAuth2</strong> to integrate multiple partner and parent company systems",
+        "Contributed to AI systems via <strong>Jupyter Notebooks</strong>",
+        "Implemented cloud infrastructure and <strong>CI/CD</strong> pipelines for secure product delivery",
+        "Implemented and configured MVP boilerplate with monorepo, automated semantic versioning, and <em>testing strategies</em>"
       ]
     },
     {
@@ -128,8 +128,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected and refactored back-end services, developed full-stack features for gaming content management platform",
-        "Made audits to improve system-wide speed"
+        "Architected and refactored back-end services, developed full-stack features for gaming content management platform"
       ]
     },
     {
@@ -141,7 +140,7 @@
         "Led front-end team: recruitment, onboarding, mentoring, and delivery",
         "Modernized front-end architecture, implemented code quality tools, and established DevOps processes",
         "Migrated from monolithic to microservices architecture, expanded team to full-stack",
-        "Implemented Agile with code reviews and A/B testing",
+        "Implemented and inspected A/B testing",
         "Built UI component library bridging UX and front-end into a unified design system"
       ]
     },
@@ -151,10 +150,10 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Implemented full-stack JavaScript features across client and server",
-        "Developed AWS lambda functions for queue processing system for image analysis and copyright claim management",
-        "Established quality standards through test coverage (unit, integration, E2E) and code reviews",
-        "Integrated data across MongoDB, Stripe, SalesForce; monitored health via Sentry"
+        "Implemented full-stack <strong>JavaScript</strong> features across client and server",
+        "Developed <strong>AWS Lambda</strong> functions for queue processing system for image analysis and copyright claim management",
+        "Established quality standards through test coverage (<em>unit</em>, <em>integration</em>, <em>E2E</em>) and code reviews",
+        "Integrated data across <strong>MongoDB</strong>, <strong>Stripe</strong>, <strong>SalesForce</strong>; monitored health via <strong>Sentry</strong>"
       ]
     },
     {
@@ -186,14 +185,18 @@
           "company": "FOX (NOW) TV Channels, Istanbul",
           "url": "https://www.nowtv.com.tr/",
           "dates": "01/2012 - 12/2012",
-          "bullets": []
+          "bullets": [
+            "Created embedded social apps, CMS and micro-websites for clients like Samsung, National Geographic, Nokia, True Blood TV show, Glee TV Show, TerraNova TV show"
+          ]
         },
         {
-          "role": "Front-end developer & designer",
+          "role": "Founding Front-end Engineer",
           "company": "projectz, Istanbul",
           "url": "http://projectz.com/",
           "dates": "06/2011 - 12/2011",
-          "bullets": []
+          "bullets": [
+            "Led the UI design and development of QA startup Yardim Lazim"
+          ]
         },
         {
           "role": "Full-stack developer",
