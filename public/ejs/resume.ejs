@@ -108,11 +108,39 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/resume.css" />
     <% if (data.resume) { %>
-    <link rel="stylesheet" href="styles/resume-web.css?v=20260329-shadow4" />
+    <link rel="stylesheet" href="styles/resume-web.css?v=20260329-shadow5" />
     <% } %>
     <% if (data.resumeDoc) { %>
     <link rel="stylesheet" href="styles/resume-doc.css" />
     <% } %>
+    <style>
+      @media print {
+        header {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: flex-start !important;
+        }
+        header hgroup {
+          flex: 1 1 auto !important;
+          min-width: 0 !important;
+        }
+        .page-qr-print {
+          flex: 0 0 auto !important;
+          float: none !important;
+          position: static !important;
+          margin: 0 0 0 0.12cm !important;
+          line-height: 0 !important;
+          order: 2 !important;
+          align-self: flex-start !important;
+        }
+        .page-qr-print__box {
+          width: 0.86cm !important;
+          height: 0.86cm !important;
+          border-width: 0.3pt !important;
+          display: block !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <% if (!data.resumeDoc) { %>
@@ -145,13 +173,12 @@
     </nav>
     <% } %>
 
-    <div class="page-qr-print" aria-hidden="true">
-      <span class="link-qr-print page-qr-print__box"
-        ><img id="page-url-qr-image" alt=""
-      /></span>
-    </div>
-
     <header>
+      <div class="page-qr-print" aria-hidden="true">
+        <span class="link-qr-print page-qr-print__box"
+          ><img id="page-url-qr-image" alt=""
+        /></span>
+      </div>
       <hgroup>
         <h1><%= meta.title || 'Resume' %></h1>
       </hgroup>

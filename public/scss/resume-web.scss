@@ -206,6 +206,11 @@ body {
     padding: 0;
     margin-bottom: 1em;
 
+    // Keep top contact links visually separated on web view.
+    ul.contact li:not(:first-child)::before {
+      content: "\00a0\2022\00a0\00a0";
+    }
+
     .left-column,
     .right-column {
       @media (max-width: 768px) {

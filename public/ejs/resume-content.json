@@ -48,12 +48,12 @@
     {
       "name": "Newsify Today",
       "url": "https://newsify.today",
-      "subtitle": "AI news platform & ChatGPT App (MCP UI App)",
-      "intro": "Built and operate <strong>Newsify Today</strong> — an AI news platform and early <strong>ChatGPT App</strong> tracking web search trends across <em>16 regions</em> and <em>12 languages</em>, running an agentic AI pipeline to curate, score, and summarize news in <em>real time</em>.",
+      "subtitle": "AI news platform & ChatGPT App (MCP App)",
+      "intro": "Built and operate <strong>Newsify Today</strong> — an AI news platform and early <strong>ChatGPT App</strong> tracking web search trends across worlwide regions and languages</em>, running an agentic AI pipeline to curate, score, and summarize news in <em>real time</em>.",
       "bullets": [
-        "Built a <strong>LangGraph</strong>-based agent with <em>9 tools</em> (<strong>scrape</strong>, <strong>summarize</strong>, <strong>validate</strong>, <strong>score</strong>, <strong>deduplicate</strong>) processing trends end\u2011to\u2011end with <em>deterministic tool routing</em> and explicit step contracts.",
+        "Built a <strong>LangGraph</strong>-based agent with 9 tools processing trends",
         "Self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across <em>3 nodes</em> with <em>health-aware routing</em>, tier-based fallback to <strong>Google Gemini</strong>, and in-flight slot tracking — <em>keeping inference cost near zero</em>.",
-        "Implemented a <strong>Model Context Protocol</strong> server with trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — launched as an early <strong>ChatGPT App</strong>.",
+        "Implemented a <strong>MCP</strong> server with trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — submitted as an early <strong>ChatGPT App</strong>.",
         "Run full stack on a <em>3-node</em> <strong>Kubernetes</strong> on-premises cluster — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
         "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em>.",
         "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong> — logs, traces, and metrics from server and browser, with <em>tracing for every AI agent run</em>."
@@ -103,7 +103,6 @@
             "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
             "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders.",
             "Developed DevOps and DX tooling to automate daily tasks.",
-            "Maintained <strong>Docker Compose</strong> setups for service orchestration.",
             "Mentored team members and contributed to technical hiring."
           ]
         }
@@ -138,8 +137,7 @@
       "dates": "08/2017 - 12/2018",
       "bullets": [
         "Led front-end team: recruitment, onboarding, mentoring, and delivery",
-        "Modernized front-end architecture, implemented code quality tools, and established DevOps processes",
-        "Migrated from monolithic to microservices architecture, expanded team to full-stack",
+        "Modernized front-end architecture, implemented code quality tools, and established deployment pipelines",
         "Implemented and inspected A/B testing",
         "Built UI component library bridging UX and front-end into a unified design system"
       ]
