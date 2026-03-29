@@ -97,10 +97,11 @@
           "title": "Senior DX Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
+            "Supported engineering teams in resolving cross-team technical challenges and improving delivery flow.",
             "Built with <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>NestJS</strong>, <strong>NextJS</strong>, <strong>Rails</strong>, and <strong>Vue</strong>.",
             "Migrated from monolithic to <em>microservices architecture</em>",
             "Restructured legacy <strong>Rails</strong> systems into a monorepo, <strong>containerized</strong> applications, and established local development environments for efficient onboarding.",
-            "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
+            "Built <em>CI/CD</em> pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
             "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders.",
             "Developed DevOps and DX tooling to automate daily tasks.",
             "Mentored team members and contributed to technical hiring."
@@ -136,6 +137,7 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
+        "Drove organization-wide architecture alignment to move from split monolith UI and separate front-end tracks to a unified full-stack JavaScript and cloud direction, using technical plans, system diagrams, and stakeholder lobbying.",
         "Led front-end team: recruitment, onboarding, mentoring, and delivery",
         "Modernized front-end architecture, implemented code quality tools, and established deployment pipelines",
         "Implemented and inspected A/B testing",
