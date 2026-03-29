@@ -33,15 +33,41 @@ body {
   // Full width layout
   max-width: none;
   margin: 0;
+  padding: 0;
+  --back-to-top-size: 2.4rem;
+  --back-to-top-bottom-offset: 1.5rem;
+
+  // Keep last content clear of fixed back-to-top button at bottom center
+  padding-bottom: calc(
+    var(--back-to-top-size) + var(--back-to-top-bottom-offset) + 0.75rem
+  );
 
   // Add some padding on smaller screens
   @media (max-width: 960px) {
-    margin: 0 1rem;
+    margin: 0;
+  }
+
+  @media print {
+    padding-bottom: 0;
   }
 
   // Ensure proper spacing for the web version
   .container {
     padding: 1rem 1.5rem;
+
+    &::after {
+      content: "";
+      display: block;
+      height: calc(
+        var(--back-to-top-size) + var(--back-to-top-bottom-offset) + 0.75rem
+      );
+    }
+
+    @media print {
+      &::after {
+        display: none;
+      }
+    }
   }
 
   // Screen horizontal padding for header (sits outside .container)
@@ -59,21 +85,32 @@ body {
     align-items: center;
     position: sticky;
     top: 0;
+    left: 0;
+    width: 100%;
+    margin-left: 0;
     z-index: 100;
     background-color: inherit;
     backdrop-filter: blur(10px);
-    padding: 1rem 0;
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
     transition:
       background-color 0.3s ease-in-out,
       box-shadow 0.3s ease-in-out;
 
     &.scrolled {
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
       .dark-theme & {
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.38);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
       }
     }
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+
     a:not(.logo) {
       padding: 0.75rem 1.5rem;
       background: #000;
@@ -198,6 +235,66 @@ body {
     // Dark mode styles for web footer
     .dark-theme & {
       color: #999;
+    }
+  }
+
+  #back-to-top {
+    position: fixed;
+    left: 50%;
+    bottom: var(--back-to-top-bottom-offset);
+    transform: translateX(-50%) translateY(0.5rem);
+    width: var(--back-to-top-size);
+    height: var(--back-to-top-size);
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 1.1rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+    z-index: 120;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    &:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-theme & {
+      background: rgba(0, 0, 0, 0.72);
+      color: rgba(255, 255, 255, 0.9);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+
+      &:hover {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+      }
+    }
+
+    @media print {
+      display: none;
     }
   }
 }

@@ -5,6 +5,18 @@
       const data = GLOBEL || {};
       const meta = data.meta || {};
       const toArray = function(value) { return Array.isArray(value) ? value : []; };
+      const isYouTubeHref = function(href) {
+        return typeof href === 'string' && /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(href);
+      };
+      const isEmailHref = function(href) {
+        return typeof href === 'string' && /^mailto:/i.test(href);
+      };
+      const shouldRenderLinkQr = function(href) {
+        return isYouTubeHref(href);
+      };
+      const getQrCodeUrl = function(href) {
+        return 'https://api.qrserver.com/v1/create-qr-code/?size=96x96&margin=0&data=' + encodeURIComponent(href);
+      };
     %>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +108,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/resume.css" />
     <% if (data.resume) { %>
-    <link rel="stylesheet" href="styles/resume-web.css" />
+    <link rel="stylesheet" href="styles/resume-web.css?v=20260329-shadow4" />
     <% } %>
     <% if (data.resumeDoc) { %>
     <link rel="stylesheet" href="styles/resume-doc.css" />
@@ -133,6 +145,12 @@
     </nav>
     <% } %>
 
+    <div class="page-qr-print" aria-hidden="true">
+      <span class="link-qr-print page-qr-print__box"
+        ><img id="page-url-qr-image" alt=""
+      /></span>
+    </div>
+
     <header>
       <hgroup>
         <h1><%= meta.title || 'Resume' %></h1>
@@ -164,12 +182,19 @@
               <li>
                 <% if (item.label && item.href) { %>
                 <strong><%= item.label %>:</strong>
-                <a href="<%= item.href %>" target="_blank">
+                <a href="<%= item.href %>" target="_blank" class="link-with-qr">
                   <% if (item.href.indexOf('mailto:') === 0) { %>
                   <span class="link-text-screen"><%= item.text %></span>
-                  <span class="link-text-print"><%= item.href %></span>
+                  <span class="link-text-print"
+                    ><%= item.text || item.href %></span
+                  >
                   <% } else { %>
                   <%= item.text %>
+                  <% } %>
+                  <% if (shouldRenderLinkQr(item.href)) { %>
+                  <span class="link-qr-print" aria-hidden="true"
+                    ><img src="<%= getQrCodeUrl(item.href) %>" alt=""
+                  /></span>
                   <% } %>
                 </a>
                 <% } else if (item.label) { %>
@@ -177,8 +202,16 @@
                 <%= item.text || '' %>
                 <% } else if (item.href) { %>
                 <strong
-                  ><a href="<%= item.href %>" target="_blank"
-                    ><%= item.text %></a
+                  ><a
+                    href="<%= item.href %>"
+                    target="_blank"
+                    class="link-with-qr"
+                    ><%= item.text %>
+                    <% if (shouldRenderLinkQr(item.href)) { %>
+                    <span class="link-qr-print" aria-hidden="true"
+                      ><img src="<%= getQrCodeUrl(item.href) %>" alt=""
+                    /></span>
+                    <% } %></a
                   ></strong
                 >
                 <% } else { %>
@@ -216,11 +249,19 @@
           <li class="project">
             <h3>
               <% if (project.url) { %>
-              <strong
-                ><a href="<%= project.url %>" target="_blank"
-                  ><%= project.name || '' %></a
-                ></strong
-              >
+              <strong>
+                <a
+                  href="<%= project.url %>"
+                  target="_blank"
+                  class="link-with-qr"
+                  ><%= project.name || '' %>
+                  <% if (shouldRenderLinkQr(project.url)) { %>
+                  <span class="link-qr-print" aria-hidden="true"
+                    ><img src="<%= getQrCodeUrl(project.url) %>" alt=""
+                  /></span>
+                  <% } %>
+                </a>
+              </strong>
               <% } else { %>
               <strong><%= project.name || '' %></strong>
               <% } %>
@@ -232,11 +273,20 @@
             <% toArray(project.links).forEach(function(link) { %>
             <% if (link && link.href) { %>
             <p class="demo-cta">
-              <a href="<%= link.href %>" target="_blank">
-                <span class="link-text-screen"
+              <a href="<%= link.href %>" target="_blank" class="link-with-qr">
+                <% var isYoutubeProjectLink = isYouTubeHref(link.href); %>
+                <span
+                  class="link-text-screen<%= isYoutubeProjectLink ? ' link-text-screen--print' : '' %>"
                   ><%= link.text || link.href %></span
                 >
+                <% if (!isYoutubeProjectLink) { %>
                 <span class="link-text-print"><%= link.href %></span>
+                <% } %>
+                <% if (shouldRenderLinkQr(link.href)) { %>
+                <span class="link-qr-print" aria-hidden="true"
+                  ><img src="<%= getQrCodeUrl(link.href) %>" alt=""
+                /></span>
+                <% } %>
               </a>
             </p>
             <% } %>
@@ -313,9 +363,14 @@
             <em><%= exp.role || '' %></em>
             at
             <% if (exp.url) { %>
-            <a target="_blank" href="<%= exp.url %>"
-              ><%- exp.company || '' %></a
-            >
+            <a target="_blank" href="<%= exp.url %>" class="link-with-qr"
+              ><%- exp.company || '' %>
+              <% if (shouldRenderLinkQr(exp.url)) { %>
+              <span class="link-qr-print" aria-hidden="true"
+                ><img src="<%= getQrCodeUrl(exp.url) %>" alt=""
+              /></span>
+              <% } %>
+            </a>
             <% } else { %>
             <span><%- exp.company || '' %></span>
             <% } %>
@@ -384,9 +439,17 @@
                   <p class="experience-older__role"><%= exp.role || '' %></p>
                   <% if (exp.url) { %>
                   <p class="experience-older__company">
-                    <a target="_blank" href="<%= exp.url %>"
-                      ><%- exp.company || '' %></a
-                    >
+                    <a
+                      target="_blank"
+                      href="<%= exp.url %>"
+                      class="link-with-qr"
+                      ><%- exp.company || '' %>
+                      <% if (shouldRenderLinkQr(exp.url)) { %>
+                      <span class="link-qr-print" aria-hidden="true"
+                        ><img src="<%= getQrCodeUrl(exp.url) %>" alt=""
+                      /></span>
+                      <% } %>
+                    </a>
                   </p>
                   <% } else { %>
                   <p class="experience-older__company">
@@ -422,9 +485,14 @@
               <h3>
                 <em><%= edu.degree || '' %></em> at
                 <% if (edu.url) { %>
-                <a target="_blank" href="<%= edu.url %>"
-                  ><%= edu.school || '' %></a
-                >
+                <a target="_blank" href="<%= edu.url %>" class="link-with-qr"
+                  ><%= edu.school || '' %>
+                  <% if (shouldRenderLinkQr(edu.url)) { %>
+                  <span class="link-qr-print" aria-hidden="true"
+                    ><img src="<%= getQrCodeUrl(edu.url) %>" alt=""
+                  /></span>
+                  <% } %>
+                </a>
                 <% } else { %>
                 <span><%= edu.school || '' %></span>
                 <% } %>
@@ -443,6 +511,12 @@
         </section>
       </div>
     </div>
+
+    <% if (!data.resumeDoc) { %>
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">
+      <span aria-hidden="true">&uarr;</span>
+    </button>
+    <% } %>
 
     <!-- Environment detection for PDF download URL -->
     <script>
@@ -481,6 +555,58 @@
         }
       })();
     </script>
+
+    <script>
+      (function () {
+        var qrImg = document.getElementById("page-url-qr-image");
+        if (!qrImg) return;
+
+        var pageUrl = window.location.origin + window.location.pathname;
+        var qrSrc =
+          "https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=0&data=" +
+          encodeURIComponent(pageUrl);
+
+        qrImg.src = qrSrc;
+      })();
+    </script>
+
+    <% if (!data.resumeDoc) { %>
+    <script>
+      (function () {
+        var nav = document.getElementById("download");
+        var backToTopButton = document.getElementById("back-to-top");
+
+        if (!nav && !backToTopButton) return;
+
+        function updateStickyShadow() {
+          var isScrolled = window.scrollY > 0;
+
+          if (nav) {
+            nav.classList.toggle("scrolled", isScrolled);
+          }
+
+          if (document.body) {
+            document.body.classList.toggle("nav-scrolled", isScrolled);
+          }
+
+          if (backToTopButton) {
+            backToTopButton.classList.toggle("visible", window.scrollY > 500);
+          }
+        }
+
+        updateStickyShadow();
+        window.addEventListener("scroll", updateStickyShadow, {
+          passive: true,
+        });
+
+        if (backToTopButton) {
+          backToTopButton.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+      })();
+    </script>
+    <% } %>
 
     <% if (!data.resumeDoc) { %>
 

@@ -185,6 +185,23 @@ body {
     display: inline;
   }
 
+  .link-text-screen--print {
+    display: inline;
+  }
+
+  .link-with-qr {
+    align-items: center;
+    gap: 0.2em;
+  }
+
+  .link-qr-print {
+    display: none;
+  }
+
+  .page-qr-print {
+    display: none;
+  }
+
   .intro {
     overflow: hidden; // Clearfix alternative
     margin-bottom: 1em;
@@ -763,6 +780,7 @@ body {
   $p-gutter: 0.3cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
+  $p-qr-reserve: 1.18cm; // reserved lane for top-right page QR
 
   // ── 1. Page setup ──────────────────────────────────────────────────────────
   @page {
@@ -786,6 +804,10 @@ body {
     text-rendering: optimizeLegibility;
   }
 
+  body {
+    position: relative !important;
+  }
+
   // ── 3. Hidden elements ───────────────────────────────────────────────────────
   nav,
   .grain-overlay {
@@ -799,6 +821,7 @@ body {
     max-width: none !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    position: relative !important;
   }
 
   header {
@@ -806,6 +829,7 @@ body {
     padding: 0 $p-gutter !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    padding-right: $p-qr-reserve !important;
   }
 
   header hgroup,
@@ -826,6 +850,7 @@ body {
     padding: 0 !important;
     gap: 0 !important;
     line-height: $p-lh !important;
+    margin-right: $p-qr-reserve !important;
   }
 
   .intro section {
@@ -846,6 +871,12 @@ body {
     padding: 0 !important;
     font-size: $p-xs !important;
     line-height: $p-lh !important;
+  }
+
+  .intro ul.contact {
+    display: inline !important;
+    max-width: none !important;
+    vertical-align: top !important;
   }
 
   .intro ul.info li,
@@ -916,8 +947,69 @@ body {
     display: none !important;
   }
 
+  .link-text-screen--print {
+    display: inline !important;
+  }
+
   .link-text-print {
     display: inline !important;
+  }
+
+  .link-with-qr {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.09cm !important;
+    vertical-align: baseline !important;
+  }
+
+  .link-qr-print {
+    display: inline-flex !important;
+    width: 0.56cm !important;
+    height: 0.56cm !important;
+    padding: 0.03cm !important;
+    border: 0.35pt solid #777 !important;
+    border-radius: 1px !important;
+    background: #fff !important;
+    line-height: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  .link-qr-print img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .page-qr-print {
+    display: block !important;
+    position: fixed !important;
+    top: 0.42cm !important;
+    right: 0.44cm !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+    z-index: 2 !important;
+  }
+
+  .page-qr-print__label {
+    display: none !important;
+  }
+
+  .page-qr-print__box {
+    width: 0.9cm !important;
+    height: 0.9cm !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border-width: 0.3pt !important;
+    display: block !important;
+  }
+
+  .right-column #contact {
+    display: block !important;
+    padding-right: 0 !important;
+  }
+
+  #summary > h2 {
+    margin-right: $p-qr-reserve !important;
   }
 
   // ── 7. Section rhythm ────────────────────────────────────────────────────────
