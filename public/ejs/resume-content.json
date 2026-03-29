@@ -47,9 +47,8 @@
       "subtitle": "AI news platform & ChatGPT App (MCP App)",
       "intro": "Agentic AI pipeline curates, scores, and summarizes trending news in <em>real time</em> across worldwide regions and languages.",
       "bullets": [
-        "<strong>LangGraph</strong> agent with 9 tools; self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across 3 nodes with <em>health-aware routing</em> and <strong>Gemini</strong> fallback — <em>near-zero inference cost</em>.",
-        "<strong>MCP</strong> server with <strong>OpenAI Apps SDK</strong> widget — shipped as an early <strong>ChatGPT App</strong>.",
-        "3-node <strong>Kubernetes</strong> on-prem, <strong>SSE</strong> streaming to <strong>Next.js</strong>, CI/CD via <strong>GitHub Actions</strong>; observability with <strong>LangSmith</strong> and <strong>Grafana</strong>."
+        "<strong>LangGraph</strong> agent with <strong>Ollama</strong> (3 nodes) + <strong>Gemini</strong> fallback; <strong>MCP</strong> server shipped as <strong>ChatGPT App</strong>.",
+        "Self-hosted <strong>Kubernetes</strong>, <strong>SSE</strong> to <strong>Next.js</strong>, <strong>GitHub Actions</strong> CI/CD, <strong>Grafana</strong> observability."
       ],
       "links": [
         {
@@ -73,22 +72,21 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Built an AI system with <strong>OpenAI</strong> and <strong>Tavily APIs</strong> to auto-identify GDPR-relevant vendors from customer input — retrieving hosting locations, DPO emails, and privacy policy links; evaluated <strong>PydanticAI</strong> and <strong>AutoGen</strong> for agent workflows."
+            "Built AI system with <strong>OpenAI</strong> & <strong>Tavily APIs</strong> to auto-identify GDPR vendors; evaluated <strong>PydanticAI</strong> and <strong>AutoGen</strong>."
           ]
         },
         {
           "title": "Senior Infrastructure Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
-            "Led <strong>ECS</strong> → <strong>Kubernetes (EKS)</strong> migration with <em>zero downtime</em>; created <strong>Terraform</strong> setups from scratch across <strong>AWS</strong> suite (Fargate, CloudFormation, ECR, RDS, Route53, Lambda)."
+            "Led <strong>ECS</strong> → <strong>Kubernetes (EKS)</strong> migration with zero downtime; created <strong>Terraform</strong> setups across <strong>AWS</strong> (Fargate, ECR, RDS, Route53, Lambda)."
           ]
         },
         {
           "title": "Senior DX Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Migrated monolith <strong>Rails</strong> to <em>microservices</em> monorepo, <strong>containerized</strong> apps, built <em>CI/CD</em> with <strong>GitHub Actions</strong> and <strong>Terraform</strong>.",
-            "Supported cross-team delivery, mentored engineers, and automated DevOps/DX tooling; implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders and migrated infra from <strong>Heroku</strong> to <strong>AWS ECS</strong>."
+            "Migrated monolith <strong>Rails</strong> to <em>microservices</em> monorepo, built <em>CI/CD</em> with <strong>GitHub Actions</strong> & <strong>Terraform</strong>; automated DevOps/DX tooling and migrated infra from <strong>Heroku</strong> to <strong>AWS ECS</strong>."
           ]
         }
       ],
@@ -100,7 +98,7 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "AI/ML workloads on <strong>Azure CUDA</strong>; <strong>OAuth2</strong> decentralized auth across partner systems; MVP monorepo with <em>CI/CD</em>, <strong>Terraform</strong>, and automated semantic versioning."
+        "AI/ML on <strong>Azure CUDA</strong>, <strong>OAuth2</strong> auth, MVP monorepo with <strong>Terraform</strong> & <em>CI/CD</em>."
       ],
       "stack": "Azure, Docker, Vue.js, TypeScript, GraphQL, Apollo, PostgreSQL, Azure Functions, GitHub Actions"
     },
@@ -110,7 +108,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected and refactored back-end services, developed full-stack features for gaming content management platform."
+        "Architected back-end services and full-stack features for gaming content management platform."
       ],
       "stack": "Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
     },
@@ -120,7 +118,7 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Led front-end team (hiring, mentoring, delivery); drove monolith to unified full-stack <strong>JS</strong> + cloud; built UI component library bridging UX and front-end, with A/B testing."
+        "Led front-end team, drove monolith to unified full-stack <strong>JS</strong> + cloud, built UI component library with <em>A/B testing</em>."
       ],
       "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
     },
@@ -130,7 +128,7 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Full-stack <strong>JavaScript</strong> with <strong>AWS Lambda</strong> queue processing for image analysis; integrated <strong>MongoDB</strong>, <strong>Stripe</strong>, <strong>SalesForce</strong> with full test coverage."
+        "Full-stack <strong>JavaScript</strong> with <strong>AWS Lambda</strong>, image analysis; integrated <strong>MongoDB</strong>, <strong>Stripe</strong>, <strong>SalesForce</strong>."
       ],
       "stack": "React, Redux, AWS Lambda, Koa, MongoDB, Stripe, SalesForce, Sentry"
     },
@@ -140,7 +138,7 @@
       "url": "https://www.linkedin.com/company/talented-square-corporation",
       "dates": "08/2015 - 08/2016",
       "bullets": [
-        "Led front-end for ASDA UK (Walmart) wholesale portal; designed architecture for a recruiting startup."
+        "Led front-end for ASDA UK wholesale portal; designed architecture for recruiting startup."
       ],
       "stack": "Angular, JavaScript, Backbone, LoopBack, MySQL, MongoDB"
     }
@@ -154,7 +152,7 @@
           "url": "http://nod.st",
           "dates": "11/2012 - 07/2015",
           "bullets": [
-            "Founded and led a design and development studio delivering web and mobile products for clients including BeinSports, Les Benjamins, Ulker"
+            "Designed and developed studio delivering web and mobile products for BeinSports, Les Benjamins, Ulker."
           ]
         },
         {
@@ -163,7 +161,7 @@
           "url": "https://www.nowtv.com.tr/",
           "dates": "01/2012 - 12/2012",
           "bullets": [
-            "Created embedded social apps, CMS and micro-websites for clients like Samsung, National Geographic, Nokia, True Blood TV show, Glee TV Show, TerraNova TV show"
+            "Social apps and CMS for Samsung, National Geographic, Nokia, TV shows."
           ]
         },
         {
@@ -190,7 +188,7 @@
           "url": "http://ping.com.tr",
           "dates": "05/2008 - 03/2009",
           "bullets": [
-            "Delivered front-end implementations for enterprise clients including Garanti BBVA and Turk Telekom."
+            "Enterprise frontend for Garanti BBVA and Turk Telekom."
           ]
         },
         {

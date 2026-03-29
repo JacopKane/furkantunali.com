@@ -1,16 +1,6 @@
 /**
- * Import function triggers from   if (isEmulator) {
-    // Use Firebase hosting emulator URL - use configured port
-    const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "8080";
-    const url = `http://localhost:${hostingPort}${path}`;
-    logger.info("Using local emulator URL", { 
-      url, 
-      hostingPort, 
-      env_hosting_port: process.env.FIREBASE_HOSTING_EMULATOR_PORT,
-      structuredData: true 
-    });
-    return url;
-  }espective submodules:
+ * Import function triggers from respective submodules:
+ * https://firebase.google.com/docs/functions/typescript
  */
 
 import { onRequest } from "firebase-functions/v2/https";
