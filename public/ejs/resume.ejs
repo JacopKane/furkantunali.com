@@ -134,8 +134,8 @@
           align-self: flex-start !important;
         }
         .page-qr-print__box {
-          width: 1.95cm !important;
-          height: 1.95cm !important;
+          width: 1.4cm !important;
+          height: 1.4cm !important;
           border-width: 0.3pt !important;
           display: block !important;
         }
@@ -307,8 +307,7 @@
                   ><%= link.text || link.href %></span
                 >
                 <span class="link-text-print"
-                  ><%= link.text || link.href %>
-                  (video link via top right QR)</span
+                  ><%= link.text || link.href %></span
                 >
                 <% } else { %>
                 <span class="link-text-screen"
@@ -603,18 +602,10 @@
         var qrImg = document.getElementById("page-url-qr-image");
         if (!qrImg) return;
 
-        var pageUrl = window.location.origin + window.location.pathname;
-        var demoUrl = null;
-        var demoLink = document.querySelector(
-          '#projects a[href*="youtube.com"], #projects a[href*="youtu.be"]',
-        );
-        if (demoLink && demoLink.href) {
-          demoUrl = demoLink.href;
-        }
-        var qrTarget = demoUrl || pageUrl;
+        var pageUrl = "https://furkantunali.com" + window.location.pathname;
         var qrSrc =
           "https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&data=" +
-          encodeURIComponent(qrTarget);
+          encodeURIComponent(pageUrl);
 
         qrImg.src = qrSrc;
       })();

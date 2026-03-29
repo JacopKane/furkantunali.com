@@ -125,9 +125,9 @@ export const downloadAsPDF = onRequest(
       });
 
       await page.setViewport({
-        width: 2480,
-        height: 3508,
-        deviceScaleFactor: 0.2,
+        width: 794,
+        height: 1123,
+        deviceScaleFactor: 1,
         isMobile: false,
       });
 
@@ -160,19 +160,12 @@ export const downloadAsPDF = onRequest(
         structuredData: true,
       });
 
-      await page.setUserAgent(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
-      );
-
       const buffer = await page.pdf({
-        format: "A4",
+        preferCSSPageSize: true,
         printBackground: true,
-        margin: {
-          left: "0",
-          top: "0",
-          right: "0",
-          bottom: "0",
-        },
+        // 0.98 still overflows to page 2 in runtime; 0.97 is the smallest
+        // stable scale that preserves one-page output.
+        scale: 0.97,
       });
 
       logger.info("PDF generated", { structuredData: true });
