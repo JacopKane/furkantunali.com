@@ -99,7 +99,7 @@
           "bullets": [
             "Built with <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>NestJS</strong>, <strong>NextJS</strong>, <strong>Rails</strong>, and <strong>Vue</strong>.",
             "Migrated from monolithic to <em>microservices architecture</em>",
-            "Restructured legacy <strong>Rails</strong> systems into a monorepo, <strong>Dockerized</strong> applications, and established local development environments for efficient onboarding.",
+            "Restructured legacy <strong>Rails</strong> systems into a monorepo, <strong>containerized</strong> applications, and established local development environments for efficient onboarding.",
             "Built CI/CD pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
             "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders.",
             "Developed DevOps and DX tooling to automate daily tasks.",
