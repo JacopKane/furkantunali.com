@@ -120,7 +120,7 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Led front-end team (hiring, mentoring, delivery); drove monolith → unified full-stack <strong>JS</strong> + cloud; built UI component library bridging UX and front-end, with A/B testing."
+        "Led front-end team (hiring, mentoring, delivery); drove monolith to unified full-stack <strong>JS</strong> + cloud; built UI component library bridging UX and front-end, with A/B testing."
       ],
       "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
     },
@@ -227,5 +227,5 @@
       "dates": "2003 - 2007"
     }
   ],
-  "interests": "Music &bull; Swimming &bull; Photography &bull; Sci-Fi &bull; 80s &bull; Design."
+  "interests": "Music &bull; Swimming &bull; Photography &bull; Sci-Fi &bull; 80s &bull; Design"
 }

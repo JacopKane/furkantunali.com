@@ -1346,12 +1346,10 @@ body {
     margin: 0 !important;
     border: none !important;
     border-left: 1px solid #ccc !important;
-    break-inside: auto !important;
-    overflow: hidden !important;
+    break-inside: avoid !important;
   }
 
   .experience-older__header {
-    overflow: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1361,9 +1359,9 @@ body {
     font-weight: 700 !important;
     line-height: 1.24 !important;
     display: block !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1373,11 +1371,11 @@ body {
   }
 
   .experience-older__company {
-    font-size: 10.8px !important;
+    font-size: 10.5px !important;
     display: block !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     margin: 0 !important;
     padding: 0 !important;
     color: #555 !important;
@@ -1389,9 +1387,9 @@ body {
   }
 
   .experience-older__dates {
-    display: none !important;
-    font-size: 10.8px !important;
-    color: #555 !important;
+    display: block !important;
+    font-size: 10px !important;
+    color: #777 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
