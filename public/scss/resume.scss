@@ -806,12 +806,12 @@ body {
   $p-sp-4: 0.35rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.5cm; // @page side/bottom margin (slightly increased safe zone)
+  $p-page-m: 0.55cm; // @page side/bottom margin (+~2px each side)
   $p-page-m-top: 0.6cm; // @page top margin with increased breathing room for title/QR
   $p-gutter: 0.3cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
-  $p-qr-reserve: 1.18cm; // reserved lane for top-right page QR
+  $p-qr-reserve: 1.5cm; // reserved lane for top-right page QR
 
   // ── 1. Page setup ──────────────────────────────────────────────────────────
   @page {
@@ -1051,8 +1051,8 @@ body {
   }
 
   .page-qr-print__box {
-    width: 0.86cm !important;
-    height: 0.86cm !important;
+    width: 1.15cm !important;
+    height: 1.15cm !important;
     padding: 0 !important;
     box-sizing: border-box !important;
     border-width: 0.3pt !important;

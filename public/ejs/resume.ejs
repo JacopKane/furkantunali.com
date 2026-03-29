@@ -12,7 +12,7 @@
         return typeof href === 'string' && /^mailto:/i.test(href);
       };
       const shouldRenderLinkQr = function(href) {
-        return isYouTubeHref(href);
+        return false;
       };
       const getQrCodeUrl = function(href) {
         return 'https://api.qrserver.com/v1/create-qr-code/?size=96x96&margin=0&data=' + encodeURIComponent(href);
@@ -134,8 +134,8 @@
           align-self: flex-start !important;
         }
         .page-qr-print__box {
-          width: 0.86cm !important;
-          height: 0.86cm !important;
+          width: 1.15cm !important;
+          height: 1.15cm !important;
           border-width: 0.3pt !important;
           display: block !important;
         }
@@ -301,12 +301,19 @@
             <% if (link && link.href) { %>
             <p class="demo-cta">
               <a href="<%= link.href %>" target="_blank" class="link-with-qr">
-                <% var isYoutubeProjectLink = isYouTubeHref(link.href); %>
-                <span
-                  class="link-text-screen<%= isYoutubeProjectLink ? ' link-text-screen--print' : '' %>"
+                <% var isYoutubeProjectLink = isYouTubeHref(link.href); %> <% if
+                (isYoutubeProjectLink) { %>
+                <span class="link-text-screen"
                   ><%= link.text || link.href %></span
                 >
-                <% if (!isYoutubeProjectLink) { %>
+                <span class="link-text-print"
+                  ><%= link.text || link.href %>
+                  (video link via top right QR)</span
+                >
+                <% } else { %>
+                <span class="link-text-screen"
+                  ><%= link.text || link.href %></span
+                >
                 <span class="link-text-print"><%= link.href %></span>
                 <% } %>
                 <% if (shouldRenderLinkQr(link.href)) { %>
@@ -521,15 +528,15 @@
                 <em><%= edu.degree || '' %></em> at
                 <% if (edu.url) { %>
                 <a target="_blank" href="<%= edu.url %>" class="link-with-qr"
-                  ><%= edu.school || '' %>
-                  <% if (shouldRenderLinkQr(edu.url)) { %>
-                  <span class="link-qr-print" aria-hidden="true"
-                    ><img src="<%= getQrCodeUrl(edu.url) %>" alt=""
-                  /></span>
-                  <% } %>
-                </a>
+                  ><%= (edu.school || '').trim() %><% if
+                  (shouldRenderLinkQr(edu.url)) { %><span
+                    class="link-qr-print"
+                    aria-hidden="true"
+                    ><img src="<%= getQrCodeUrl(edu.url) %>" alt="" /></span
+                  ><% } %></a
+                >
                 <% } else { %>
-                <span><%= edu.school || '' %></span>
+                <span><%= (edu.school || '').trim() %></span>
                 <% } %>
                 <% if (edu.dates) { %>
                 <span class="dates"><%= edu.dates %></span>
@@ -597,9 +604,17 @@
         if (!qrImg) return;
 
         var pageUrl = window.location.origin + window.location.pathname;
+        var demoUrl = null;
+        var demoLink = document.querySelector(
+          '#projects a[href*="youtube.com"], #projects a[href*="youtu.be"]',
+        );
+        if (demoLink && demoLink.href) {
+          demoUrl = demoLink.href;
+        }
+        var qrTarget = demoUrl || pageUrl;
         var qrSrc =
-          "https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=0&data=" +
-          encodeURIComponent(pageUrl);
+          "https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&data=" +
+          encodeURIComponent(qrTarget);
 
         qrImg.src = qrSrc;
       })();

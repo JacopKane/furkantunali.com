@@ -88,8 +88,7 @@
           "dates": "01/2022 - 10/2023",
           "bullets": [
             "Migrated monolith <strong>Rails</strong> to <em>microservices</em> monorepo, <strong>containerized</strong> apps, built <em>CI/CD</em> with <strong>GitHub Actions</strong> and <strong>Terraform</strong>.",
-            "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders; migrated infra from <strong>Heroku</strong> to <strong>AWS ECS</strong>.",
-            "Supported cross-team delivery, mentored engineers, and automated DevOps/DX tooling."
+            "Supported cross-team delivery, mentored engineers, and automated DevOps/DX tooling; implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders and migrated infra from <strong>Heroku</strong> to <strong>AWS ECS</strong>."
           ]
         }
       ],
@@ -223,9 +222,9 @@
   ],
   "education": [
     {
-      "degree": "Computer Programming and Technologies",
+      "degree": "Computer Programming",
       "school": "Kadir Has University",
-      "url": "http://www.khas.edu.tr/",
+      "url": "http://www.khas.edu.tr",
       "dates": "2003 - 2007"
     }
   ],
