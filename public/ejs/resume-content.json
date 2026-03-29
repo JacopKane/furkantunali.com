@@ -187,9 +187,7 @@
           "company": "Ping Digital Agency Istanbul",
           "url": "http://ping.com.tr",
           "dates": "05/2008 - 03/2009",
-          "bullets": [
-            "Enterprise frontend for Garanti BBVA and Turk Telekom."
-          ]
+          "bullets": ["Enterprise frontend for Garanti BBVA and Turk Telekom."]
         },
         {
           "role": "Front-end developer",
