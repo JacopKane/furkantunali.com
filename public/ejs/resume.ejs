@@ -438,6 +438,14 @@
           <% } else if (exp.description) { %>
           <p><%- exp.description %></p>
           <% } %>
+          <% if (exp.stack) { %>
+          <p>
+            <small
+              ><strong>Stack:</strong>
+              <%= exp.stack %></small
+            >
+          </p>
+          <% } %>
         </li>
         <% }); %>
         <% } %>

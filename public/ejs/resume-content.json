@@ -17,7 +17,7 @@
     { "href": "https://github.com/JacopKane", "text": "GitHub" },
     { "href": "https://furkantunali.com", "text": "Web" }
   ],
-  "summary": "Experienced software engineer architecting scalable solutions for multi-cloud environments, optimizing developer experience across full-stack web development. Currently building GenAI-powered systems and intelligent automation.",
+  "summary": "Senior software & AI engineer building scalable full-stack systems, cloud infrastructure, and agentic AI pipelines.",
   "skills": [
     {
       "category": "AI",
@@ -25,15 +25,11 @@
     },
     {
       "category": "Infrastructure",
-      "items": "Kubernetes, AWS, GCP, Azure, Docker, Terraform, Nginx, Cloudflare, ZeroTier, Grafana, Loki, Tempo, Prometheus, GitHub Actions, CircleCI, Travis, Jenkins, TeamCity"
+      "items": "Kubernetes, AWS, GCP, Azure, Docker, Terraform, Nginx, Cloudflare, Grafana, Loki, Prometheus, GitHub Actions, CircleCI, Jenkins, TeamCity"
     },
     {
       "category": "Back-End",
       "items": "Node.js, TypeScript, JavaScript, Python, Ruby, PHP, NestJS, Express"
-    },
-    {
-      "category": "Tooling",
-      "items": "Turborepo"
     },
     {
       "category": "Front-End",
@@ -49,14 +45,11 @@
       "name": "Newsify Today",
       "url": "https://newsify.today",
       "subtitle": "AI news platform & ChatGPT App (MCP App)",
-      "intro": "Built and operate <strong>Newsify Today</strong> — an AI news platform and early <strong>ChatGPT App</strong> tracking web search trends across worlwide regions and languages</em>, running an agentic AI pipeline to curate, score, and summarize news in <em>real time</em>.",
+      "intro": "Agentic AI pipeline curates, scores, and summarizes trending news in <em>real time</em> across worldwide regions and languages.",
       "bullets": [
-        "Built a <strong>LangGraph</strong>-based agent with 9 tools processing trends",
-        "Self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across <em>3 nodes</em> with <em>health-aware routing</em>, tier-based fallback to <strong>Google Gemini</strong>, and in-flight slot tracking — <em>keeping inference cost near zero</em>.",
-        "Implemented a <strong>MCP</strong> server with trend-news tool, embedded <strong>React</strong> widget (<strong>OpenAI Apps SDK</strong>), and <em>streamable HTTP transport</em> — submitted as an early <strong>ChatGPT App</strong>.",
-        "Run full stack on a <em>3-node</em> <strong>Kubernetes</strong> on-premises cluster — API, web, scraper, database, <strong>Redis</strong> queues, <strong>Cloudflare Tunnel</strong> ingress — with CI/CD via <strong>GitHub Actions</strong> and <em>rolling deploys</em>.",
-        "<strong>Server-Sent Events</strong> pipeline streams AI-generated articles to <strong>Next.js</strong> frontend in <em>real time</em>, with <em>bridge-seeded first paint</em> and <em>fingerprint-based cache invalidation</em>.",
-        "Full observability with <strong>LangSmith</strong>, <strong>Grafana</strong>, <strong>Loki</strong> — logs, traces, and metrics from server and browser, with <em>tracing for every AI agent run</em>."
+        "<strong>LangGraph</strong> agent with 9 tools; self-hosted <strong>Ollama</strong> (<strong>Qwen</strong>) across 3 nodes with <em>health-aware routing</em> and <strong>Gemini</strong> fallback — <em>near-zero inference cost</em>.",
+        "<strong>MCP</strong> server with <strong>OpenAI Apps SDK</strong> widget — shipped as an early <strong>ChatGPT App</strong>.",
+        "3-node <strong>Kubernetes</strong> on-prem, <strong>SSE</strong> streaming to <strong>Next.js</strong>, CI/CD via <strong>GitHub Actions</strong>; observability with <strong>LangSmith</strong> and <strong>Grafana</strong>."
       ],
       "links": [
         {
@@ -64,7 +57,7 @@
           "text": "ChatGPT App demo video"
         }
       ],
-      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare Tunnels, Grafana/Loki/Tempo, MCP SDK, Vite, Turborepo"
+      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare Tunnels, Grafana/Loki/Tempo, MCP SDK, Turborepo"
     }
   ],
   "experiencesColumnAutoBalance": true,
@@ -80,34 +73,27 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Integrated <strong>OpenAI</strong> and <strong>Tavily APIs</strong> to build an AI system that analyzed newly signed up customer input to identify GDPR-relevant vendors they use, automatically retrieving hosting and data storage locations, DPO emails, and privacy policy links.",
-            "Evaluated AI Agent frameworks (<strong>PydanticAI</strong>, <strong>AutoGen</strong>) for solving <em>domain-specific challenges</em>."
+            "Built an AI system with <strong>OpenAI</strong> and <strong>Tavily APIs</strong> to auto-identify GDPR-relevant vendors from customer input — retrieving hosting locations, DPO emails, and privacy policy links; evaluated <strong>PydanticAI</strong> and <strong>AutoGen</strong> for agent workflows."
           ]
         },
         {
           "title": "Senior Infrastructure Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
-            "Created <strong>Kubernetes</strong> and <strong>Terraform</strong> setups from scratch for scalable infrastructure and reliable deployments.",
-            "Led migration from <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> with <em>zero downtime</em>.",
-            "Worked with <strong>AWS</strong> suite (<strong>Fargate</strong>, <strong>ECS</strong>, <strong>CloudFormation</strong>, <strong>ECR</strong>, <strong>RDS</strong>, <strong>Cloud Map</strong>, <strong>EC2</strong>, <strong>Route53</strong>, <strong>Lambda</strong>) for service deployment."
+            "Led <strong>ECS</strong> → <strong>Kubernetes (EKS)</strong> migration with <em>zero downtime</em>; created <strong>Terraform</strong> setups from scratch across <strong>AWS</strong> suite (Fargate, CloudFormation, ECR, RDS, Route53, Lambda)."
           ]
         },
         {
           "title": "Senior DX Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Supported engineering teams in resolving cross-team technical challenges and improving delivery flow.",
-            "Built with <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>NestJS</strong>, <strong>NextJS</strong>, <strong>Rails</strong>, and <strong>Vue</strong>.",
-            "Migrated from monolithic to <em>microservices architecture</em>",
-            "Restructured legacy <strong>Rails</strong> systems into a monorepo, <strong>containerized</strong> applications, and established local development environments for efficient onboarding.",
-            "Built <em>CI/CD</em> pipelines using <em>GitHub Actions</em>, integrated AWS ECR, and introduced <em>Terraform</em> for environment provisioning.",
-            "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders.",
-            "Developed DevOps and DX tooling to automate daily tasks.",
-            "Mentored team members and contributed to technical hiring."
+            "Migrated monolith <strong>Rails</strong> to <em>microservices</em> monorepo, <strong>containerized</strong> apps, built <em>CI/CD</em> with <strong>GitHub Actions</strong> and <strong>Terraform</strong>.",
+            "Implemented <em>event-driven scheduling</em> via <strong>AWS EventBridge</strong> for automated client reminders; migrated infra from <strong>Heroku</strong> to <strong>AWS ECS</strong>.",
+            "Supported cross-team delivery, mentored engineers, and automated DevOps/DX tooling."
           ]
         }
-      ]
+      ],
+      "stack": "TypeScript, JavaScript, Python, NestJS, NextJS, Rails, Vue, Kubernetes, EKS, Terraform, AWS, Docker, GitHub Actions"
     },
     {
       "role": "Senior Software Architect",
@@ -115,12 +101,9 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "AI/ML workloads, deployed models to <strong>Azure CUDA</strong>",
-        "Developed decenteralised authentication system with <strong>OAuth2</strong> to integrate multiple partner and parent company systems",
-        "Contributed to AI systems via <strong>Jupyter Notebooks</strong>",
-        "Implemented cloud infrastructure and <strong>CI/CD</strong> pipelines for secure product delivery",
-        "Implemented and configured MVP boilerplate monorepo, with automated semantic versioning, and <em>testing strategies</em>"
-      ]
+        "AI/ML workloads on <strong>Azure CUDA</strong>; <strong>OAuth2</strong> decentralized auth across partner systems; MVP monorepo with <em>CI/CD</em>, <strong>Terraform</strong>, and automated semantic versioning."
+      ],
+      "stack": "Azure, Docker, Vue.js, TypeScript, GraphQL, Apollo, PostgreSQL, Azure Functions, GitHub Actions"
     },
     {
       "role": "Senior Back-end Architect",
@@ -128,8 +111,9 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected and refactored back-end services, developed full-stack features for gaming content management platform"
-      ]
+        "Architected and refactored back-end services, developed full-stack features for gaming content management platform."
+      ],
+      "stack": "Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
     },
     {
       "role": "Lead Front-End Developer",
@@ -137,12 +121,9 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Drove organization-wide architecture alignment to move from split monolith UI and separate front-end tracks to a unified full-stack JavaScript and cloud direction, using technical plans, system diagrams, and stakeholder lobbying.",
-        "Led front-end team: recruitment, onboarding, mentoring, and delivery",
-        "Modernized front-end architecture, implemented code quality tools, and established deployment pipelines",
-        "Implemented and inspected A/B testing",
-        "Built UI component library bridging UX and front-end into a unified design system"
-      ]
+        "Led front-end team (hiring, mentoring, delivery); drove monolith → unified full-stack <strong>JS</strong> + cloud; built UI component library bridging UX and front-end, with A/B testing."
+      ],
+      "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
     },
     {
       "role": "Full-stack JavaScript Engineer",
@@ -150,11 +131,9 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Implemented full-stack <strong>JavaScript</strong> features across client and server",
-        "Developed <strong>AWS Lambda</strong> functions for queue processing system for image analysis and copyright claim management",
-        "Established quality standards through test coverage (<em>unit</em>, <em>integration</em>, <em>E2E</em>) and code reviews",
-        "Integrated data across <strong>MongoDB</strong>, <strong>Stripe</strong>, <strong>SalesForce</strong>; monitored health via <strong>Sentry</strong>"
-      ]
+        "Full-stack <strong>JavaScript</strong> with <strong>AWS Lambda</strong> queue processing for image analysis; integrated <strong>MongoDB</strong>, <strong>Stripe</strong>, <strong>SalesForce</strong> with full test coverage."
+      ],
+      "stack": "React, Redux, AWS Lambda, Koa, MongoDB, Stripe, SalesForce, Sentry"
     },
     {
       "role": "Software Architect",
@@ -162,9 +141,9 @@
       "url": "https://www.linkedin.com/company/talented-square-corporation",
       "dates": "08/2015 - 08/2016",
       "bullets": [
-        "Led front-end development for ASDA UK (Walmart) online wholesale seller portal",
-        "Designed architecture for a recruiting startup with focus on performance optimization"
-      ]
+        "Led front-end for ASDA UK (Walmart) wholesale portal; designed architecture for a recruiting startup."
+      ],
+      "stack": "Angular, JavaScript, Backbone, LoopBack, MySQL, MongoDB"
     }
   ],
   "olderExperiences": [

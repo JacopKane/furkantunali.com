@@ -803,11 +803,11 @@ body {
   $p-sp-1: 0.12rem; // micro  — between sibling list items
   $p-sp-2: 0.245rem; // tight  — heading → content within a card
   $p-sp-3: 0.29rem; // normal — between cards / column gaps
-  $p-sp-4: 0.41rem; // loose  — between major sections
+  $p-sp-4: 0.35rem; // loose  — between major sections
 
   // Layout
   $p-page-m: 0.5cm; // @page side/bottom margin (slightly increased safe zone)
-  $p-page-m-top: 0.75cm; // @page top margin with increased breathing room for title/QR
+  $p-page-m-top: 0.6cm; // @page top margin with increased breathing room for title/QR
   $p-gutter: 0.3cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
@@ -837,7 +837,7 @@ body {
 
   body {
     position: relative !important;
-    padding-top: 0.6cm !important;
+    padding-top: 0.4cm !important;
   }
 
   // ── 3. Hidden elements ───────────────────────────────────────────────────────
