@@ -320,10 +320,15 @@
               >
                 <span class="project-link__icon" aria-hidden="true">
                   <% if (isYoutubeProjectLink) { %>
-                  <svg viewBox="7 6 11 12" focusable="false">
+                  <svg
+                    class="project-link__icon-video"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                  >
+                    <circle cx="12" cy="12" r="11" fill="currentColor"></circle>
                     <path
-                      d="M9 7.2v9.6L17 12 9 7.2Z"
-                      fill="currentColor"
+                      class="project-link__icon-video-triangle"
+                      d="M8.8 7.3v9.4L16.7 12 8.8 7.3Z"
                     ></path>
                   </svg>
                   <% } else { %>
