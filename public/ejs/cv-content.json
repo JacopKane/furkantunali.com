@@ -63,7 +63,7 @@
   "experiencesColumnSplit": 2,
   "recentExperiences": [
     {
-      "role": "Senior Engineer (AI, Infrastructure, Developer Experience)",
+      "role": "AI, Platform and DX Engineer",
       "company": "heyData GmbH, Berlin",
       "url": "https://heydata.eu/",
       "dates": "01/2022 - 08/2025",
@@ -76,7 +76,7 @@
           ]
         },
         {
-          "title": "Senior Infrastructure Engineer",
+          "title": "Senior Platform Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
             "Led <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> migration with zero downtime; built <strong>Terraform</strong> IaC across <strong>AWS</strong> (Fargate, ECS, ECR, CloudFormation, RDS, EC2, Cloud Map, Route53, Lambda); mentored new DevOps members"
@@ -98,7 +98,7 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "Containerized AI/ML models to <strong>Azure CUDA</strong>, adapted <strong>Jupyter Notebooks</strong> for production; integrated <strong>Microsoft Entra ID</strong>, MVP monorepo & <em>CI/CD</em>; mentored and supported engineers and led planning of architecture."
+        "Containerized <em>AI/ML</em> models and <strong>Jupyter Notebooks</strong> with pipeline to <strong>Azure CUDA</strong>; integrated <strong>Microsoft Entra ID</strong>, MVP monorepo orchestration; hired and supported engineers; planning of architecture."
       ],
       "stack": "Azure, Docker, Vue.js, TypeScript, GraphQL, Apollo, PostgreSQL, Azure Functions, GitHub Actions"
     },
@@ -108,7 +108,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Implemented and refactored back-end services; profiled performance bottlenecks, drove data migrations, and improved containerization and workflows."
+        "Profiled performance bottlenecks, drove data migrations, and improved containerization and workflows."
       ],
       "stack": "Ramda, Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
     },
@@ -128,7 +128,7 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Full-stack <strong>JavaScript</strong> with <strong>TDD & BDD tests</strong>; queue system on <strong>AWS Lambda</strong>; integrated <strong>MongoDB</strong>, <strong>Stripe</strong> & <strong>SalesForce</strong>; monitored via Sentry and Heroku."
+        "<strong>BDD</strong>  tests; queue system with <strong>AWS Lambda</strong>; integrations of <strong>MongoDB</strong>, <strong>Stripe</strong> & <strong>SalesForce</strong>."
       ],
       "stack": "React, Redux, AWS Lambda, Koa, MongoDB, Stripe, SalesForce, Sentry"
     },
@@ -172,7 +172,7 @@
           "company": "WPP / JWT",
           "url": "https://www.wpp.com",
           "dates": "05/2009 - 06/2011",
-          "description": "Websites & CMS for Miller, Turkcell, Eston, First, Efes"
+          "description": "CRM/CMS/Web services for Miller, Turkcell, Eston, Efes"
         },
         {
           "role": "Full-stack developer",
@@ -191,7 +191,7 @@
           "role": "Designer, front-end and Flash developer",
           "company": "Koçak Design",
           "dates": "05/2008 - 03/2009",
-          "description": "Design & Front-end for art community startup"
+          "description": "Design & Front-end for a art community startup"
         },
         {
           "role": "Designer & Front-end developer",
