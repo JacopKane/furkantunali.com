@@ -21,7 +21,7 @@
   "skills": [
     {
       "category": "AI",
-      "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, PydanticAI, AutoGen, Claude API, OpenAI, Gemini APIs"
+      "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, PydanticAI, AutoGen, Claude, OpenAI and Gemini APIs"
     },
     {
       "category": "Infrastructure",
@@ -45,9 +45,9 @@
       "name": "Newsify Today",
       "url": "https://newsify.today",
       "subtitle": "AI news platform & ChatGPT App (MCP App)",
-      "intro": "Agentic AI pipeline curates, scores, and summarizes trending news in <em>real time</em> across worldwide regions and languages.",
+      "intro": "Near zero-cost, self-hosted Agentic AI pipeline curates, scores, and summarizes trending news in <em>real time</em> across worldwide regions and languages.",
       "bullets": [
-        "<strong>LangGraph</strong> agent with <strong>Ollama</strong> (3 nodes) + <strong>Gemini</strong> fallback; <strong>MCP</strong> server shipped as <strong>ChatGPT App</strong>.",
+        "<strong>LangGraph</strong> agent with self-hosted <strong>Ollama</strong> (3 nodes) + <strong>Gemini</strong> fallback; <strong>MCP</strong> server shipped as <strong>ChatGPT App</strong>.",
         "Self-hosted <strong>Kubernetes</strong>, <strong>SSE</strong> to <strong>Next.js</strong>, <strong>GitHub Actions</strong> CI/CD, <strong>Grafana</strong> observability."
       ],
       "links": [
@@ -56,7 +56,7 @@
           "text": "ChatGPT App demo video"
         }
       ],
-      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare Tunnels, Grafana/Loki/Tempo, MCP SDK, Turborepo"
+      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare, Grafana/Loki/Tempo, MCP SDK, Turborepo"
     }
   ],
   "experiencesColumnAutoBalance": true,
@@ -79,14 +79,14 @@
           "title": "Senior Infrastructure Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
-            "Led <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> migration with zero downtime; built <strong>Terraform</strong> IaC across <strong>AWS</strong> (Fargate, ECS, ECR, CloudFormation, RDS, EC2, Cloud Map, Route53, Lambda); set up DMARC/domain infra and resolved critical production incidents."
+            "Led <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> migration with zero downtime; built <strong>Terraform</strong> IaC across <strong>AWS</strong> (Fargate, ECS, ECR, CloudFormation, RDS, EC2, Cloud Map, Route53, Lambda); mentored new DevOps members"
           ]
         },
         {
           "title": "Senior DX and Full-stack Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Restructured legacy <strong>Rails</strong> monolith into <em>25+ microservices</em> monorepo; implemented <strong>Docker Compose</strong> for fast and reliable development iterations; <em>CI/CD</em> via <strong>GitHub Actions</strong> & <strong>AWS ECR</strong>; implemented <strong>EventBridge</strong> scheduling; resolved urgent incidents; built DevOps tooling and mentored + hired engineers."
+            "Restructured <strong>Rails</strong> monolith into <em>25+ microservices</em> monorepo; implemented <strong>Docker Compose</strong> for fast and reliable development iterations; <em>CI/CD</em> via <strong>GitHub Actions</strong> & <strong>AWS ECR</strong>; implemented <strong>EventBridge</strong> scheduling; established, supported, hired and mentored engineering team; built DX tooling."
           ]
         }
       ],
