@@ -108,7 +108,7 @@ function setPdfResponseHeaders(
   response.header("Content-Type", "application/pdf");
   response.header(
     "Content-Disposition",
-    'attachment; filename="Furkan_Tunali_CV.pdf"',
+    "attachment; filename=\"Furkan_Tunali_CV.pdf\"",
   );
   response.header(
     "Cache-Control",
