@@ -307,7 +307,7 @@
                   ><%= link.text || link.href %></span
                 >
                 <span class="link-text-print"
-                  ><%= link.text || link.href %></span
+                  ><%= (link.text || link.href) + ' ' %></span
                 >
                 <% } else { %>
                 <span class="link-text-screen"
@@ -434,13 +434,9 @@
             <% }); %>
           </ul>
           <% } else if (toArray(exp.bullets).length) { %>
-          <ul>
-            <% toArray(exp.bullets).forEach(function(bullet) { %>
-            <li>
-              <p><%- bullet %></p>
-            </li>
-            <% }); %>
-          </ul>
+          <% toArray(exp.bullets).forEach(function(bullet) { %>
+          <p><%- bullet %></p>
+          <% }); %>
           <% } else if (exp.description) { %>
           <p><%- exp.description %></p>
           <% } %>
