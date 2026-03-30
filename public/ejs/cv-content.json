@@ -110,7 +110,7 @@
       "bullets": [
         "Implemented and refactored back-end services; profiled performance bottlenecks, drove data migrations, and improved containerization and dev-tool workflows."
       ],
-      "stack": "Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
+      "stack": "Ramda, Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
     },
     {
       "role": "Lead Front-End Developer",
@@ -138,7 +138,7 @@
       "url": "https://www.linkedin.com/company/talented-square-corporation",
       "dates": "08/2015 - 08/2016",
       "bullets": [
-        "Led front-end for ASDA UK wholesale portal; designed architecture for recruiting startup."
+        "Led front-end refactoring for ASDA and Walmart; implemented MVP for recruiting startup."
       ],
       "stack": "Angular, JavaScript, Backbone, LoopBack, MySQL, MongoDB"
     }
