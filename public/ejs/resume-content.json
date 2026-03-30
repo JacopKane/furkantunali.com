@@ -72,25 +72,25 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Built AI system with <strong>OpenAI</strong> & <strong>Tavily APIs</strong> to auto-identify GDPR vendors; evaluated <strong>PydanticAI</strong> and <strong>AutoGen</strong>."
+            "Built AI system with <strong>OpenAI</strong> & <strong>Tavily APIs</strong> analyzing customer input to auto-identify GDPR vendors, researching hosting locations, DPO emails, and privacy policy links; researched <strong>PydanticAI</strong> and <strong>AutoGen</strong> agent frameworks for compliance automation."
           ]
         },
         {
           "title": "Senior Infrastructure Engineer",
           "dates": "10/2023 - 10/2024",
           "bullets": [
-            "Led <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> migration with zero downtime; created <strong>Terraform</strong> setups across <strong>AWS</strong> (Fargate, ECR, Aurora RDS, Route53, Lambda)."
+            "Led <strong>ECS</strong> to <strong>Kubernetes (EKS)</strong> migration with zero downtime; built <strong>Terraform</strong> IaC across <strong>AWS</strong> (Fargate, ECS, ECR, CloudFormation, RDS, EC2, Cloud Map, Route53, Lambda); set up DMARC/domain infra and resolved critical production incidents."
           ]
         },
         {
           "title": "Senior DX Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Migrated monolith <strong>Rails</strong> to <em>25+ microservices</em> monorepo, built <em>CI/CD</em> with <strong>GitHub Actions</strong> & <strong>Terraform</strong>; automated DevOps/DX tooling and migrated infra from <strong>Heroku</strong> to <strong>AWS ECS</strong>."
+            "Restructured legacy <strong>Rails</strong> monolith into <em>25+ microservices</em> monorepo; maintained <strong>Docker Compose</strong> setups for reliable local dev and onboarding; <em>CI/CD</em> via <strong>GitHub Actions</strong> & <strong>AWS ECR</strong>; implemented <strong>EventBridge</strong> scheduling; resolved urgent incidents; built DevOps tooling and mentored + hired engineers."
           ]
         }
       ],
-      "stack": "TypeScript, JavaScript, Python, NestJS, Nuxt, Vue, Rails, Kubernetes, EKS, Terraform, AWS, Docker, GitHub Actions"
+      "stack": "TypeScript, JavaScript, Python, NestJS, Nuxt, Vue, Rails, Kubernetes, EKS, Terraform, AWS (ECS, ECR, CloudFormation, EventBridge), Docker, GitHub Actions, OpenAI API, Tavily, PydanticAI"
     },
     {
       "role": "Senior Software Architect",
@@ -98,7 +98,7 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "AI/ML on <strong>Azure CUDA</strong>, <strong>OAuth2</strong> auth, MVP monorepo with <strong>Terraform</strong> & <em>CI/CD</em>."
+        "Containerized AI/ML models to <strong>Azure CUDA</strong>, adapted <strong>Jupyter Notebooks</strong> for production; built <strong>OAuth2</strong> auth, MVP monorepo with <strong>Terraform</strong> & <em>CI/CD</em>; mentored engineers and led code reviews."
       ],
       "stack": "Azure, Docker, Vue.js, TypeScript, GraphQL, Apollo, PostgreSQL, Azure Functions, GitHub Actions"
     },
@@ -108,7 +108,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Architected back-end services and full-stack features for gaming content management platform."
+        "Implemented and refactored back-end services; profiled performance bottlenecks, drove data migrations, and improved containerization and dev-tool workflows."
       ],
       "stack": "Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
     },
@@ -118,7 +118,7 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Led front-end team, drove monolith to unified full-stack <strong>JS</strong> + cloud, built UI component library with <em>A/B testing</em>."
+        "Managed front-end team (hiring, onboarding); modernized monolith to microservices, implemented code quality tooling, automated tests, A/B testing, and UI component library bridging UX and engineering."
       ],
       "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
     },
@@ -128,7 +128,7 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Full-stack <strong>JavaScript</strong> with <strong>AWS Lambda</strong>, image analysis; integrated <strong>MongoDB</strong>, <strong>Stripe</strong>, <strong>SalesForce</strong>."
+        "Full-stack <strong>JavaScript</strong> with <strong>unit, integration & E2E tests</strong>; microservices on <strong>AWS Lambda</strong>; integrated <strong>MongoDB</strong>, <strong>Stripe</strong> & <strong>SalesForce</strong>; monitored via Sentry and Heroku."
       ],
       "stack": "React, Redux, AWS Lambda, Koa, MongoDB, Stripe, SalesForce, Sentry"
     },
