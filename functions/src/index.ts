@@ -159,10 +159,13 @@ function requestHasMatchingETag(
 }
 
 async function renderPdf(browser: Browser, url: string) {
+  // Use an isolated incognito context so cookies, cache, and any service-worker
+  // state from a previous render cannot bleed into this one.
+  const context = await browser.createBrowserContext();
   let page = null;
 
   try {
-    page = await browser.newPage();
+    page = await context.newPage();
 
     page.on("console", (msg) => {
       logger.info(`PAGE LOG: ${msg.text()}`, { structuredData: true });
@@ -262,6 +265,15 @@ async function renderPdf(browser: Browser, url: string) {
       );
     }
 
+    // Sanity-check: ensure we are still on the CV page and did not land on the
+    // index or any other fallback page due to a routing/redirect issue.
+    const finalUrl = page.url();
+    if (!finalUrl.includes("/cv")) {
+      throw new Error(
+        `Navigation ended on wrong page; expected /cv but got: ${finalUrl}`,
+      );
+    }
+
     logger.info("Page navigation completed", {
       finalUrl: page.url(),
       responseStatus: navigationResponse?.status(),
@@ -282,6 +294,7 @@ async function renderPdf(browser: Browser, url: string) {
     if (page) {
       await page.close();
     }
+    await context.close();
   }
 }
 
