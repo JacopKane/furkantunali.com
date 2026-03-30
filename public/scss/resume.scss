@@ -271,6 +271,7 @@ body {
     font-weight: 500;
     font-size: 1rem;
     line-height: $standard-line-height;
+
     em {
       font-weight: 300;
     }
@@ -414,12 +415,14 @@ body {
     color: $color-text;
     transition: color 0.3s ease-in-out;
   }
+
   ul.info,
   ul.educations {
     li {
       display: inline;
       margin: 0;
       line-height: $standard-line-height;
+
       &:not(:first-child)::before {
         content: "\00a0\2022\00a0\00a0";
       }
@@ -453,8 +456,9 @@ body {
       display: inline;
       margin: 0;
       line-height: $standard-line-height;
+
       &:not(:first-child)::before {
-        content: "\00a0\2022\00a0\00a0";
+        content: "";
       }
     }
   }
@@ -482,7 +486,8 @@ body {
   }
 
   .experience {
-    break-inside: auto; /* Allow content to flow across pages naturally */
+    break-inside: auto;
+    /* Allow content to flow across pages naturally */
     margin: 0; // Reset all margins
     padding: 0; // Reset all paddings
     border-radius: 4px;
@@ -754,37 +759,6 @@ body {
   }
 }
 
-// Screen dark-theme contrast fixes for timeline and older experiences
-.dark-theme {
-  #experiences li.experience {
-    border-left-color: rgba($color-text-dark, 0.28);
-  }
-
-  #experiences-older {
-    .experience-older__year {
-      color: rgba($color-text-dark, 0.82);
-    }
-
-    .experience-older__entry {
-      border-left-color: rgba($color-text-dark, 0.3);
-    }
-
-    .experience-older__dates {
-      color: rgba($color-text-dark, 0.7);
-    }
-
-    .experience-older__bullets {
-      li {
-        color: rgba($color-text-dark, 0.88);
-
-        &::marker {
-          color: rgba($color-text-dark, 0.62);
-        }
-      }
-    }
-  }
-}
-
 // =============================================================================
 // PRINT STYLES
 // Single authoritative block. All decisions live here; nothing is repeated.
@@ -803,15 +777,14 @@ body {
   $p-sp-1: 0.12rem; // micro  — between sibling list items
   $p-sp-2: 0.245rem; // tight  — heading → content within a card
   $p-sp-3: 0.29rem; // normal — between cards / column gaps
-  $p-sp-4: 0.35rem; // loose  — between major sections
+  $p-sp-4: 0.41rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.63cm; // @page side/bottom margin with extra physical print safety
-  $p-page-m-top: 0.6cm; // @page top margin with increased breathing room for title/QR
+  $p-page-m: 0.44cm; // @page side/bottom margin
+  $p-page-m-top: 0.4cm; // @page top margin to balance optical whitespace
   $p-gutter: 0.3cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
-  $p-qr-reserve: 1.5cm; // reserved lane for top-right page QR
 
   // ── 1. Page setup ──────────────────────────────────────────────────────────
   @page {
@@ -835,11 +808,6 @@ body {
     text-rendering: optimizeLegibility;
   }
 
-  body {
-    position: relative !important;
-    padding-top: 0.4cm !important;
-  }
-
   // ── 3. Hidden elements ───────────────────────────────────────────────────────
   nav,
   .grain-overlay {
@@ -857,37 +825,16 @@ body {
   }
 
   header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    flex-wrap: nowrap !important;
     margin: 0 0 $p-sp-3 0 !important;
     padding: 0 $p-gutter !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  header hgroup {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
+  header hgroup,
   header h1 {
     margin: 0 !important;
     padding: 0 !important;
-    color: #000 !important;
-  }
-
-  .page-qr-print {
-    flex: 0 0 auto !important;
-    float: none !important;
-    position: static !important;
-    margin: 0 0 0 0.12cm !important;
-    line-height: 0 !important;
-    order: 2 !important;
-    align-self: flex-start !important;
   }
 
   // ── 5. Intro row (name + contact bar) ────────────────────────────────────────
@@ -911,7 +858,7 @@ body {
 
   .intro #info h2,
   .intro #contact h2 {
-    display: block !important;
+    display: none !important;
   }
 
   .intro ul.info,
@@ -924,12 +871,6 @@ body {
     line-height: $p-lh !important;
   }
 
-  .intro ul.contact {
-    display: inline !important;
-    max-width: none !important;
-    vertical-align: top !important;
-  }
-
   .intro ul.info li,
   .intro ul.contact li {
     display: inline !important;
@@ -939,7 +880,7 @@ body {
 
   .intro ul.info li:not(:first-child)::before,
   .intro ul.contact li:not(:first-child)::before {
-    content: "\00a0\2022\00a0\00a0" !important;
+    content: " · " !important;
   }
 
   .left-column {
@@ -966,8 +907,8 @@ body {
     line-height: $p-lh !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: #000 !important;
   }
+
   h2 {
     font-size: $p-base !important;
     font-weight: 600 !important;
@@ -975,21 +916,20 @@ body {
     line-height: $p-lh !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: #000 !important;
   }
+
   h3 {
     font-size: $p-sm !important;
     line-height: $p-lh !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: #000 !important;
   }
+
   h4 {
     font-size: $p-sm !important;
     line-height: $p-lh !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: #000 !important;
   }
 
   a,
@@ -1037,13 +977,12 @@ body {
 
   .page-qr-print {
     display: block !important;
-    flex: 0 0 auto !important;
-    float: none !important;
-    position: static !important;
-    margin: 0 0 0 0.12cm !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    z-index: 2 !important;
     line-height: 0 !important;
-    order: 2 !important;
-    align-self: flex-start !important;
   }
 
   .page-qr-print__label {
@@ -1051,11 +990,11 @@ body {
   }
 
   .page-qr-print__box {
-    width: 1.4cm !important;
-    height: 1.4cm !important;
+    width: 3.2cm !important;
+    height: 3.8cm !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    border-width: 0.3pt !important;
+    border-width: 0.55pt !important;
     display: block !important;
   }
 
@@ -1173,6 +1112,7 @@ body {
   #projects li.project > ul li:last-child {
     margin-bottom: 0 !important;
   }
+
   #projects li.project > ul li p {
     margin: 0 !important;
   }
@@ -1283,6 +1223,7 @@ body {
   .experience ul ul {
     list-style-type: $bullet-level-2 !important;
   }
+
   .experience ul ul ul {
     list-style-type: $bullet-level-3 !important;
   }
@@ -1328,7 +1269,13 @@ body {
   }
 
   .experience-older__year {
-    display: none !important;
+    font-size: $p-xxs !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    color: #444 !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
   }
 
   .experience-older__list {
@@ -1346,10 +1293,12 @@ body {
     margin: 0 !important;
     border: none !important;
     border-left: 1px solid #ccc !important;
-    break-inside: avoid !important;
+    break-inside: auto !important;
+    overflow: hidden !important;
   }
 
   .experience-older__header {
+    overflow: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1359,9 +1308,9 @@ body {
     font-weight: 700 !important;
     line-height: 1.24 !important;
     display: block !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1371,11 +1320,11 @@ body {
   }
 
   .experience-older__company {
-    font-size: 10.5px !important;
+    font-size: 10.8px !important;
     display: block !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     margin: 0 !important;
     padding: 0 !important;
     color: #555 !important;
@@ -1387,9 +1336,9 @@ body {
   }
 
   .experience-older__dates {
-    display: block !important;
-    font-size: 10px !important;
-    color: #777 !important;
+    display: none !important;
+    font-size: 10.8px !important;
+    color: #555 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
