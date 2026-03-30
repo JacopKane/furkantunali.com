@@ -148,69 +148,57 @@
       "experiences": [
         {
           "role": "Founder",
-          "company": "NOD studios, Istanbul",
+          "company": "NOD studios",
           "url": "http://nod.st",
           "dates": "11/2012 - 07/2015",
-          "bullets": [
-            "Designed and developed studio delivering web and mobile products for BeinSports, Les Benjamins, Ulker."
-          ]
+          "description": "Web & mobile for BeinSports, Les Benjamins, Ulker"
         },
         {
           "role": "Full-stack web developer",
-          "company": "FOX (NOW) TV Channels, Istanbul",
+          "company": "FOX TV Channels",
           "url": "https://www.nowtv.com.tr/",
           "dates": "01/2012 - 12/2012",
-          "bullets": [
-            "Social apps and CMS for Samsung, National Geographic, Nokia, TV shows."
-          ]
+          "description": "Social apps & CRM for Samsung, National Geographic, Nokia"
         },
         {
           "role": "Founding Front-end Engineer",
-          "company": "projectz, Istanbul",
+          "company": "projectz",
           "url": "http://projectz.com/",
           "dates": "06/2011 - 12/2011",
-          "bullets": [
-            "Led the UI design and development of QA startup Yardim Lazim"
-          ]
+          "description": "UI design & development for QA startup"
         },
         {
           "role": "Full-stack developer",
-          "company": "WPP / JWT, Istanbul",
-          "url": "http://manajans-jwt.com/",
+          "company": "WPP / JWT",
+          "url": "https://www.wpp.com",
           "dates": "05/2009 - 06/2011",
-          "bullets": [
-            "Built websites, CMS platforms, and campaign microsites for major brands including Turkcell, Miller, Bomonti, Eston, and Efes."
-          ]
+          "description": "Websites & CMS for Miller, Turkcell, Eston, First, Efes"
         },
         {
           "role": "Full-stack developer",
-          "company": "Ping Digital Agency Istanbul",
-          "url": "http://ping.com.tr",
+          "company": "Saatchi & Saatchi",
+          "url": "https://www.wearesaatchi.com/",
           "dates": "05/2008 - 03/2009",
-          "bullets": ["Enterprise frontend for Garanti BBVA and Turk Telekom."]
+          "description": "Enterprise frontend for Garanti BBVA & Turk Telekom"
         },
         {
           "role": "Front-end developer",
-          "company": "Tribal DDB Worldwide Istanbul",
+          "company": "Tribal DDB Worldwide",
           "dates": "03/2009 - 05/2009",
-          "bullets": ["Front-end development for Turk Telekom projects."]
+          "description": "Front-end for Turk Telekom"
         },
         {
           "role": "Designer, front-end and Flash developer",
-          "company": "Kocak Dizayn, Istanbul",
+          "company": "Koçak Design",
           "dates": "05/2008 - 03/2009",
-          "bullets": [
-            "Designed and implemented front-end experiences and visual assets for an online art community startup."
-          ]
+          "description": "Front-end & visual assets for art community startup"
         },
         {
           "role": "Designer & Front-end developer",
-          "company": "MedyaNova, Istanbul",
+          "company": "MedyaNova",
           "url": "http://www.medyanova.com/",
           "dates": "05/2005 - 02/2007",
-          "bullets": [
-            "Designed and implemented various websites including Best Western Hotels."
-          ]
+          "description": "Websites including Best Western Hotels"
         }
       ]
     }

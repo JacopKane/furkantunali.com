@@ -401,6 +401,13 @@ body {
     div.right {
       text-align: right;
     }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
   }
 
   header {
@@ -1293,8 +1300,8 @@ body {
     margin: 0 !important;
     border: none !important;
     border-left: 1px solid #ccc !important;
-    break-inside: auto !important;
-    overflow: hidden !important;
+    break-inside: avoid !important;
+    overflow: visible !important;
   }
 
   .experience-older__header {
@@ -1308,9 +1315,9 @@ body {
     font-weight: 700 !important;
     line-height: 1.24 !important;
     display: block !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1322,9 +1329,9 @@ body {
   .experience-older__company {
     font-size: 10.8px !important;
     display: block !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     margin: 0 !important;
     padding: 0 !important;
     color: #555 !important;
@@ -1344,7 +1351,18 @@ body {
   }
 
   .experience-older__bullets {
-    display: none !important;
+    display: block !important;
+    list-style-type: disc !important;
+    padding-left: 1.2em !important;
+    margin: 0.06em 0 !important;
+    font-size: $p-xxs !important;
+    line-height: 1.24 !important;
+  }
+
+  .experience-older__bullets li {
+    display: list-item !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   // ── 14. Secondary columns (Education + Interests) ─────────────────────────────

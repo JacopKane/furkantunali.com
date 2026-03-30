@@ -111,7 +111,8 @@ body {
       padding: 1rem;
     }
 
-    a:not(.logo) {
+    a:not(.logo),
+    #print-button {
       padding: 0.75rem 1.5rem;
       background: #000;
       color: #fff;
@@ -119,6 +120,18 @@ body {
       border-radius: 4px;
       border: 1px solid #000000; // Always have a border to prevent layout shift
       transition: all 0.3s ease;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .button-icon {
+        width: 1.2em;
+        height: 1.2em;
+        flex-shrink: 0;
+      }
 
       &:hover {
         background: #ffffff;
@@ -126,7 +139,7 @@ body {
         border-color: #000000; // Change only the color, not the width
       }
 
-      // Dark mode styles for download button
+      // Dark mode styles for download button and print button
       .dark-theme & {
         background: #ffffff;
         color: #000000;
