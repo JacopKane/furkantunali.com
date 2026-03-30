@@ -21,7 +21,7 @@
   "skills": [
     {
       "category": "AI",
-      "items": "LangGraph, LangChain, LangSmith, Ollama, MCP, PydanticAI, AutoGen, Claude, OpenAI and Gemini APIs"
+      "items": "LangGraph, LangChain, Ollama, MCP, PydanticAI, AutoGen, Claude, OpenAI and Gemini APIs"
     },
     {
       "category": "Infrastructure",
@@ -45,7 +45,7 @@
       "name": "Newsify Today",
       "url": "https://newsify.today",
       "subtitle": "AI news platform & ChatGPT App (MCP App)",
-      "intro": "Near zero-cost, self-hosted Agentic AI pipeline curates, scores, and summarizes trending news in <em>real time</em> across worldwide regions and languages.",
+      "intro": "Near zero-cost, self-hosted Agentic AI pipeline curates, reviews, scores, and summarizes trending news in <em>real time</em> across the world.",
       "bullets": [
         "<strong>LangGraph</strong> agent with self-hosted <strong>Ollama (Qwen)</strong> (3 nodes) + <strong>Gemini</strong> fallback; <strong>MCP</strong> server shipped as <strong>ChatGPT App</strong>.",
         "Self-hosted <strong>Kubernetes</strong>, <strong>SSE</strong> to <strong>Next.js</strong>, <strong>GitHub Actions</strong> CI/CD, <strong>Grafana</strong> observability."
@@ -179,7 +179,7 @@
           "company": "Saatchi & Saatchi",
           "url": "https://www.wearesaatchi.com/",
           "dates": "05/2008 - 03/2009",
-          "description": "Enterprise frontend for Garanti BBVA & Turk Telekom"
+          "description": "Web development for Garanti BBVA & Turk Telekom"
         },
         {
           "role": "Front-end developer",
@@ -191,7 +191,7 @@
           "role": "Designer, front-end and Flash developer",
           "company": "Koçak Design",
           "dates": "05/2008 - 03/2009",
-          "description": "Design & Front-end for a art community startup"
+          "description": "Led UI for a art marketplace startup"
         },
         {
           "role": "Designer & Front-end developer",
