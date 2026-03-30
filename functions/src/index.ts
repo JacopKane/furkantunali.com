@@ -153,9 +153,8 @@ export const downloadAsPDF = onRequest(
       const buffer = await page.pdf({
         preferCSSPageSize: true,
         printBackground: true,
-        // 0.98 still overflows to page 2 in runtime; 0.97 is the smallest
-        // stable scale that preserves one-page output.
-        scale: 0.97,
+        // Tuned down from 0.97 after heyData content expansion pushed page 2.
+        scale: 0.95,
       });
 
       logger.info("PDF generated", { structuredData: true });
