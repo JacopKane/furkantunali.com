@@ -277,10 +277,11 @@ async function renderPdf(browser: Browser, url: string) {
       );
     }
 
+    const pageTitle = await page.title();
     logger.info("Page navigation completed", {
       finalUrl: page.url(),
+      pageTitle,
       responseStatus: navigationResponse?.status(),
-      responseHeaders: navigationResponse?.headers(),
       structuredData: true,
     });
 
