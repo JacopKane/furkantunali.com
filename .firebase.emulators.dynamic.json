@@ -26,27 +26,23 @@
     "redirects": [
       {
         "source": "/resume.html",
-        "destination": "/cv.html",
+        "destination": "/cv",
         "type": 301
       },
       {
-        "source": "/cv",
-        "destination": "/cv.html",
+        "source": "/cv.html",
+        "destination": "/cv",
         "type": 301
       },
       {
         "source": "/CV",
-        "destination": "/cv.html",
+        "destination": "/cv",
         "type": 301
       }
     ],
     "rewrites": [
       {
         "source": "/cv",
-        "destination": "/cv.html"
-      },
-      {
-        "source": "/CV",
         "destination": "/cv.html"
       },
       {
