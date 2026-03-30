@@ -23,7 +23,32 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/resume.html",
+        "destination": "/cv.html",
+        "type": 301
+      },
+      {
+        "source": "/cv",
+        "destination": "/cv.html",
+        "type": 301
+      },
+      {
+        "source": "/CV",
+        "destination": "/cv.html",
+        "type": 301
+      }
+    ],
     "rewrites": [
+      {
+        "source": "/cv",
+        "destination": "/cv.html"
+      },
+      {
+        "source": "/CV",
+        "destination": "/cv.html"
+      },
       {
         "source": "**",
         "destination": "/index.html"

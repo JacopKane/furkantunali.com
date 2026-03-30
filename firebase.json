@@ -19,7 +19,28 @@
     "site": "furkantunali-1043",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/resume.html",
+        "destination": "/cv",
+        "type": 301
+      },
+      {
+        "source": "/cv.html",
+        "destination": "/cv",
+        "type": 301
+      },
+      {
+        "source": "/CV",
+        "destination": "/cv",
+        "type": 301
+      }
+    ],
     "rewrites": [
+      {
+        "source": "/cv",
+        "destination": "/cv.html"
+      },
       {
         "source": "**",
         "destination": "/index.html"

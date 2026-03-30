@@ -122,11 +122,11 @@ export const downloadAsPDF = onRequest(
       });
 
       const isEmulator = isEmulatorEnvironment();
-      const url = getUrl("/cv.html", isEmulator);
+      const url = getUrl("/cv", isEmulator);
 
       logger.info("About to navigate to URL", {
         targetUrl: url,
-        path: "/cv.html",
+        path: "/cv",
         structuredData: true,
       });
 
