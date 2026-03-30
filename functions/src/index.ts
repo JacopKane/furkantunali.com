@@ -240,7 +240,10 @@ async function renderPdf(browser: Browser, url: string) {
       ) as HTMLImageElement | null;
 
       if (!qrImg) {
-        return true;
+        // The QR element is only present on the CV page. If it is missing we
+        // are almost certainly on the wrong page (e.g. the catch-all index.html
+        // was served instead of cv.html). Fail hard so no bad PDF is cached.
+        return false;
       }
 
       if (getQrState(qrImg)) {
