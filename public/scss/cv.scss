@@ -194,6 +194,40 @@ body {
     gap: 0.2em;
   }
 
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    text-decoration: underline;
+  }
+
+  .project-link__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    background: $color-text;
+    color: $color-background;
+
+    .dark-theme & {
+      background: $color-text-dark;
+      color: $color-background-dark;
+    }
+
+    svg {
+      width: 0.65em;
+      height: 0.65em;
+      display: block;
+    }
+  }
+
+  .project-link__content {
+    display: inline;
+  }
+
   .link-qr-print {
     display: none;
   }
@@ -477,7 +511,6 @@ body {
     font-weight: 500;
 
     a {
-      text-decoration: underline;
       transition: opacity 0.2s ease;
       cursor: pointer;
 
@@ -489,6 +522,10 @@ body {
     @media print {
       font-size: 0.8em;
       opacity: 0.85;
+
+      .project-link__icon {
+        display: none;
+      }
     }
   }
 
