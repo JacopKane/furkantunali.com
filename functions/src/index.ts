@@ -306,7 +306,7 @@ export const downloadAsPDF = onRequest(
   {
     region: "europe-west1",
     timeoutSeconds: 300,
-    memory: "512MiB",
+    memory: "1GiB",
   },
   async (request, response) => {
     logger.info("Begin downloadAsPDF", {
