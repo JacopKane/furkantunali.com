@@ -1,0 +1,8 @@
+name = "furkantunali-cv-pdf"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+account_id = "7b266b019672eebd43565d7f17eff6b7"
+
+[[routes]]
+pattern = "furkantunali.com/cv.pdf"
+zone_name = "furkantunali.com"

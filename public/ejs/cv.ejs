@@ -157,8 +157,8 @@
           id="download-pdf-link"
           title="Furkan Tunalı CV PDF"
           target="_blank"
-          href="https://europe-west1-furkantunali-1043.cloudfunctions.net/downloadAsPDF"
-          download="Furkan Tunalı Résumé.pdf"
+          href="/cv.pdf"
+          download="Furkan Tunali CV.pdf"
           ><svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18h14v2H5z" />
           </svg>
@@ -573,44 +573,6 @@
       <span aria-hidden="true">&uarr;</span>
     </button>
     <% } %>
-
-    <!-- Environment detection for PDF download URL -->
-    <script>
-      (function () {
-        // Check if we're running locally (development)
-        const isLocal =
-          window.location.hostname === "localhost" ||
-          window.location.hostname === "127.0.0.1" ||
-          window.location.hostname.includes("localhost") ||
-          window.location.hostname.includes("127.0.0.1");
-
-        const downloadLink = document.getElementById("download-pdf-link");
-
-        // Debug: Log the detection results
-        console.log("Hostname:", window.location.hostname);
-        console.log("Is Local:", isLocal);
-        console.log("Download Link:", downloadLink);
-
-        if (downloadLink && isLocal) {
-          // Use Firebase emulator URL for local development
-          // Dynamically detect function emulator port (default 5001)
-          const functionsPort = "5001"; // Functions emulator default port
-          const localUrl = `http://${window.location.hostname}:${functionsPort}/furkantunali-1043/europe-west1/downloadAsPDF`;
-          console.log("Setting local URL:", localUrl);
-          downloadLink.href = localUrl;
-        } else {
-          console.log(
-            "Using production URL:",
-            downloadLink ? downloadLink.href : "No link found",
-          );
-        }
-
-        // Also log the final URL after any changes
-        if (downloadLink) {
-          console.log("Final URL:", downloadLink.href);
-        }
-      })();
-    </script>
 
     <script>
       (function () {
