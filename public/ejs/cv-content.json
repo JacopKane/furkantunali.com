@@ -98,7 +98,7 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "Containerized AI/ML models to <strong>Azure CUDA</strong>, adapted <strong>Jupyter Notebooks</strong> for production; built <strong>OAuth2</strong> auth, MVP monorepo with <strong>Terraform</strong> & <em>CI/CD</em>; mentored engineers and led code reviews."
+        "Containerized AI/ML models to <strong>Azure CUDA</strong>, adapted <strong>Jupyter Notebooks</strong> for production; integrated <strong>Microsoft Entra ID</strong>, MVP monorepo & <em>CI/CD</em>; mentored and supported engineers and led planning of architecture."
       ],
       "stack": "Azure, Docker, Vue.js, TypeScript, GraphQL, Apollo, PostgreSQL, Azure Functions, GitHub Actions"
     },
@@ -108,7 +108,7 @@
       "url": "https://gamebook.io",
       "dates": "12/2018 - 04/2019",
       "bullets": [
-        "Implemented and refactored back-end services; profiled performance bottlenecks, drove data migrations, and improved containerization and dev-tool workflows."
+        "Implemented and refactored back-end services; profiled performance bottlenecks, drove data migrations, and improved containerization and workflows."
       ],
       "stack": "Ramda, Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
     },
@@ -118,7 +118,7 @@
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
-        "Managed front-end team (hiring, onboarding); modernized monolith to microservices, implemented code quality tooling, automated tests, A/B testing, and UI component library bridging UX and engineering."
+        "Managed front-end team (hiring, onboarding, planning); restructured monolith to microservices, introduced code quality conventions, automated tests, A/B testing, and UI component library bridging UX and engineering."
       ],
       "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
     },
@@ -128,7 +128,7 @@
       "url": "http://pixsy.com",
       "dates": "01/2017 - 08/2017",
       "bullets": [
-        "Full-stack <strong>JavaScript</strong> with <strong>unit, integration & E2E tests</strong>; microservices on <strong>AWS Lambda</strong>; integrated <strong>MongoDB</strong>, <strong>Stripe</strong> & <strong>SalesForce</strong>; monitored via Sentry and Heroku."
+        "Full-stack <strong>JavaScript</strong> with <strong>TDD & BDD tests</strong>; queue system on <strong>AWS Lambda</strong>; integrated <strong>MongoDB</strong>, <strong>Stripe</strong> & <strong>SalesForce</strong>; monitored via Sentry and Heroku."
       ],
       "stack": "React, Redux, AWS Lambda, Koa, MongoDB, Stripe, SalesForce, Sentry"
     },
