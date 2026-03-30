@@ -7,3 +7,6 @@ typings/
 
 # Node.js dependency directory
 node_modules/
+
+# Puppeteer browser cache (large local artifact)
+.cache/
