@@ -6,6 +6,9 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
+concurrency:
+  group: firebase-ci-cd-queue
+  cancel-in-progress: false
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
