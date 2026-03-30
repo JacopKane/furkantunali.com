@@ -83,7 +83,7 @@
           ]
         },
         {
-          "title": "Senior DX Engineer",
+          "title": "Senior DX and Full-stack Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
             "Restructured legacy <strong>Rails</strong> monolith into <em>25+ microservices</em> monorepo; maintained <strong>Docker Compose</strong> setups for reliable local dev and onboarding; <em>CI/CD</em> via <strong>GitHub Actions</strong> & <strong>AWS ECR</strong>; implemented <strong>EventBridge</strong> scheduling; resolved urgent incidents; built DevOps tooling and mentored + hired engineers."
