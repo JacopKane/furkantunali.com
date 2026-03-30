@@ -122,11 +122,11 @@ export const downloadAsPDF = onRequest(
       });
 
       const isEmulator = isEmulatorEnvironment();
-      const url = getUrl("/resume.html", isEmulator);
+      const url = getUrl("/cv.html", isEmulator);
 
       logger.info("About to navigate to URL", {
         targetUrl: url,
-        path: "/resume.html",
+        path: "/cv.html",
         structuredData: true,
       });
 
@@ -162,7 +162,7 @@ export const downloadAsPDF = onRequest(
       response.header("Content-Type", "application/pdf");
       response.header(
         "Content-Disposition",
-        'attachment; filename="Furkan_Tunali_Resume.pdf"',
+        'attachment; filename="Furkan_Tunali_CV.pdf"',
       );
 
       logger.info("Response headers set", { structuredData: true });

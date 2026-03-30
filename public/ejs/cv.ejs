@@ -22,9 +22,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<%= meta.description || '' %>" />
-    <title><%= meta.title || 'Resume' %></title>
+    <title><%= meta.title || 'CV' %></title>
 
-    <% if (!data.resumeDoc) { %>
+    <% if (!data.cvDoc) { %>
     <!-- Apple Touch Icons -->
     <link
       rel="apple-touch-icon"
@@ -106,12 +106,12 @@
     <% } %>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles/resume.css" />
-    <% if (data.resume) { %>
-    <link rel="stylesheet" href="styles/resume-web.css?v=20260329-shadow5" />
+    <link rel="stylesheet" href="styles/cv.css" />
+    <% if (data.cv) { %>
+    <link rel="stylesheet" href="styles/cv-web.css?v=20260329-shadow5" />
     <% } %>
-    <% if (data.resumeDoc) { %>
-    <link rel="stylesheet" href="styles/resume-doc.css" />
+    <% if (data.cvDoc) { %>
+    <link rel="stylesheet" href="styles/cv-doc.css" />
     <% } %>
     <style>
       @media print {
@@ -143,7 +143,7 @@
     </style>
   </head>
   <body>
-    <% if (!data.resumeDoc) { %>
+    <% if (!data.cvDoc) { %>
     <nav id="download">
       <a
         href="/"
@@ -155,7 +155,7 @@
       <div class="nav-right">
         <a
           id="download-pdf-link"
-          title="Furkan Tunalı Resume PDF"
+          title="Furkan Tunalı CV PDF"
           target="_blank"
           href="https://europe-west1-furkantunali-1043.cloudfunctions.net/downloadAsPDF"
           download="Furkan Tunalı Résumé.pdf"
@@ -166,8 +166,8 @@
         >
         <button
           id="print-button"
-          title="Print Resume"
-          aria-label="Print Resume"
+          title="Print CV"
+          aria-label="Print CV"
         >
           <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -179,7 +179,7 @@
         <!-- Dark Mode Toggle -->
         <button
           id="theme-toggle"
-          class="theme-toggle theme-toggle-resume"
+          class="theme-toggle theme-toggle-cv"
           aria-label="Toggle dark mode"
         >
           <span class="theme-toggle-icon">🌙</span>
@@ -195,7 +195,7 @@
         /></span>
       </div>
       <hgroup>
-        <h1><%= meta.title || 'Resume' %></h1>
+        <h1><%= meta.title || 'CV' %></h1>
       </hgroup>
     </header>
 
@@ -525,8 +525,8 @@
         </div>
       </section>
 
-      <div class="resume-secondary-columns">
-        <section id="education" class="resume-secondary-column">
+      <div class="cv-secondary-columns">
+        <section id="education" class="cv-secondary-column">
           <h2>Education</h2>
 
           <ul class="educations">
@@ -555,14 +555,14 @@
           </ul>
         </section>
 
-        <section id="interests" class="resume-secondary-column">
+        <section id="interests" class="cv-secondary-column">
           <h2>Interests</h2>
           <p><%- data.interests || '' %></p>
         </section>
       </div>
     </div>
 
-    <% if (!data.resumeDoc) { %>
+    <% if (!data.cvDoc) { %>
     <button id="back-to-top" aria-label="Back to top" title="Back to top">
       <span aria-hidden="true">&uarr;</span>
     </button>
@@ -631,7 +631,7 @@
       })();
     </script>
 
-    <% if (!data.resumeDoc) { %>
+    <% if (!data.cvDoc) { %>
     <script>
       (function () {
         var nav = document.getElementById("download");
@@ -669,7 +669,7 @@
     </script>
     <% } %>
 
-    <% if (!data.resumeDoc) { %>
+    <% if (!data.cvDoc) { %>
 
     <!-- Dark Mode Toggle Script -->
     <script>

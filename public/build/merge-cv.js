@@ -5,7 +5,7 @@ const path = require("path");
 
 const [, , flagsFile, outputFile] = process.argv;
 
-const contentPath = path.join(__dirname, "../ejs/resume-content.json");
+const contentPath = path.join(__dirname, "../ejs/cv-content.json");
 const flagsPath = path.join(__dirname, "../ejs", flagsFile);
 const tmpDir = path.join(__dirname, "../.tmp");
 const outputPath = path.join(tmpDir, outputFile);
@@ -20,4 +20,4 @@ fs.writeFileSync(
   "utf8",
 );
 
-console.log(`Merged ${flagsFile} + resume-content.json → ${outputPath}`);
+console.log(`Merged ${flagsFile} + cv-content.json → ${outputPath}`);

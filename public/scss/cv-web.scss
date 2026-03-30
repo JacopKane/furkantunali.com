@@ -2,8 +2,8 @@
 @use "theme-toggle" as *;
 @use "logo" as *;
 
-// Theme toggle specific to resume page
-.theme-toggle-resume {
+// Theme toggle specific to cv page
+.theme-toggle-cv {
   @include theme-toggle(
     clamp(2rem, 4vw, 2.5rem),
     2px,
@@ -25,9 +25,9 @@
   }
 }
 
-// Web-specific styles for resume.html to improve readability
+// Web-specific styles for cv.html to improve readability
 // These styles make the content more readable by constraining width
-// while resume-doc.html remains full-width for PDF generation
+// while cv-doc.html remains full-width for PDF generation
 
 body {
   // Full width layout

@@ -142,11 +142,11 @@ body {
 
 // =============================================================================
 // PRINT STYLES (doc variant)
-// Inherits all tokens and rules from resume.scss @media print.
+// Inherits all tokens and rules from cv.scss @media print.
 // Only overrides what is structurally different: single-column experience list.
 // =============================================================================
 @media print {
-  // ── Design tokens (must match resume.scss exactly) ─────────────────────────
+  // ── Design tokens (must match cv.scss exactly) ─────────────────────────
   $p-h1: 19px;
   $p-base: 14.8px;
   $p-sm: 13.6px;
