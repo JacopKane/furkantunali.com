@@ -36,8 +36,9 @@ jobs:
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FURKANTUNALI_1043 }}
         run: |
+          set -euo pipefail
           echo "$SERVICE_ACCOUNT_JSON" > /tmp/firebase-sa.json
-          GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-sa.json npx firebase-tools deploy --only functions --project furkantunali-1043 --force
+          GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-sa.json npx firebase-tools@14.3.0 deploy --only functions --project furkantunali-1043 --force --non-interactive --debug
           rm -f /tmp/firebase-sa.json
 
       - name: Deploy to Firebase Hosting
