@@ -72,7 +72,7 @@
           "title": "Senior AI Solutions Engineer",
           "dates": "10/2024 - 08/2025",
           "bullets": [
-            "Built AI system with <strong>OpenAI</strong> & <strong>Tavily APIs</strong> analyzing customer input to auto-identify GDPR vendors, researching hosting locations, DPO emails, and privacy policy links; researched <strong>PydanticAI</strong> and <strong>AutoGen</strong> agent frameworks for compliance automation."
+            "Built AI workflow with <strong>OpenAI</strong> & <strong>Tavily APIs</strong> analyzing customer input to auto-identify GDPR vendors, researching hosting locations, DPO emails, and privacy policy links for compliance automation."
           ]
         },
         {
@@ -86,7 +86,7 @@
           "title": "Senior DX and Full-stack Engineer",
           "dates": "01/2022 - 10/2023",
           "bullets": [
-            "Restructured <strong>Rails</strong> monolith into <em>25+ microservices</em> monorepo; implemented <strong>Docker Compose</strong> for fast and reliable development iterations; <em>CI/CD</em> via <strong>GitHub Actions</strong> & <strong>AWS ECR</strong>; implemented <strong>EventBridge</strong> scheduling; established, supported, hired and mentored engineering team; built DX tooling."
+            "Restructured <strong>Rails</strong> monolith into <em>25+ microservices</em> monorepo; implemented <strong>Docker Compose</strong> for fast and reliable development iterations; <em>CI/CD</em> & <strong>AWS ECR</strong>; implemented <strong>EventBridge</strong> scheduling; established, supported, hired and mentored engineering team; built DX tooling."
           ]
         }
       ],
@@ -94,7 +94,7 @@
     },
     {
       "role": "Senior Software Architect",
-      "company": "Société Générale Digital Factory, Berlin",
+      "company": "Société Générale, Berlin",
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
@@ -114,7 +114,7 @@
     },
     {
       "role": "Lead Front-End Developer",
-      "company": "Groupe Chantelle, Digital Lab, Berlin",
+      "company": "Chantelle, Berlin",
       "url": "https://chantelle.com",
       "dates": "08/2017 - 12/2018",
       "bullets": [
@@ -151,14 +151,14 @@
           "company": "NOD studios",
           "url": "http://nod.st",
           "dates": "11/2012 - 07/2015",
-          "description": "Web & mobile for BeinSports, Les Benjamins, Ulker"
+          "description": "Design, Web & mobile for BeinSports, Les Benjamins, Ulker"
         },
         {
           "role": "Full-stack web developer",
           "company": "FOX TV Channels",
           "url": "https://www.nowtv.com.tr/",
           "dates": "01/2012 - 12/2012",
-          "description": "Social apps & CRM for Samsung, National Geographic, Nokia"
+          "description": "Design, Social apps & CRM for Samsung, National Geographic, Nokia"
         },
         {
           "role": "Founding Front-end Engineer",
@@ -191,7 +191,7 @@
           "role": "Designer, front-end and Flash developer",
           "company": "Koçak Design",
           "dates": "05/2008 - 03/2009",
-          "description": "Front-end & visual assets for art community startup"
+          "description": "Design & Front-end for art community startup"
         },
         {
           "role": "Designer & Front-end developer",
