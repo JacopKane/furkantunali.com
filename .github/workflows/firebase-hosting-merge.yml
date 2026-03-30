@@ -32,6 +32,14 @@ jobs:
       - name: Build public assets (SCSS + HTML)
         run: npm run --workspace=public build
 
+      - name: Deploy Firebase Functions
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FURKANTUNALI_1043 }}
+        run: |
+          echo "$SERVICE_ACCOUNT_JSON" > /tmp/firebase-sa.json
+          GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-sa.json npx firebase-tools deploy --only functions --project furkantunali-1043 --force
+          rm -f /tmp/firebase-sa.json
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
