@@ -63,25 +63,27 @@ export const downloadAsPDF = onRequest(
       structuredData: true,
     });
 
-    const browser = await launch({
-      headless: true,
-      timeout: 20000,
-      ignoreHTTPSErrors: true,
-      slowMo: 0,
-      args: [
-        "--disable-gpu",
-        "--disable-dev-shm-usage",
-        "--disable-setuid-sandbox",
-        "--no-first-run",
-        "--no-sandbox",
-        "--no-zygote",
-        "--window-size=2480,3508",
-      ],
-    });
-
-    logger.info("Browser launched", { structuredData: true });
+    let browser = null;
 
     try {
+      browser = await launch({
+        headless: true,
+        timeout: 20000,
+        ignoreHTTPSErrors: true,
+        slowMo: 0,
+        args: [
+          "--disable-gpu",
+          "--disable-dev-shm-usage",
+          "--disable-setuid-sandbox",
+          "--no-first-run",
+          "--no-sandbox",
+          "--no-zygote",
+          "--window-size=2480,3508",
+        ],
+      });
+
+      logger.info("Browser launched", { structuredData: true });
+
       const page = await browser.newPage();
 
       page.on("console", (msg) => {
@@ -140,10 +142,29 @@ export const downloadAsPDF = onRequest(
       logger.info("Response sent", { structuredData: true });
     } catch (error: unknown) {
       logger.error(error, { structuredData: true });
+
+      if (
+        typeof error === "object" &&
+        error !== null &&
+        "message" in error &&
+        typeof (error as { message: string }).message === "string" &&
+        (error as { message: string }).message.includes("Could not find Chrome")
+      ) {
+        response
+          .status(500)
+          .send(
+            "Puppeteer Chrome binary is missing. Run 'cd functions && npx puppeteer browsers install chrome' and retry.",
+          );
+        return;
+      }
+
       response.status(500).send(`${error}`);
+    } finally {
+      if (browser) {
+        await browser.close();
+      }
     }
 
     logger.info("End downloadAsPDF", { structuredData: true });
-    await browser.close();
   },
 );
