@@ -304,17 +304,16 @@ body {
   }
 
   .intro {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
     overflow: visible;
     margin-bottom: 1em;
 
     @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 0.75rem;
-      overflow: visible;
     }
   }
 
@@ -408,7 +407,6 @@ body {
 
   #info,
   #contact,
-  #info-contact,
   #summary,
   #skills,
   #education,
@@ -422,48 +420,9 @@ body {
   }
 
   #info,
-  #contact,
-  #info-contact {
+  #contact {
     li strong {
       font-weight: 600;
-    }
-  }
-
-  #info-contact ul.contact {
-    margin-top: 0.2rem;
-  }
-
-  #info-contact {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    column-gap: 1.25rem;
-    row-gap: 0.35rem;
-
-    > h2 {
-      flex: 0 0 100%;
-    }
-
-    > ul.info,
-    > ul.contact {
-      flex: 1 1 22rem;
-      min-width: 0;
-      margin: 0;
-    }
-
-    > ul.contact {
-      margin-top: 0;
-    }
-
-    @media (max-width: 900px) {
-      > ul.info,
-      > ul.contact {
-        flex-basis: 100%;
-      }
-
-      > ul.contact {
-        margin-top: 0.2rem;
-      }
     }
   }
 
@@ -885,7 +844,8 @@ body {
   .experience-older__list {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    gap: 0.3rem;
+    row-gap: 0.3rem;
+    column-gap: 1.25rem;
     padding: 0;
     margin: 0;
 
@@ -989,7 +949,7 @@ body {
   $p-sp-4: 0.27rem; // loose  — between major sections
 
   // Layout
-  $p-page-pad: 0.22cm; // body padding — tightened to survive Chrome print preview margins
+  $p-page-pad: 0.22cm; // body padding
   $p-page-pad-top: 0.18cm; // top margin
   $p-gutter: 0.3cm; // .container / header inner left-right padding (screen only)
   $p-indent: 1em; // list indent, all nesting levels
@@ -1048,15 +1008,13 @@ body {
 
   // ── 5. Intro row (name + contact bar) ────────────────────────────────────────
   .intro {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: space-between !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
     align-items: flex-start !important;
     overflow: visible !important;
     margin: 0 0 $p-sp-2 0 !important;
     padding: 0 !important;
-    gap: 0 !important;
     line-height: $p-lh !important;
   }
 
@@ -1066,8 +1024,7 @@ body {
   }
 
   .intro #info h2,
-  .intro #contact h2,
-  .intro #info-contact h2 {
+  .intro #contact h2 {
     display: block !important;
   }
 
@@ -1081,7 +1038,7 @@ body {
     line-height: $p-lh !important;
   }
 
-  .intro #info-contact ul.contact {
+  .intro #contact {
     margin-top: $p-sp-1 !important;
   }
 
@@ -1210,7 +1167,8 @@ body {
   }
 
   .right-column #contact,
-  .intro #info-contact {
+  .intro #info,
+  .intro #contact {
     display: block !important;
   }
 
@@ -1363,7 +1321,7 @@ body {
   #experiences .experiences-columns {
     display: flex !important;
     flex-direction: column !important;
-    gap: $p-sp-3 !important;
+    gap: $p-sp-2 !important;
   }
 
   #experiences .experiences-row {
@@ -1527,8 +1485,8 @@ body {
   }
 
   .experience-older__list {
-    display: flex !important;
-    flex-wrap: wrap !important;
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
     align-items: stretch !important;
     gap: $p-sp-2 !important;
     margin: 0 !important;
@@ -1536,7 +1494,7 @@ body {
   }
 
   .experience-older__entry {
-    flex: 1 1 calc(12.5% - #{$p-sp-1}) !important;
+    flex: unset !important;
     min-width: 0 !important;
     font-size: $p-xxs !important;
     line-height: 1.24 !important;

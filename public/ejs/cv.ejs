@@ -204,8 +204,8 @@
 
     <div class="container">
       <div class="intro">
-        <section id="info-contact">
-          <h2>Info &amp; Contact</h2>
+        <section id="info">
+          <h2>Info</h2>
           <ul class="info">
             <% toArray(data.info).forEach(function(item) { %>
             <li>
@@ -216,6 +216,10 @@
             </li>
             <% }); %>
           </ul>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
           <ul class="contact">
             <% toArray(data.contact).forEach(function(item) { %>
             <li>
@@ -292,13 +296,14 @@
                       href="<%= project.url %>"
                       target="_blank"
                       class="link-with-qr"
-                      ><%= project.name || '' %>
-                      <% if (shouldRenderLinkQr(project.url)) { %>
-                      <span class="link-qr-print" aria-hidden="true"
-                        ><img src="<%= getQrCodeUrl(project.url) %>" alt=""
-                      /></span>
-                      <% } %>
-                    </a>
+                      ><%= project.name || '' %><% if (project.subtitle) { %>:<% } %><% if (shouldRenderLinkQr(project.url)) { %><span
+                        class="link-qr-print"
+                        aria-hidden="true"
+                        ><img
+                          src="<%= getQrCodeUrl(project.url) %>"
+                          alt="" /></span
+                      ><% } %></a
+                    >
                   </strong>
                   <% } else { %>
                   <strong><%= project.name || '' %></strong>
