@@ -114,11 +114,19 @@
     <link rel="stylesheet" href="styles/cv-doc.css" />
     <% } %>
     <style>
+      @media screen {
+        header {
+          margin-top: 14px !important;
+        }
+      }
+
       @media print {
         header {
           display: flex !important;
           flex-direction: row !important;
           align-items: flex-start !important;
+          padding-top: 12px !important;
+          margin-bottom: 0 !important;
         }
         header hgroup {
           flex: 1 1 auto !important;
@@ -128,7 +136,7 @@
           flex: 0 0 auto !important;
           float: none !important;
           position: static !important;
-          margin: 0 0 0 0.12cm !important;
+          margin: 5px 2px 0 0.12cm !important;
           line-height: 0 !important;
           order: 2 !important;
           align-self: flex-start !important;

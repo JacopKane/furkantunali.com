@@ -825,7 +825,9 @@ body {
   $p-sp-4: 0.41rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.44cm; // @page side/bottom margin
+  $p-page-m: 0.49cm; // @page right margin
+  $p-page-m-bottom: 0.62cm; // extra room to avoid bottom clipping in PDF/printers
+  $p-page-m-left: 0.62cm; // extra room to avoid left-edge clipping in PDF/printers
   $p-page-m-top: 0.4cm; // @page top margin to balance optical whitespace
   $p-gutter: 0.3cm; // .container / header inner left-right padding
   $p-indent: 1.1em; // list indent, all nesting levels
@@ -834,7 +836,7 @@ body {
   // ── 1. Page setup ──────────────────────────────────────────────────────────
   @page {
     size: A4;
-    margin: $p-page-m-top $p-page-m $p-page-m $p-page-m;
+    margin: $p-page-m-top $p-page-m $p-page-m-bottom $p-page-m-left;
   }
 
   // ── 2. Root reset ────────────────────────────────────────────────────────────

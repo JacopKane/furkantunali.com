@@ -7,6 +7,44 @@ import { onRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 import { launch } from "puppeteer";
 
+function getHeaderValue(
+  headers: Record<string, string | string[] | undefined>,
+  headerName: string,
+): string | undefined {
+  const value = headers[headerName];
+
+  if (Array.isArray(value)) {
+    return value[0];
+  }
+
+  return value;
+}
+
+function pickLocalHostFromHeaders(
+  headers: Record<string, string | string[] | undefined>,
+) {
+  const hostCandidates = [
+    getHeaderValue(headers, "x-forwarded-host"),
+    getHeaderValue(headers, "x-original-host"),
+    getHeaderValue(headers, "host"),
+  ];
+
+  for (const candidate of hostCandidates) {
+    if (!candidate) {
+      continue;
+    }
+
+    const host = candidate.split(",")[0].trim();
+    if (!host || host.endsWith(":5001")) {
+      continue;
+    }
+
+    return host;
+  }
+
+  return undefined;
+}
+
 function isEmulatorEnvironment() {
   return (
     process.env.FUNCTIONS_EMULATOR === "true" ||
@@ -17,7 +55,11 @@ function isEmulatorEnvironment() {
   );
 }
 
-function getUrl(path = "", isEmulator = false) {
+function getUrl(
+  path = "",
+  isEmulator = false,
+  requestHeaders: Record<string, string | string[] | undefined> = {},
+) {
   logger.info("Environment detection", {
     FUNCTIONS_EMULATOR: process.env.FUNCTIONS_EMULATOR,
     FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
@@ -29,6 +71,19 @@ function getUrl(path = "", isEmulator = false) {
   });
 
   if (isEmulator) {
+    const localHost = pickLocalHostFromHeaders(requestHeaders);
+
+    if (localHost) {
+      const url = `http://${localHost}${path}`;
+      logger.info("EMULATOR MODE - Using forwarded local host", {
+        url,
+        localHost,
+        path,
+        structuredData: true,
+      });
+      return url;
+    }
+
     const hostingPort = process.env.FIREBASE_HOSTING_EMULATOR_PORT || "8088";
     const url = `http://localhost:${hostingPort}${path}`;
     logger.info("EMULATOR MODE - Using local URL", {
@@ -98,7 +153,11 @@ export const downloadAsPDF = onRequest(
       });
 
       const isEmulator = isEmulatorEnvironment();
-      const url = getUrl("/cv", isEmulator);
+      const url = getUrl(
+        "/cv",
+        isEmulator,
+        request.headers as Record<string, string | string[] | undefined>,
+      );
 
       logger.info("About to navigate to URL", {
         targetUrl: url,
@@ -127,7 +186,7 @@ export const downloadAsPDF = onRequest(
       const buffer = await page.pdf({
         preferCSSPageSize: true,
         printBackground: true,
-        scale: 0.95,
+        scale: 0.93,
       });
 
       logger.info("PDF generated", { structuredData: true });
