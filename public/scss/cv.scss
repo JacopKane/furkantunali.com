@@ -199,6 +199,11 @@ body {
     align-items: center;
     gap: 0.3em;
     text-decoration: underline;
+    color: $color-text;
+
+    &:visited {
+      color: $color-text;
+    }
 
     &:hover,
     &:focus-visible {
@@ -217,8 +222,16 @@ body {
     }
 
     .dark-theme & {
+      color: $color-text-dark;
+
+      &:visited {
+        color: $color-text-dark;
+      }
+
       &:hover,
       &:focus-visible {
+        color: $color-text-dark;
+
         .project-link__icon {
           color: $color-background-dark;
         }
@@ -267,9 +280,15 @@ body {
   }
 
   .project-link__icon-video circle {
+    stroke: rgba($color-text, 0.22);
+    stroke-width: 0.8;
     transition:
       stroke 0.25s ease,
       stroke-width 0.25s ease;
+
+    .dark-theme & {
+      stroke: rgba($color-text-dark, 0.32);
+    }
   }
 
   .project-link__content {
@@ -1540,5 +1559,45 @@ body {
   .experience ul li::marker {
     color: rgba(0, 0, 0, 0.65) !important;
     font-size: 0.9em !important;
+  }
+
+  // ── 16. Dark-mode reset for print ─────────────────────────────────────────────
+  // Dark-mode per-element rules are not wrapped in @media screen so they apply
+  // during print too. These overrides ensure print output is always black on white
+  // regardless of whether the user had dark theme active.
+  html.dark-theme h1,
+  html.dark-theme h2,
+  html.dark-theme h3,
+  html.dark-theme h4,
+  html.dark-theme h5,
+  html.dark-theme h6,
+  html.dark-theme body h1,
+  html.dark-theme body h2,
+  html.dark-theme body h3,
+  html.dark-theme body h4,
+  html.dark-theme body h5,
+  html.dark-theme body h6 {
+    color: #000 !important;
+  }
+
+  html.dark-theme footer,
+  html.dark-theme body footer {
+    color: #000 !important;
+  }
+
+  .dark-theme body .project-link__icon,
+  html.dark-theme body .project-link__icon {
+    color: #000 !important;
+  }
+
+  .dark-theme body .project-link__icon-video-triangle,
+  html.dark-theme body .project-link__icon-video-triangle {
+    fill: #fff !important;
+  }
+
+  .dark-theme body .project-link__icon-video circle,
+  html.dark-theme body .project-link__icon-video circle {
+    stroke: rgba(0, 0, 0, 0.22) !important;
+    stroke-width: 0.8 !important;
   }
 }
