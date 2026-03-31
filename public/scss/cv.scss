@@ -199,6 +199,39 @@ body {
     align-items: center;
     gap: 0.3em;
     text-decoration: underline;
+
+    &:hover,
+    &:focus-visible {
+      .project-link__icon {
+        color: $color-background;
+      }
+
+      .project-link__icon-video-triangle {
+        fill: $color-text;
+      }
+
+      .project-link__icon-video circle {
+        stroke: $color-text;
+        stroke-width: 1.2;
+      }
+    }
+
+    .dark-theme & {
+      &:hover,
+      &:focus-visible {
+        .project-link__icon {
+          color: $color-background-dark;
+        }
+
+        .project-link__icon-video-triangle {
+          fill: $color-text-dark;
+        }
+
+        .project-link__icon-video circle {
+          stroke: $color-text-dark;
+        }
+      }
+    }
   }
 
   .project-link__icon {
@@ -209,6 +242,9 @@ body {
     width: 1.1em;
     height: 1.1em;
     color: $color-text;
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
 
     svg {
       width: 100%;
@@ -223,10 +259,17 @@ body {
 
   .project-link__icon-video-triangle {
     fill: $color-background;
+    transition: fill 0.25s ease;
+
+    .dark-theme & {
+      fill: $color-background-dark;
+    }
   }
 
-  .dark-theme .project-link__icon-video-triangle {
-    fill: $color-background-dark;
+  .project-link__icon-video circle {
+    transition:
+      stroke 0.25s ease,
+      stroke-width 0.25s ease;
   }
 
   .project-link__content {
@@ -520,7 +563,13 @@ body {
       cursor: pointer;
 
       &:hover {
-        opacity: 0.7;
+        opacity: 1;
+      }
+
+      &.project-link {
+        transition:
+          color 0.2s ease,
+          opacity 0.2s ease;
       }
     }
 
@@ -763,6 +812,10 @@ body {
     padding: 0.15rem 0.3rem;
     border-left: 2px solid rgba($color-text, 0.15);
     break-inside: avoid;
+
+    .dark-theme & {
+      border-left-color: rgba($color-text-dark, 0.3);
+    }
   }
 
   .experience-older__header {
