@@ -446,31 +446,57 @@
         <% weight += estimatedLineCount(exp.stack) + 1; %>
         <% return weight; %>
         <% } %>
+        <% var expRows = []; %>
+        <% for (var expIdx = 0; expIdx < expList.length; ) { %>
+        <% var curExp = expList[expIdx]; %>
+        <% if (curExp.fullWidth) { %>
+        <% expRows.push({ fullWidth: true, leftItems: [curExp], rightItems: [] }); %>
+        <% expIdx++; %>
+        <% } else { %>
+        <% var block = []; %>
+        <% while (expIdx < expList.length && !expList[expIdx].fullWidth) { %>
+        <% block.push(expList[expIdx]); %>
+        <% expIdx++; %>
+        <% } %>
         <% var leftItems = []; %>
         <% var rightItems = []; %>
-        <% if (data.experiencesColumnAutoBalance !== false) { %>
-        <% var weights = expList.map(function(exp) { return estimateExpWeight(exp); }); %>
-        <% var totalWeight = weights.reduce(function(sum, weight) { return sum + weight; }, 0); %>
-        <% var bestSplitIdx = Math.ceil(expList.length / 2); %>
-        <% if (expList.length > 1) { %>
-        <% var runningLeftWeight = 0; %>
-        <% var bestDelta = Infinity; %>
-        <% for (var idx = 0; idx < expList.length - 1; idx++) { %>
-        <% runningLeftWeight += weights[idx]; %>
-        <% var rightWeight = totalWeight - runningLeftWeight; %>
-        <% var delta = Math.abs(runningLeftWeight - rightWeight); %>
-        <% if (delta < bestDelta) { %>
-        <% bestDelta = delta; %>
-        <% bestSplitIdx = idx + 1; %>
-        <% } %>
-        <% } %>
-        <% } %>
-        <% leftItems = expList.slice(0, bestSplitIdx); %>
-        <% rightItems = expList.slice(bestSplitIdx); %>
+        <% if (block.length === 1) { %>
+        <% leftItems = [block[0]]; %>
         <% } else { %>
-        <% var splitIdx = data.experiencesColumnSplit != null ? data.experiencesColumnSplit : Math.ceil(expList.length / 2); %>
-        <% leftItems = expList.slice(0, splitIdx); %>
-        <% rightItems = expList.slice(splitIdx); %>
+        <% var weights = block.map(function(exp) { return estimateExpWeight(exp); }); %>
+        <% var totalMasks = Math.pow(2, block.length); %>
+        <% var bestMask = 1; %>
+        <% var bestScore = Infinity; %>
+        <% for (var mask = 1; mask < totalMasks - 1; mask++) { %>
+        <% var leftWeight = 0; %>
+        <% var rightWeight = 0; %>
+        <% var leftCount = 0; %>
+        <% var rightCount = 0; %>
+        <% for (var bi = 0; bi < block.length; bi++) { %>
+        <% if (mask & (1 << bi)) { %>
+        <% leftWeight += weights[bi]; %>
+        <% leftCount++; %>
+        <% } else { %>
+        <% rightWeight += weights[bi]; %>
+        <% rightCount++; %>
+        <% } %>
+        <% } %>
+        <% var score = Math.abs(leftWeight - rightWeight) + Math.abs(leftCount - rightCount) * 0.4; %>
+        <% if (score < bestScore) { %>
+        <% bestScore = score; %>
+        <% bestMask = mask; %>
+        <% } %>
+        <% } %>
+        <% for (var bj = 0; bj < block.length; bj++) { %>
+        <% if (bestMask & (1 << bj)) { %>
+        <% leftItems.push(block[bj]); %>
+        <% } else { %>
+        <% rightItems.push(block[bj]); %>
+        <% } %>
+        <% } %>
+        <% } %>
+        <% expRows.push({ fullWidth: false, leftItems: leftItems, rightItems: rightItems }); %>
+        <% } %>
         <% } %>
         <% function renderExpItems(items) { %>
         <% items.forEach(function(exp) { %>
@@ -536,12 +562,23 @@
         <% } %>
 
         <div class="experiences-columns">
-          <ul class="experiences experiences--left">
-            <%- renderExpItems(leftItems) %>
-          </ul>
-          <ul class="experiences experiences--right">
-            <%- renderExpItems(rightItems) %>
-          </ul>
+          <% expRows.forEach(function(row) { %> <% if (row.fullWidth) { %>
+          <div class="experiences-row experiences-row--single">
+            <ul class="experiences">
+              <%- renderExpItems(row.leftItems) %>
+            </ul>
+          </div>
+          <% } else { %>
+          <div class="experiences-row">
+            <ul class="experiences experiences--left">
+              <%- renderExpItems(row.leftItems) %>
+            </ul>
+            <ul class="experiences experiences--right">
+              <%- renderExpItems(row.rightItems) %>
+            </ul>
+          </div>
+          <% } %>
+          <% }); %>
         </div>
       </section>
 

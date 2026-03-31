@@ -59,10 +59,11 @@
       "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare, Grafana/Loki/Tempo, MCP SDK, Turborepo"
     }
   ],
-  "experiencesColumnAutoBalance": false,
+  "experiencesColumnAutoBalance": true,
   "experiencesColumnSplit": 3,
   "recentExperiences": [
     {
+      "fullWidth": true,
       "role": "AI, Platform and DX Engineer",
       "company": "heyData GmbH, Berlin",
       "url": "https://heydata.eu/",

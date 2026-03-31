@@ -628,6 +628,12 @@ body {
   // Styling for the experiences section
   #experiences {
     .experiences-columns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .experiences-row {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.5rem;
@@ -636,6 +642,14 @@ body {
       @media (max-width: 1100px) {
         grid-template-columns: 1fr;
         gap: 1rem;
+      }
+
+      &--single {
+        display: block;
+
+        .experiences {
+          width: 100%;
+        }
       }
     }
 
@@ -1170,10 +1184,23 @@ body {
   }
 
   #experiences .experiences-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: $p-sp-1 !important;
+  }
+
+  #experiences .experiences-row {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0 $p-sp-4 !important;
     align-items: start !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+
+    &--single {
+      display: block !important;
+      grid-template-columns: unset !important;
+    }
   }
 
   #experiences ul.experiences {
