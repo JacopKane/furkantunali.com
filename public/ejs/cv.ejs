@@ -204,63 +204,209 @@
 
     <div class="container">
       <div class="intro">
-        <div class="left-column">
-          <section id="info">
-            <h2>Info</h2>
-            <ul class="info">
-              <% toArray(data.info).forEach(function(item) { %>
-              <li>
-                <% if (item.label) { %>
-                <strong><%= item.label %>:</strong>
+        <section id="info-contact">
+          <h2>Info &amp; Contact</h2>
+          <ul class="info">
+            <% toArray(data.info).forEach(function(item) { %>
+            <li>
+              <% if (item.label) { %>
+              <strong><%= item.label %>:</strong>
+              <% } %>
+              <%= item.value || '' %>
+            </li>
+            <% }); %>
+          </ul>
+          <ul class="contact">
+            <% toArray(data.contact).forEach(function(item) { %>
+            <li>
+              <% if (item.label && item.href) { %>
+              <strong><%= item.label %>:</strong>
+              <a href="<%= item.href %>" target="_blank" class="link-with-qr">
+                <% if (item.href.indexOf('mailto:') === 0) { %>
+                <span class="link-text-screen"><%= item.text %></span>
+                <span class="link-text-print"
+                  ><%= item.text || item.href %></span
+                >
+                <% } else { %>
+                <%= item.text %>
                 <% } %>
-                <%= item.value || '' %>
+                <% if (shouldRenderLinkQr(item.href)) { %>
+                <span class="link-qr-print" aria-hidden="true"
+                  ><img src="<%= getQrCodeUrl(item.href) %>" alt=""
+                /></span>
+                <% } %>
+              </a>
+              <% } else if (item.label) { %>
+              <strong><%= item.label %>:</strong>
+              <%= item.text || '' %>
+              <% } else if (item.href) { %>
+              <strong
+                ><a href="<%= item.href %>" target="_blank" class="link-with-qr"
+                  ><%= item.text %>
+                  <% if (shouldRenderLinkQr(item.href)) { %>
+                  <span class="link-qr-print" aria-hidden="true"
+                    ><img src="<%= getQrCodeUrl(item.href) %>" alt=""
+                  /></span>
+                  <% } %></a
+                ></strong
+              >
+              <% } else { %>
+              <strong><%= item.text || '' %></strong>
+              <% } %>
+            </li>
+            <% }); %>
+          </ul>
+        </section>
+      </div>
+
+      <div class="cv-sidebar-columns">
+        <div class="cv-sidebar-columns__left">
+          <section id="summary">
+            <h2>Summary</h2>
+            <p><%- data.summary || '' %></p>
+          </section>
+
+          <section id="skills">
+            <h2>Skills</h2>
+            <ul class="skills">
+              <% toArray(data.skills).forEach(function(skill) { %>
+              <li>
+                <strong><%= skill.category || '' %></strong>
+
+                <%= skill.items || '' %>
               </li>
               <% }); %>
             </ul>
           </section>
         </div>
-        <div class="right-column">
-          <section id="contact">
-            <h2>Contact</h2>
-            <ul class="contact">
-              <% toArray(data.contact).forEach(function(item) { %>
-              <li>
-                <% if (item.label && item.href) { %>
-                <strong><%= item.label %>:</strong>
-                <a href="<%= item.href %>" target="_blank" class="link-with-qr">
-                  <% if (item.href.indexOf('mailto:') === 0) { %>
-                  <span class="link-text-screen"><%= item.text %></span>
-                  <span class="link-text-print"
-                    ><%= item.text || item.href %></span
-                  >
+        <div class="cv-sidebar-columns__right">
+          <section id="projects">
+            <h2>Recent Projects</h2>
+            <ul class="projects">
+              <% toArray(data.projects).forEach(function(project) { %>
+              <li class="project">
+                <h3>
+                  <% if (project.url) { %>
+                  <strong>
+                    <a
+                      href="<%= project.url %>"
+                      target="_blank"
+                      class="link-with-qr"
+                      ><%= project.name || '' %>
+                      <% if (shouldRenderLinkQr(project.url)) { %>
+                      <span class="link-qr-print" aria-hidden="true"
+                        ><img src="<%= getQrCodeUrl(project.url) %>" alt=""
+                      /></span>
+                      <% } %>
+                    </a>
+                  </strong>
                   <% } else { %>
-                  <%= item.text %>
+                  <strong><%= project.name || '' %></strong>
                   <% } %>
-                  <% if (shouldRenderLinkQr(item.href)) { %>
-                  <span class="link-qr-print" aria-hidden="true"
-                    ><img src="<%= getQrCodeUrl(item.href) %>" alt=""
-                  /></span>
+                  <% if (project.subtitle) { %>
+                  <%= project.subtitle %>
                   <% } %>
-                </a>
-                <% } else if (item.label) { %>
-                <strong><%= item.label %>:</strong>
-                <%= item.text || '' %>
-                <% } else if (item.href) { %>
-                <strong
-                  ><a
-                    href="<%= item.href %>"
+                </h3>
+                <% toArray(project.links).forEach(function(link) { %>
+                <% if (link && link.href) { %>
+                <% var isYoutubeProjectLink = isYouTubeHref(link.href); %>
+                <p class="demo-cta">
+                  <a
+                    href="<%= link.href %>"
                     target="_blank"
-                    class="link-with-qr"
-                    ><%= item.text %>
-                    <% if (shouldRenderLinkQr(item.href)) { %>
+                    rel="noopener noreferrer"
+                    class="link-with-qr project-link <%= isYoutubeProjectLink ? 'project-link--video' : 'project-link--external' %>"
+                  >
+                    <span class="project-link__icon" aria-hidden="true">
+                      <% if (isYoutubeProjectLink) { %>
+                      <svg
+                        class="project-link__icon-video"
+                        viewBox="0 0 24 24"
+                        focusable="false"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="11"
+                          fill="currentColor"
+                        ></circle>
+                        <path
+                          class="project-link__icon-video-triangle"
+                          d="M8.8 7.3v9.4L16.7 12 8.8 7.3Z"
+                        ></path>
+                      </svg>
+                      <% } else { %>
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path
+                          d="M14 5h5v5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M10 14 19 5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                      <% } %>
+                    </span>
+                    <span class="project-link__content">
+                      <% if (isYoutubeProjectLink) { %>
+                      <span class="link-text-screen"
+                        ><%= link.text || link.href %></span
+                      >
+                      <span class="link-text-print"
+                        ><%= (link.text || link.href) + ' ' %></span
+                      >
+                      <% } else { %>
+                      <span class="link-text-screen"
+                        ><%= link.text || link.href %></span
+                      >
+                      <span class="link-text-print"><%= link.href %></span>
+                      <% } %>
+                    </span>
+                    <% if (shouldRenderLinkQr(link.href)) { %>
                     <span class="link-qr-print" aria-hidden="true"
-                      ><img src="<%= getQrCodeUrl(item.href) %>" alt=""
+                      ><img src="<%= getQrCodeUrl(link.href) %>" alt=""
                     /></span>
-                    <% } %></a
-                  ></strong
-                >
-                <% } else { %>
-                <strong><%= item.text || '' %></strong>
+                    <% } %>
+                  </a>
+                </p>
+                <% } %>
+                <% }); %>
+                <% if (project.intro) { %>
+                <p><%- project.intro %></p>
+                <% } %>
+                <% if (toArray(project.bullets).length) { %>
+                <ul>
+                  <% toArray(project.bullets).forEach(function(bullet) { %>
+                  <li>
+                    <p><%- bullet %></p>
+                  </li>
+                  <% }); %>
+                </ul>
+                <% } %>
+                <% if (project.stack) { %>
+                <p>
+                  <small
+                    ><strong>Stack:</strong>
+                    <%= project.stack %></small
+                  >
+                </p>
                 <% } %>
               </li>
               <% }); %>
@@ -268,152 +414,6 @@
           </section>
         </div>
       </div>
-
-      <section id="summary">
-        <h2>Summary</h2>
-        <p><%- data.summary || '' %></p>
-      </section>
-
-      <section id="skills">
-        <h2>Skills</h2>
-        <ul class="skills">
-          <% toArray(data.skills).forEach(function(skill) { %>
-          <li>
-            <strong><%= skill.category || '' %></strong>
-
-            <%= skill.items || '' %>
-          </li>
-          <% }); %>
-        </ul>
-      </section>
-
-      <section id="projects">
-        <h2>Recent Projects</h2>
-        <ul class="projects">
-          <% toArray(data.projects).forEach(function(project) { %>
-          <li class="project">
-            <h3>
-              <% if (project.url) { %>
-              <strong>
-                <a
-                  href="<%= project.url %>"
-                  target="_blank"
-                  class="link-with-qr"
-                  ><%= project.name || '' %>
-                  <% if (shouldRenderLinkQr(project.url)) { %>
-                  <span class="link-qr-print" aria-hidden="true"
-                    ><img src="<%= getQrCodeUrl(project.url) %>" alt=""
-                  /></span>
-                  <% } %>
-                </a>
-              </strong>
-              <% } else { %>
-              <strong><%= project.name || '' %></strong>
-              <% } %>
-              <% if (project.subtitle) { %>
-              <%= project.subtitle %>
-              <% } %>
-            </h3>
-            <% toArray(project.links).forEach(function(link) { %>
-            <% if (link && link.href) { %>
-            <% var isYoutubeProjectLink = isYouTubeHref(link.href); %>
-            <p class="demo-cta">
-              <a
-                href="<%= link.href %>"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-with-qr project-link <%= isYoutubeProjectLink ? 'project-link--video' : 'project-link--external' %>"
-              >
-                <span class="project-link__icon" aria-hidden="true">
-                  <% if (isYoutubeProjectLink) { %>
-                  <svg
-                    class="project-link__icon-video"
-                    viewBox="0 0 24 24"
-                    focusable="false"
-                  >
-                    <circle cx="12" cy="12" r="11" fill="currentColor"></circle>
-                    <path
-                      class="project-link__icon-video-triangle"
-                      d="M8.8 7.3v9.4L16.7 12 8.8 7.3Z"
-                    ></path>
-                  </svg>
-                  <% } else { %>
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path
-                      d="M14 5h5v5"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>
-                    <path
-                      d="M10 14 19 5"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>
-                    <path
-                      d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>
-                  </svg>
-                  <% } %>
-                </span>
-                <span class="project-link__content">
-                  <% if (isYoutubeProjectLink) { %>
-                  <span class="link-text-screen"
-                    ><%= link.text || link.href %></span
-                  >
-                  <span class="link-text-print"
-                    ><%= (link.text || link.href) + ' ' %></span
-                  >
-                  <% } else { %>
-                  <span class="link-text-screen"
-                    ><%= link.text || link.href %></span
-                  >
-                  <span class="link-text-print"><%= link.href %></span>
-                  <% } %>
-                </span>
-                <% if (shouldRenderLinkQr(link.href)) { %>
-                <span class="link-qr-print" aria-hidden="true"
-                  ><img src="<%= getQrCodeUrl(link.href) %>" alt=""
-                /></span>
-                <% } %>
-              </a>
-            </p>
-            <% } %>
-            <% }); %>
-            <% if (project.intro) { %>
-            <p><%- project.intro %></p>
-            <% } %>
-            <% if (toArray(project.bullets).length) { %>
-            <ul>
-              <% toArray(project.bullets).forEach(function(bullet) { %>
-              <li>
-                <p><%- bullet %></p>
-              </li>
-              <% }); %>
-            </ul>
-            <% } %>
-            <% if (project.stack) { %>
-            <p>
-              <small
-                ><strong>Stack:</strong>
-                <%= project.stack %></small
-              >
-            </p>
-            <% } %>
-          </li>
-          <% }); %>
-        </ul>
-      </section>
 
       <section id="experiences">
         <h2>Experiences</h2>

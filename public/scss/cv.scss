@@ -304,7 +304,10 @@ body {
   }
 
   .intro {
-    overflow: hidden; // Clearfix alternative
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    overflow: visible;
     margin-bottom: 1em;
 
     @media (max-width: 768px) {
@@ -316,8 +319,8 @@ body {
   }
 
   .left-column {
-    float: left;
-    width: 48%;
+    float: none;
+    width: 100%;
     text-align: left;
     box-sizing: border-box;
 
@@ -328,9 +331,9 @@ body {
   }
 
   .right-column {
-    float: right;
-    width: 48%;
-    text-align: right;
+    float: none;
+    width: 100%;
+    text-align: left;
     box-sizing: border-box;
 
     @media (max-width: 768px) {
@@ -405,6 +408,7 @@ body {
 
   #info,
   #contact,
+  #info-contact,
   #summary,
   #skills,
   #education,
@@ -418,9 +422,48 @@ body {
   }
 
   #info,
-  #contact {
+  #contact,
+  #info-contact {
     li strong {
       font-weight: 600;
+    }
+  }
+
+  #info-contact ul.contact {
+    margin-top: 0.2rem;
+  }
+
+  #info-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 1.25rem;
+    row-gap: 0.35rem;
+
+    > h2 {
+      flex: 0 0 100%;
+    }
+
+    > ul.info,
+    > ul.contact {
+      flex: 1 1 22rem;
+      min-width: 0;
+      margin: 0;
+    }
+
+    > ul.contact {
+      margin-top: 0;
+    }
+
+    @media (max-width: 900px) {
+      > ul.info,
+      > ul.contact {
+        flex-basis: 100%;
+      }
+
+      > ul.contact {
+        margin-top: 0.2rem;
+      }
     }
   }
 
@@ -428,6 +471,24 @@ body {
     li.education h3 {
       font-size: $type-size-entry-title;
     }
+  }
+
+  .cv-sidebar-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: $space-section;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .cv-sidebar-columns__left,
+  .cv-sidebar-columns__right {
+    min-width: 0;
   }
 
   .cv-secondary-columns {
@@ -455,6 +516,10 @@ body {
     p {
       margin: 0;
     }
+  }
+
+  #summary {
+    margin-bottom: 1rem;
   }
 
   section {
@@ -539,16 +604,13 @@ body {
 
   ul.skills {
     margin: 0.1rem 0 0;
-    padding: 0;
+    padding: 0 0 0 1.5em;
+    list-style: disc;
 
     li {
-      display: inline;
-      margin: 0;
+      display: list-item;
+      margin: 0.1em 0;
       line-height: 1.3;
-
-      &:not(:first-child)::before {
-        content: "\00a0\2022\00a0\00a0";
-      }
 
       strong {
         display: inline;
@@ -657,6 +719,14 @@ body {
 
     li.project {
       display: block;
+      margin: 0 0 0.75rem 0;
+      padding: 0.75rem;
+      padding-left: 1rem;
+      border-left: 2px solid rgba($color-text, 0.15);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       > p {
         margin-top: 0.3em; // Breathing room between intro para, bullets, stack
@@ -726,9 +796,8 @@ body {
       flex: 1;
       display: flex;
       flex-direction: column;
-      list-style-type: disc;
-      list-style-position: outside;
-      padding-left: 1.15em;
+      list-style-type: none;
+      padding: 0;
       margin: 0;
     }
 
@@ -743,15 +812,15 @@ body {
     li.experience {
       // Explicit column flex item
       flex: 0 0 auto;
-      display: list-item;
 
       // Spacing between items
-      margin: 0 0 0.55rem 0;
-      padding: 0;
-      border-left: none;
+      margin: 0 0 0.75rem 0;
+      padding: 0.75rem;
+      border-left: 2px solid rgba($color-text, 0.15);
+      padding-left: 1rem;
 
       h3 {
-        margin: 0 0 0.25rem 0;
+        margin: 0 0 0.5rem 0;
         font-size: $type-size-entry-title;
       }
 
@@ -770,11 +839,15 @@ body {
         }
 
         > li > ul {
-          list-style-type: $bullet-level-2;
-        }
+          list-style: none;
+          padding-left: 0;
+          margin: 0.08em 0 0 0;
 
-        > li > ul > li > ul {
-          list-style-type: $bullet-level-3;
+          li {
+            display: block;
+            margin: 0.12em 0;
+            padding: 0;
+          }
         }
       }
     }
@@ -828,7 +901,9 @@ body {
   .experience-older__entry {
     font-size: 0.75em;
     line-height: 1.2;
-    padding: 0.15rem 0.3rem;
+    padding: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-left: 2px solid rgba($color-text, 0.15);
     break-inside: avoid;
 
@@ -897,7 +972,7 @@ body {
 // =============================================================================
 @media print {
   // ── Design tokens ──────────────────────────────────────────────────────────
-  $p-scale: 1.02;
+  $p-scale: 0.99;
 
   // Type scale
   $p-h1: 18.9px * $p-scale; // page title
@@ -908,9 +983,9 @@ body {
   $p-lh: 1.3; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
-  $p-sp-1: 0.055rem; // micro  — between sibling list items
-  $p-sp-2: 0.13rem; // tight  — heading → content within a card
-  $p-sp-3: 0.18rem; // normal — between cards / column gaps
+  $p-sp-1: 0.07rem; // micro  — between sibling list items
+  $p-sp-2: 0.16rem; // tight  — heading → content within a card
+  $p-sp-3: 0.22rem; // normal — between cards / column gaps
   $p-sp-4: 0.27rem; // loose  — between major sections
 
   // Layout
@@ -991,7 +1066,8 @@ body {
   }
 
   .intro #info h2,
-  .intro #contact h2 {
+  .intro #contact h2,
+  .intro #info-contact h2 {
     display: block !important;
   }
 
@@ -1003,6 +1079,10 @@ body {
     padding: 0 !important;
     font-size: $p-xs !important;
     line-height: $p-lh !important;
+  }
+
+  .intro #info-contact ul.contact {
+    margin-top: $p-sp-1 !important;
   }
 
   .intro ul.info li,
@@ -1129,13 +1209,14 @@ body {
     display: block !important;
   }
 
-  .right-column #contact {
+  .right-column #contact,
+  .intro #info-contact {
     display: block !important;
   }
 
   // ── 7. Section rhythm ────────────────────────────────────────────────────────
   section {
-    margin: 0 0 $p-sp-2 0 !important;
+    margin: 0 0 0.4rem 0 !important;
     padding: 0 !important;
     break-inside: auto;
   }
@@ -1145,7 +1226,7 @@ body {
   }
 
   section > h2 {
-    margin: 0 0 $p-sp-2 0 !important;
+    margin: 0 0 0.26rem 0 !important;
     padding: 0 !important;
     break-after: avoid !important;
   }
@@ -1156,7 +1237,7 @@ body {
 
   // ── 8. Generic block spacing ──────────────────────────────────────────────────
   p {
-    margin: 0 0 $p-sp-1 0 !important;
+    margin: 0 0 0.08rem 0 !important;
     padding: 0 !important;
     line-height: $p-lh !important;
     orphans: 3;
@@ -1171,7 +1252,7 @@ body {
   }
 
   li {
-    margin: 0 0 $p-sp-1 0 !important;
+    margin: 0 0 0.08rem 0 !important;
     padding: 0 !important;
     line-height: $p-lh !important;
   }
@@ -1222,6 +1303,21 @@ body {
     margin: 0 !important;
   }
 
+  // Keep the transition into Experiences tighter than other section breaks
+  #projects {
+    margin-bottom: 0.12rem !important;
+  }
+
+  #projects li.project {
+    margin: 0 0 0.12em 0 !important;
+    padding: 0.09em $p-sp-1 0.09em $p-card-pl !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
+  }
+
+  #projects li.project:last-child {
+    margin-bottom: 0 !important;
+  }
+
   #projects li.project > p {
     font-size: $p-xs !important;
     margin: 0 0 $p-sp-1 0 !important;
@@ -1255,13 +1351,19 @@ body {
 
   // ── 11. Experience cards (2-col grid layout) ──────────────────────────────────
   #experiences {
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
+  }
+
+  #experiences > h2 {
+    margin-top: 0 !important;
+    margin-bottom: 0.2rem !important;
   }
 
   #experiences .experiences-columns {
     display: flex !important;
     flex-direction: column !important;
-    gap: $p-sp-1 !important;
+    gap: $p-sp-3 !important;
   }
 
   #experiences .experiences-row {
@@ -1281,18 +1383,16 @@ body {
   #experiences ul.experiences {
     display: flex !important;
     flex-direction: column !important;
-    list-style-type: disc !important;
-    list-style-position: outside !important;
-    padding-left: 1.05em !important;
+    list-style: none !important;
+    padding: 0 !important;
     margin: 0 !important;
   }
 
   #experiences li.experience {
     flex: 0 0 auto !important;
-    display: list-item !important;
-    margin: 0 0 0.14em 0 !important;
-    padding: 0 !important;
-    border-left: none !important;
+    margin: 0 0 0.28em 0 !important;
+    padding: 0.09em $p-sp-1 0.09em $p-card-pl !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
     font-size: calc(#{$p-xs} * 0.95) !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
@@ -1306,7 +1406,7 @@ body {
     font-size: calc(#{$p-sm} * 0.95) !important;
     font-weight: 700 !important;
     line-height: $p-lh !important;
-    margin: 0 0 $p-sp-1 0 !important;
+    margin: 0 0 $p-sp-2 0 !important;
     padding: 0 !important;
     break-after: avoid !important;
   }
@@ -1318,14 +1418,14 @@ body {
   #experiences li.experience > ul {
     list-style-type: $bullet-level-1 !important;
     padding-left: $p-indent !important;
-    margin: 0.04em 0 0 0 !important;
+    margin: 0.08em 0 0 0 !important;
   }
 
   #experiences li.experience > ul li {
     display: list-item !important;
     font-size: calc(#{$p-xs} * 0.95) !important;
     line-height: $p-lh !important;
-    margin: 0 0 0.04em 0 !important;
+    margin: 0 0 0.07em 0 !important;
     padding: 0 !important;
   }
 
@@ -1334,13 +1434,15 @@ body {
   }
 
   #experiences li.experience > ul > li > ul {
-    list-style-type: $bullet-level-2 !important;
-    padding-left: $p-indent !important;
-    margin: 0 !important;
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0.08em 0 0 0 !important;
   }
 
-  #experiences li.experience > ul > li > ul > li > ul {
-    list-style-type: $bullet-level-3 !important;
+  #experiences li.experience > ul > li > ul li {
+    display: block !important;
+    margin: 0 0 0.07em 0 !important;
+    padding: 0 !important;
   }
 
   // ── 12. .experience shared component ─────────────────────────────────────────
@@ -1428,7 +1530,7 @@ body {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: stretch !important;
-    gap: $p-sp-1 !important;
+    gap: $p-sp-2 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1438,10 +1540,10 @@ body {
     min-width: 0 !important;
     font-size: $p-xxs !important;
     line-height: 1.24 !important;
-    padding: 0.09em 0.3em !important;
+    padding: 0.06em $p-card-pl 0.06em $p-card-pl !important;
     margin: 0 !important;
     border: none !important;
-    border-left: 1px solid #ccc !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
     break-inside: avoid !important;
     overflow: visible !important;
   }
@@ -1507,6 +1609,20 @@ body {
     padding: 0 !important;
   }
 
+  // ── 13b. Sidebar columns (Summary + Skills | Projects) ─────────────────────────
+  .cv-sidebar-columns {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 $p-sp-3 !important;
+    align-items: start !important;
+    margin: 0 0 0.08rem 0 !important;
+  }
+
+  .cv-sidebar-columns__left,
+  .cv-sidebar-columns__right {
+    min-width: 0 !important;
+  }
+
   // ── 14. Secondary columns (Education + Interests) ─────────────────────────────
   .cv-secondary-columns {
     display: grid !important;
@@ -1551,6 +1667,10 @@ body {
     line-height: 1.2 !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+
+  #interests p {
+    margin: 0 !important;
   }
 
   .educations {
