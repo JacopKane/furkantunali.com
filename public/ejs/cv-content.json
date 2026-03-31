@@ -59,7 +59,7 @@
       "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare, Grafana/Loki/Tempo, MCP SDK, Turborepo"
     }
   ],
-  "experiencesColumnAutoBalance": true,
+  "experiencesColumnAutoBalance": false,
   "experiencesColumnSplit": 3,
   "recentExperiences": [
     {
@@ -93,16 +93,6 @@
       "stack": "TypeScript, JavaScript, Python, NestJS, Nuxt, Vue, Rails, Kubernetes, EKS, Terraform, AWS (ECS, ECR, CloudFormation, EventBridge), Docker, GitHub Actions, OpenAI API, Tavily, PydanticAI"
     },
     {
-      "role": "Lead Front-End Developer",
-      "company": "Chantelle, Berlin",
-      "url": "https://chantelle.com",
-      "dates": "08/2017 - 12/2018",
-      "bullets": [
-        "Managed front-end team (hiring, onboarding, planning); restructured monolith to microservices, introduced code quality conventions, automated tests, A/B testing, and UI component library bridging UX and engineering."
-      ],
-      "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
-    },
-    {
       "role": "Senior Software Architect",
       "company": "Société Générale, Berlin",
       "url": "https://www.sgef-digital-factory.com/",
@@ -121,6 +111,16 @@
         "Profiled performance bottlenecks, drove data migrations, and improved containerization and workflows."
       ],
       "stack": "Ramda, Node.js, React, Redux, GraphQL, AWS, Docker, MongoDB, TeamCity"
+    },
+    {
+      "role": "Lead Front-End Developer",
+      "company": "Chantelle, Berlin",
+      "url": "https://chantelle.com",
+      "dates": "08/2017 - 12/2018",
+      "bullets": [
+        "Managed front-end team (hiring, onboarding, planning); restructured monolith to microservices, introduced code quality conventions, automated tests, A/B testing, and UI component library bridging UX and engineering."
+      ],
+      "stack": "React, GraphQL, Redux, AWS, Koa, MongoDB, WebPack, Magento"
     },
     {
       "role": "Full-stack JavaScript Engineer",
