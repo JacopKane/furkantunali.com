@@ -449,18 +449,24 @@
         <% var leftItems = []; %>
         <% var rightItems = []; %>
         <% if (data.experiencesColumnAutoBalance !== false) { %>
-        <% var leftWeight = 0; %>
-        <% var rightWeight = 0; %>
-        <% expList.forEach(function(exp) { %>
-        <% var weight = estimateExpWeight(exp); %>
-        <% if (leftWeight <= rightWeight) { %>
-        <% leftItems.push(exp); %>
-        <% leftWeight += weight; %>
-        <% } else { %>
-        <% rightItems.push(exp); %>
-        <% rightWeight += weight; %>
+        <% var weights = expList.map(function(exp) { return estimateExpWeight(exp); }); %>
+        <% var totalWeight = weights.reduce(function(sum, weight) { return sum + weight; }, 0); %>
+        <% var bestSplitIdx = Math.ceil(expList.length / 2); %>
+        <% if (expList.length > 1) { %>
+        <% var runningLeftWeight = 0; %>
+        <% var bestDelta = Infinity; %>
+        <% for (var idx = 0; idx < expList.length - 1; idx++) { %>
+        <% runningLeftWeight += weights[idx]; %>
+        <% var rightWeight = totalWeight - runningLeftWeight; %>
+        <% var delta = Math.abs(runningLeftWeight - rightWeight); %>
+        <% if (delta < bestDelta) { %>
+        <% bestDelta = delta; %>
+        <% bestSplitIdx = idx + 1; %>
         <% } %>
-        <% }); %>
+        <% } %>
+        <% } %>
+        <% leftItems = expList.slice(0, bestSplitIdx); %>
+        <% rightItems = expList.slice(bestSplitIdx); %>
         <% } else { %>
         <% var splitIdx = data.experiencesColumnSplit != null ? data.experiencesColumnSplit : Math.ceil(expList.length / 2); %>
         <% leftItems = expList.slice(0, splitIdx); %>

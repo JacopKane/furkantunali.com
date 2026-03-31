@@ -812,21 +812,21 @@ body {
   // ── Design tokens ──────────────────────────────────────────────────────────
   // Type scale
   $p-h1: 18.5px; // page title
-  $p-base: 14.2px; // body / section labels
-  $p-sm: 13.4px; // entry titles (h3)
-  $p-xs: 12.2px; // bullet detail text
-  $p-xxs: 11px; // older-exp / meta labels
-  $p-lh: 1.32; // single line-height used everywhere
+  $p-base: 13.8px; // body / section labels
+  $p-sm: 13px; // entry titles (h3)
+  $p-xs: 11.8px; // bullet detail text
+  $p-xxs: 10.6px; // older-exp / meta labels
+  $p-lh: 1.3; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
-  $p-sp-1: 0.06rem; // micro  — between sibling list items
-  $p-sp-2: 0.14rem; // tight  — heading → content within a card
-  $p-sp-3: 0.19rem; // normal — between cards / column gaps
-  $p-sp-4: 0.28rem; // loose  — between major sections
+  $p-sp-1: 0.055rem; // micro  — between sibling list items
+  $p-sp-2: 0.13rem; // tight  — heading → content within a card
+  $p-sp-3: 0.18rem; // normal — between cards / column gaps
+  $p-sp-4: 0.27rem; // loose  — between major sections
 
   // Layout
-  $p-page-pad: 0.4cm; // body padding — balanced for readability and single page
-  $p-page-pad-top: 0.32cm; // top margin
+  $p-page-pad: 0.35cm; // body padding — balanced for readability and single page
+  $p-page-pad-top: 0.28cm; // top margin
   $p-gutter: 0.3cm; // .container / header inner left-right padding (screen only)
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
@@ -1186,10 +1186,10 @@ body {
 
   #experiences li.experience {
     flex: 0 0 auto !important;
-    margin: 0 0 $p-sp-1 0 !important;
-    padding: $p-sp-1 $p-sp-1 $p-sp-1 $p-card-pl !important;
+    margin: 0 0 0.08em 0 !important;
+    padding: 0.06em $p-sp-1 0.06em $p-card-pl !important;
     border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
-    font-size: $p-xs !important;
+    font-size: calc(#{$p-xs} * 0.95) !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
@@ -1199,10 +1199,10 @@ body {
   }
 
   #experiences li.experience h3 {
-    font-size: $p-sm !important;
+    font-size: calc(#{$p-sm} * 0.95) !important;
     font-weight: 700 !important;
     line-height: $p-lh !important;
-    margin: 0 0 $p-sp-2 0 !important;
+    margin: 0 0 $p-sp-1 0 !important;
     padding: 0 !important;
     break-after: avoid !important;
   }
@@ -1214,14 +1214,14 @@ body {
   #experiences li.experience > ul {
     list-style-type: $bullet-level-1 !important;
     padding-left: $p-indent !important;
-    margin: $p-sp-1 0 0 0 !important;
+    margin: 0.04em 0 0 0 !important;
   }
 
   #experiences li.experience > ul li {
     display: list-item !important;
-    font-size: $p-xs !important;
+    font-size: calc(#{$p-xs} * 0.95) !important;
     line-height: $p-lh !important;
-    margin: 0 0 $p-sp-1 0 !important;
+    margin: 0 0 0.04em 0 !important;
     padding: 0 !important;
   }
 
@@ -1378,7 +1378,7 @@ body {
   }
 
   .experience-older__dates {
-    display: none !important;
+    display: block !important;
     font-size: 10.8px !important;
     color: #555 !important;
     margin: 0 !important;
