@@ -184,9 +184,8 @@ export const downloadAsPDF = onRequest(
       });
 
       const buffer = await page.pdf({
-        preferCSSPageSize: true,
+        format: "A4",
         printBackground: true,
-        scale: 0.93,
       });
 
       logger.info("PDF generated", { structuredData: true });

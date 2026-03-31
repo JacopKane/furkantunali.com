@@ -11,11 +11,9 @@
       const isEmailHref = function(href) {
         return typeof href === 'string' && /^mailto:/i.test(href);
       };
+      const pageQrCodeUrl = 'images/cv-qr.svg';
       const shouldRenderLinkQr = function(href) {
         return false;
-      };
-      const getQrCodeUrl = function(href) {
-        return 'https://api.qrserver.com/v1/create-qr-code/?size=96x96&margin=0&data=' + encodeURIComponent(href);
       };
     %>
     <meta charset="utf-8" />
@@ -136,7 +134,7 @@
           flex: 0 0 auto !important;
           float: none !important;
           position: static !important;
-          margin: 5px 2px 0 0.12cm !important;
+          margin: 5px 0 0 0.14cm !important;
           line-height: 0 !important;
           order: 2 !important;
           align-self: flex-start !important;
@@ -144,7 +142,8 @@
         .page-qr-print__box {
           width: 1.4cm !important;
           height: 1.4cm !important;
-          border-width: 0.3pt !important;
+          padding: 0.03cm !important;
+          box-sizing: content-box !important;
           display: block !important;
         }
       }
@@ -195,7 +194,7 @@
     <header>
       <div class="page-qr-print" aria-hidden="true">
         <span class="link-qr-print page-qr-print__box"
-          ><img id="page-url-qr-image" alt=""
+          ><img id="page-url-qr-image" src="<%= pageQrCodeUrl %>" alt=""
         /></span>
       </div>
       <hgroup>
@@ -639,20 +638,6 @@
             window.print();
           });
         }
-      })();
-    </script>
-
-    <script>
-      (function () {
-        var qrImg = document.getElementById("page-url-qr-image");
-        if (!qrImg) return;
-
-        var pageUrl = "https://furkantunali.com" + window.location.pathname;
-        var qrSrc =
-          "https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&data=" +
-          encodeURIComponent(pageUrl);
-
-        qrImg.src = qrSrc;
       })();
     </script>
 

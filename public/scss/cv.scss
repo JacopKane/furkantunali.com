@@ -811,32 +811,30 @@ body {
 @media print {
   // ── Design tokens ──────────────────────────────────────────────────────────
   // Type scale
-  $p-h1: 19px; // page title
-  $p-base: 14.8px; // body / section labels
-  $p-sm: 13.6px; // entry titles (h3)
-  $p-xs: 12.4px; // bullet detail text
-  $p-xxs: 11.2px; // older-exp / meta labels
-  $p-lh: 1.36; // single line-height used everywhere
+  $p-h1: 18.5px; // page title
+  $p-base: 14.2px; // body / section labels
+  $p-sm: 13.4px; // entry titles (h3)
+  $p-xs: 12.2px; // bullet detail text
+  $p-xxs: 11px; // older-exp / meta labels
+  $p-lh: 1.32; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
-  $p-sp-1: 0.12rem; // micro  — between sibling list items
-  $p-sp-2: 0.245rem; // tight  — heading → content within a card
-  $p-sp-3: 0.29rem; // normal — between cards / column gaps
-  $p-sp-4: 0.41rem; // loose  — between major sections
+  $p-sp-1: 0.06rem; // micro  — between sibling list items
+  $p-sp-2: 0.14rem; // tight  — heading → content within a card
+  $p-sp-3: 0.19rem; // normal — between cards / column gaps
+  $p-sp-4: 0.28rem; // loose  — between major sections
 
   // Layout
-  $p-page-m: 0.49cm; // @page right margin
-  $p-page-m-bottom: 0.62cm; // extra room to avoid bottom clipping in PDF/printers
-  $p-page-m-left: 0.62cm; // extra room to avoid left-edge clipping in PDF/printers
-  $p-page-m-top: 0.4cm; // @page top margin to balance optical whitespace
-  $p-gutter: 0.3cm; // .container / header inner left-right padding
+  $p-page-pad: 0.4cm; // body padding — balanced for readability and single page
+  $p-page-pad-top: 0.32cm; // top margin
+  $p-gutter: 0.3cm; // .container / header inner left-right padding (screen only)
   $p-indent: 1.1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
 
   // ── 1. Page setup ──────────────────────────────────────────────────────────
   @page {
     size: A4;
-    margin: $p-page-m-top $p-page-m $p-page-m-bottom $p-page-m-left;
+    margin: 0; // all spacing handled by body padding — no renderer/Puppeteer conflict
   }
 
   // ── 2. Root reset ────────────────────────────────────────────────────────────
@@ -845,7 +843,7 @@ body {
     font-size: $p-base !important;
     line-height: $p-lh !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: $p-page-pad-top $p-page-pad $p-page-pad $p-page-pad !important;
     max-width: none !important;
     width: 100% !important;
     color: #000 !important;
@@ -864,7 +862,7 @@ body {
   // ── 4. Layout shell ──────────────────────────────────────────────────────────
   .container {
     margin: 0 !important;
-    padding: 0 $p-gutter !important;
+    padding: 0 !important;
     max-width: none !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -872,8 +870,8 @@ body {
   }
 
   header {
-    margin: 0 0 $p-sp-3 0 !important;
-    padding: 0 $p-gutter !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -892,7 +890,7 @@ body {
     justify-content: space-between !important;
     align-items: flex-start !important;
     overflow: visible !important;
-    margin: 0 0 $p-sp-4 0 !important;
+    margin: 0 0 $p-sp-2 0 !important;
     padding: 0 !important;
     gap: 0 !important;
     line-height: $p-lh !important;
@@ -1009,11 +1007,9 @@ body {
     width: 0.56cm !important;
     height: 0.56cm !important;
     padding: 0.03cm !important;
-    border: 0.35pt solid #777 !important;
-    border-radius: 1px !important;
-    background: #fff !important;
     line-height: 0 !important;
     flex: 0 0 auto !important;
+    box-sizing: content-box !important;
   }
 
   .link-qr-print img {
@@ -1039,9 +1035,8 @@ body {
   .page-qr-print__box {
     width: 3.2cm !important;
     height: 3.8cm !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    border-width: 0.55pt !important;
+    padding: 0.08cm !important;
+    box-sizing: content-box !important;
     display: block !important;
   }
 
@@ -1051,7 +1046,7 @@ body {
 
   // ── 7. Section rhythm ────────────────────────────────────────────────────────
   section {
-    margin: 0 0 $p-sp-4 0 !important;
+    margin: 0 0 $p-sp-2 0 !important;
     padding: 0 !important;
     break-inside: auto;
   }
@@ -1191,8 +1186,8 @@ body {
 
   #experiences li.experience {
     flex: 0 0 auto !important;
-    margin: 0 0 $p-sp-3 0 !important;
-    padding: $p-sp-2 $p-sp-2 $p-sp-2 $p-card-pl !important;
+    margin: 0 0 $p-sp-1 0 !important;
+    padding: $p-sp-1 $p-sp-1 $p-sp-1 $p-card-pl !important;
     border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
     font-size: $p-xs !important;
     break-inside: auto !important;
