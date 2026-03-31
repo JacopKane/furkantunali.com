@@ -658,8 +658,9 @@ body {
       flex: 1;
       display: flex;
       flex-direction: column;
-      list-style-type: none;
-      padding: 0;
+      list-style-type: disc;
+      list-style-position: outside;
+      padding-left: 1.15em;
       margin: 0;
     }
 
@@ -674,15 +675,15 @@ body {
     li.experience {
       // Explicit column flex item
       flex: 0 0 auto;
+      display: list-item;
 
       // Spacing between items
-      margin: 0 0 0.75rem 0;
-      padding: 0.75rem;
-      border-left: 2px solid rgba($color-text, 0.15);
-      padding-left: 1rem;
+      margin: 0 0 0.55rem 0;
+      padding: 0;
+      border-left: none;
 
       h3 {
-        margin: 0 0 0.5rem 0;
+        margin: 0 0 0.25rem 0;
         font-size: $type-size-entry-title;
       }
 
@@ -825,11 +826,11 @@ body {
 @media print {
   // ── Design tokens ──────────────────────────────────────────────────────────
   // Type scale
-  $p-h1: 18.5px; // page title
-  $p-base: 13.8px; // body / section labels
-  $p-sm: 13px; // entry titles (h3)
-  $p-xs: 11.8px; // bullet detail text
-  $p-xxs: 10.6px; // older-exp / meta labels
+  $p-h1: 18.9px; // page title
+  $p-base: 14.2px; // body / section labels
+  $p-sm: 13.3px; // entry titles (h3)
+  $p-xs: 12px; // bullet detail text
+  $p-xxs: 10.8px; // older-exp / meta labels
   $p-lh: 1.3; // single line-height used everywhere
 
   // Spacing — 4-step scale (rem so it scales with $p-base root)
@@ -839,10 +840,10 @@ body {
   $p-sp-4: 0.27rem; // loose  — between major sections
 
   // Layout
-  $p-page-pad: 0.35cm; // body padding — balanced for readability and single page
-  $p-page-pad-top: 0.28cm; // top margin
+  $p-page-pad: 0.32cm; // body padding — balanced for readability and single page
+  $p-page-pad-top: 0.25cm; // top margin
   $p-gutter: 0.3cm; // .container / header inner left-right padding (screen only)
-  $p-indent: 1.1em; // list indent, all nesting levels
+  $p-indent: 1em; // list indent, all nesting levels
   $p-card-pl: 0.52rem; // li.experience left padding — must be > bullet marker offset
 
   // ── 1. Page setup ──────────────────────────────────────────────────────────
@@ -1206,16 +1207,18 @@ body {
   #experiences ul.experiences {
     display: flex !important;
     flex-direction: column !important;
-    list-style: none !important;
-    padding: 0 !important;
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    padding-left: 1.05em !important;
     margin: 0 !important;
   }
 
   #experiences li.experience {
     flex: 0 0 auto !important;
-    margin: 0 0 0.08em 0 !important;
-    padding: 0.06em $p-sp-1 0.06em $p-card-pl !important;
-    border-left: 1px solid rgba(0, 0, 0, 0.2) !important;
+    display: list-item !important;
+    margin: 0 0 0.14em 0 !important;
+    padding: 0 !important;
+    border-left: none !important;
     font-size: calc(#{$p-xs} * 0.95) !important;
     break-inside: auto !important;
     page-break-inside: auto !important;

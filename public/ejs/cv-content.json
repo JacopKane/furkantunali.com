@@ -21,7 +21,7 @@
   "skills": [
     {
       "category": "AI",
-      "items": "LangGraph, LangChain, Ollama, MCP, PydanticAI, AutoGen, Claude, OpenAI and Gemini APIs"
+      "items": "LangGraph, LangChain, Ollama, MCP, PydanticAI, AutoGen"
     },
     {
       "category": "Infrastructure",
@@ -56,7 +56,7 @@
           "text": "ChatGPT App demo video"
         }
       ],
-      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare, Grafana/Loki/Tempo, MCP SDK, Turborepo"
+      "stack": "TypeScript, Python, NestJS, Next.js, React, LangGraph, LangChain, Ollama, Gemini API, PostgreSQL, Redis, BullMQ, MicroK8s, Docker, Cloudflare, Grafana/Loki/Tempo, OpenAI App SDK, Turborepo"
     }
   ],
   "experiencesColumnAutoBalance": true,
@@ -99,7 +99,7 @@
       "url": "https://www.sgef-digital-factory.com/",
       "dates": "09/2019 - 05/2020",
       "bullets": [
-        "Containerized <em>AI/ML</em> models and <strong>Jupyter Notebooks</strong> with pipeline to <strong>Azure CUDA</strong>; integrated <strong>Microsoft Entra ID</strong>, MVP monorepo orchestration; global company technical integrations."
+        "Containerized <em>AI/ML</em> models and <strong>Jupyter Notebooks</strong> with pipeline to <strong>Azure CUDA</strong>; integrated <strong>Microsoft Entra ID</strong> and MVP monorepo orchestration; represented the organization among global software architects to align roadmaps, and drove key decisions on infrastructure, tooling, and security."
       ],
       "stack": "Azure, Docker, Vue.js, TypeScript, GraphQL, Apollo, PostgreSQL, Azure Functions, GitHub Actions"
     },
