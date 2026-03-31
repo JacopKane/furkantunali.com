@@ -683,6 +683,10 @@ body {
       padding-left: 1rem;
       border-left: 2px solid rgba($color-text, 0.15);
 
+      .dark-theme & {
+        border-left-color: rgba($color-text-dark, 0.3);
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -777,6 +781,10 @@ body {
       padding: 0.75rem;
       border-left: 2px solid rgba($color-text, 0.15);
       padding-left: 1rem;
+
+      .dark-theme & {
+        border-left-color: rgba($color-text-dark, 0.3);
+      }
 
       h3 {
         margin: 0 0 0.5rem 0;
